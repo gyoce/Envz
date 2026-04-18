@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\Fonts\Poppins-Bold.ttf" />
+    <None Remove="Assets\Fonts\Poppins-Medium.ttf" />
+    <None Remove="Assets\Fonts\Poppins-Regular.ttf" />
+    <None Remove="Assets\Fonts\Poppins-SemiBold.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\Fonts\Poppins-Bold.ttf" />
+    <Resource Include="Assets\Fonts\Poppins-Medium.ttf" />
+    <Resource Include="Assets\Fonts\Poppins-Regular.ttf" />
+    <Resource Include="Assets\Fonts\Poppins-SemiBold.ttf" />
+  </ItemGroup>
+
+</Project>
