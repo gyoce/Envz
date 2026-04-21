@@ -22,21 +22,22 @@
               <Setter TargetName="border" Property="Background" Value="{StaticResource PrimaryHoverBrush}"/>
               <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource PrimaryHoverBrush}"/>
             </Trigger>
-
             <Trigger Property="IsPressed" Value="True">
               <Setter TargetName="border" Property="Background" Value="{StaticResource PrimaryPressedBrush}"/>
               <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource PrimaryPressedBrush}"/>
             </Trigger>
-
             <Trigger Property="IsFocused" Value="True">
               <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource PrimaryFocusedBrush}"/>
             </Trigger>
-
             <Trigger Property="IsEnabled" Value="False">
               <Setter TargetName="border" Property="Background" Value="{StaticResource DisabledBrush}"/>
               <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource DisabledBrush}"/>
               <Setter Property="Foreground" Value="{StaticResource DisabledForegroundBrush}"/>
               <Setter Property="Cursor" Value="Arrow"/>
+            </Trigger>
+            <Trigger Property="Tag" Value="active">
+              <Setter Property="Background" Value="{StaticResource PrimaryActiveBrush}"/>
+              <Setter Property="BorderBrush" Value="{StaticResource PrimaryActiveBrush}"/>
             </Trigger>
           </ControlTemplate.Triggers>
         </ControlTemplate>

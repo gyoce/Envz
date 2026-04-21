@@ -20,7 +20,6 @@
     <Grid Background="{StaticResource BackgroundBrush}">
       <Grid.RowDefinitions>
         <RowDefinition Height="53"/>
-        <RowDefinition Height="Auto"/>
         <RowDefinition Height="*"/>
       </Grid.RowDefinitions>
 
@@ -44,37 +43,35 @@
         </StackPanel>
       </Grid>
 
-      <!-- First Content -->
-      <Grid Grid.Row="1" Margin="0, 10, 0, 10" Grid.ColumnSpan="2">
+      <!-- Content -->
+      <Grid Grid.Row="1">
         <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="Auto"/>
+          <ColumnDefinition Width="192"/>
           <ColumnDefinition Width="*"/>
-          <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
-        <Button Margin="0, 0, 10, 0" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{StaticResource PrimaryButton}" FontSize="16">
-          <TextBlock Text="+ New environment" Style="{StaticResource H4}" Foreground="White"/>
-        </Button>
+        <!-- Sidebar -->
+        <Grid Background="{StaticResource SidebarBrush}">
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+          </Grid.RowDefinitions>
+
+          <Button Grid.Row="0" Style="{StaticResource PrimaryButton}" Margin="10, 10, 10, 0" Height="40" Tag="active">
+            <TextBlock Text="Home" Style="{StaticResource Body}"/>
+          </Button>
+          <Button Grid.Row="1" Style="{StaticResource PrimaryButton}" Margin="10, 10, 10, 0" Height="40">
+            <TextBlock Text="Create environment" Style="{StaticResource Body}"/>
+          </Button>
+          <Button Grid.Row="2" Style="{StaticResource PrimaryButton}" Margin="10, 10, 10, 0" Height="40">
+            <TextBlock Text="Settings" Style="{StaticResource Body}"/>
+          </Button>
+        </Grid>
+        
+        <!-- Main content -->
+        
       </Grid>
-
-
-      <!-- Second Content -->
-      <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
-        <ItemsControl>
-          <ItemsControl.ItemsPanel>
-            <ItemsPanelTemplate>
-              <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center"/>
-            </ItemsPanelTemplate>
-          </ItemsControl.ItemsPanel>
-          <local:EnvironmentUserControl Margin="10"/>
-          <local:EnvironmentUserControl Margin="10"/>
-          <local:EnvironmentUserControl Margin="10"/>
-          <local:EnvironmentUserControl Margin="10"/>
-          <local:EnvironmentUserControl Margin="10"/>
-          <local:EnvironmentUserControl Margin="10"/>
-          <local:EnvironmentUserControl Margin="10"/>
-        </ItemsControl>
-      </ScrollViewer>
     </Grid>
   </Border>
 </Window>

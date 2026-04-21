@@ -6,7 +6,7 @@
   xmlns:local="clr-namespace:EnvBooster.UI"
   mc:Ignorable="d"
   Background="{StaticResource SurfaceBrush}"           
-  MinWidth="350" MinHeight="150">
+  MinWidth="350" MinHeight="175">
 
   <Border Background="{StaticResource BackgroundBrush}" BorderBrush="{StaticResource SecondaryBrush}" BorderThickness="1" CornerRadius="3">
 
