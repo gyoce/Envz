@@ -24,7 +24,7 @@
       </Grid.RowDefinitions>
 
       <!-- Title Bar -->
-      <Grid Grid.Row="0" Grid.ColumnSpan="2" MouseLeftButtonDown="TitleBarMouseLeftButtonDown">
+      <Grid Grid.Row="0" Grid.ColumnSpan="2" MouseLeftButtonDown="TitleBarMouseLeftButtonDown" Background="{StaticResource SidebarBrush}">
         <Grid.ColumnDefinitions>
           <ColumnDefinition Width="*"/>
           <ColumnDefinition Width="Auto"/>
@@ -58,19 +58,19 @@
             <RowDefinition Height="Auto"/>
           </Grid.RowDefinitions>
 
-          <Button Grid.Row="0" Style="{StaticResource PrimaryButton}" Margin="10, 10, 10, 0" Height="40" Tag="active">
+          <Button x:Name="ButtonHome" Grid.Row="0" Style="{StaticResource PrimaryButton}" Margin="10, 10, 10, 0" Height="40" Tag="active">
             <TextBlock Text="Home" Style="{StaticResource Body}"/>
           </Button>
-          <Button Grid.Row="1" Style="{StaticResource PrimaryButton}" Margin="10, 10, 10, 0" Height="40">
+          <Button x:Name="ButtonCreateEnvironment" Grid.Row="1" Style="{StaticResource PrimaryButton}" Margin="10, 10, 10, 0" Height="40">
             <TextBlock Text="Create environment" Style="{StaticResource Body}"/>
           </Button>
-          <Button Grid.Row="2" Style="{StaticResource PrimaryButton}" Margin="10, 10, 10, 0" Height="40">
+          <Button x:Name="ButtonSettings" Grid.Row="2" Style="{StaticResource PrimaryButton}" Margin="10, 10, 10, 0" Height="40">
             <TextBlock Text="Settings" Style="{StaticResource Body}"/>
           </Button>
         </Grid>
         
         <!-- Main content -->
-        
+        <Button Grid.Column="1">Create env</Button>
       </Grid>
     </Grid>
   </Border>
