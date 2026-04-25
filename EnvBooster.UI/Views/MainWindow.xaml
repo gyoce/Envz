@@ -1,25 +1,35 @@
-﻿<Window x:Class="EnvBooster.UI.MainWindow"
+﻿<Window x:Class="EnvBooster.UI.Views.MainWindow"
   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-  xmlns:local="clr-namespace:EnvBooster.UI"
+  xmlns:uc="clr-namespace:EnvBooster.UI.Views.UserControls"
+  xmlns:vm="clr-namespace:EnvBooster.UI.ViewModels"
   mc:Ignorable="d"
-  Title="MainWindow" Width="1280" Height="480" 
+  Title="MainWindow" Width="1280" Height="520" 
   ResizeMode="NoResize"
   WindowStyle="None"
   AllowsTransparency="True"
   Background="Transparent"
   WindowStartupLocation="CenterScreen">
 
+  <Window.Resources>
+    <DataTemplate DataType="{x:Type vm:HomePageViewModel}">
+      <uc:HomePage/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:SettingsPageViewModel}">
+      <uc:SettingsPage/>
+    </DataTemplate>
+  </Window.Resources>
+
   <Border Background="{StaticResource BackgroundBrush}" BorderBrush="{StaticResource PrimaryBrush}" BorderThickness="2" CornerRadius="4">
     <Border.Effect>
       <DropShadowEffect Color="#000000" BlurRadius="15" ShadowDepth="2" Opacity="0.25" Direction="270"/>
     </Border.Effect>
 
-    <Grid Background="{StaticResource BackgroundBrush}">
+    <Grid>
       <Grid.RowDefinitions>
-        <RowDefinition Height="53"/>
+        <RowDefinition Height="Auto"/>
         <RowDefinition Height="*"/>
       </Grid.RowDefinitions>
 
@@ -32,7 +42,7 @@
 
         <TextBlock Grid.Column="0" Margin="5, 5, 0, 0" Style="{StaticResource H1}" Text="EnvBooster"/>
 
-        <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="0, 0, 0, 5">
+        <StackPanel Grid.Column="1" Orientation="Horizontal">
           <Button Style="{StaticResource TitleBarButton}" Click="MinimizeButtonClick">
             <Image Margin="0, 10, 0, 0" Source="{StaticResource IconUnderscoreBlack}" Width="16" Height="16"/>
           </Button>
@@ -51,26 +61,22 @@
         </Grid.ColumnDefinitions>
 
         <!-- Sidebar -->
-        <Grid Background="{StaticResource SidebarBrush}">
-          <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-          </Grid.RowDefinitions>
-
-          <Button x:Name="ButtonHome" Grid.Row="0" Style="{StaticResource PrimaryButton}" Margin="10, 10, 10, 0" Height="40" Tag="active">
-            <TextBlock Text="Home" Style="{StaticResource Body}"/>
-          </Button>
-          <Button x:Name="ButtonCreateEnvironment" Grid.Row="1" Style="{StaticResource PrimaryButton}" Margin="10, 10, 10, 0" Height="40">
-            <TextBlock Text="Create environment" Style="{StaticResource Body}"/>
-          </Button>
-          <Button x:Name="ButtonSettings" Grid.Row="2" Style="{StaticResource PrimaryButton}" Margin="10, 10, 10, 0" Height="40">
-            <TextBlock Text="Settings" Style="{StaticResource Body}"/>
-          </Button>
-        </Grid>
+        <StackPanel Grid.Column="0" Background="{StaticResource SidebarBrush}">
+          <RadioButton 
+            Style="{StaticResource NavigationButton}"
+            Content="Home"
+            Command="{Binding ShowHomePageCommand}"
+            IsChecked="True"
+          />
+          <RadioButton 
+            Style="{StaticResource NavigationButton}"
+            Content="Settings"
+            Command="{Binding ShowSettingsPageCommand}"
+          />
+        </StackPanel>
         
         <!-- Main content -->
-        <Button Grid.Column="1">Create env</Button>
+        <ContentControl Grid.Column="1" Content="{Binding CurrentViewModel}"/>
       </Grid>
     </Grid>
   </Border>
