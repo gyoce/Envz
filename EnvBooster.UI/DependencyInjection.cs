@@ -9,9 +9,10 @@ public static class DependencyInjection
     public static IServiceCollection AddUi(this IServiceCollection services)
     {
         services.AddSingleton<MainWindow>();
-        services.AddTransient<MainWindowViewModel>();
-        services.AddTransient<HomePageViewModel>();
-        services.AddTransient<SettingsPageViewModel>();
+        services.AddSingleton<MainWindowViewModel>();
+        services.AddSingleton<HomePageViewModel>();
+        services.AddSingleton<SettingsPageViewModel>();
+        services.AddSingleton<CreateEnvironmentPageViewModel>();
         return services;
     }
 }

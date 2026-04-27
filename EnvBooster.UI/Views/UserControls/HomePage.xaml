@@ -4,12 +4,32 @@
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
   xmlns:local="clr-namespace:EnvBooster.UI.Views.UserControls"
-  d:Width="1088" d:Height="467"
-  mc:Ignorable="d">
+  mc:Ignorable="d"
+  d:Width="1088" d:Height="467">
 
   <Border Background="{StaticResource BackgroundBrush}">
     <Grid>
-      <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="217,188,0,0"/>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="*"/>
+      </Grid.RowDefinitions>
+
+      <TextBlock Grid.Row="0" Text="Home page" Style="{StaticResource H2}" HorizontalAlignment="Center"/>
+
+      <Grid Grid.Row="1">
+        <Grid>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>  
+          </Grid.RowDefinitions>
+          <Button Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" Style="{StaticResource PrimaryButton}" Command="{Binding GetEnvironmentsCommand}">
+            <TextBlock Text="Get environments" Style="{StaticResource Body}"/>
+          </Button>
+          <DataGrid Grid.Row="1" ItemsSource="{Binding Environments}">
+
+          </DataGrid>
+        </Grid>
+      </Grid>
     </Grid>
   </Border>
   

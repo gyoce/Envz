@@ -1,10 +1,12 @@
 ﻿using System.Windows;
+using EnvBooster.Application;
+using EnvBooster.Infrastructure;
 using EnvBooster.UI.Views;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace EnvBooster.UI;
 
-public partial class App : Application
+public partial class App : System.Windows.Application
 {
     private IServiceProvider? ServiceProvider { get; set; }
 
@@ -21,6 +23,8 @@ public partial class App : Application
     {
         ServiceCollection services = new();
         services.AddUi();
+        services.AddInfrastructure();
+        services.AddApplication();
         return services;
     }
 }

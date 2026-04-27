@@ -17,6 +17,9 @@
     <DataTemplate DataType="{x:Type vm:HomePageViewModel}">
       <uc:HomePage/>
     </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:CreateEnvironmentPageViewModel}">
+      <uc:CreateEnvironmentPage/>
+    </DataTemplate>
     <DataTemplate DataType="{x:Type vm:SettingsPageViewModel}">
       <uc:SettingsPage/>
     </DataTemplate>
@@ -67,6 +70,11 @@
             Content="Home"
             Command="{Binding ShowHomePageCommand}"
             IsChecked="True"
+          />
+          <RadioButton 
+            Style="{StaticResource NavigationButton}"
+            Content="Create environment"
+            Command="{Binding ShowCreateEnvironmentPageCommand}"
           />
           <RadioButton 
             Style="{StaticResource NavigationButton}"

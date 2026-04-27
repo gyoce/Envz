@@ -1,0 +1,1 @@
+﻿global using Environment = EnvBooster.Domain.Entities.Environment;

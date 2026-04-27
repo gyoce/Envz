@@ -7,6 +7,7 @@ public class MainWindowViewModel : ViewModelBase
 {
     public ICommand ShowHomePageCommand { get; }
     public ICommand ShowSettingsPageCommand { get; }
+    public ICommand ShowCreateEnvironmentPageCommand { get; }
     public ViewModelBase CurrentViewModel
     {
         get => _currentViewModel;
@@ -19,10 +20,11 @@ public class MainWindowViewModel : ViewModelBase
 
     private ViewModelBase _currentViewModel = null!;
 
-    public MainWindowViewModel(HomePageViewModel homePageViewModel, SettingsPageViewModel settingsPageViewModel)
+    public MainWindowViewModel(HomePageViewModel homePageViewModel, SettingsPageViewModel settingsPageViewModel, CreateEnvironmentPageViewModel createEnvironmentPageViewModel)
     {
         ShowHomePageCommand = new RelayCommand(_ => CurrentViewModel = homePageViewModel);
         ShowSettingsPageCommand = new RelayCommand(_ => CurrentViewModel = settingsPageViewModel);
+        ShowCreateEnvironmentPageCommand = new RelayCommand(_ => CurrentViewModel = createEnvironmentPageViewModel);
         CurrentViewModel = homePageViewModel;
     }
 }
