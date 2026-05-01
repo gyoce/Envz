@@ -1,5 +1,6 @@
 ﻿using EnvBooster.UI.ViewModels;
 using EnvBooster.UI.Views;
+
 using Microsoft.Extensions.DependencyInjection;
 
 namespace EnvBooster.UI;

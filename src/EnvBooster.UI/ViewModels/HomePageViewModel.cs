@@ -1,5 +1,5 @@
 ﻿using System.Collections.ObjectModel;
-using System.Windows.Input;
+
 using EnvBooster.Application.Environments;
 using EnvBooster.UI.Utils;
 
@@ -8,14 +8,20 @@ namespace EnvBooster.UI.ViewModels;
 public class HomePageViewModel : ViewModelBase
 {
     public ObservableCollection<Environment> Environments { get; } = [];
-    public ICommand GetEnvironmentsCommand { get; }
 
     private readonly GetEnvironmentsUseCase _getEnvironmentsUseCase;
 
     public HomePageViewModel(GetEnvironmentsUseCase getEnvironmentsUseCase)
     {
-        this._getEnvironmentsUseCase = getEnvironmentsUseCase;
-        GetEnvironmentsCommand = new RelayCommand(_ => LoadEnvironments());
+        _getEnvironmentsUseCase = getEnvironmentsUseCase;
+        Messenger.EnvironmentCreated += LoadEnvironments;
+        LoadEnvironments();
+    }
+
+    public override void Dispose()
+    {
+        Messenger.EnvironmentCreated -= LoadEnvironments;
+        GC.SuppressFinalize(this);
     }
 
     private void LoadEnvironments()

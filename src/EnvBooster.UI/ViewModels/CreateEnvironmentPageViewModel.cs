@@ -1,4 +1,5 @@
 ﻿using System.Windows.Input;
+
 using EnvBooster.Application.Environments;
 using EnvBooster.UI.Utils;
 
@@ -19,5 +20,6 @@ public class CreateEnvironmentPageViewModel : ViewModelBase
     private void CreateEnvironment()
     {
         _createEnvironmentUseCase.Execute(Random.Shared.NextInt64().ToString());
+        Messenger.NotifyEnvironmentCreated();
     }
 }

@@ -1,5 +1,6 @@
 ﻿using EnvBooster.Domain.Ports;
 using EnvBooster.Infrastructure.Persistence;
+
 using Microsoft.Extensions.DependencyInjection;
 
 namespace EnvBooster.Infrastructure;

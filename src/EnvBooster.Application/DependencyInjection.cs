@@ -1,4 +1,5 @@
 ﻿using EnvBooster.Application.Environments;
+
 using Microsoft.Extensions.DependencyInjection;
 
 namespace EnvBooster.Application;

@@ -1,20 +1,22 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.14.36804.6
+# Visual Studio Version 18
+VisualStudioVersion = 18.5.11723.231
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnvBooster.UI", "EnvBooster.UI\EnvBooster.UI.csproj", "{28B4BDF6-8F13-424B-90E0-117D23E67C16}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnvBooster.Domain", "EnvBooster.Domain\EnvBooster.Domain.csproj", "{D468E591-1073-4D4F-8A26-608CA3248CBC}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{ACEEFEE0-EB5D-4129-8486-420B2C9853D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnvBooster.Infrastructure", "EnvBooster.Infrastructure\EnvBooster.Infrastructure.csproj", "{5D4C1B65-7F0D-438A-A47A-F716823BFAE1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnvBooster.UI", "src\EnvBooster.UI\EnvBooster.UI.csproj", "{28B4BDF6-8F13-424B-90E0-117D23E67C16}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnvBooster.Application", "EnvBooster.Application\EnvBooster.Application.csproj", "{C6A7C35D-8657-4076-81D7-73FACF502CF2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnvBooster.Domain", "src\EnvBooster.Domain\EnvBooster.Domain.csproj", "{D468E591-1073-4D4F-8A26-608CA3248CBC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnvBooster.Infrastructure", "src\EnvBooster.Infrastructure\EnvBooster.Infrastructure.csproj", "{5D4C1B65-7F0D-438A-A47A-F716823BFAE1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnvBooster.Application", "src\EnvBooster.Application\EnvBooster.Application.csproj", "{C6A7C35D-8657-4076-81D7-73FACF502CF2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +43,12 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{28B4BDF6-8F13-424B-90E0-117D23E67C16} = {ACEEFEE0-EB5D-4129-8486-420B2C9853D2}
+		{D468E591-1073-4D4F-8A26-608CA3248CBC} = {ACEEFEE0-EB5D-4129-8486-420B2C9853D2}
+		{5D4C1B65-7F0D-438A-A47A-F716823BFAE1} = {ACEEFEE0-EB5D-4129-8486-420B2C9853D2}
+		{C6A7C35D-8657-4076-81D7-73FACF502CF2} = {ACEEFEE0-EB5D-4129-8486-420B2C9853D2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {39B12CDF-DB5C-4B33-AF02-9D76B4F71479}

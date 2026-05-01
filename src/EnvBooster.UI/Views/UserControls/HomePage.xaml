@@ -19,15 +19,9 @@
       <Grid Grid.Row="1">
         <Grid>
           <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>  
+            <RowDefinition Height="*"/>
           </Grid.RowDefinitions>
-          <Button Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" Style="{StaticResource PrimaryButton}" Command="{Binding GetEnvironmentsCommand}">
-            <TextBlock Text="Get environments" Style="{StaticResource Body}"/>
-          </Button>
-          <DataGrid Grid.Row="1" ItemsSource="{Binding Environments}">
-
-          </DataGrid>
+          <DataGrid Grid.Row="0" ItemsSource="{Binding Environments}"/>
         </Grid>
       </Grid>
     </Grid>

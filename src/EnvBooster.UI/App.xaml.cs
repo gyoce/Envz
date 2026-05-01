@@ -1,7 +1,9 @@
 ﻿using System.Windows;
+
 using EnvBooster.Application;
 using EnvBooster.Infrastructure;
 using EnvBooster.UI.Views;
+
 using Microsoft.Extensions.DependencyInjection;
 
 namespace EnvBooster.UI;

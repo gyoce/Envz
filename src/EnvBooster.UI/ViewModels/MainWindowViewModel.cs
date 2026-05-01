@@ -1,4 +1,5 @@
 ﻿using System.Windows.Input;
+
 using EnvBooster.UI.Utils;
 
 namespace EnvBooster.UI.ViewModels;
@@ -11,9 +12,9 @@ public class MainWindowViewModel : ViewModelBase
     public ViewModelBase CurrentViewModel
     {
         get => _currentViewModel;
-        set 
-        { 
-            _currentViewModel = value; 
+        set
+        {
+            _currentViewModel = value;
             OnPropertyChanged();
         }
     }
