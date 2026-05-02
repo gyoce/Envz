@@ -5,15 +5,55 @@
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
   xmlns:local="clr-namespace:EnvBooster.UI.Views.UserControls"
   mc:Ignorable="d" 
-  d:DesignWidth="200" d:DesignHeight="125">
+  Width="300" Height="190">
 
   <Border Background="{StaticResource BackgroundBrush}" BorderBrush="{StaticResource SecondaryBrush}" BorderThickness="1" CornerRadius="3">
-    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="12">
-      <TextBlock Text="{Binding Environment.Name}" Style="{StaticResource H4}"/>
-      <TextBlock Text="{Binding Environment.Id}" Style="{StaticResource Caption}" 
-                 Foreground="{StaticResource SecondaryBrush}" 
-                 TextTrimming="CharacterEllipsis"/>
-    </StackPanel>
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="1*"/>
+        <RowDefinition Height="Auto"/>
+      </Grid.RowDefinitions>
+
+      <Grid Grid.Row="0">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*"/>
+          <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Column="0" Text="{Binding Environment.Name, FallbackValue=Environment}" Style="{StaticResource H3}" VerticalAlignment="Center" Margin="5"/>
+        <Button Grid.Column="1" Style="{StaticResource PrimaryButton}" Margin="5">
+          <Image Source="{StaticResource IconPlayWhite}" Width="20" Height="20"/>
+        </Button>
+      </Grid>
+
+      <TextBlock Grid.Row="1" Style="{StaticResource Caption}" Text="{Binding Environment.Id, FallbackValue=X applications}" Margin="5"/>
+
+      <Grid Grid.Row="2" Margin="5">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="1*"/>
+          <ColumnDefinition Width="1*"/>
+          <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <Button Grid.Column="0" Style="{StaticResource PrimaryButton}" Margin="0, 0, 5, 0">
+          <StackPanel Orientation="Horizontal">
+            <Image Source="{StaticResource IconSettingsWhite}" Width="20" Height="20" Margin="0, 0, 10, 0"/>
+            <TextBlock Text="Edit" Style="{StaticResource Body}"/>
+          </StackPanel>
+        </Button>
+        <Button Grid.Column="1" Style="{StaticResource PrimaryButton}" Margin="0, 0, 5, 0">
+          <StackPanel Orientation="Horizontal">
+            <Image Source="{StaticResource IconDuplicateWhite}" Width="20" Height="20" Margin="0, 0, 10, 0"/>
+            <TextBlock Text="Duplicate" Style="{StaticResource Body}"/>
+          </StackPanel>
+        </Button>
+        <Button Grid.Column="2" Style="{StaticResource PrimaryButton}">
+          <Image Source="{StaticResource IconTrashWhite}" Width="20" Height="20"/>
+        </Button>
+      </Grid>
+        
+    </Grid>
   </Border>
 
 </UserControl>
