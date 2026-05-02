@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Input;
 
-using EnvBooster.UI.ViewModels;
+using EnvBooster.UI.ViewModels.Pages;
 
 namespace EnvBooster.UI.Views;
 

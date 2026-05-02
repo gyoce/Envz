@@ -3,7 +3,7 @@
 using EnvBooster.Application.Environments;
 using EnvBooster.UI.Utils;
 
-namespace EnvBooster.UI.ViewModels;
+namespace EnvBooster.UI.ViewModels.Pages;
 
 public class CreateEnvironmentPageViewModel : ViewModelBase
 {

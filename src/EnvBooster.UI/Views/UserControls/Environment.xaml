@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="EnvBooster.UI.Views.UserControls.Environment"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+  xmlns:local="clr-namespace:EnvBooster.UI.Views.UserControls"
+  mc:Ignorable="d" 
+  d:DesignWidth="200" d:DesignHeight="125">
+
+  <Border Background="{StaticResource BackgroundBrush}" BorderBrush="{StaticResource SecondaryBrush}" BorderThickness="1" CornerRadius="3">
+    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="12">
+      <TextBlock Text="{Binding Environment.Name}" Style="{StaticResource H4}"/>
+      <TextBlock Text="{Binding Environment.Id}" Style="{StaticResource Caption}" 
+                 Foreground="{StaticResource SecondaryBrush}" 
+                 TextTrimming="CharacterEllipsis"/>
+    </StackPanel>
+  </Border>
+
+</UserControl>

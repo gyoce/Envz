@@ -2,7 +2,7 @@
 
 using EnvBooster.UI.Utils;
 
-namespace EnvBooster.UI.ViewModels;
+namespace EnvBooster.UI.ViewModels.Pages;
 
 public class MainWindowViewModel : ViewModelBase
 {

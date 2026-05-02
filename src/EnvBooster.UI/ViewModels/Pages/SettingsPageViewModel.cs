@@ -1,4 +1,4 @@
-﻿namespace EnvBooster.UI.ViewModels;
+﻿namespace EnvBooster.UI.ViewModels.Pages;
 
 public class SettingsPageViewModel : ViewModelBase
 {

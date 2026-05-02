@@ -4,6 +4,7 @@
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
   xmlns:local="clr-namespace:EnvBooster.UI.Views.UserControls"
+  xmlns:uc="clr-namespace:EnvBooster.UI.Views.UserControls"
   mc:Ignorable="d"
   d:Width="1088" d:Height="467">
 
@@ -21,7 +22,21 @@
           <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
           </Grid.RowDefinitions>
-          <DataGrid Grid.Row="0" ItemsSource="{Binding Environments}"/>
+
+          <ScrollViewer>
+            <ItemsControl ItemsSource="{Binding Environments}">
+              <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                  <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center"/>
+                </ItemsPanelTemplate>
+              </ItemsControl.ItemsPanel>
+              <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                  <uc:Environment Width="300" Height="190" DataContext="{Binding}" Margin="10"/>
+                </DataTemplate>
+              </ItemsControl.ItemTemplate>
+            </ItemsControl>
+          </ScrollViewer>
         </Grid>
       </Grid>
     </Grid>

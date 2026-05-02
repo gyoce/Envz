@@ -4,7 +4,7 @@
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   xmlns:uc="clr-namespace:EnvBooster.UI.Views.UserControls"
-  xmlns:vm="clr-namespace:EnvBooster.UI.ViewModels"
+  xmlns:vm="clr-namespace:EnvBooster.UI.ViewModels.Pages"
   mc:Ignorable="d"
   Title="MainWindow" Width="1280" Height="520" 
   ResizeMode="NoResize"
