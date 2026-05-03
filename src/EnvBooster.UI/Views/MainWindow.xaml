@@ -6,7 +6,7 @@
   xmlns:uc="clr-namespace:EnvBooster.UI.Views.UserControls"
   xmlns:vm="clr-namespace:EnvBooster.UI.ViewModels.Pages"
   mc:Ignorable="d"
-  Title="MainWindow" Width="1280" Height="520" 
+  Title="MainWindow" Width="1300" Height="540" 
   ResizeMode="NoResize"
   WindowStyle="None"
   AllowsTransparency="True"
@@ -32,7 +32,7 @@
 
     <Grid>
       <Grid.RowDefinitions>
-        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="60"/>
         <RowDefinition Height="*"/>
       </Grid.RowDefinitions>
 
@@ -45,21 +45,26 @@
 
         <TextBlock Grid.Column="0" Margin="5, 5, 0, 0" Style="{StaticResource H1}" Text="EnvBooster"/>
 
-        <StackPanel Grid.Column="1" Orientation="Horizontal">
-          <Button Style="{StaticResource TitleBarButton}" Click="MinimizeButtonClick">
+        <Grid Grid.Column="1" VerticalAlignment="Stretch">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+          </Grid.ColumnDefinitions>
+
+          <Button Grid.Column="0" Style="{StaticResource TitleBarButton}" Click="MinimizeButtonClick">
             <Image Margin="0, 10, 0, 0" Source="{StaticResource IconUnderscoreBlack}" Width="16" Height="16"/>
           </Button>
 
-          <Button Style="{StaticResource TitleBarButton}" Click="CloseButtonClick">
+          <Button Grid.Column="1" Style="{StaticResource TitleBarButton}" Click="CloseButtonClick">
             <Image Source="{StaticResource IconCrossBlack}" Width="16" Height="16"/>
           </Button>
-        </StackPanel>
+        </Grid>
       </Grid>
 
       <!-- Content -->
       <Grid Grid.Row="1">
         <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="192"/>
+          <ColumnDefinition Width="200"/>
           <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
