@@ -12,33 +12,35 @@
     <Grid>
       <Grid.RowDefinitions>
         <RowDefinition Height="Auto"/>
+        <RowDefinition Height="Auto"/>
         <RowDefinition Height="*"/>
       </Grid.RowDefinitions>
 
-      <TextBlock Grid.Row="0" Text="Home page" Style="{StaticResource H2}" HorizontalAlignment="Center"/>
+      <!-- Page title -->      
+      <TextBlock Grid.Row="0" Text="Environments" Style="{StaticResource H2}" HorizontalAlignment="Center"/>
 
-      <Grid Grid.Row="1">
-        <Grid>
-          <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-          </Grid.RowDefinitions>
-
-          <ScrollViewer>
-            <ItemsControl ItemsSource="{Binding Environments}">
-              <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                  <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center"/>
-                </ItemsPanelTemplate>
-              </ItemsControl.ItemsPanel>
-              <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                  <uc:Environment DataContext="{Binding}" Margin="10"/>
-                </DataTemplate>
-              </ItemsControl.ItemTemplate>
-            </ItemsControl>
-          </ScrollViewer>
-        </Grid>
+      <!-- Search bar -->
+      <Grid Grid.Row="1" Margin="20 10 33 10">
+        <TextBox Style="{StaticResource TextBoxH4}" Padding="40,5,8,5"/>
+        <Image Source="{StaticResource IconSearchBlack}" Width="25" Height="25" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" IsHitTestVisible="False"/>
       </Grid>
+
+      <!-- Environments list -->
+      <ScrollViewer Grid.Row="2" Style="{StaticResource PrimaryScrollViewer}" Margin="10 0 0 0">
+        <ItemsControl ItemsSource="{Binding Environments}">
+          <ItemsControl.ItemsPanel>
+            <ItemsPanelTemplate>
+              <WrapPanel Orientation="Horizontal"/>
+            </ItemsPanelTemplate>
+          </ItemsControl.ItemsPanel>
+          <ItemsControl.ItemTemplate>
+            <DataTemplate>
+              <uc:Environment DataContext="{Binding}" Margin="10 0 10 10"/>
+            </DataTemplate>
+          </ItemsControl.ItemTemplate>
+        </ItemsControl>
+      </ScrollViewer>
+
     </Grid>
   </Border>
   
