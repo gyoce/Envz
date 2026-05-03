@@ -9,7 +9,14 @@
 
   <Border Background="{StaticResource PrimaryBackgroundBrush}">
     <Grid>
-      <TextBlock Style="{StaticResource H3}" Text="Edit environment" HorizontalAlignment="Center"/>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="*"/>
+      </Grid.RowDefinitions>
+
+      <TextBlock Grid.Row="0" Style="{StaticResource H3}" Text="Edit environment" HorizontalAlignment="Center"/>
+
+      <Button Grid.Row="1" Style="{StaticResource PrimaryButton}" Margin="10 0 0 0" Command="{Binding NavigateToHomeEnvironmentsCommand}" Content="Return" HorizontalAlignment="Center" VerticalAlignment="Center"/>
     </Grid>
   </Border>
 

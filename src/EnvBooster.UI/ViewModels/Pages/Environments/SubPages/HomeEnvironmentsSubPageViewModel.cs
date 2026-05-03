@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Windows.Input;
 
 using EnvBooster.Application.Environments;
 using EnvBooster.UI.Utils;
@@ -8,6 +9,7 @@ namespace EnvBooster.UI.ViewModels.Pages.Environments.SubPages;
 
 public class HomeEnvironmentsSubPageViewModel : ViewModelBase
 {
+    public ICommand NavigateToCreateEnvironmentCommand { get; }
     public ObservableCollection<EnvironmentViewModel> Environments { get; } = [];
     public string SearchText
     {
@@ -30,6 +32,9 @@ public class HomeEnvironmentsSubPageViewModel : ViewModelBase
     {
         _getEnvironmentsUseCase = getEnvironmentsUseCase;
         _environmentViewModelFactory = environmentViewModelFactory;
+
+        NavigateToCreateEnvironmentCommand = new RelayCommand(_ => Messenger.NotifyNavigationToCreateEnvironment());
+
         Messenger.EnvironmentCreated += LoadEnvironments;
         LoadEnvironments();
     }

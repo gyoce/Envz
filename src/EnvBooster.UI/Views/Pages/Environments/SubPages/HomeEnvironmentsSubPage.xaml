@@ -17,8 +17,17 @@
 
       <!-- Search bar -->
       <Grid Grid.Row="0" Margin="30 10">
-        <TextBox Style="{StaticResource TextBoxH4}" Padding="40,5,8,5" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"/>
-        <Image Source="{StaticResource IconSearchBlack}" Width="25" Height="25" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 0 0" IsHitTestVisible="False"/>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*"/>
+          <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBox Grid.Column="0" Style="{StaticResource TextBoxH4}" Padding="40,5,8,5" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"/>
+        <Image Grid.Column="0" Source="{StaticResource IconSearchBlack}" Width="25" Height="25" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 0 0" IsHitTestVisible="False"/>
+
+        <Button Grid.Column="1" Style="{StaticResource PrimaryButton}" Margin="10 0 0 0" Command="{Binding NavigateToCreateEnvironmentCommand}">
+          <Image Source="{StaticResource IconAddWhite}" Width="20" Height="20"/>
+        </Button>
       </Grid>
 
       <!-- Environments list -->
