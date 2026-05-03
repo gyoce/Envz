@@ -7,7 +7,7 @@
   mc:Ignorable="d" 
   Width="330" Height="170">
 
-  <Border Background="{StaticResource BackgroundBrush}" BorderBrush="{StaticResource SecondaryBrush}" BorderThickness="1" CornerRadius="3">
+  <Border Background="{StaticResource SecondaryBackgroundBrush}" BorderBrush="{StaticResource SecondaryBrush}" BorderThickness="1" CornerRadius="3">
     <Grid>
       <Grid.RowDefinitions>
         <RowDefinition Height="Auto"/>

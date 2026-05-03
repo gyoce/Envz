@@ -7,7 +7,7 @@
   mc:Ignorable="d"
   Width="1090" Height="480">
 
-  <Border Background="{StaticResource BackgroundBrush}">
+  <Border Background="{StaticResource PrimaryBackgroundBrush}">
     <Grid>
       <Grid.RowDefinitions>
         <RowDefinition Height="Auto"/>
