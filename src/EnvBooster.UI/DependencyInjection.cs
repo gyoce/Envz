@@ -1,4 +1,7 @@
-﻿using EnvBooster.UI.ViewModels.Pages;
+﻿using EnvBooster.UI.ViewModels;
+using EnvBooster.UI.ViewModels.Pages;
+using EnvBooster.UI.ViewModels.Pages.Environments;
+using EnvBooster.UI.ViewModels.Pages.Environments.SubPages;
 using EnvBooster.UI.ViewModels.UserControls;
 using EnvBooster.UI.Views;
 
@@ -12,11 +15,17 @@ public static class DependencyInjection
     {
         services.AddSingleton<MainWindow>();
         services.AddSingleton<MainWindowViewModel>();
+
         services.AddSingleton<HomePageViewModel>();
-        services.AddSingleton<SettingsPageViewModel>();
-        services.AddSingleton<CreateEnvironmentPageViewModel>();
+
+        services.AddSingleton<EnvironmentsPageViewModel>();
+        services.AddSingleton<HomeEnvironmentsSubPageViewModel>();
+        services.AddSingleton<EditEnvironmentSubPageViewModel>();
         services.AddSingleton<EnvironmentViewModelFactory>();
         services.AddTransient<EnvironmentViewModel>();
+
+        services.AddSingleton<SettingsPageViewModel>();
+
         return services;
     }
 }

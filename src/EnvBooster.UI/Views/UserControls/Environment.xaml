@@ -1,11 +1,11 @@
-﻿<UserControl x:Class="EnvBooster.UI.Views.UserControls.Environment"
+﻿<UserControl 
+  x:Class="EnvBooster.UI.Views.UserControls.Environment"
   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-  xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-  xmlns:local="clr-namespace:EnvBooster.UI.Views.UserControls"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
   mc:Ignorable="d" 
-  Width="330" Height="170">
+  Width="{StaticResource EnvironmentListItemWidth}" Height="{StaticResource EnvironmentListItemHeight}">
 
   <Border Background="{StaticResource SecondaryBackgroundBrush}" BorderBrush="{StaticResource SecondaryBrush}" BorderThickness="1" CornerRadius="3">
     <Grid>

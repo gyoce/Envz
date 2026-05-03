@@ -1,14 +1,16 @@
 ﻿using System.Windows.Input;
 
 using EnvBooster.UI.Utils;
+using EnvBooster.UI.ViewModels.Pages;
+using EnvBooster.UI.ViewModels.Pages.Environments;
 
-namespace EnvBooster.UI.ViewModels.Pages;
+namespace EnvBooster.UI.ViewModels;
 
 public class MainWindowViewModel : ViewModelBase
 {
     public ICommand ShowHomePageCommand { get; }
     public ICommand ShowSettingsPageCommand { get; }
-    public ICommand ShowCreateEnvironmentPageCommand { get; }
+    public ICommand ShowEnvironmentsPageCommand { get; }
     public ViewModelBase CurrentViewModel
     {
         get => _currentViewModel;
@@ -21,11 +23,11 @@ public class MainWindowViewModel : ViewModelBase
 
     private ViewModelBase _currentViewModel = null!;
 
-    public MainWindowViewModel(HomePageViewModel homePageViewModel, SettingsPageViewModel settingsPageViewModel, CreateEnvironmentPageViewModel createEnvironmentPageViewModel)
+    public MainWindowViewModel(HomePageViewModel homePageViewModel, SettingsPageViewModel settingsPageViewModel, EnvironmentsPageViewModel environmentsPageViewModel)
     {
         ShowHomePageCommand = new RelayCommand(_ => CurrentViewModel = homePageViewModel);
         ShowSettingsPageCommand = new RelayCommand(_ => CurrentViewModel = settingsPageViewModel);
-        ShowCreateEnvironmentPageCommand = new RelayCommand(_ => CurrentViewModel = createEnvironmentPageViewModel);
+        ShowEnvironmentsPageCommand = new RelayCommand(_ => CurrentViewModel = environmentsPageViewModel);
         CurrentViewModel = homePageViewModel;
     }
 }

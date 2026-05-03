@@ -1,0 +1,35 @@
+﻿<UserControl 
+  x:Class="EnvBooster.UI.Views.Pages.Environments.EnvironmentsPage"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:vm="clr-namespace:EnvBooster.UI.ViewModels.Pages.Environments.SubPages"
+  xmlns:uc="clr-namespace:EnvBooster.UI.Views.Pages.Environments.SubPages"
+  mc:Ignorable="d"
+  Width="{StaticResource PageWidth}" Height="{StaticResource PageHeight}">
+
+  <UserControl.Resources>
+    <DataTemplate DataType="{x:Type vm:HomeEnvironmentsSubPageViewModel}">
+      <uc:HomeEnvironmentsSubPage/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:EditEnvironmentSubPageViewModel}">
+      <uc:EditEnvironmentSubPage/>
+    </DataTemplate>
+  </UserControl.Resources>
+
+  <Border Background="{StaticResource PrimaryBackgroundBrush}">
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="40"/>
+        <RowDefinition Height="*"/>
+      </Grid.RowDefinitions>
+
+      <!-- Page title -->
+      <TextBlock Grid.Row="0" Text="Environments" Style="{StaticResource H2}" HorizontalAlignment="Center"/>
+
+      <ContentControl Grid.Row="1" Content="{Binding CurrentSubViewModel}"/>
+    </Grid>
+  </Border>
+
+</UserControl>

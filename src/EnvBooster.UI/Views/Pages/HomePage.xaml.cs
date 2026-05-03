@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace EnvBooster.UI.Views.UserControls;
+namespace EnvBooster.UI.Views.Pages;
 
 public partial class HomePage : UserControl
 {

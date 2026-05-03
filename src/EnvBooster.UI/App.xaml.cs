@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 
 using EnvBooster.Application;
+using EnvBooster.Application.Environments;
 using EnvBooster.Infrastructure;
 using EnvBooster.UI.Views;
 
@@ -16,6 +17,11 @@ public partial class App : System.Windows.Application
     {
         ServiceCollection serviceCollection = ConfigureServices();
         ServiceProvider = serviceCollection.BuildServiceProvider();
+
+        // TEMPORARY
+        CreateEnvironmentUseCase useCase = ServiceProvider.GetRequiredService<CreateEnvironmentUseCase>();
+        for (int i = 0; i < 10; i++)
+            useCase.Execute(Random.Shared.NextInt64().ToString());
 
         MainWindow mainWindow = ServiceProvider.GetRequiredService<MainWindow>();
         mainWindow.Show();

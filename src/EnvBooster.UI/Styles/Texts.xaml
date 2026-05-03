@@ -56,4 +56,5 @@
     <Setter Property="FontWeight" Value="Regular"/>
     <Setter Property="LineHeight" Value="16"/>
   </Style>
+
 </ResourceDictionary>
