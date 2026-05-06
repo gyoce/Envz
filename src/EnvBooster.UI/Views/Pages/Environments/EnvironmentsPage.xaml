@@ -10,11 +10,18 @@
   Width="{StaticResource PageWidth}" Height="{StaticResource PageHeight}">
 
   <UserControl.Resources>
+    <uc:HomeEnvironmentsSubPage x:Key="HomeEnvironmentsSubPageInstance"/>
+    <uc:EditEnvironmentSubPage x:Key="EditEnvironmentSubPageInstance"/>
+    <uc:CreateEnvironmentSubPage x:Key="CreateEnvironmentSubPageInstance"/>
+
     <DataTemplate DataType="{x:Type vm:HomeEnvironmentsSubPageViewModel}">
-      <uc:HomeEnvironmentsSubPage/>
+      <ContentPresenter Content="{StaticResource HomeEnvironmentsSubPageInstance}"/>
     </DataTemplate>
     <DataTemplate DataType="{x:Type vm:EditEnvironmentSubPageViewModel}">
-      <uc:EditEnvironmentSubPage/>
+      <ContentPresenter Content="{StaticResource EditEnvironmentSubPageInstance}"/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:CreateEnvironmentSubPageViewModel}">
+      <ContentPresenter Content="{StaticResource CreateEnvironmentSubPageInstance}"/>
     </DataTemplate>
   </UserControl.Resources>
 

@@ -20,6 +20,7 @@ public static class DependencyInjection
 
         services.AddSingleton<EnvironmentsPageViewModel>();
         services.AddSingleton<HomeEnvironmentsSubPageViewModel>();
+        services.AddSingleton<CreateEnvironmentSubPageViewModel>();
         services.AddSingleton<EditEnvironmentSubPageViewModel>();
         services.AddSingleton<EnvironmentViewModelFactory>();
         services.AddTransient<EnvironmentViewModel>();

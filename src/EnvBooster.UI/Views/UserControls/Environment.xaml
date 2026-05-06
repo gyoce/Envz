@@ -36,15 +36,15 @@
           <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
-        <Button Grid.Column="0" Style="{StaticResource PrimaryButton}" Margin="0, 0, 5, 0">
+        <Button Grid.Column="0" Style="{StaticResource PrimaryButton}" Margin="0 0 5 0" Command="{Binding EditEnvironmentCommand}">
           <StackPanel Orientation="Horizontal">
-            <Image Source="{StaticResource IconSettingsWhite}" Width="20" Height="20" Margin="0, 0, 10, 0"/>
+            <Image Source="{StaticResource IconSettingsWhite}" Width="20" Height="20" Margin="0 0 10 0"/>
             <TextBlock Text="Edit" Style="{StaticResource Body}"/>
           </StackPanel>
         </Button>
-        <Button Grid.Column="1" Style="{StaticResource PrimaryButton}" Margin="0, 0, 5, 0">
+        <Button Grid.Column="1" Style="{StaticResource PrimaryButton}" Margin="0 0 5 0">
           <StackPanel Orientation="Horizontal">
-            <Image Source="{StaticResource IconDuplicateWhite}" Width="20" Height="20" Margin="0, 0, 10, 0"/>
+            <Image Source="{StaticResource IconDuplicateWhite}" Width="20" Height="20" Margin="0 0 10 0"/>
             <TextBlock Text="Duplicate" Style="{StaticResource Body}"/>
           </StackPanel>
         </Button>

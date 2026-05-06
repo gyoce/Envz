@@ -11,8 +11,9 @@ public class InMemoryEnvironmentRepository : IEnvironmentRepository
         return _environments;
     }
 
-    public void Save(string name)
+    public void Save(Environment environment)
     {
-        _environments.Add(new Environment(Guid.NewGuid().ToString(), name));
+        environment.Id = Guid.NewGuid().ToString();
+        _environments.Add(environment);
     }
 }

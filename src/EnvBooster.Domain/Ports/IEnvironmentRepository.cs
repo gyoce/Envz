@@ -3,5 +3,5 @@
 public interface IEnvironmentRepository
 {
     IReadOnlyCollection<Environment> GetAll();
-    void Save(string name);
+    void Save(Environment environment);
 }

@@ -18,14 +18,18 @@
   WindowStartupLocation="CenterScreen">
 
   <Window.Resources>
+    <vPages:HomePage x:Key="HomePageInstance"/>
+    <vEnvironments:EnvironmentsPage x:Key="EnvironmentsPageInstance"/>
+    <vPages:SettingsPage x:Key="SettingsPageInstance"/>
+      
     <DataTemplate DataType="{x:Type vmPages:HomePageViewModel}">
-      <vPages:HomePage/>
+      <ContentPresenter Content="{StaticResource HomePageInstance}"/>
     </DataTemplate>
     <DataTemplate DataType="{x:Type vmEnvironments:EnvironmentsPageViewModel}">
-      <vEnvironments:EnvironmentsPage/>
+      <ContentPresenter Content="{StaticResource EnvironmentsPageInstance}"/>
     </DataTemplate>
     <DataTemplate DataType="{x:Type vmPages:SettingsPageViewModel}">
-      <vPages:SettingsPage/>
+      <ContentPresenter Content="{StaticResource SettingsPageInstance}"/>
     </DataTemplate>
   </Window.Resources>
 
