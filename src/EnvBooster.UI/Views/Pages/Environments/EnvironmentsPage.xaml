@@ -4,8 +4,8 @@
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-  xmlns:vm="clr-namespace:EnvBooster.UI.ViewModels.Pages.Environments.SubPages"
-  xmlns:uc="clr-namespace:EnvBooster.UI.Views.Pages.Environments.SubPages"
+  xmlns:vm="clr-namespace:EnvBooster.UI.ViewModels.Pages.Environments"
+  xmlns:uc="clr-namespace:EnvBooster.UI.Views.Pages.Environments"
   mc:Ignorable="d"
   Width="{StaticResource PageWidth}" Height="{StaticResource PageHeight}">
 

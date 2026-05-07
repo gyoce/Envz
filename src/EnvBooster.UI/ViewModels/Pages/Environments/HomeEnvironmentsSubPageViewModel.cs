@@ -5,7 +5,7 @@ using EnvBooster.Application.Environments;
 using EnvBooster.UI.Utils;
 using EnvBooster.UI.ViewModels.UserControls;
 
-namespace EnvBooster.UI.ViewModels.Pages.Environments.SubPages;
+namespace EnvBooster.UI.ViewModels.Pages.Environments;
 
 public class HomeEnvironmentsSubPageViewModel : ViewModelBase
 {
@@ -13,20 +13,19 @@ public class HomeEnvironmentsSubPageViewModel : ViewModelBase
     public ObservableCollection<EnvironmentViewModel> Environments { get; } = [];
     public string SearchText
     {
-        get => _searchText;
+        get;
         set
         {
-            _searchText = value;
+            field = value;
             OnPropertyChanged();
             FilterEnvironments();
         }
-    }
+    } = string.Empty;
 
     private readonly GetEnvironmentsUseCase _getEnvironmentsUseCase;
     private readonly EnvironmentViewModelFactory _environmentViewModelFactory;
 
     private IReadOnlyCollection<Environment> _environments = [];
-    private string _searchText = string.Empty;
 
     public HomeEnvironmentsSubPageViewModel(GetEnvironmentsUseCase getEnvironmentsUseCase, EnvironmentViewModelFactory environmentViewModelFactory)
     {
@@ -55,9 +54,9 @@ public class HomeEnvironmentsSubPageViewModel : ViewModelBase
     {
         Environments.Clear();
 
-        IEnumerable<Environment> filteredEnvironments = string.IsNullOrWhiteSpace(_searchText)
+        IEnumerable<Environment> filteredEnvironments = string.IsNullOrWhiteSpace(SearchText)
             ? _environments
-            : _environments.Where(env => env.Name.Contains(_searchText, StringComparison.OrdinalIgnoreCase));
+            : _environments.Where(env => env.Name.Contains(SearchText, StringComparison.OrdinalIgnoreCase));
 
         foreach (Environment env in filteredEnvironments)
             Environments.Add(_environmentViewModelFactory.Create(env));

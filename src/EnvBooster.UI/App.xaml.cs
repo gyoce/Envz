@@ -19,12 +19,12 @@ public partial class App : System.Windows.Application
         ServiceProvider = serviceCollection.BuildServiceProvider();
 
         // TEMPORARY
-        CreateEnvironmentUseCase useCase = ServiceProvider.GetRequiredService<CreateEnvironmentUseCase>();
-        for (int i = 0; i < 10; i++)
-            useCase.Execute(new CreateEnvironmentRequest
-            {
-                Name = Random.Shared.NextInt64().ToString()
-            });
+        //CreateEnvironmentUseCase useCase = ServiceProvider.GetRequiredService<CreateEnvironmentUseCase>();
+        //for (int i = 0; i < 10; i++)
+        //    useCase.Execute(new CreateEnvironmentRequest
+        //    {
+        //        Name = Random.Shared.NextInt64().ToString()
+        //    });
 
         MainWindow mainWindow = ServiceProvider.GetRequiredService<MainWindow>();
         mainWindow.Show();

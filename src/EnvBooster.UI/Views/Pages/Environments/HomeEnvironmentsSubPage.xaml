@@ -1,5 +1,5 @@
 ﻿<UserControl 
-  x:Class="EnvBooster.UI.Views.Pages.Environments.SubPages.HomeEnvironmentsSubPage"
+  x:Class="EnvBooster.UI.Views.Pages.Environments.HomeEnvironmentsSubPage"
   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -22,7 +22,7 @@
           <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
-        <TextBox Grid.Column="0" Style="{StaticResource TextBoxH4}" Padding="40,5,8,5" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox x:Name="SearchTextBox" Grid.Column="0" Style="{StaticResource TextBoxH4}" Padding="40,5,8,5" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"/> 
         <Image Grid.Column="0" Source="{StaticResource IconSearchBlack}" Width="25" Height="25" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 0 0" IsHitTestVisible="False"/>
 
         <Button Grid.Column="1" Style="{StaticResource PrimaryButton}" Margin="10 0 0 0" Command="{Binding NavigateToCreateEnvironmentCommand}">

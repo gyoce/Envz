@@ -1,6 +1,5 @@
 ﻿using EnvBooster.Application.Environments;
 using EnvBooster.UI.Utils;
-using EnvBooster.UI.ViewModels.Pages.Environments.SubPages;
 
 namespace EnvBooster.UI.ViewModels.Pages.Environments;
 
@@ -8,15 +7,14 @@ public class EnvironmentsPageViewModel : ViewModelBase
 {
     public ViewModelBase CurrentSubViewModel
     {
-        get => _currentSubViewModel;
+        get;
         set
         {
-            _currentSubViewModel = value;
+            field = value;
             OnPropertyChanged();
         }
     }
 
-    private ViewModelBase _currentSubViewModel = null!;
     private readonly HomeEnvironmentsSubPageViewModel _homeEnvironmentsSubPageViewModel;
     private readonly EditEnvironmentSubPageViewModel _editEnvironmentSubPageViewModel;
     private readonly CreateEnvironmentSubPageViewModel _createEnvironmentSubPageViewModel;

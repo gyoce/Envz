@@ -13,15 +13,13 @@ public class MainWindowViewModel : ViewModelBase
     public ICommand ShowEnvironmentsPageCommand { get; }
     public ViewModelBase CurrentViewModel
     {
-        get => _currentViewModel;
+        get;
         set
         {
-            _currentViewModel = value;
+            field = value;
             OnPropertyChanged();
         }
     }
-
-    private ViewModelBase _currentViewModel = null!;
 
     public MainWindowViewModel(HomePageViewModel homePageViewModel, SettingsPageViewModel settingsPageViewModel, EnvironmentsPageViewModel environmentsPageViewModel)
     {

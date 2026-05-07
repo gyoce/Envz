@@ -1,9 +1,10 @@
 ﻿<UserControl 
-  x:Class="EnvBooster.UI.Views.Pages.Environments.SubPages.CreateEnvironmentSubPage"
+  x:Class="EnvBooster.UI.Views.Pages.Environments.CreateEnvironmentSubPage"
   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+  xmlns:inputs="clr-namespace:EnvBooster.UI.Views.UserControls.Inputs"
   mc:Ignorable="d" 
   Width="{StaticResource SubPageWidth}" Height="{StaticResource SubPageHeight}">
 
@@ -16,7 +17,17 @@
 
       <TextBlock Grid.Row="0" Style="{StaticResource H3}" Text="Create environment" HorizontalAlignment="Center"/>
 
-      <Button Grid.Row="1" Style="{StaticResource PrimaryButton}" Margin="10 0 0 0" Command="{Binding NavigateToHomeEnvironmentsCommand}" Content="Return" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+      <Grid Grid.Row="1">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto"/>
+          <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <inputs:TextInput Grid.Row="0" Label="Name" Text="{Binding Request.Name}" Margin="30 10 0 10" Width="400" HorizontalAlignment="Left"/>
+        <Button Grid.Row="1" Style="{StaticResource PrimaryButton}" Width="200" Height="40" HorizontalAlignment="Left" Margin="30 0 0 0" Command="{Binding CreateEnvironmentCommand}">
+          <TextBlock Style="{StaticResource Body}" Text="Create"/>
+        </Button>
+      </Grid>
     </Grid>
   </Border>
 

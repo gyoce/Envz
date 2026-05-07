@@ -1,7 +1,6 @@
 ﻿using EnvBooster.UI.ViewModels;
 using EnvBooster.UI.ViewModels.Pages;
 using EnvBooster.UI.ViewModels.Pages.Environments;
-using EnvBooster.UI.ViewModels.Pages.Environments.SubPages;
 using EnvBooster.UI.ViewModels.UserControls;
 using EnvBooster.UI.Views;
 

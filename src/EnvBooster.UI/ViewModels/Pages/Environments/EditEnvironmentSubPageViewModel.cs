@@ -2,7 +2,7 @@
 
 using EnvBooster.UI.Utils;
 
-namespace EnvBooster.UI.ViewModels.Pages.Environments.SubPages;
+namespace EnvBooster.UI.ViewModels.Pages.Environments;
 
 public class EditEnvironmentSubPageViewModel : ViewModelBase
 {
