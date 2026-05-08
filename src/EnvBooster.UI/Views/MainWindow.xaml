@@ -1,70 +1,71 @@
 ﻿<Window 
-  x:Class="EnvBooster.UI.Views.MainWindow"
-  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-  xmlns:vPages="clr-namespace:EnvBooster.UI.Views.Pages"
-  xmlns:vmPages="clr-namespace:EnvBooster.UI.ViewModels.Pages"
-  xmlns:vEnvironments="clr-namespace:EnvBooster.UI.Views.Pages.Environments"
-  xmlns:vmEnvironments="clr-namespace:EnvBooster.UI.ViewModels.Pages.Environments"
-  mc:Ignorable="d"
+  x:Class="EnvBooster.UI.Views.MainWindow" 
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+  xmlns:vPages="clr-namespace:EnvBooster.UI.Views.Pages" 
+  xmlns:vmPages="clr-namespace:EnvBooster.UI.ViewModels.Pages" 
+  xmlns:vEnvironments="clr-namespace:EnvBooster.UI.Views.Pages.Environments" 
+  xmlns:vmEnvironments="clr-namespace:EnvBooster.UI.ViewModels.Pages.Environments" 
+  mc:Ignorable="d" 
   Title="MainWindow" 
-  Width="{StaticResource AppWidth}" Height="{StaticResource AppHeight}"
-  ResizeMode="NoResize"
-  WindowStyle="None"
-  AllowsTransparency="True"
-  Background="Transparent"
+  Width="{StaticResource AppWidth}" 
+  Height="{StaticResource AppHeight}" 
+  ResizeMode="NoResize" 
+  WindowStyle="None" 
+  AllowsTransparency="True" 
+  Background="Transparent" 
   WindowStartupLocation="CenterScreen">
 
   <Window.Resources>
-    <vPages:HomePage x:Key="HomePageInstance"/>
-    <vEnvironments:EnvironmentsPage x:Key="EnvironmentsPageInstance"/>
-    <vPages:SettingsPage x:Key="SettingsPageInstance"/>
-      
+    <vPages:HomePage x:Key="HomePageInstance" />
+    <vEnvironments:EnvironmentsPage x:Key="EnvironmentsPageInstance" />
+    <vPages:SettingsPage x:Key="SettingsPageInstance" />
+
     <DataTemplate DataType="{x:Type vmPages:HomePageViewModel}">
-      <ContentPresenter Content="{StaticResource HomePageInstance}"/>
+      <ContentPresenter Content="{StaticResource HomePageInstance}" />
     </DataTemplate>
     <DataTemplate DataType="{x:Type vmEnvironments:EnvironmentsPageViewModel}">
-      <ContentPresenter Content="{StaticResource EnvironmentsPageInstance}"/>
+      <ContentPresenter Content="{StaticResource EnvironmentsPageInstance}" />
     </DataTemplate>
     <DataTemplate DataType="{x:Type vmPages:SettingsPageViewModel}">
-      <ContentPresenter Content="{StaticResource SettingsPageInstance}"/>
+      <ContentPresenter Content="{StaticResource SettingsPageInstance}" />
     </DataTemplate>
   </Window.Resources>
 
-  <Border Background="{StaticResource PrimaryBackgroundBrush}" BorderBrush="{StaticResource PrimaryBrush}" BorderThickness="2" CornerRadius="4">
+  <Border Background="{StaticResource BgPrimaryBrush}" BorderBrush="{StaticResource NeutralBrush}" BorderThickness="2" CornerRadius="4">
     <Border.Effect>
-      <DropShadowEffect Color="#000000" BlurRadius="15" ShadowDepth="2" Opacity="0.25" Direction="270"/>
+      <DropShadowEffect Color="#000000" BlurRadius="15" ShadowDepth="2" Opacity="0.25" Direction="270" />
     </Border.Effect>
 
     <Grid>
       <Grid.RowDefinitions>
-        <RowDefinition Height="60"/>
-        <RowDefinition Height="*"/>
+        <RowDefinition Height="60" />
+        <RowDefinition Height="*" />
       </Grid.RowDefinitions>
 
       <!-- Title Bar -->
       <Grid Grid.Row="0" Grid.ColumnSpan="2" MouseLeftButtonDown="TitleBarMouseLeftButtonDown" Background="{StaticResource SidebarBrush}">
         <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="*"/>
-          <ColumnDefinition Width="Auto"/>
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Column="0" Margin="5, 5, 0, 0" Style="{StaticResource H1}" Text="EnvBooster"/>
+        <TextBlock Grid.Column="0" Margin="10, 5, 0, 0" Style="{StaticResource TextH1}" Text="EnvBooster" />
 
         <Grid Grid.Column="1" VerticalAlignment="Stretch">
           <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
           </Grid.ColumnDefinitions>
 
           <Button Grid.Column="0" Style="{StaticResource TitleBarButton}" Click="MinimizeButtonClick">
-            <Image Margin="0, 10, 0, 0" Source="{StaticResource IconUnderscoreBlack}" Width="16" Height="16"/>
+            <Image Margin="0, 10, 0, 0" Source="{StaticResource IconUnderscoreBlack}" Width="16" Height="16" />
           </Button>
 
           <Button Grid.Column="1" Style="{StaticResource TitleBarButton}" Click="CloseButtonClick">
-            <Image Source="{StaticResource IconCrossBlack}" Width="16" Height="16"/>
+            <Image Source="{StaticResource IconCrossBlack}" Width="16" Height="16" />
           </Button>
         </Grid>
       </Grid>
@@ -72,32 +73,19 @@
       <!-- Content -->
       <Grid Grid.Row="1">
         <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="190"/>
-          <ColumnDefinition Width="*"/>
+          <ColumnDefinition Width="190" />
+          <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
         <!-- Sidebar -->
         <StackPanel Grid.Column="0" Background="{StaticResource SidebarBrush}">
-          <RadioButton 
-            Style="{StaticResource NavigationButton}"
-            Content="Home"
-            Command="{Binding ShowHomePageCommand}"
-            IsChecked="True"
-          />
-          <RadioButton 
-            Style="{StaticResource NavigationButton}"
-            Content="Environments"
-            Command="{Binding ShowEnvironmentsPageCommand}"
-          />
-          <RadioButton
-            Style="{StaticResource NavigationButton}"
-            Content="Settings"
-            Command="{Binding ShowSettingsPageCommand}"
-          />
+          <RadioButton Style="{StaticResource NavigationButton}" Content="Home" Command="{Binding ShowHomePageCommand}" IsChecked="True" />
+          <RadioButton Style="{StaticResource NavigationButton}" Content="Environments" Command="{Binding ShowEnvironmentsPageCommand}" />
+          <RadioButton Style="{StaticResource NavigationButton}" Content="Settings" Command="{Binding ShowSettingsPageCommand}" />
         </StackPanel>
-        
+
         <!-- Main content -->
-        <ContentControl Grid.Column="1" Content="{Binding CurrentViewModel}"/>
+        <ContentControl Grid.Column="1" Content="{Binding CurrentViewModel}" />
       </Grid>
     </Grid>
   </Border>

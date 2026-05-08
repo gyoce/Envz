@@ -1,33 +1,67 @@
 ﻿<UserControl 
-  x:Class="EnvBooster.UI.Views.Pages.Environments.CreateEnvironmentSubPage"
-  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  x:Class="EnvBooster.UI.Views.Pages.Environments.CreateEnvironmentSubPage" 
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-  xmlns:inputs="clr-namespace:EnvBooster.UI.Views.UserControls.Inputs"
+  xmlns:controls="clr-namespace:EnvBooster.UI.Views.UserControls.Controls" 
+  xmlns:uc="clr-namespace:EnvBooster.UI.Views.UserControls" 
   mc:Ignorable="d" 
-  Width="{StaticResource SubPageWidth}" Height="{StaticResource SubPageHeight}">
+  Width="{StaticResource SubPageWidth}" 
+  Height="{StaticResource SubPageHeight}">
 
-  <Border Background="{StaticResource PrimaryBackgroundBrush}">
+  <Border Background="{StaticResource BgPrimaryBrush}">
     <Grid>
       <Grid.RowDefinitions>
-        <RowDefinition Height="Auto"/>
-        <RowDefinition Height="*"/>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="Auto" />
       </Grid.RowDefinitions>
 
-      <TextBlock Grid.Row="0" Style="{StaticResource H3}" Text="Create environment" HorizontalAlignment="Center"/>
+      <TextBlock Grid.Row="0" Style="{StaticResource TextH3}" Text="Create environment" HorizontalAlignment="Center" />
 
       <Grid Grid.Row="1">
         <Grid.RowDefinitions>
-          <RowDefinition Height="Auto"/>
-          <RowDefinition Height="Auto"/>
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <inputs:TextInput Grid.Row="0" Label="Name" Text="{Binding Request.Name}" Margin="30 10 0 10" Width="400" HorizontalAlignment="Left"/>
-        <Button Grid.Row="1" Style="{StaticResource PrimaryButton}" Width="200" Height="40" HorizontalAlignment="Left" Margin="30 0 0 0" Command="{Binding CreateEnvironmentCommand}">
-          <TextBlock Style="{StaticResource Body}" Text="Create"/>
-        </Button>
+        <controls:TextInput Grid.Row="0" Label="Name" Text="{Binding Request.Name}" Margin="30 10 0 10" Width="400" HorizontalAlignment="Left" />
+
+        <StackPanel Grid.Row="1" Orientation="Vertical" Margin="30 10 30 0">
+          <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
+            <TextBlock Text="Applications" Margin="5 0 0 0" Style="{StaticResource TextBody}" VerticalAlignment="Center" />
+            <Button Style="{StaticResource PrimaryButton}" Margin="10 0 0 0" Command="{Binding NavigateToCreateEnvironmentCommand}">
+              <Image Source="{StaticResource IconAddWhite}" Width="16" Height="16" />
+            </Button>
+          </StackPanel>
+          <ScrollViewer Style="{StaticResource PrimaryScrollViewer}">
+            <ItemsControl ItemsSource="{Binding EnvironmentApplications}">
+              <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                  <WrapPanel Orientation="Vertical" />
+                </ItemsPanelTemplate>
+              </ItemsControl.ItemsPanel>
+              <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                  <uc:EnvironmentApplication DataContext="{Binding}" />
+                </DataTemplate>
+              </ItemsControl.ItemTemplate>
+            </ItemsControl>
+          </ScrollViewer>
+        </StackPanel>
       </Grid>
+
+      <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 0 0 20">
+        <Button Style="{StaticResource SecondaryButton}" Width="150" Height="35" HorizontalAlignment="Left" Command="{Binding CancelCreateEnvironmentCommand}" Margin="0 0 20 0">
+          <TextBlock Style="{StaticResource TextBody}" Text="Cancel" />
+        </Button>
+
+        <Button Style="{StaticResource PrimaryButton}" Width="150" Height="35" HorizontalAlignment="Left" Command="{Binding CreateEnvironmentCommand}">
+          <TextBlock Style="{StaticResource TextBody}" Text="Create" />
+        </Button>
+      </StackPanel>
+
     </Grid>
   </Border>
 

@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace EnvBooster.UI.Views.UserControls.Inputs;
+namespace EnvBooster.UI.Views.UserControls.Controls;
 
 public partial class TextInput : UserControl
 {

@@ -1,7 +1,6 @@
 ﻿using System.Windows;
 
 using EnvBooster.Application;
-using EnvBooster.Application.Environments;
 using EnvBooster.Infrastructure;
 using EnvBooster.UI.Views;
 

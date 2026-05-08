@@ -1,21 +1,21 @@
 ﻿<UserControl 
-  x:Class="EnvBooster.UI.Views.Pages.SettingsPage"
-  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  x:Class="EnvBooster.UI.Views.Pages.SettingsPage" 
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-  mc:Ignorable="d"
-  Width="{StaticResource PageWidth}" Height="{StaticResource PageHeight}">
+  mc:Ignorable="d" 
+  Width="{StaticResource PageWidth}" 
+  Height="{StaticResource PageHeight}">
 
-  <Border Background="{StaticResource PrimaryBackgroundBrush}">
+  <Border Background="{StaticResource BgPrimaryBrush}">
     <Grid>
       <Grid.RowDefinitions>
-        <RowDefinition Height="Auto"/>
-        <RowDefinition Height="*"/>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="*" />
       </Grid.RowDefinitions>
 
-      <!-- Page title -->
-      <TextBlock Grid.Row="0" Text="Settings" Style="{StaticResource H2}" HorizontalAlignment="Center"/>
+      <TextBlock Grid.Row="0" Text="Settings" Style="{StaticResource TextH2}" HorizontalAlignment="Center" />
     </Grid>
   </Border>
 
