@@ -12,10 +12,10 @@
   Title="MainWindow" 
   Width="{StaticResource AppWidth}" 
   Height="{StaticResource AppHeight}" 
-  ResizeMode="NoResize" 
-  WindowStyle="None" 
-  AllowsTransparency="True" 
-  Background="Transparent" 
+  ResizeMode="NoResize"
+  WindowStyle="None"
+  AllowsTransparency="True"
+  Background="Transparent"
   WindowStartupLocation="CenterScreen">
 
   <Window.Resources>

@@ -16,7 +16,7 @@ public partial class ButtonText : UserControl
         DependencyProperty.Register(nameof(ButtonStyle), typeof(Style), typeof(ButtonText), new PropertyMetadata(System.Windows.Application.Current.FindResource("PrimaryButton")));
 
     public static readonly DependencyProperty TextStyleProperty =
-        DependencyProperty.Register(nameof(TextStyle), typeof(Style), typeof(ButtonText), new PropertyMetadata(System.Windows.Application.Current.FindResource("Body")));
+        DependencyProperty.Register(nameof(TextStyle), typeof(Style), typeof(ButtonText), new PropertyMetadata(System.Windows.Application.Current.FindResource("TextBody")));
 
     public string Text
     {

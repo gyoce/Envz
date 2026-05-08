@@ -38,7 +38,6 @@
 
   <Style x:Key="PrimaryButton" TargetType="Button">
     <Setter Property="Background" Value="{StaticResource AccentBrush}" />
-    <Setter Property="BorderBrush" Value="{StaticResource AccentBrush}" />
     <Setter Property="Foreground" Value="White" />
     <Setter Property="Padding" Value="10,7" />
     <Setter Property="BorderThickness" Value="0" />
@@ -46,25 +45,21 @@
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="Button">
-          <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5" Padding="{TemplateBinding Padding}">
+          <Border x:Name="border" Background="{TemplateBinding Background}" BorderThickness="0" CornerRadius="5" Padding="{TemplateBinding Padding}">
             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
           </Border>
           <ControlTemplate.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
               <Setter TargetName="border" Property="Background" Value="{StaticResource AccentHoverBrush}" />
-              <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource AccentHoverBrush}" />
             </Trigger>
             <Trigger Property="IsPressed" Value="True">
               <Setter TargetName="border" Property="Background" Value="{StaticResource AccentPressedBrush}" />
-              <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource AccentPressedBrush}" />
             </Trigger>
             <Trigger Property="IsFocused" Value="True">
-              <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource AccentFocusBrush}" />
-              <Setter TargetName="border" Property="BorderThickness" Value="2" />
+              <Setter TargetName="border" Property="Background" Value="{StaticResource AccentFocusBrush}" />
             </Trigger>
             <Trigger Property="IsEnabled" Value="False">
               <Setter TargetName="border" Property="Background" Value="{StaticResource DisabledBrush}" />
-              <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource DisabledBrush}" />
               <Setter Property="Foreground" Value="{StaticResource DisabledForegroundBrush}" />
               <Setter Property="Cursor" Value="Arrow" />
             </Trigger>
@@ -76,7 +71,6 @@
 
   <Style x:Key="SecondaryButton" TargetType="Button">
     <Setter Property="Background" Value="{StaticResource NeutralBrush}" />
-    <Setter Property="BorderBrush" Value="{StaticResource NeutralBrush}" />
     <Setter Property="Foreground" Value="White" />
     <Setter Property="Padding" Value="10,7" />
     <Setter Property="BorderThickness" Value="0" />
@@ -84,25 +78,21 @@
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="Button">
-          <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5" Padding="{TemplateBinding Padding}">
+          <Border x:Name="border" Background="{TemplateBinding Background}" BorderThickness="0" CornerRadius="5" Padding="{TemplateBinding Padding}">
             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
           </Border>
           <ControlTemplate.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
               <Setter TargetName="border" Property="Background" Value="{StaticResource NeutralHoverBrush}" />
-              <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource NeutralHoverBrush}" />
             </Trigger>
             <Trigger Property="IsPressed" Value="True">
               <Setter TargetName="border" Property="Background" Value="{StaticResource NeutralPressedBrush}" />
-              <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource NeutralPressedBrush}" />
             </Trigger>
             <Trigger Property="IsFocused" Value="True">
-              <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource NeutralFocusBrush}" />
-              <Setter TargetName="border" Property="BorderThickness" Value="2" />
+              <Setter TargetName="border" Property="Background" Value="{StaticResource NeutralFocusBrush}" />
             </Trigger>
             <Trigger Property="IsEnabled" Value="False">
               <Setter TargetName="border" Property="Background" Value="{StaticResource DisabledBrush}" />
-              <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource DisabledBrush}" />
               <Setter Property="Foreground" Value="{StaticResource DisabledForegroundBrush}" />
               <Setter Property="Cursor" Value="Arrow" />
             </Trigger>

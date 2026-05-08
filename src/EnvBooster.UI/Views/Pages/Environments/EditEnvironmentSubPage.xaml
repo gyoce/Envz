@@ -3,8 +3,9 @@
   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-  xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-  mc:Ignorable="d" 
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:controls="clr-namespace:EnvBooster.UI.Views.UserControls.Controls"
+  mc:Ignorable="d"
   Width="{StaticResource SubPageWidth}" 
   Height="{StaticResource SubPageHeight}">
 
@@ -17,7 +18,7 @@
 
       <TextBlock Grid.Row="0" Style="{StaticResource TextH3}" Text="Edit environment" HorizontalAlignment="Center" />
 
-      <Button Grid.Row="1" Style="{StaticResource PrimaryButton}" Margin="10 0 0 0" Command="{Binding NavigateToHomeEnvironmentsCommand}" Content="Return" HorizontalAlignment="Center" VerticalAlignment="Center" />
+      <controls:ButtonText Grid.Row="1" Text="Return" Command="{Binding NavigateToHomeEnvironmentsCommand}" Margin="10 0 0 0" HorizontalAlignment="Center" VerticalAlignment="Center" />
     </Grid>
   </Border>
 

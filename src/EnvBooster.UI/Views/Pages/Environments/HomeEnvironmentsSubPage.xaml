@@ -4,7 +4,8 @@
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-  xmlns:uc="clr-namespace:EnvBooster.UI.Views.UserControls" 
+  xmlns:uc="clr-namespace:EnvBooster.UI.Views.UserControls"
+  xmlns:controls="clr-namespace:EnvBooster.UI.Views.UserControls.Controls"
   mc:Ignorable="d" 
   Width="{StaticResource SubPageWidth}" 
   Height="{StaticResource SubPageHeight}">
@@ -26,9 +27,7 @@
         <TextBox x:Name="SearchTextBox" Grid.Column="0" Style="{StaticResource TextBoxH4}" Padding="40,5,8,5" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" />
         <Image Grid.Column="0" Source="{StaticResource IconSearchBlack}" Width="25" Height="25" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 0 0" IsHitTestVisible="False" />
 
-        <Button Grid.Column="1" Style="{StaticResource PrimaryButton}" Margin="10 0 0 0" Command="{Binding NavigateToCreateEnvironmentCommand}">
-          <Image Source="{StaticResource IconAddWhite}" Width="20" Height="20" />
-        </Button>
+        <controls:ButtonImage Grid.Column="1" Source="{StaticResource IconAddWhite}" Command="{Binding NavigateToCreateEnvironmentCommand}" ImageWidth="20" ImageHeight="20" Margin="10 0 0 0" />
       </Grid>
 
       <!-- Environments list -->

@@ -31,9 +31,7 @@
         <StackPanel Grid.Row="1" Orientation="Vertical" Margin="30 10 30 0">
           <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
             <TextBlock Text="Applications" Margin="5 0 0 0" Style="{StaticResource TextBody}" VerticalAlignment="Center" />
-            <Button Style="{StaticResource PrimaryButton}" Margin="10 0 0 0" Command="{Binding NavigateToCreateEnvironmentCommand}">
-              <Image Source="{StaticResource IconAddWhite}" Width="16" Height="16" />
-            </Button>
+            <controls:ButtonImage Source="{StaticResource IconAddWhite}" Command="{Binding NavigateToCreateEnvironmentCommand}" Margin="10 0 0 0" />
           </StackPanel>
           <ScrollViewer Style="{StaticResource PrimaryScrollViewer}">
             <ItemsControl ItemsSource="{Binding EnvironmentApplications}">
@@ -53,13 +51,8 @@
       </Grid>
 
       <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 0 0 20">
-        <Button Style="{StaticResource SecondaryButton}" Width="150" Height="35" HorizontalAlignment="Left" Command="{Binding CancelCreateEnvironmentCommand}" Margin="0 0 20 0">
-          <TextBlock Style="{StaticResource TextBody}" Text="Cancel" />
-        </Button>
-
-        <Button Style="{StaticResource PrimaryButton}" Width="150" Height="35" HorizontalAlignment="Left" Command="{Binding CreateEnvironmentCommand}">
-          <TextBlock Style="{StaticResource TextBody}" Text="Create" />
-        </Button>
+        <controls:ButtonText Text="Cancel" ButtonStyle="{StaticResource SecondaryButton}" Command="{Binding CancelCreateEnvironmentCommand}" Width="150" Height="35" Margin="0 0 20 0" />
+        <controls:ButtonText Text="Create" Command="{Binding CreateEnvironmentCommand}" Width="150" Height="35" />
       </StackPanel>
 
     </Grid>
