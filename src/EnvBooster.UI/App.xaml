@@ -14,6 +14,8 @@
         <ResourceDictionary Source="Styles/Inputs.xaml" />
         <ResourceDictionary Source="Styles/Sizes.xaml" />
       </ResourceDictionary.MergedDictionaries>
+
+      <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter" />
     </ResourceDictionary>
   </Application.Resources>
 

@@ -46,7 +46,7 @@
       </Grid.RowDefinitions>
 
       <!-- Title Bar -->
-      <Grid Grid.Row="0" Grid.ColumnSpan="2" MouseLeftButtonDown="TitleBarMouseLeftButtonDown" Background="{StaticResource SidebarBrush}">
+      <Grid Grid.Row="0" MouseLeftButtonDown="TitleBarMouseLeftButtonDown" Background="{StaticResource SidebarBrush}">
         <Grid.ColumnDefinitions>
           <ColumnDefinition Width="*" />
           <ColumnDefinition Width="Auto" />

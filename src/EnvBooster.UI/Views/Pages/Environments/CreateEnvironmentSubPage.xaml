@@ -31,21 +31,25 @@
         <StackPanel Grid.Row="1" Orientation="Vertical" Margin="30 10 30 0">
           <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
             <TextBlock Text="Applications" Margin="5 0 0 0" Style="{StaticResource TextBody}" VerticalAlignment="Center" />
-            <controls:ButtonImage Source="{StaticResource IconAddWhite}" Command="{Binding NavigateToCreateEnvironmentCommand}" Margin="10 0 0 0" />
+            <controls:ButtonImage Source="{StaticResource IconAddWhite}" Command="{Binding AddApplicationCommand}" Margin="10 0 0 0" ImageWidth="10" ImageHeight="14"/>
           </StackPanel>
           <ScrollViewer Style="{StaticResource PrimaryScrollViewer}">
-            <ItemsControl ItemsSource="{Binding EnvironmentApplications}">
-              <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                  <WrapPanel Orientation="Vertical" />
-                </ItemsPanelTemplate>
-              </ItemsControl.ItemsPanel>
-              <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                  <uc:EnvironmentApplication DataContext="{Binding}" />
-                </DataTemplate>
-              </ItemsControl.ItemTemplate>
-            </ItemsControl>
+            <Grid>
+              <TextBlock Text="No application has been added yet" Style="{StaticResource TextBody}" Margin="5 10 0 0" Foreground="{StaticResource ForegroundMutedBrush}" HorizontalAlignment="Left" VerticalAlignment="Center" Visibility="{Binding HasNoApplications, Converter={StaticResource BoolToVisibilityConverter}}"/>
+              
+              <ItemsControl ItemsSource="{Binding EnvironmentApplications}">
+                <ItemsControl.ItemsPanel>
+                  <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Vertical" />
+                  </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                  <DataTemplate>
+                    <uc:EnvironmentApplication DataContext="{Binding}" />
+                  </DataTemplate>
+                </ItemsControl.ItemTemplate>
+              </ItemsControl>
+            </Grid>
           </ScrollViewer>
         </StackPanel>
       </Grid>
