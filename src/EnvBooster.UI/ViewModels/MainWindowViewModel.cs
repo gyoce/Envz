@@ -2,6 +2,8 @@
 
 using EnvBooster.UI.Services.Navigation;
 using EnvBooster.UI.Utils;
+using EnvBooster.UI.ViewModels.Pages;
+using EnvBooster.UI.ViewModels.Pages.Environments;
 
 using Microsoft.Extensions.DependencyInjection;
 
@@ -28,11 +30,11 @@ public class MainWindowViewModel : ViewModelBase
     {
         _navigationService = navigationService;
         _navigationService.CurrentViewModelChanged += ChangeCurrentViewModel;
-        ShowHomePageCommand = new RelayCommand(_ => _navigationService.NavigateTo(ENavigationMenu.HomePage));
-        ShowEnvironmentsPageCommand = new RelayCommand(_ => _navigationService.NavigateTo(ENavigationMenu.EnvironmentsPage));
-        ShowSettingsPageCommand = new RelayCommand(_ => _navigationService.NavigateTo(ENavigationMenu.SettingsPage));
+        ShowHomePageCommand = new RelayCommand(_ => _navigationService.NavigateTo<HomePageViewModel>());
+        ShowEnvironmentsPageCommand = new RelayCommand(_ => _navigationService.NavigateTo<EnvironmentsPageViewModel>());
+        ShowSettingsPageCommand = new RelayCommand(_ => _navigationService.NavigateTo<SettingsPageViewModel>());
 
-        _navigationService.NavigateTo(ENavigationMenu.HomePage);
+        _navigationService.NavigateTo<HomePageViewModel>();
     }
 
     public override void Dispose()

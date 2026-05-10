@@ -8,15 +8,19 @@ namespace EnvBooster.UI.Services.Dialogs;
 
 public interface IDialogService
 {
-    TResult? ShowDialog<TResult>(EDialogType dialogType);
+    TResult? ShowDialog<TDialog, TViewModel, TResult>(Action<TViewModel>? configure = null)
+        where TViewModel : DialogViewModelBase<TResult>
+        where TDialog : Window;
 }
 
 public class DialogService(IServiceProvider serviceProvider) : IDialogService
 {
-    public TResult? ShowDialog<TResult>(EDialogType dialogType)
+    public TResult? ShowDialog<TDialog, TViewModel, TResult>(Action<TViewModel>? configure = null)
+        where TViewModel : DialogViewModelBase<TResult>
+        where TDialog : Window
     {
-        DialogViewModelBase<TResult> viewModel = (DialogViewModelBase<TResult>)serviceProvider.GetRequiredService(dialogType.ToDialogViewModelBaseType());
-        Window window = CreateWindow(dialogType, viewModel);
+        DialogViewModelBase<TResult> viewModel = serviceProvider.GetRequiredService<TViewModel>();
+        TDialog window = CreateWindow<TDialog, TResult>(viewModel);
 
         viewModel.RequestClose += result =>
         {
@@ -28,9 +32,10 @@ public class DialogService(IServiceProvider serviceProvider) : IDialogService
         return ok == true ? viewModel.Result : default;
     }
 
-    private Window CreateWindow<TResult>(EDialogType dialogType, DialogViewModelBase<TResult> viewModel)
+    private TDialog CreateWindow<TDialog, TResult>(DialogViewModelBase<TResult> viewModel)
+        where TDialog : Window
     {
-        Window windowDialog = (Window)serviceProvider.GetRequiredService(dialogType.ToDialogWindowType());
+        TDialog windowDialog = serviceProvider.GetRequiredService<TDialog>();
         windowDialog.DataContext = viewModel;
         windowDialog.Owner = System.Windows.Application.Current.MainWindow;
         return windowDialog;

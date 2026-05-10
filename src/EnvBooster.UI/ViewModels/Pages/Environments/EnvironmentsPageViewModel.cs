@@ -22,7 +22,7 @@ public class EnvironmentsPageViewModel : ViewModelBase
     {
         _navigationService = navigationService;
         _navigationService.CurrentViewModelChanged += CurrentSubViewModelChanged;
-        _navigationService.NavigateTo(ENavigationMenu.HomeEnvironment);
+        _navigationService.NavigateTo<HomeEnvironmentsSubPageViewModel>();
     }
 
     public override void Dispose()

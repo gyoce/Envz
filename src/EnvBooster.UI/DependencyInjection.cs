@@ -24,8 +24,8 @@ public static class DependencyInjection
         services.AddSingleton<MainWindow>();
         services.AddSingleton<MainWindowViewModel>();
 
-        services.AddSingleton<SelectApplicationDialog>();
-        services.AddSingleton<SelectApplicationDialogViewModel>();
+        services.AddTransient<SelectApplicationDialog>();
+        services.AddTransient<SelectApplicationDialogViewModel>();
 
         services.AddSingleton<HomePageViewModel>();
 

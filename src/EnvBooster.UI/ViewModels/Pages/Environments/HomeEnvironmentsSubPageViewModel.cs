@@ -36,7 +36,7 @@ public class HomeEnvironmentsSubPageViewModel : ViewModelBase
         _getEnvironmentsUseCase = getEnvironmentsUseCase;
         _environmentViewModelFactory = environmentViewModelFactory;
 
-        NavigateToCreateEnvironmentCommand = new RelayCommand(_ => navigationService.NavigateTo(ENavigationMenu.CreateEnvironment));
+        NavigateToCreateEnvironmentCommand = new RelayCommand(_ => navigationService.NavigateTo<CreateEnvironmentSubPageViewModel>());
 
         LoadEnvironments();
     }

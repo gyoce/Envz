@@ -6,7 +6,9 @@ using EnvBooster.Domain.Entities;
 using EnvBooster.UI.Services.Dialogs;
 using EnvBooster.UI.Services.Navigation;
 using EnvBooster.UI.Utils;
+using EnvBooster.UI.ViewModels.Dialogs;
 using EnvBooster.UI.ViewModels.UserControls;
+using EnvBooster.UI.Views.Dialogs;
 
 using Microsoft.Extensions.DependencyInjection;
 
@@ -28,14 +30,14 @@ public class CreateEnvironmentSubPageViewModel : ViewModelBase
         CreateEnvironmentCommand = new RelayCommand(_ =>
         {
             createEnvironmentUseCase.Execute(Request);
-            navigationService.NavigateTo(ENavigationMenu.HomeEnvironment);
+            navigationService.NavigateTo<HomeEnvironmentsSubPageViewModel>();
         });
 
-        CancelCreateEnvironmentCommand = new RelayCommand(_ => navigationService.NavigateTo(ENavigationMenu.HomeEnvironment));
+        CancelCreateEnvironmentCommand = new RelayCommand(_ => navigationService.NavigateTo<HomeEnvironmentsSubPageViewModel>());
 
         AddApplicationCommand = new RelayCommand(_ =>
         {
-            EnvironmentApplication? application = dialogService.ShowDialog<EnvironmentApplication>(EDialogType.SelectApplication);
+            EnvironmentApplication? application = dialogService.ShowDialog<SelectApplicationDialog, SelectApplicationDialogViewModel, EnvironmentApplication>();
             System.Diagnostics.Debug.WriteLine($"Application : {application}");
         });
     }

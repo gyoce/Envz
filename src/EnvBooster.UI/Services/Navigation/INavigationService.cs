@@ -7,24 +7,21 @@ namespace EnvBooster.UI.Services.Navigation;
 public interface INavigationService
 {
     public event Action<ViewModelBase> CurrentViewModelChanged;
-    public ViewModelBase? CurrentViewModel { get; }
 
-    public void NavigateTo(ENavigationMenu navigationMenu);
+    public void NavigateTo<TViewModel>(Action<TViewModel>? configure = null) where TViewModel : ViewModelBase;
 }
 
 public class NavigationService([ServiceKey] ENavigationRegion region, IServiceProvider serviceProvider) : INavigationService
 {
     public event Action<ViewModelBase>? CurrentViewModelChanged;
-    public ViewModelBase? CurrentViewModel { get; private set; }
 
-    public void NavigateTo(ENavigationMenu navigationMenu)
+    public void NavigateTo<TViewModel>(Action<TViewModel>? configure = null) where TViewModel : ViewModelBase
     {
-        if (!navigationMenu.InsideOfRegion(region))
-            throw new NavigationException($"{navigationMenu} is not inside of region {region}");
+        if (!region.HasViewModelTypeInside<TViewModel>())
+            throw new NavigationException($"View model {typeof(TViewModel).Name} is not inside of region {region}");
 
-        ViewModelBase viewModel = (ViewModelBase)serviceProvider.GetRequiredService(navigationMenu.ToViewModelType());
-        CurrentViewModel = viewModel;
-        CurrentViewModel.OnEnable();
+        TViewModel viewModel = serviceProvider.GetRequiredService<TViewModel>();
+        viewModel.OnEnable();
         CurrentViewModelChanged?.Invoke(viewModel);
     }
 }
