@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Input;
 
-namespace EnvBooster.UI.Views;
+namespace EnvBooster.UI.Views.Dialogs;
 
 public partial class SelectApplicationDialog : Window
 {

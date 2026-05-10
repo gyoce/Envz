@@ -2,8 +2,12 @@
 using System.Windows.Input;
 
 using EnvBooster.Application.Environments;
+using EnvBooster.UI.Services;
+using EnvBooster.UI.Services.Navigation;
 using EnvBooster.UI.Utils;
 using EnvBooster.UI.ViewModels.UserControls;
+
+using Microsoft.Extensions.DependencyInjection;
 
 namespace EnvBooster.UI.ViewModels.Pages.Environments;
 
@@ -27,21 +31,19 @@ public class HomeEnvironmentsSubPageViewModel : ViewModelBase
 
     private IReadOnlyCollection<Environment> _environments = [];
 
-    public HomeEnvironmentsSubPageViewModel(GetEnvironmentsUseCase getEnvironmentsUseCase, EnvironmentViewModelFactory environmentViewModelFactory)
+    public HomeEnvironmentsSubPageViewModel(GetEnvironmentsUseCase getEnvironmentsUseCase, EnvironmentViewModelFactory environmentViewModelFactory, [FromKeyedServices(ENavigationRegion.Environments)] INavigationService navigationService)
     {
         _getEnvironmentsUseCase = getEnvironmentsUseCase;
         _environmentViewModelFactory = environmentViewModelFactory;
 
-        NavigateToCreateEnvironmentCommand = new RelayCommand(_ => Messenger.NotifyNavigationToCreateEnvironment());
+        NavigateToCreateEnvironmentCommand = new RelayCommand(_ => navigationService.NavigateTo(ENavigationMenu.CreateEnvironment));
 
-        Messenger.EnvironmentCreated += LoadEnvironments;
         LoadEnvironments();
     }
 
-    public override void Dispose()
+    public override void OnEnable()
     {
-        Messenger.EnvironmentCreated -= LoadEnvironments;
-        GC.SuppressFinalize(this);
+        LoadEnvironments();
     }
 
     private void LoadEnvironments()

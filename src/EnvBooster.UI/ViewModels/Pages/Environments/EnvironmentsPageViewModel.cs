@@ -1,5 +1,6 @@
-﻿using EnvBooster.Application.Environments;
-using EnvBooster.UI.Utils;
+﻿using EnvBooster.UI.Services.Navigation;
+
+using Microsoft.Extensions.DependencyInjection;
 
 namespace EnvBooster.UI.ViewModels.Pages.Environments;
 
@@ -13,47 +14,25 @@ public class EnvironmentsPageViewModel : ViewModelBase
             field = value;
             OnPropertyChanged();
         }
-    }
+    } = null!;
 
-    private readonly HomeEnvironmentsSubPageViewModel _homeEnvironmentsSubPageViewModel;
-    private readonly EditEnvironmentSubPageViewModel _editEnvironmentSubPageViewModel;
-    private readonly CreateEnvironmentSubPageViewModel _createEnvironmentSubPageViewModel;
+    private readonly INavigationService _navigationService;
 
-    public EnvironmentsPageViewModel(HomeEnvironmentsSubPageViewModel homeEnvironmentsSubPageViewModel, EditEnvironmentSubPageViewModel editEnvironmentSubPageViewModel, CreateEnvironmentSubPageViewModel createEnvironmentSubPageViewModel)
+    public EnvironmentsPageViewModel([FromKeyedServices(ENavigationRegion.Environments)] INavigationService navigationService)
     {
-        _homeEnvironmentsSubPageViewModel = homeEnvironmentsSubPageViewModel;
-        _editEnvironmentSubPageViewModel = editEnvironmentSubPageViewModel;
-        _createEnvironmentSubPageViewModel = createEnvironmentSubPageViewModel;
-
-        CurrentSubViewModel = _homeEnvironmentsSubPageViewModel;
-
-        Messenger.NavigationToHomeEnvironmentsRequested += NavigateToHomeEnvironments;
-        Messenger.NavigationToCreateEnvironmentRequested += NavigateToCreateEnvironment;
-        Messenger.NavigationToEditEnvironmentRequest += NavigateToEditEnvironment;
+        _navigationService = navigationService;
+        _navigationService.CurrentViewModelChanged += CurrentSubViewModelChanged;
+        _navigationService.NavigateTo(ENavigationMenu.HomeEnvironment);
     }
 
     public override void Dispose()
     {
-        Messenger.NavigationToHomeEnvironmentsRequested -= NavigateToHomeEnvironments;
-        Messenger.NavigationToCreateEnvironmentRequested -= NavigateToCreateEnvironment;
-        Messenger.NavigationToEditEnvironmentRequest -= NavigateToEditEnvironment;
+        _navigationService.CurrentViewModelChanged -= CurrentSubViewModelChanged;
         GC.SuppressFinalize(this);
     }
 
-    private void NavigateToHomeEnvironments()
+    private void CurrentSubViewModelChanged(ViewModelBase viewModel)
     {
-        CurrentSubViewModel = _homeEnvironmentsSubPageViewModel;
-    }
-
-    private void NavigateToCreateEnvironment()
-    {
-        CurrentSubViewModel = _createEnvironmentSubPageViewModel;
-        _createEnvironmentSubPageViewModel.Request = new CreateEnvironmentRequest();
-    }
-
-    private void NavigateToEditEnvironment(Environment environment)
-    {
-        CurrentSubViewModel = _editEnvironmentSubPageViewModel;
-        _editEnvironmentSubPageViewModel.Environment = environment;
+        CurrentSubViewModel = viewModel;
     }
 }

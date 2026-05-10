@@ -1,16 +1,17 @@
 ﻿using System.Windows.Input;
 
+using EnvBooster.UI.Services.Navigation;
 using EnvBooster.UI.Utils;
-using EnvBooster.UI.ViewModels.Pages;
-using EnvBooster.UI.ViewModels.Pages.Environments;
+
+using Microsoft.Extensions.DependencyInjection;
 
 namespace EnvBooster.UI.ViewModels;
 
 public class MainWindowViewModel : ViewModelBase
 {
     public ICommand ShowHomePageCommand { get; }
-    public ICommand ShowSettingsPageCommand { get; }
     public ICommand ShowEnvironmentsPageCommand { get; }
+    public ICommand ShowSettingsPageCommand { get; }
     public ViewModelBase CurrentViewModel
     {
         get;
@@ -19,13 +20,29 @@ public class MainWindowViewModel : ViewModelBase
             field = value;
             OnPropertyChanged();
         }
+    } = null!;
+
+    private readonly INavigationService _navigationService;
+
+    public MainWindowViewModel([FromKeyedServices(ENavigationRegion.Main)] INavigationService navigationService)
+    {
+        _navigationService = navigationService;
+        _navigationService.CurrentViewModelChanged += ChangeCurrentViewModel;
+        ShowHomePageCommand = new RelayCommand(_ => _navigationService.NavigateTo(ENavigationMenu.HomePage));
+        ShowEnvironmentsPageCommand = new RelayCommand(_ => _navigationService.NavigateTo(ENavigationMenu.EnvironmentsPage));
+        ShowSettingsPageCommand = new RelayCommand(_ => _navigationService.NavigateTo(ENavigationMenu.SettingsPage));
+
+        _navigationService.NavigateTo(ENavigationMenu.HomePage);
     }
 
-    public MainWindowViewModel(HomePageViewModel homePageViewModel, SettingsPageViewModel settingsPageViewModel, EnvironmentsPageViewModel environmentsPageViewModel)
+    public override void Dispose()
     {
-        ShowHomePageCommand = new RelayCommand(_ => CurrentViewModel = homePageViewModel);
-        ShowSettingsPageCommand = new RelayCommand(_ => CurrentViewModel = settingsPageViewModel);
-        ShowEnvironmentsPageCommand = new RelayCommand(_ => CurrentViewModel = environmentsPageViewModel);
-        CurrentViewModel = homePageViewModel;
+        _navigationService.CurrentViewModelChanged -= ChangeCurrentViewModel;
+        GC.SuppressFinalize(this);
+    }
+
+    private void ChangeCurrentViewModel(ViewModelBase viewModel)
+    {
+        CurrentViewModel = viewModel;
     }
 }

@@ -12,6 +12,11 @@ public abstract class ViewModelBase : INotifyPropertyChanged, IDisposable
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 
+    public virtual void OnEnable()
+    {
+
+    }
+
     public virtual void Dispose()
     {
         GC.SuppressFinalize(this);
