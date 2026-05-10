@@ -1,0 +1,65 @@
+﻿<UserControl 
+  x:Class="Envz.UI.Views.Pages.Environments.CreateEnvironmentSubPage" 
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+  xmlns:controls="clr-namespace:Envz.UI.Views.UserControls.Controls" 
+  xmlns:uc="clr-namespace:Envz.UI.Views.UserControls" 
+  mc:Ignorable="d" 
+  Width="{StaticResource SubPageWidth}" 
+  Height="{StaticResource SubPageHeight}">
+
+  <Border Background="{StaticResource BgPrimaryBrush}">
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+
+      <TextBlock Grid.Row="0" Style="{StaticResource TextH3}" Text="Create environment" HorizontalAlignment="Center" />
+
+      <Grid Grid.Row="1">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <controls:TextInput Grid.Row="0" Label="Name" Text="{Binding Request.Name}" Margin="30 10 0 10" Width="400" HorizontalAlignment="Left" />
+
+        <StackPanel Grid.Row="1" Orientation="Vertical" Margin="30 10 30 0">
+          <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
+            <TextBlock Text="Applications" Margin="5 0 0 0" Style="{StaticResource TextBody}" VerticalAlignment="Center" />
+            <controls:ButtonImage Source="{StaticResource IconAddWhite}" Command="{Binding AddApplicationCommand}" Margin="10 0 0 0" ImageWidth="10" ImageHeight="14"/>
+          </StackPanel>
+          <ScrollViewer Style="{StaticResource PrimaryScrollViewer}">
+            <Grid>
+              <TextBlock Text="No application has been added yet" Style="{StaticResource TextBody}" Margin="5 10 0 0" Foreground="{StaticResource ForegroundMutedBrush}" HorizontalAlignment="Left" VerticalAlignment="Center" Visibility="{Binding HasNoApplications, Converter={StaticResource BoolToVisibilityConverter}}"/>
+              
+              <ItemsControl ItemsSource="{Binding EnvironmentApplications}">
+                <ItemsControl.ItemsPanel>
+                  <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Vertical" />
+                  </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                  <DataTemplate>
+                    <uc:EnvironmentApplication DataContext="{Binding}" />
+                  </DataTemplate>
+                </ItemsControl.ItemTemplate>
+              </ItemsControl>
+            </Grid>
+          </ScrollViewer>
+        </StackPanel>
+      </Grid>
+
+      <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 0 0 20">
+        <controls:ButtonText Text="Cancel" ButtonStyle="{StaticResource SecondaryButton}" Command="{Binding CancelCreateEnvironmentCommand}" Width="150" Height="35" Margin="0 0 20 0" />
+        <controls:ButtonText Text="Create" Command="{Binding CreateEnvironmentCommand}" Width="150" Height="35" />
+      </StackPanel>
+
+    </Grid>
+  </Border>
+
+</UserControl>
