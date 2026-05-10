@@ -1,4 +1,5 @@
 ﻿using Envz.UI.ViewModels.Pages;
+using Envz.UI.ViewModels.Pages.Applications;
 using Envz.UI.ViewModels.Pages.Environments;
 
 namespace Envz.UI.Services.Navigation;
@@ -6,7 +7,8 @@ namespace Envz.UI.Services.Navigation;
 public enum ENavigationRegion
 {
     Main,
-    Environments
+    Environments,
+    Applications
 }
 
 public static class NavigationRegionExtension
@@ -15,6 +17,7 @@ public static class NavigationRegionExtension
     [
         typeof(HomePageViewModel),
         typeof(EnvironmentsPageViewModel),
+        typeof(ApplicationsPageViewModel),
         typeof(SettingsPageViewModel)
     ];
 
@@ -25,6 +28,11 @@ public static class NavigationRegionExtension
         typeof(EditEnvironmentSubPageViewModel)
     ];
 
+    private static readonly HashSet<Type> AllowedApplicationsRegionTypes =
+    [
+        typeof(HomeApplicationsSubPageViewModel)
+    ];
+
     extension(ENavigationRegion region)
     {
         public bool HasViewModelTypeInside<TViewModel>()
@@ -33,6 +41,7 @@ public static class NavigationRegionExtension
             {
                 ENavigationRegion.Main => AllowedMainRegionTypes.Contains(typeof(TViewModel)),
                 ENavigationRegion.Environments => AllowedEnvironmentsRegionTypes.Contains(typeof(TViewModel)),
+                ENavigationRegion.Applications => AllowedApplicationsRegionTypes.Contains(typeof(TViewModel)),
 
                 _ => throw new ArgumentOutOfRangeException(nameof(region), region, null)
             };

@@ -8,6 +8,8 @@
   xmlns:vmPages="clr-namespace:Envz.UI.ViewModels.Pages" 
   xmlns:vEnvironments="clr-namespace:Envz.UI.Views.Pages.Environments" 
   xmlns:vmEnvironments="clr-namespace:Envz.UI.ViewModels.Pages.Environments" 
+  xmlns:vApplications="clr-namespace:Envz.UI.Views.Pages.Applications" 
+  xmlns:vmApplications="clr-namespace:Envz.UI.ViewModels.Pages.Applications" 
   mc:Ignorable="d" 
   Title="MainWindow" 
   Width="{StaticResource AppWidth}" 
@@ -21,6 +23,7 @@
   <Window.Resources>
     <vPages:HomePage x:Key="HomePageInstance" />
     <vEnvironments:EnvironmentsPage x:Key="EnvironmentsPageInstance" />
+    <vApplications:ApplicationsPage x:Key="ApplicationsPageInstance"/>
     <vPages:SettingsPage x:Key="SettingsPageInstance" />
 
     <DataTemplate DataType="{x:Type vmPages:HomePageViewModel}">
@@ -28,6 +31,9 @@
     </DataTemplate>
     <DataTemplate DataType="{x:Type vmEnvironments:EnvironmentsPageViewModel}">
       <ContentPresenter Content="{StaticResource EnvironmentsPageInstance}" />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vmApplications:ApplicationsPageViewModel}">
+      <ContentPresenter Content="{StaticResource ApplicationsPageInstance}" />
     </DataTemplate>
     <DataTemplate DataType="{x:Type vmPages:SettingsPageViewModel}">
       <ContentPresenter Content="{StaticResource SettingsPageInstance}" />
@@ -81,6 +87,7 @@
         <StackPanel Grid.Column="0" Background="{StaticResource SidebarBrush}">
           <RadioButton Style="{StaticResource NavigationButton}" Content="Home" Command="{Binding ShowHomePageCommand}" IsChecked="True" />
           <RadioButton Style="{StaticResource NavigationButton}" Content="Environments" Command="{Binding ShowEnvironmentsPageCommand}" />
+          <RadioButton Style="{StaticResource NavigationButton}" Content="Applications" Command="{Binding ShowApplicationsPageCommand}" />
           <RadioButton Style="{StaticResource NavigationButton}" Content="Settings" Command="{Binding ShowSettingsPageCommand}" />
         </StackPanel>
 

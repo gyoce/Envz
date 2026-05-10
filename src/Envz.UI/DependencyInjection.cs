@@ -4,6 +4,7 @@ using Envz.UI.Services.Navigation;
 using Envz.UI.ViewModels;
 using Envz.UI.ViewModels.Dialogs;
 using Envz.UI.ViewModels.Pages;
+using Envz.UI.ViewModels.Pages.Applications;
 using Envz.UI.ViewModels.Pages.Environments;
 using Envz.UI.ViewModels.UserControls;
 using Envz.UI.Views;
@@ -19,6 +20,7 @@ public static class DependencyInjection
     {
         services.AddKeyedSingleton<INavigationService, NavigationService>(ENavigationRegion.Main);
         services.AddKeyedSingleton<INavigationService, NavigationService>(ENavigationRegion.Environments);
+        services.AddKeyedSingleton<INavigationService, NavigationService>(ENavigationRegion.Applications);
         services.AddSingleton<IDialogService, DialogService>();
 
         services.AddSingleton<MainWindow>();
@@ -35,6 +37,9 @@ public static class DependencyInjection
         services.AddSingleton<EditEnvironmentSubPageViewModel>();
         services.AddSingleton<EnvironmentViewModelFactory>();
         services.AddTransient<EnvironmentViewModel>();
+
+        services.AddSingleton<ApplicationsPageViewModel>();
+        services.AddSingleton<HomeApplicationsSubPageViewModel>();
 
         services.AddSingleton<SettingsPageViewModel>();
 

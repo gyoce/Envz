@@ -35,7 +35,7 @@
 
       <TextBlock Grid.Row="0" Text="Environments" Style="{StaticResource TextH2}" HorizontalAlignment="Center" />
 
-      <ContentControl Grid.Row="1" Content="{Binding CurrentSubViewModel}" />
+      <ContentControl Grid.Row="1" Content="{Binding CurrentViewModel}" />
     </Grid>
   </Border>
 
