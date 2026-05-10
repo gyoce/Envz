@@ -41,9 +41,9 @@ public static class NavigationMenuExtension
             return region switch
             {
                 ENavigationRegion.Main => navigation is ENavigationMenu.EnvironmentsPage or ENavigationMenu.HomePage or ENavigationMenu.SettingsPage,
-                
+
                 ENavigationRegion.Environments => navigation is ENavigationMenu.HomeEnvironment or ENavigationMenu.EditEnvironment or ENavigationMenu.CreateEnvironment,
-                
+
                 _ => throw new ArgumentOutOfRangeException(nameof(region), region, null)
             };
         }

@@ -13,7 +13,7 @@ public class SelectApplicationDialogViewModel : DialogViewModelBase<EnvironmentA
 
     public SelectApplicationDialogViewModel()
     {
-        SelectApplicationCommand = new RelayCommand(_ =>  Close(true, Application));
+        SelectApplicationCommand = new RelayCommand(_ => Close(true, Application));
         CancelCommand = new RelayCommand(_ => Close(false));
     }
 }
