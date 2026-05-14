@@ -26,7 +26,7 @@
         <TextBox x:Name="SearchTextBox" Grid.Column="0" Style="{StaticResource TextBoxH4}" Padding="40,5,8,5" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" />
         <Image Grid.Column="0" Source="{StaticResource IconSearchBlack}" Width="25" Height="25" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 0 0" IsHitTestVisible="False" />
 
-        <controls:ButtonImage Grid.Column="1" Source="{StaticResource IconAddWhite}" ImageWidth="20" ImageHeight="20" Margin="10 0 0 0" />
+        <controls:ButtonImage Grid.Column="1" Source="{StaticResource IconAddWhite}" Command="{Binding AddApplicationCommand}" ImageWidth="20" ImageHeight="20" Margin="10 0 0 0" />
       </Grid>
 
       <!-- Applications list -->

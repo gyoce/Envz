@@ -12,9 +12,13 @@
 
   <UserControl.Resources>
     <uc:HomeApplicationsSubPage x:Key="HomeApplicationsSubPageInstance" />
+    <uc:AddApplicationSubPage x:Key="AddApplicationSubPageInstance" />
 
     <DataTemplate DataType="{x:Type vm:HomeApplicationsSubPageViewModel}">
       <ContentPresenter Content="{StaticResource HomeApplicationsSubPageInstance}" />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:AddApplicationSubPageViewModel}">
+      <ContentPresenter Content="{StaticResource AddApplicationSubPageInstance}" />
     </DataTemplate>
   </UserControl.Resources>
 

@@ -30,7 +30,8 @@ public static class NavigationRegionExtension
 
     private static readonly HashSet<Type> AllowedApplicationsRegionTypes =
     [
-        typeof(HomeApplicationsSubPageViewModel)
+        typeof(HomeApplicationsSubPageViewModel),
+        typeof(AddApplicationSubPageViewModel)
     ];
 
     extension(ENavigationRegion region)

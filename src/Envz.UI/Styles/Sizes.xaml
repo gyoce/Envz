@@ -18,4 +18,6 @@
   <sys:Double x:Key="EnvironmentListItemWidth">330</sys:Double>
   <sys:Double x:Key="EnvironmentListItemHeight">170</sys:Double>
 
+  <sys:Double x:Key="TextInputHeight">35</sys:Double>
+
 </ResourceDictionary>

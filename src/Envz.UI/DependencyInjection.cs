@@ -22,6 +22,7 @@ public static class DependencyInjection
         services.AddKeyedSingleton<INavigationService, NavigationService>(ENavigationRegion.Environments);
         services.AddKeyedSingleton<INavigationService, NavigationService>(ENavigationRegion.Applications);
         services.AddSingleton<IDialogService, DialogService>();
+        services.AddSingleton<IFileDialogService, FileDialogService>();
 
         services.AddSingleton<MainWindow>();
         services.AddSingleton<MainWindowViewModel>();
@@ -40,6 +41,7 @@ public static class DependencyInjection
 
         services.AddSingleton<ApplicationsPageViewModel>();
         services.AddSingleton<HomeApplicationsSubPageViewModel>();
+        services.AddSingleton<AddApplicationSubPageViewModel>();
 
         services.AddSingleton<SettingsPageViewModel>();
 
