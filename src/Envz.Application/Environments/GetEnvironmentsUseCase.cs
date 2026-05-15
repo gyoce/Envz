@@ -1,10 +1,13 @@
-﻿using Envz.Domain.Ports;
+﻿using Envz.Application.Mediator;
+using Envz.Domain.Ports;
 
 namespace Envz.Application.Environments;
 
-public class GetEnvironmentsUseCase(IEnvironmentRepository environmentRepository)
+public record GetEnvironmentsRequest : IRequest<IReadOnlyCollection<Environment>>;
+
+public class GetEnvironmentsUseCase(IEnvironmentRepository environmentRepository) : IUseCase<GetEnvironmentsRequest, IReadOnlyCollection<Environment>>
 {
-    public IReadOnlyCollection<Environment> Execute()
+    public IReadOnlyCollection<Environment> Execute(GetEnvironmentsRequest request)
     {
         return environmentRepository.GetAll();
     }

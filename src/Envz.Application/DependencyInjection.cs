@@ -1,4 +1,6 @@
-﻿using Envz.Application.Environments;
+﻿using System.Reflection;
+
+using Envz.Application.Mediator;
 
 using Microsoft.Extensions.DependencyInjection;
 
@@ -8,8 +10,7 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddApplication(this IServiceCollection services)
     {
-        services.AddTransient<GetEnvironmentsUseCase>();
-        services.AddTransient<CreateEnvironmentUseCase>();
+        services.AddMediator(Assembly.GetExecutingAssembly());
         return services;
     }
 }

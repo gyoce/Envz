@@ -2,6 +2,7 @@
 using System.Windows.Input;
 
 using Envz.Application.Environments;
+using Envz.Application.Mediator;
 using Envz.UI.Services;
 using Envz.UI.Services.Navigation;
 using Envz.UI.Utils;
@@ -26,14 +27,14 @@ public class HomeEnvironmentsSubPageViewModel : ViewModelBase
         }
     } = string.Empty;
 
-    private readonly GetEnvironmentsUseCase _getEnvironmentsUseCase;
+    private readonly IMediator _mediator;
     private readonly EnvironmentViewModelFactory _environmentViewModelFactory;
 
     private IReadOnlyCollection<Environment> _environments = [];
 
-    public HomeEnvironmentsSubPageViewModel(GetEnvironmentsUseCase getEnvironmentsUseCase, EnvironmentViewModelFactory environmentViewModelFactory, [FromKeyedServices(ENavigationRegion.Environments)] INavigationService navigationService)
+    public HomeEnvironmentsSubPageViewModel(IMediator mediator, EnvironmentViewModelFactory environmentViewModelFactory, [FromKeyedServices(ENavigationRegion.Environments)] INavigationService navigationService)
     {
-        _getEnvironmentsUseCase = getEnvironmentsUseCase;
+        _mediator = mediator;
         _environmentViewModelFactory = environmentViewModelFactory;
 
         NavigateToCreateEnvironmentCommand = new RelayCommand(_ => navigationService.NavigateTo<CreateEnvironmentSubPageViewModel>());
@@ -48,7 +49,7 @@ public class HomeEnvironmentsSubPageViewModel : ViewModelBase
 
     private void LoadEnvironments()
     {
-        _environments = _getEnvironmentsUseCase.Execute();
+        _environments = _mediator.Send(new GetEnvironmentsRequest());
         FilterEnvironments();
     }
 

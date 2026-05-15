@@ -15,12 +15,14 @@
       <Grid.RowDefinitions>
         <RowDefinition Height="Auto"/>
         <RowDefinition Height="Auto"/>
+        <RowDefinition Height="Auto"/>
         <RowDefinition Height="*"/>
         <RowDefinition Height="Auto"/>
       </Grid.RowDefinitions>
 
       <TextBlock Grid.Row="0" Style="{StaticResource TextH3}" Text="Add application" HorizontalAlignment="Center" />
 
+      <!-- Path -->
       <Grid Grid.Row="1" Margin="30 20">
         <Grid.ColumnDefinitions>
           <ColumnDefinition Width="*"/>
@@ -31,7 +33,8 @@
         <controls:ButtonText Grid.Column="1" Text="Browse..." Command="{Binding BrowseApplicationCommand}" VerticalAlignment="Bottom" Width="100" Height="{StaticResource TextInputHeight}" Margin="10 0 0 0" />
       </Grid>
 
-      <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 0 0 20">
+      <!-- Bottom buttons -->
+      <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 0 0 20">
         <controls:ButtonText Text="Cancel" ButtonStyle="{StaticResource SecondaryButton}" Command="{Binding CancelAddApplicationCommand}" Width="150" Height="35" Margin="0 0 20 0" />
         <controls:ButtonText Text="Add" Command="{Binding AddApplicationCommand}" Width="150" Height="35" />
       </StackPanel>

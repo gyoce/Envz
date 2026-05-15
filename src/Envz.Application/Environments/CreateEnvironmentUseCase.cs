@@ -1,14 +1,15 @@
-﻿using Envz.Domain.Exceptions;
+﻿using Envz.Application.Mediator;
+using Envz.Domain.Exceptions;
 using Envz.Domain.Ports;
 
 namespace Envz.Application.Environments;
 
-public record CreateEnvironmentRequest
+public record CreateEnvironmentRequest : IRequest
 {
     public string Name { get; set; } = string.Empty;
 }
 
-public class CreateEnvironmentUseCase(IEnvironmentRepository environmentRepository)
+public class CreateEnvironmentUseCase(IEnvironmentRepository environmentRepository) : IUseCase<CreateEnvironmentRequest>
 {
     public void Execute(CreateEnvironmentRequest request)
     {

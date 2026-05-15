@@ -2,6 +2,7 @@
 
 using Envz.Application;
 using Envz.Application.Environments;
+using Envz.Application.Mediator;
 using Envz.Infrastructure;
 using Envz.UI.Views;
 
@@ -19,9 +20,9 @@ public partial class App : System.Windows.Application
         ServiceProvider = serviceCollection.BuildServiceProvider();
 
         // TEMPORARY
-        CreateEnvironmentUseCase useCase = ServiceProvider.GetRequiredService<CreateEnvironmentUseCase>();
+        IMediator mediator = ServiceProvider.GetRequiredService<IMediator>();
         for (int i = 0; i < 10; i++)
-            useCase.Execute(new CreateEnvironmentRequest
+            mediator.Send(new CreateEnvironmentRequest
             {
                 Name = Random.Shared.NextInt64().ToString()
             });
