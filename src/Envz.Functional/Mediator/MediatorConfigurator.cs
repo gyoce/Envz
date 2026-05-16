@@ -2,7 +2,7 @@
 
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Envz.Application.Mediator;
+namespace Envz.Functional.Mediator;
 
 public static class MediatorConfigurator
 {

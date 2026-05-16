@@ -2,7 +2,7 @@
 
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Envz.Application.Mediator;
+namespace Envz.Functional.Mediator;
 
 public class Mediator(IServiceProvider serviceProvider) : IMediator
 {

@@ -1,8 +1,8 @@
-﻿using Envz.Application.Mediator;
+﻿using Envz.Functional.Mediator;
 using Envz.Domain.Exceptions;
 using Envz.Domain.Ports;
 
-namespace Envz.Application.Environments;
+namespace Envz.Functional.Environments;
 
 public record CreateEnvironmentRequest : IRequest
 {

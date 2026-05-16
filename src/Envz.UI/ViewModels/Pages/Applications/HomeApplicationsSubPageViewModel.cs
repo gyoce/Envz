@@ -1,8 +1,9 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
 
-using Envz.Application.Applications;
-using Envz.Application.Mediator;
+using Envz.Domain.Entities;
+using Envz.Functional.Applications;
+using Envz.Functional.Mediator;
 using Envz.UI.Services;
 using Envz.UI.Services.Navigation;
 using Envz.UI.Utils;
@@ -29,7 +30,7 @@ public class HomeApplicationsSubPageViewModel : ViewModelBase
 
     private readonly IMediator _mediator;
     private readonly ApplicationViewModelFactory _applicationViewModelFactory;
-    private IReadOnlyCollection<Domain.Entities.Application> _applications = [];
+    private IReadOnlyCollection<Application> _applications = [];
 
     public HomeApplicationsSubPageViewModel([FromKeyedServices(ENavigationRegion.Applications)] INavigationService navigationService, IMediator mediator, ApplicationViewModelFactory applicationViewModelFactory)
     {
@@ -55,11 +56,11 @@ public class HomeApplicationsSubPageViewModel : ViewModelBase
     {
         Applications.Clear();
 
-        IEnumerable<Domain.Entities.Application> filteredApplications = string.IsNullOrWhiteSpace(SearchText)
+        IEnumerable<Application> filteredApplications = string.IsNullOrWhiteSpace(SearchText)
             ? _applications
             : _applications.Where(app => app.Name.Contains(SearchText, StringComparison.OrdinalIgnoreCase));
 
-        foreach (Domain.Entities.Application app in filteredApplications)
+        foreach (Application app in filteredApplications)
             Applications.Add(_applicationViewModelFactory.Create(app));
     }
 }

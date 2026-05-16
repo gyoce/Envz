@@ -16,7 +16,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Envz.Domain", "src\Envz.Dom
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Envz.Infrastructure", "src\Envz.Infrastructure\Envz.Infrastructure.csproj", "{5D4C1B65-7F0D-438A-A47A-F716823BFAE1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Envz.Application", "src\Envz.Application\Envz.Application.csproj", "{C6A7C35D-8657-4076-81D7-73FACF502CF2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Envz.Functional", "src\Envz.Functional\Envz.Functional.csproj", "{C6A7C35D-8657-4076-81D7-73FACF502CF2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

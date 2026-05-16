@@ -1,7 +1,7 @@
 ﻿using System.Windows.Input;
 
-using Envz.Application.Environments;
-using Envz.Application.Mediator;
+using Envz.Functional.Environments;
+using Envz.Functional.Mediator;
 using Envz.Domain.Entities;
 using Envz.UI.Services.Dialogs;
 using Envz.UI.Services.Navigation;

@@ -1,7 +1,7 @@
-﻿using Envz.Application.Mediator;
+﻿using Envz.Functional.Mediator;
 using Envz.Domain.Ports;
 
-namespace Envz.Application.Environments;
+namespace Envz.Functional.Environments;
 
 public record GetEnvironmentsRequest : IRequest<IReadOnlyCollection<Environment>>;
 

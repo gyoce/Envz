@@ -1,4 +1,4 @@
-﻿namespace Envz.Application.Mediator;
+﻿namespace Envz.Functional.Mediator;
 
 public interface IRequest;
 

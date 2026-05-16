@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Envz.Application\Envz.Application.csproj" />
+    <ProjectReference Include="..\Envz.Functional\Envz.Functional.csproj" />
     <ProjectReference Include="..\Envz.Infrastructure\Envz.Infrastructure.csproj" />
   </ItemGroup>
 

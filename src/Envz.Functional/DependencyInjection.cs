@@ -1,10 +1,10 @@
 ﻿using System.Reflection;
 
-using Envz.Application.Mediator;
+using Envz.Functional.Mediator;
 
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Envz.Application;
+namespace Envz.Functional;
 
 public static class DependencyInjection
 {

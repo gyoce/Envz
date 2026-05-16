@@ -1,8 +1,8 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
 
-using Envz.Application.Environments;
-using Envz.Application.Mediator;
+using Envz.Functional.Environments;
+using Envz.Functional.Mediator;
 using Envz.UI.Services;
 using Envz.UI.Services.Navigation;
 using Envz.UI.Utils;

@@ -2,8 +2,8 @@ using System.IO;
 using System.Windows.Input;
 using System.Windows.Media;
 
-using Envz.Application.Applications;
-using Envz.Application.Mediator;
+using Envz.Functional.Applications;
+using Envz.Functional.Mediator;
 using Envz.UI.Services;
 using Envz.UI.Services.Dialogs;
 using Envz.UI.Services.Navigation;

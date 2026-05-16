@@ -1,8 +1,8 @@
 ﻿using System.Windows;
 
-using Envz.Application;
-using Envz.Application.Environments;
-using Envz.Application.Mediator;
+using Envz.Functional;
+using Envz.Functional.Environments;
+using Envz.Functional.Mediator;
 using Envz.Infrastructure;
 using Envz.UI.Views;
 

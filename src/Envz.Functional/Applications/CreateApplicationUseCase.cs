@@ -1,7 +1,8 @@
-﻿using Envz.Application.Mediator;
+﻿using Envz.Domain.Entities;
 using Envz.Domain.Ports;
+using Envz.Functional.Mediator;
 
-namespace Envz.Application.Applications;
+namespace Envz.Functional.Applications;
 
 public record CreateApplicationRequest : IRequest
 {
@@ -14,7 +15,7 @@ public class CreateApplicationUseCase(IApplicationRepository applicationReposito
 {
     public void Execute(CreateApplicationRequest parameter)
     {
-        applicationRepository.Save(new Domain.Entities.Application()
+        applicationRepository.Save(new Application
         {
             Name = parameter.Name,
             Icon = parameter.Icon,
