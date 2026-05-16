@@ -1,5 +1,9 @@
+using System.IO;
 using System.Windows.Input;
+using System.Windows.Media;
 
+using Envz.Application.Applications;
+using Envz.UI.Services;
 using Envz.UI.Services.Dialogs;
 using Envz.UI.Services.Navigation;
 using Envz.UI.Utils;
@@ -13,7 +17,7 @@ public class AddApplicationSubPageViewModel : ViewModelBase
     public ICommand BrowseApplicationCommand { get; }
     public ICommand AddApplicationCommand { get; }
     public ICommand CancelAddApplicationCommand { get; }
-    public string ApplicationPath
+    public CreateApplicationRequest Request
     {
         get;
         set
@@ -21,17 +25,27 @@ public class AddApplicationSubPageViewModel : ViewModelBase
             field = value;
             OnPropertyChanged();
         }
-    } = string.Empty;
+    } = new();
+    public ImageSource? ApplicationIcon => Request.Icon.Length > 0 ? _iconExtractor.DecodeFromPngBytes(Request.Icon) : null;
 
-    public AddApplicationSubPageViewModel([FromKeyedServices(ENavigationRegion.Applications)] INavigationService navigationService, IFileDialogService fileDialogService)
+    private readonly IIconExtractor _iconExtractor;
+
+    public AddApplicationSubPageViewModel([FromKeyedServices(ENavigationRegion.Applications)] INavigationService navigationService, IFileDialogService fileDialogService, IIconExtractor iconExtractor)
     {
+        _iconExtractor = iconExtractor;
         CancelAddApplicationCommand = new RelayCommand(_ => navigationService.NavigateTo<HomeApplicationsSubPageViewModel>());
         BrowseApplicationCommand = new RelayCommand(_ =>
         {
             string? path = fileDialogService.OpenFile("Select an application", "Executable files (*.exe)|*.exe|All files (*.*)|*.*");
 
             if (path is not null)
-                ApplicationPath = path;
+            {
+                Request.Path = path;
+                Request.Name = Path.GetFileNameWithoutExtension(path);
+                Request.Icon = iconExtractor.ExtractPngBytes(path);
+                OnPropertyChanged(nameof(Request));
+                OnPropertyChanged(nameof(ApplicationIcon));
+            }
         });
     }
 }

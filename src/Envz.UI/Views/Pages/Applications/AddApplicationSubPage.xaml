@@ -29,8 +29,16 @@
           <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
-        <controls:TextInput Grid.Column="0" Label="Path" Text="{Binding ApplicationPath}" VerticalAlignment="Top" />
+        <controls:TextInput Grid.Column="0" Label="Path" Text="{Binding Request.Path}" VerticalAlignment="Top" />
         <controls:ButtonText Grid.Column="1" Text="Browse..." Command="{Binding BrowseApplicationCommand}" VerticalAlignment="Bottom" Width="100" Height="{StaticResource TextInputHeight}" Margin="10 0 0 0" />
+      </Grid>
+
+      <Grid Grid.Row="2">
+        <controls:TextInput Label="Name" Text="{Binding Request.Name}" Margin="30 0"/>
+      </Grid>
+
+      <Grid Grid.Row="3">
+        <Image Source="{Binding ApplicationIcon}" Width="64" Height="64"/>
       </Grid>
 
       <!-- Bottom buttons -->

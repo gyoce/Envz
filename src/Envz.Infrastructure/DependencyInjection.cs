@@ -1,6 +1,5 @@
 ﻿using Envz.Domain.Ports;
 using Envz.Infrastructure.Persistence;
-
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Envz.Infrastructure;

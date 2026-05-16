@@ -13,7 +13,6 @@ public class InMemoryEnvironmentRepository : IEnvironmentRepository
 
     public void Save(Environment environment)
     {
-        environment.Id = Guid.NewGuid().ToString();
         _environments.Add(environment);
     }
 }

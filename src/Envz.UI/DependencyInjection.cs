@@ -23,6 +23,7 @@ public static class DependencyInjection
         services.AddKeyedSingleton<INavigationService, NavigationService>(ENavigationRegion.Applications);
         services.AddSingleton<IDialogService, DialogService>();
         services.AddSingleton<IFileDialogService, FileDialogService>();
+        services.AddSingleton<IIconExtractor, IconExtractor>();
 
         services.AddSingleton<MainWindow>();
         services.AddSingleton<MainWindowViewModel>();
