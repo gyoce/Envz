@@ -1,5 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 
 using Envz.Domain.Entities;
 using Envz.Functional.Applications;
@@ -16,51 +15,25 @@ namespace Envz.UI.ViewModels.Pages.Applications;
 public class HomeApplicationsSubPageViewModel : ViewModelBase
 {
     public ICommand AddApplicationCommand { get; }
-    public ObservableCollection<ApplicationViewModel> Applications { get; } = [];
-    public string SearchText
-    {
-        get;
-        set
-        {
-            field = value;
-            OnPropertyChanged();
-            FilterApplications();
-        }
-    } = string.Empty;
+    public SearchableCollection<ApplicationViewModel, Application> SearchableApplications { get; }
 
     private readonly IMediator _mediator;
-    private readonly ApplicationViewModelFactory _applicationViewModelFactory;
-    private IReadOnlyCollection<Application> _applications = [];
 
     public HomeApplicationsSubPageViewModel([FromKeyedServices(ENavigationRegion.Applications)] INavigationService navigationService, IMediator mediator, ApplicationViewModelFactory applicationViewModelFactory)
     {
         _mediator = mediator;
-        _applicationViewModelFactory = applicationViewModelFactory;
         AddApplicationCommand = new RelayCommand(_ => navigationService.NavigateTo<AddApplicationSubPageViewModel>());
-
+        SearchableApplications = new SearchableCollection<ApplicationViewModel, Application>(app => app.Name, applicationViewModelFactory.Create);
         LoadApplications();
     }
 
-    public override void OnEnable()
+    public override void OnEnable() 
     {
         LoadApplications();
     }
 
     private void LoadApplications()
     {
-        _applications = _mediator.Send(new GetApplicationsRequest());
-        FilterApplications();
-    }
-
-    private void FilterApplications()
-    {
-        Applications.Clear();
-
-        IEnumerable<Application> filteredApplications = string.IsNullOrWhiteSpace(SearchText)
-            ? _applications
-            : _applications.Where(app => app.Name.Contains(SearchText, StringComparison.OrdinalIgnoreCase));
-
-        foreach (Application app in filteredApplications)
-            Applications.Add(_applicationViewModelFactory.Create(app));
+        SearchableApplications.UnfilteredItems = _mediator.Send(new GetApplicationsRequest());
     }
 }
