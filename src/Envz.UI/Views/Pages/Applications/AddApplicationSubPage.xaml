@@ -6,6 +6,8 @@
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   xmlns:controls="clr-namespace:Envz.UI.Views.UserControls.Controls"
+  xmlns:vm="clr-namespace:Envz.UI.ViewModels.Pages.Applications"
+  d:DataContext="{d:DesignInstance Type=vm:AddApplicationSubPageViewModel}"
   Width="{StaticResource SubPageWidth}" 
   Height="{StaticResource SubPageHeight}">
 

@@ -24,6 +24,8 @@ public static class DependencyInjection
         services.AddSingleton<IDialogService, DialogService>();
         services.AddSingleton<IFileDialogService, FileDialogService>();
         services.AddSingleton<IIconExtractor, IconExtractor>();
+        services.AddSingleton<EnvironmentViewModelFactory>();
+        services.AddSingleton<ApplicationViewModelFactory>();
 
         services.AddSingleton<MainWindow>();
         services.AddSingleton<MainWindowViewModel>();
@@ -37,7 +39,6 @@ public static class DependencyInjection
         services.AddSingleton<HomeEnvironmentsSubPageViewModel>();
         services.AddSingleton<CreateEnvironmentSubPageViewModel>();
         services.AddSingleton<EditEnvironmentSubPageViewModel>();
-        services.AddSingleton<EnvironmentViewModelFactory>();
         services.AddTransient<EnvironmentViewModel>();
 
         services.AddSingleton<ApplicationsPageViewModel>();

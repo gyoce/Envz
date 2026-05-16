@@ -5,7 +5,10 @@
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
   xmlns:controls="clr-namespace:Envz.UI.Views.UserControls.Controls"
+  xmlns:vm="clr-namespace:Envz.UI.ViewModels.Pages.Applications"
+  xmlns:uc="clr-namespace:Envz.UI.Views.UserControls"
   mc:Ignorable="d" 
+  d:DataContext="{d:DesignInstance Type=vm:HomeApplicationsSubPageViewModel}"
   Width="{StaticResource SubPageWidth}" 
   Height="{StaticResource SubPageHeight}">
 
@@ -31,7 +34,7 @@
 
       <!-- Applications list -->
       <ScrollViewer Grid.Row="1" Style="{StaticResource PrimaryScrollViewer}" Margin="30 0">
-        <ItemsControl>
+        <ItemsControl ItemsSource="{Binding Applications}">
           <ItemsControl.ItemsPanel>
             <ItemsPanelTemplate>
               <WrapPanel Orientation="Horizontal" Margin="-10 0" />
@@ -39,7 +42,7 @@
           </ItemsControl.ItemsPanel>
           <ItemsControl.ItemTemplate>
             <DataTemplate>
-              
+              <uc:Application DataContext="{Binding}" Margin="10" />
             </DataTemplate>
           </ItemsControl.ItemTemplate>
         </ItemsControl>

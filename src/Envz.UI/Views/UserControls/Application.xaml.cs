@@ -2,11 +2,11 @@
 
 namespace Envz.UI.Views.UserControls;
 /// <summary>
-/// Interaction logic for EnvironmentApplication.xaml
+/// Interaction logic for Application.xaml
 /// </summary>
-public partial class EnvironmentApplication : UserControl
+public partial class Application : UserControl
 {
-    public EnvironmentApplication()
+    public Application()
     {
         InitializeComponent();
     }

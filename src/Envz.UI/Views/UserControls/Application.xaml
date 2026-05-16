@@ -1,0 +1,29 @@
+<UserControl
+  x:Class="Envz.UI.Views.UserControls.Application"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:vm="clr-namespace:Envz.UI.ViewModels.UserControls"
+  mc:Ignorable="d"
+  d:DataContext="{d:DesignInstance Type=vm:ApplicationViewModel}"
+  Width="{StaticResource ApplicationListItemWidth}"
+  Height="{StaticResource ApplicationListItemHeight}">
+
+  <Border Background="{StaticResource BgSecondaryBrush}" BorderBrush="{StaticResource NeutralFocusBrush}" BorderThickness="1" CornerRadius="3">
+    <Grid Margin="8">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="40" />
+        <ColumnDefinition Width="*" />
+      </Grid.ColumnDefinitions>
+
+      <Image Grid.Column="0" Source="{Binding Icon}" Width="32" Height="32" />
+
+      <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="10,0,0,0">
+        <TextBlock Text="{Binding Application.Name, FallbackValue=Application}" Style="{StaticResource TextBody}" />
+        <TextBlock Text="{Binding Application.Path, FallbackValue=C:\\path\\to\\application.exe}" Style="{StaticResource TextCaption}" Foreground="{StaticResource ForegroundMutedBrush}" TextTrimming="CharacterEllipsis" />
+      </StackPanel>
+    </Grid>
+  </Border>
+
+</UserControl>

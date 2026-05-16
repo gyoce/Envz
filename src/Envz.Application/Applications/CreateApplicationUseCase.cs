@@ -1,4 +1,5 @@
 ﻿using Envz.Application.Mediator;
+using Envz.Domain.Ports;
 
 namespace Envz.Application.Applications;
 
@@ -9,10 +10,15 @@ public record CreateApplicationRequest : IRequest
     public byte[] Icon { get; set; } = [];
 }
 
-public class CreateApplicationUseCase : IUseCase<CreateApplicationRequest>
+public class CreateApplicationUseCase(IApplicationRepository applicationRepository) : IUseCase<CreateApplicationRequest>
 {
     public void Execute(CreateApplicationRequest parameter)
     {
-
+        applicationRepository.Save(new Domain.Entities.Application()
+        {
+            Name = parameter.Name,
+            Icon = parameter.Icon,
+            Path = parameter.Path
+        });
     }
 }

@@ -29,7 +29,6 @@ public class HomeEnvironmentsSubPageViewModel : ViewModelBase
 
     private readonly IMediator _mediator;
     private readonly EnvironmentViewModelFactory _environmentViewModelFactory;
-
     private IReadOnlyCollection<Environment> _environments = [];
 
     public HomeEnvironmentsSubPageViewModel(IMediator mediator, EnvironmentViewModelFactory environmentViewModelFactory, [FromKeyedServices(ENavigationRegion.Environments)] INavigationService navigationService)

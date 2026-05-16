@@ -3,6 +3,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 
 using Envz.Application.Applications;
+using Envz.Application.Mediator;
 using Envz.UI.Services;
 using Envz.UI.Services.Dialogs;
 using Envz.UI.Services.Navigation;
@@ -32,17 +33,25 @@ public class AddApplicationSubPageViewModel : ViewModelBase
     private readonly INavigationService _navigationService;
     private readonly IFileDialogService _fileDialogService;
     private readonly IIconExtractor _iconExtractor;
+    private readonly IMediator _mediator;
 
-    public AddApplicationSubPageViewModel([FromKeyedServices(ENavigationRegion.Applications)] INavigationService navigationService, IFileDialogService fileDialogService, IIconExtractor iconExtractor)
+    public AddApplicationSubPageViewModel([FromKeyedServices(ENavigationRegion.Applications)] INavigationService navigationService, IFileDialogService fileDialogService, IIconExtractor iconExtractor, IMediator mediator)
     {
         _navigationService = navigationService;
         _fileDialogService = fileDialogService;
         _iconExtractor = iconExtractor;
+        _mediator = mediator;
 
-        AddApplicationCommand = new RelayCommand(_ => { }, _ => CanAddApplication());
+        AddApplicationCommand = new RelayCommand(_ => AddApplication(), _ => CanAddApplication());
         CancelAddApplicationCommand = new RelayCommand(_ => CancelAddApplication());
         BrowseIconCommand = new RelayCommand(_ => BrowseIcon());
         BrowseApplicationCommand = new RelayCommand(_ => BrowseApplication());
+    }
+
+    private void AddApplication()
+    {
+        _mediator.Send(Request);
+        _navigationService.NavigateTo<HomeApplicationsSubPageViewModel>();
     }
 
     private bool CanAddApplication()
