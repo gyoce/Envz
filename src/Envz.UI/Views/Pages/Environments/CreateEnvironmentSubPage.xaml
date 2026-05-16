@@ -5,8 +5,9 @@
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
   xmlns:controls="clr-namespace:Envz.UI.Views.UserControls.Controls" 
-  xmlns:uc="clr-namespace:Envz.UI.Views.UserControls" 
+  xmlns:vm="clr-namespace:Envz.UI.ViewModels.Pages.Environments"
   mc:Ignorable="d" 
+  d:DataContext="{d:DesignInstance Type=vm:CreateEnvironmentSubPageViewModel}"
   Width="{StaticResource SubPageWidth}" 
   Height="{StaticResource SubPageHeight}">
 
@@ -35,9 +36,9 @@
           </StackPanel>
           <ScrollViewer Style="{StaticResource PrimaryScrollViewer}">
             <Grid>
-              <TextBlock Text="No application has been added yet" Style="{StaticResource TextBody}" Margin="5 10 0 0" Foreground="{StaticResource ForegroundMutedBrush}" HorizontalAlignment="Left" VerticalAlignment="Center" Visibility="{Binding HasNoApplications, Converter={StaticResource BoolToVisibilityConverter}}"/>
+              <TextBlock Text="No application has been added yet" Style="{StaticResource TextBody}" Margin="5 10 0 0" Foreground="{StaticResource ForegroundMutedBrush}" HorizontalAlignment="Left" VerticalAlignment="Center" />
               
-              <ItemsControl ItemsSource="{Binding EnvironmentApplications}">
+              <ItemsControl>
                 <ItemsControl.ItemsPanel>
                   <ItemsPanelTemplate>
                     <WrapPanel Orientation="Vertical" />

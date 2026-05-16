@@ -7,6 +7,7 @@
   xmlns:vm="clr-namespace:Envz.UI.ViewModels.Pages.Applications"
   xmlns:uc="clr-namespace:Envz.UI.Views.Pages.Applications"
   mc:Ignorable="d" 
+  d:DataContext="{d:DesignInstance Type=vm:ApplicationsPageViewModel}"
   Width="{StaticResource PageWidth}" 
   Height="{StaticResource PageHeight}">
 

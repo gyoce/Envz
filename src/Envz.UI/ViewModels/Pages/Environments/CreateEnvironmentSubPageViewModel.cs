@@ -1,5 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 
 using Envz.Application.Environments;
 using Envz.Application.Mediator;
@@ -8,7 +7,6 @@ using Envz.UI.Services.Dialogs;
 using Envz.UI.Services.Navigation;
 using Envz.UI.Utils;
 using Envz.UI.ViewModels.Dialogs;
-using Envz.UI.ViewModels.UserControls;
 using Envz.UI.Views.Dialogs;
 
 using Microsoft.Extensions.DependencyInjection;
@@ -20,13 +18,10 @@ public class CreateEnvironmentSubPageViewModel : ViewModelBase
     public ICommand CancelCreateEnvironmentCommand { get; }
     public ICommand CreateEnvironmentCommand { get; }
     public ICommand AddApplicationCommand { get; }
-    public ObservableCollection<EnvironmentApplicationViewModel> EnvironmentApplications { get; } = [];
     public CreateEnvironmentRequest Request { get; set; } = new();
-    public bool HasNoApplications => EnvironmentApplications.Count == 0;
 
     public CreateEnvironmentSubPageViewModel(IMediator mediator, [FromKeyedServices(ENavigationRegion.Environments)] INavigationService navigationService, IDialogService dialogService)
     {
-        EnvironmentApplications.CollectionChanged += (_, _) => OnPropertyChanged(nameof(HasNoApplications));
 
         CreateEnvironmentCommand = new RelayCommand(_ =>
         {

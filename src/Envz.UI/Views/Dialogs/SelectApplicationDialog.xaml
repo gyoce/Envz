@@ -5,12 +5,14 @@
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   xmlns:controls="clr-namespace:Envz.UI.Views.UserControls.Controls"
+  xmlns:vm="clr-namespace:Envz.UI.ViewModels.Dialogs"
   mc:Ignorable="d" 
   Title="SelectApplicationDialog" 
   ResizeMode="NoResize" 
   WindowStyle="None" 
   AllowsTransparency="True" 
   WindowStartupLocation="CenterOwner"
+  d:DataContext="{d:DesignInstance Type=vm:SelectApplicationDialogViewModel}"
   Width="{StaticResource AppDialogWidth}" 
   Height="{StaticResource AppDialogHeight}">
 
