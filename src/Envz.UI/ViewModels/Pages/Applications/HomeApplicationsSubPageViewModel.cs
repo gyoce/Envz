@@ -28,7 +28,7 @@ public class HomeApplicationsSubPageViewModel : ViewModelBase
         LoadApplications();
     }
 
-    public override void OnEnable() 
+    public override void OnEnable()
     {
         LoadApplications();
     }

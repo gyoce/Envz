@@ -18,7 +18,7 @@ public class ViewModelWithMenu : ViewModelBase
         get;
         set
         {
-            field = value; 
+            field = value;
             OnPropertyChanged();
         }
     } = string.Empty;

@@ -6,6 +6,7 @@
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
   xmlns:vm="clr-namespace:Envz.UI.ViewModels.Pages.Applications"
   xmlns:uc="clr-namespace:Envz.UI.Views.Pages.Applications"
+  xmlns:controls="clr-namespace:Envz.UI.Views.UserControls.Controls"
   mc:Ignorable="d" 
   d:DataContext="{d:DesignInstance Type=vm:ApplicationsPageViewModel}"
   Width="{StaticResource PageWidth}" 
@@ -26,17 +27,11 @@
   <Border Background="{StaticResource BgPrimaryBrush}">
     <Grid>
       <Grid.RowDefinitions>
-        <RowDefinition Height="40" />
+        <RowDefinition Height="Auto" />
         <RowDefinition Height="*" />
       </Grid.RowDefinitions>
 
-      <StackPanel Margin="30 0" Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center">
-        <Button Command="{Binding NavigateToHomeCommand}" Style="{StaticResource BreadcrumbButton}">
-          <TextBlock Text="Applications" Style="{StaticResource TextH2}" />
-        </Button>
-        <TextBlock Text=">" Style="{StaticResource TextH2}" Margin="8 0" Foreground="{StaticResource ForegroundMutedBrush}" />
-        <TextBlock Text="{Binding CurrentPageTitle}" Style="{StaticResource TextH2}" />
-      </StackPanel>
+      <controls:Breadcrumb Grid.Row="0" PrimaryMenuText="Applications" PrimaryMenuCommand="{Binding NavigateToHomeCommand}" SecondaryMenuText="{Binding CurrentPageTitle}" />
 
       <ContentControl Grid.Row="1" Content="{Binding CurrentViewModel}" />
     </Grid>

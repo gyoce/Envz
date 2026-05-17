@@ -1,5 +1,5 @@
-﻿using Envz.Functional.Mediator;
-using Envz.Domain.Ports;
+﻿using Envz.Domain.Ports;
+using Envz.Functional.Mediator;
 
 namespace Envz.Functional.Environments;
 

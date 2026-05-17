@@ -15,6 +15,9 @@
   <sys:Double x:Key="SubPageWidth">1090</sys:Double>
   <sys:Double x:Key="SubPageHeight">440</sys:Double>
 
+  <sys:Double x:Key="BreadcrumbHeight">40</sys:Double>
+  <sys:Double x:Key="BreadcrumbWidth">1090</sys:Double>
+
   <sys:Double x:Key="EnvironmentListItemWidth">330</sys:Double>
   <sys:Double x:Key="EnvironmentListItemHeight">170</sys:Double>
   <sys:Double x:Key="ApplicationListItemWidth">1030</sys:Double>

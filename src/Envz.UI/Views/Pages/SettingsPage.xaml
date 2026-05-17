@@ -5,6 +5,7 @@
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
   xmlns:vm="clr-namespace:Envz.UI.ViewModels.Pages"
+  xmlns:controls="clr-namespace:Envz.UI.Views.UserControls.Controls"
   mc:Ignorable="d" 
   d:DataContext="{d:DesignInstance Type=vm:SettingsPageViewModel}"
   Width="{StaticResource PageWidth}" 
@@ -17,7 +18,7 @@
         <RowDefinition Height="*" />
       </Grid.RowDefinitions>
 
-      <TextBlock Grid.Row="0" Text="Settings" Style="{StaticResource TextH2}" HorizontalAlignment="Left" Margin="30 0" VerticalAlignment="Center" />
+      <controls:Breadcrumb Grid.Row="0" PrimaryMenuText="Settings"/>
     </Grid>
   </Border>
 
