@@ -16,6 +16,15 @@ public class MainWindowViewModel : ViewModelWithMenu
     public ICommand ShowEnvironmentsPageCommand { get; }
     public ICommand ShowSettingsPageCommand { get; }
     public ICommand ShowApplicationsPageCommand { get; }
+    public bool IsDialogOpen
+    {
+        get;
+        set
+        {
+            field = value;
+            OnPropertyChanged();
+        }
+    }
 
     public MainWindowViewModel([FromKeyedServices(ENavigationRegion.Main)] INavigationService navigationService) : base(navigationService)
     {
@@ -23,7 +32,6 @@ public class MainWindowViewModel : ViewModelWithMenu
         ShowEnvironmentsPageCommand = new RelayCommand(_ => NavigationService.NavigateTo<EnvironmentsPageViewModel>());
         ShowApplicationsPageCommand = new RelayCommand(_ => NavigationService.NavigateTo<ApplicationsPageViewModel>());
         ShowSettingsPageCommand = new RelayCommand(_ => NavigationService.NavigateTo<SettingsPageViewModel>());
-
         NavigationService.NavigateTo<HomePageViewModel>();
     }
 }

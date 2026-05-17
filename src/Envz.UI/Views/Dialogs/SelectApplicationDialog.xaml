@@ -23,7 +23,7 @@
 
     <Grid>
       <Grid.RowDefinitions>
-        <RowDefinition Height="50" />
+        <RowDefinition Height="40" />
         <RowDefinition Height="*" />
         <RowDefinition Height="Auto" />
       </Grid.RowDefinitions>
@@ -49,9 +49,8 @@
       </Grid>
 
       <StackPanel Grid.Row="2" Margin="0 0 0 5" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-        <controls:ButtonText ButtonStyle="{StaticResource SecondaryButton}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Cancel" Command="{Binding CancelCommand}" Width="100" />
-
-        <controls:ButtonText Margin="10 0 0 0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Select" Command="{Binding SelectApplicationCommand}" Width="100" IsEnabled="False"/>
+        <controls:ButtonText ButtonStyle="{StaticResource SecondaryButton}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Cancel" Command="{Binding CancelCommand}" Width="120" />
+        <controls:ButtonText Margin="10 0 0 0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Select" Command="{Binding SelectApplicationCommand}" Width="120" IsEnabled="False"/>
       </StackPanel>
     </Grid>
   </Border>

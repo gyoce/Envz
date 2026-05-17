@@ -7,7 +7,7 @@
   <sys:Double x:Key="AppHeight">540</sys:Double>
 
   <sys:Double x:Key="AppDialogWidth">960</sys:Double>
-  <sys:Double x:Key="AppDialogHeight">405</sys:Double>
+  <sys:Double x:Key="AppDialogHeight">425</sys:Double>
 
   <sys:Double x:Key="PageWidth">1090</sys:Double>
   <sys:Double x:Key="PageHeight">480</sys:Double>
