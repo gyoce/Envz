@@ -12,6 +12,7 @@ public class EnvironmentViewModel : ViewModelBase
 {
     public ICommand EditEnvironmentCommand { get; }
     public Environment Environment { get; }
+    public int NumberOfApplications => Environment.Applications.Count;
 
     public EnvironmentViewModel([FromKeyedServices(ENavigationRegion.Environments)] INavigationService navigationService, Environment environment)
     {

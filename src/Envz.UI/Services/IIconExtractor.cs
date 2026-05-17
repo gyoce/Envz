@@ -10,7 +10,7 @@ namespace Envz.UI.Services;
 public interface IIconExtractor
 {
     byte[] ExtractPngBytes(string filePath);
-    ImageSource? DecodeFromPngBytes(byte[] bytes);
+    ImageSource? DecodeFromPngBytes(byte[]? bytes);
 }
 
 public class IconExtractor : IIconExtractor
@@ -34,9 +34,9 @@ public class IconExtractor : IIconExtractor
         return stream.ToArray();
     }
 
-    public ImageSource? DecodeFromPngBytes(byte[] bytes)
+    public ImageSource? DecodeFromPngBytes(byte[]? bytes)
     {
-        if (bytes.Length == 0)
+        if (bytes is null || bytes.Length == 0)
             return null;
 
         using MemoryStream stream = new(bytes);

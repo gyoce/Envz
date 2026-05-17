@@ -2,6 +2,7 @@
 
 public class Environment
 {
-    public string Name { get; set; } = string.Empty;
+    public int Id { get; set; }
+    public required string Name { get; set; }
     public List<EnvironmentApplication> Applications { get; set; } = [];
 }

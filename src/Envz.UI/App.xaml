@@ -13,6 +13,7 @@
         <ResourceDictionary Source="Styles/Scrollbar.xaml" />
         <ResourceDictionary Source="Styles/Inputs.xaml" />
         <ResourceDictionary Source="Styles/Sizes.xaml" />
+        <ResourceDictionary Source="Styles/ListBox.xaml" />
       </ResourceDictionary.MergedDictionaries>
 
       <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter" />

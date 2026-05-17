@@ -42,7 +42,7 @@
           </ItemsControl.ItemsPanel>
           <ItemsControl.ItemTemplate>
             <DataTemplate>
-              <uc:Application DataContext="{Binding}" Margin="10" />
+              <uc:Application DataContext="{Binding}" Margin="10" Width="{StaticResource ApplicationListItemWidth}" Height="{StaticResource ApplicationListItemHeight}" />
             </DataTemplate>
           </ItemsControl.ItemTemplate>
         </ItemsControl>

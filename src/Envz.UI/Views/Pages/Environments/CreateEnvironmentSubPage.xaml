@@ -1,14 +1,15 @@
-﻿<UserControl 
-  x:Class="Envz.UI.Views.Pages.Environments.CreateEnvironmentSubPage" 
-  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
-  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
-  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-  xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-  xmlns:controls="clr-namespace:Envz.UI.Views.UserControls.Controls" 
+<UserControl
+  x:Class="Envz.UI.Views.Pages.Environments.CreateEnvironmentSubPage"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:controls="clr-namespace:Envz.UI.Views.UserControls.Controls"
+  xmlns:uc="clr-namespace:Envz.UI.Views.UserControls"
   xmlns:vm="clr-namespace:Envz.UI.ViewModels.Pages.Environments"
-  mc:Ignorable="d" 
+  mc:Ignorable="d"
   d:DataContext="{d:DesignInstance Type=vm:CreateEnvironmentSubPageViewModel}"
-  Width="{StaticResource SubPageWidth}" 
+  Width="{StaticResource SubPageWidth}"
   Height="{StaticResource SubPageHeight}">
 
   <Border Background="{StaticResource BgPrimaryBrush}">
@@ -33,9 +34,18 @@
           </StackPanel>
           <ScrollViewer Style="{StaticResource PrimaryScrollViewer}">
             <Grid>
-              <TextBlock Text="No application has been added yet" Style="{StaticResource TextBody}" Margin="5 10 0 0" Foreground="{StaticResource ForegroundMutedBrush}" HorizontalAlignment="Left" VerticalAlignment="Center" />
-              
-              <ItemsControl>
+              <TextBlock Text="No application has been added yet" Margin="5 10 0 0" Foreground="{StaticResource ForegroundMutedBrush}" HorizontalAlignment="Left" VerticalAlignment="Center">
+                <TextBlock.Style>
+                  <Style TargetType="TextBlock" BasedOn="{StaticResource TextBody}">
+                    <Style.Triggers>
+                      <DataTrigger Binding="{Binding HasApplications}" Value="True">
+                        <Setter Property="Visibility" Value="Collapsed" />
+                      </DataTrigger>
+                    </Style.Triggers>
+                  </Style>
+                </TextBlock.Style>
+              </TextBlock>
+              <ItemsControl ItemsSource="{Binding ApplicationViewModels}">
                 <ItemsControl.ItemsPanel>
                   <ItemsPanelTemplate>
                     <WrapPanel Orientation="Vertical" />
@@ -43,7 +53,9 @@
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                   <DataTemplate>
-                    
+                    <uc:EnvironmentApplication DataContext="{Binding}" Margin="0 0 0 5"
+                                               Width="{StaticResource EnvironmentApplicationListItemWidth}"
+                                               Height="{StaticResource EnvironmentApplicationListItemHeight}" />
                   </DataTemplate>
                 </ItemsControl.ItemTemplate>
               </ItemsControl>

@@ -2,7 +2,8 @@
 
 public class Application
 {
-    public string Name { get; set; } = string.Empty;
-    public string Path { get; set; } = string.Empty;
-    public byte[] Icon { get; set; } = [];
+    public int Id { get; set; }
+    public required string Name { get; set; }
+    public required string Path { get; set; }
+    public byte[]? Icon { get; set; }
 }

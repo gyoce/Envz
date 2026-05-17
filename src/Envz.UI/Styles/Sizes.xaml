@@ -20,8 +20,15 @@
 
   <sys:Double x:Key="EnvironmentListItemWidth">330</sys:Double>
   <sys:Double x:Key="EnvironmentListItemHeight">170</sys:Double>
+
   <sys:Double x:Key="ApplicationListItemWidth">1030</sys:Double>
   <sys:Double x:Key="ApplicationListItemHeight">50</sys:Double>
+
+  <sys:Double x:Key="DialogApplicationListItemWidth">920</sys:Double>
+  <sys:Double x:Key="DialogApplicationListItemHeight">50</sys:Double>
+
+  <sys:Double x:Key="EnvironmentApplicationListItemWidth">1030</sys:Double>
+  <sys:Double x:Key="EnvironmentApplicationListItemHeight">50</sys:Double>
 
   <sys:Double x:Key="TextInputHeight">35</sys:Double>
 

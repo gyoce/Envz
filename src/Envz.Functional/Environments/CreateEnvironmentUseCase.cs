@@ -1,4 +1,5 @@
-﻿using Envz.Domain.Exceptions;
+﻿using Envz.Domain.Entities;
+using Envz.Domain.Exceptions;
 using Envz.Domain.Ports;
 using Envz.Functional.Mediator;
 
@@ -7,6 +8,7 @@ namespace Envz.Functional.Environments;
 public record CreateEnvironmentRequest : IRequest
 {
     public string Name { get; set; } = string.Empty;
+    public List<EnvironmentApplication> Applications { get; set; } = [];
 }
 
 public class CreateEnvironmentUseCase(IEnvironmentRepository environmentRepository) : IUseCase<CreateEnvironmentRequest>
@@ -18,7 +20,8 @@ public class CreateEnvironmentUseCase(IEnvironmentRepository environmentReposito
 
         environmentRepository.Save(new Environment
         {
-            Name = request.Name
+            Name = request.Name,
+            Applications = request.Applications
         });
     }
 }

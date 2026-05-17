@@ -1,19 +1,20 @@
-﻿<Window 
-  x:Class="Envz.UI.Views.Dialogs.SelectApplicationDialog" 
-  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
-  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
-  xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+<Window
+  x:Class="Envz.UI.Views.Dialogs.SelectApplicationDialog"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   xmlns:controls="clr-namespace:Envz.UI.Views.UserControls.Controls"
+  xmlns:uc="clr-namespace:Envz.UI.Views.UserControls"
   xmlns:vm="clr-namespace:Envz.UI.ViewModels.Dialogs"
-  mc:Ignorable="d" 
-  Title="SelectApplicationDialog" 
-  ResizeMode="NoResize" 
-  WindowStyle="None" 
-  AllowsTransparency="True" 
+  mc:Ignorable="d"
+  Title="SelectApplicationDialog"
+  ResizeMode="NoResize"
+  WindowStyle="None"
+  AllowsTransparency="True"
   WindowStartupLocation="CenterOwner"
   d:DataContext="{d:DesignInstance Type=vm:SelectApplicationDialogViewModel}"
-  Width="{StaticResource AppDialogWidth}" 
+  Width="{StaticResource AppDialogWidth}"
   Height="{StaticResource AppDialogHeight}">
 
   <Border Background="{StaticResource BgPrimaryBrush}" BorderBrush="{StaticResource NeutralBrush}" BorderThickness="2" CornerRadius="4">
@@ -25,6 +26,7 @@
       <Grid.RowDefinitions>
         <RowDefinition Height="40" />
         <RowDefinition Height="*" />
+        <RowDefinition Height="Auto" />
         <RowDefinition Height="Auto" />
       </Grid.RowDefinitions>
 
@@ -43,14 +45,33 @@
         </Grid>
       </Grid>
 
-      <!-- Content -->
-      <Grid Grid.Row="1">
+      <!-- Applications List -->
+      <Grid Grid.Row="1" Margin="20 10">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
 
+        <Grid Grid.Row="0" Margin="0 0 0 8">
+          <TextBox Style="{StaticResource TextBoxH4}" Padding="40,5,8,5" Text="{Binding SearchableApplications.SearchText, UpdateSourceTrigger=PropertyChanged}" />
+          <Image Source="{StaticResource IconSearchBlack}" Width="22" Height="22" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 0 0" IsHitTestVisible="False" />
+        </Grid>
+
+        <ListBox Grid.Row="1" ItemsSource="{Binding SearchableApplications.Items}" SelectedItem="{Binding SelectedApplication}" ItemContainerStyle="{StaticResource ApplicationListBoxItemStyle}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Background="Transparent" BorderThickness="0">
+          <ListBox.ItemTemplate>
+            <DataTemplate>
+              <uc:Application DataContext="{Binding}" />
+            </DataTemplate>
+          </ListBox.ItemTemplate>
+        </ListBox>
       </Grid>
 
-      <StackPanel Grid.Row="2" Margin="0 0 0 5" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+      <controls:TextInput Grid.Row="2" Margin="20 10" Label="Parameter" Text="{Binding Parameter, UpdateSourceTrigger=PropertyChanged}" />
+
+      <!-- Bottom buttons -->
+      <StackPanel Grid.Row="3" Margin="0 0 0 10" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
         <controls:ButtonText ButtonStyle="{StaticResource SecondaryButton}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Cancel" Command="{Binding CancelCommand}" Width="120" />
-        <controls:ButtonText Margin="10 0 0 0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Select" Command="{Binding SelectApplicationCommand}" Width="120" IsEnabled="False"/>
+        <controls:ButtonText Margin="10 0 0 0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Select" Command="{Binding SelectApplicationCommand}" Width="120" />
       </StackPanel>
     </Grid>
   </Border>
