@@ -13,6 +13,7 @@ namespace Envz.UI.ViewModels.Pages.Environments;
 
 public class HomeEnvironmentsSubPageViewModel : ViewModelBase
 {
+    public override string Title => "Home";
     public ICommand NavigateToCreateEnvironmentCommand { get; }
     public SearchableCollection<EnvironmentViewModel, Environment> SearchableEnvironments { get; }
 

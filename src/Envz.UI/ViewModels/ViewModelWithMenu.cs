@@ -13,23 +13,33 @@ public class ViewModelWithMenu : ViewModelBase
             OnPropertyChanged();
         }
     } = null!;
+    public string CurrentPageTitle
+    {
+        get;
+        set
+        {
+            field = value; 
+            OnPropertyChanged();
+        }
+    } = string.Empty;
 
     protected readonly INavigationService NavigationService;
 
     public ViewModelWithMenu(INavigationService navigationService)
     {
         NavigationService = navigationService;
-        NavigationService.CurrentViewModelChanged += CurrentSubViewModelChanged;
+        NavigationService.CurrentViewModelChanged += CurrentViewModelChanged;
     }
 
     public override void Dispose()
     {
-        NavigationService.CurrentViewModelChanged -= CurrentSubViewModelChanged;
+        NavigationService.CurrentViewModelChanged -= CurrentViewModelChanged;
         GC.SuppressFinalize(this);
     }
 
-    private void CurrentSubViewModelChanged(ViewModelBase viewModel)
+    private void CurrentViewModelChanged(ViewModelBase viewModel)
     {
         CurrentViewModel = viewModel;
+        CurrentPageTitle = viewModel.Title;
     }
 }

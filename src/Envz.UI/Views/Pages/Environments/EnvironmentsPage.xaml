@@ -34,7 +34,13 @@
         <RowDefinition Height="*" />
       </Grid.RowDefinitions>
 
-      <TextBlock Grid.Row="0" Text="Environments" Style="{StaticResource TextH2}" HorizontalAlignment="Center" />
+      <StackPanel Margin="30 0" Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center">
+        <Button Command="{Binding NavigateToHomeCommand}" Style="{StaticResource BreadcrumbButton}">
+          <TextBlock Text="Environnements" Style="{StaticResource TextH2}" />
+        </Button>
+        <TextBlock Text=">" Style="{StaticResource TextH2}" Margin="8 0" Foreground="{StaticResource ForegroundMutedBrush}" />
+        <TextBlock Text="{Binding CurrentPageTitle}" Style="{StaticResource TextH2}" />
+      </StackPanel>
 
       <ContentControl Grid.Row="1" Content="{Binding CurrentViewModel}" />
     </Grid>

@@ -15,6 +15,7 @@ namespace Envz.UI.ViewModels.Pages.Environments;
 
 public class CreateEnvironmentSubPageViewModel : ViewModelBase
 {
+    public override string Title => "Create environment";
     public ICommand CancelCreateEnvironmentCommand { get; }
     public ICommand CreateEnvironmentCommand { get; }
     public ICommand AddApplicationCommand { get; }

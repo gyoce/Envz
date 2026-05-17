@@ -14,15 +14,12 @@
   <Border Background="{StaticResource BgPrimaryBrush}">
     <Grid>
       <Grid.RowDefinitions>
-        <RowDefinition Height="Auto"/>
         <RowDefinition Height="*"/>
         <RowDefinition Height="Auto"/>
       </Grid.RowDefinitions>
 
-      <TextBlock Grid.Row="0" Style="{StaticResource TextH3}" Text="Add application" HorizontalAlignment="Center" />
-
       <!-- Content -->
-      <StackPanel Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="30 20">
+      <StackPanel Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="30 20">
 
         <!-- Path -->
         <Grid>
@@ -51,7 +48,7 @@
       </StackPanel>
 
       <!-- Bottom buttons -->
-      <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 0 0 20">
+      <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 0 0 20">
         <controls:ButtonText Text="Cancel" ButtonStyle="{StaticResource SecondaryButton}" Command="{Binding CancelAddApplicationCommand}" Width="150" Height="35" Margin="0 0 20 0"/>
         <controls:ButtonText Text="Add" Command="{Binding AddApplicationCommand}" Width="150" Height="35"/>
       </StackPanel>

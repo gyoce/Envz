@@ -14,6 +14,7 @@ namespace Envz.UI.ViewModels.Pages.Applications;
 
 public class HomeApplicationsSubPageViewModel : ViewModelBase
 {
+    public override string Title => "Home";
     public ICommand AddApplicationCommand { get; }
     public SearchableCollection<ApplicationViewModel, Application> SearchableApplications { get; }
 

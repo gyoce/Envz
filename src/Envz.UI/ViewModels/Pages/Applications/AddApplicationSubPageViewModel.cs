@@ -15,6 +15,7 @@ namespace Envz.UI.ViewModels.Pages.Applications;
 
 public class AddApplicationSubPageViewModel : ViewModelBase
 {
+    public override string Title => "Add application";
     public ICommand BrowseApplicationCommand { get; }
     public ICommand BrowseIconCommand { get; }
     public ICommand AddApplicationCommand { get; }

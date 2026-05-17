@@ -17,7 +17,7 @@
         <RowDefinition Height="*" />
       </Grid.RowDefinitions>
 
-      <TextBlock Grid.Row="0" Text="Settings" Style="{StaticResource TextH2}" HorizontalAlignment="Center" />
+      <TextBlock Grid.Row="0" Text="Settings" Style="{StaticResource TextH2}" HorizontalAlignment="Left" Margin="30 0" VerticalAlignment="Center" />
     </Grid>
   </Border>
 

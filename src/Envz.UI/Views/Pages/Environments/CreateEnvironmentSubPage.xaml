@@ -14,14 +14,11 @@
   <Border Background="{StaticResource BgPrimaryBrush}">
     <Grid>
       <Grid.RowDefinitions>
-        <RowDefinition Height="Auto" />
         <RowDefinition Height="*" />
         <RowDefinition Height="Auto" />
       </Grid.RowDefinitions>
 
-      <TextBlock Grid.Row="0" Style="{StaticResource TextH3}" Text="Create environment" HorizontalAlignment="Center" />
-
-      <Grid Grid.Row="1">
+      <Grid Grid.Row="0">
         <Grid.RowDefinitions>
           <RowDefinition Height="Auto" />
           <RowDefinition Height="Auto" />
@@ -55,7 +52,7 @@
         </StackPanel>
       </Grid>
 
-      <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 0 0 20">
+      <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 0 0 20">
         <controls:ButtonText Text="Cancel" ButtonStyle="{StaticResource SecondaryButton}" Command="{Binding CancelCreateEnvironmentCommand}" Width="150" Height="35" Margin="0 0 20 0" />
         <controls:ButtonText Text="Create" Command="{Binding CreateEnvironmentCommand}" Width="150" Height="35" />
       </StackPanel>

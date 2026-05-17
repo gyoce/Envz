@@ -6,6 +6,7 @@ namespace Envz.UI.ViewModels;
 public abstract class ViewModelBase : INotifyPropertyChanged, IDisposable
 {
     public event PropertyChangedEventHandler? PropertyChanged;
+    public virtual string Title { get; } = string.Empty;
 
     protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
     {

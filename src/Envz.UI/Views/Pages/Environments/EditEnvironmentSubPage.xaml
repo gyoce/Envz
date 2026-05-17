@@ -14,13 +14,10 @@
   <Border Background="{StaticResource BgPrimaryBrush}">
     <Grid>
       <Grid.RowDefinitions>
-        <RowDefinition Height="Auto" />
         <RowDefinition Height="*" />
       </Grid.RowDefinitions>
 
-      <TextBlock Grid.Row="0" Style="{StaticResource TextH3}" Text="Edit environment" HorizontalAlignment="Center" />
-
-      <controls:ButtonText Grid.Row="1" Text="Return" Command="{Binding NavigateToHomeEnvironmentsCommand}" Margin="10 0 0 0" HorizontalAlignment="Center" VerticalAlignment="Center" />
+      <controls:ButtonText Grid.Row="0" Text="Return" Margin="10 0 0 0" HorizontalAlignment="Center" VerticalAlignment="Center" />
     </Grid>
   </Border>
 
