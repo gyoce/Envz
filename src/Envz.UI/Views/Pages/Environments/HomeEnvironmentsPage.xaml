@@ -1,5 +1,5 @@
 ﻿<UserControl 
-  x:Class="Envz.UI.Views.Pages.Environments.HomeEnvironmentsSubPage" 
+  x:Class="Envz.UI.Views.Pages.Environments.HomeEnvironmentsPage" 
   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -8,7 +8,7 @@
   xmlns:controls="clr-namespace:Envz.UI.Views.UserControls.Controls"
   xmlns:vm="clr-namespace:Envz.UI.ViewModels.Pages.Environments"
   mc:Ignorable="d" 
-  d:DataContext="{d:DesignInstance Type=vm:HomeEnvironmentsSubPageViewModel}"
+  d:DataContext="{d:DesignInstance Type=vm:HomeEnvironmentsPageViewModel}"
   Width="{StaticResource SubPageWidth}" 
   Height="{StaticResource SubPageHeight}">
 

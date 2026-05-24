@@ -13,13 +13,13 @@ using Envz.UI.ViewModels.Dialogs;
 using Envz.UI.ViewModels.UserControls;
 using Envz.UI.Views.Dialogs;
 
-using Microsoft.Extensions.DependencyInjection;
-
 namespace Envz.UI.ViewModels.Pages.Environments;
 
-public class CreateEnvironmentSubPageViewModel : ViewModelBase
+public class CreateEnvironmentPageViewModel : PageViewModel
 {
     public override string Title => "Create environment";
+    public override Type? ParentPageType => typeof(EnvironmentsPageViewModel);
+
     public ICommand CancelCreateEnvironmentCommand { get; }
     public ICommand CreateEnvironmentCommand { get; }
     public ICommand AddApplicationCommand { get; }
@@ -32,14 +32,14 @@ public class CreateEnvironmentSubPageViewModel : ViewModelBase
     private readonly IDialogService _dialogService;
     private readonly EnvironmentApplicationViewModelFactory _environmentApplicationViewModelFactory;
 
-    public CreateEnvironmentSubPageViewModel(IMediator mediator, [FromKeyedServices(ENavigationRegion.Environments)] INavigationService navigationService, IDialogService dialogService, EnvironmentApplicationViewModelFactory environmentApplicationViewModelFactory)
+    public CreateEnvironmentPageViewModel(IMediator mediator, INavigationService navigationService, IDialogService dialogService, EnvironmentApplicationViewModelFactory environmentApplicationViewModelFactory)
     {
         _mediator = mediator;
         _navigationService = navigationService;
         _dialogService = dialogService;
         _environmentApplicationViewModelFactory = environmentApplicationViewModelFactory;
         CreateEnvironmentCommand = new RelayCommand(_ => CreateEnvironment(), _ => CanCreateEnvironment());
-        CancelCreateEnvironmentCommand = new RelayCommand(_ => navigationService.NavigateTo<HomeEnvironmentsSubPageViewModel>());
+        CancelCreateEnvironmentCommand = new RelayCommand(_ => navigationService.NavigateTo<HomeEnvironmentsPageViewModel>());
         AddApplicationCommand = new RelayCommand(_ => AddApplication());
         ApplicationViewModels.CollectionChanged += OnApplicationViewModelsChanged;
     }
@@ -52,7 +52,7 @@ public class CreateEnvironmentSubPageViewModel : ViewModelBase
     private void CreateEnvironment()
     {
         _mediator.Send(Request);
-        _navigationService.NavigateTo<HomeEnvironmentsSubPageViewModel>();
+        _navigationService.NavigateTo<HomeEnvironmentsPageViewModel>();
     }
 
     private bool CanCreateEnvironment()

@@ -3,9 +3,9 @@ using System.Windows.Controls;
 
 namespace Envz.UI.Views.Pages.Applications;
 
-public partial class HomeApplicationsSubPage : UserControl
+public partial class HomeApplicationsPage : UserControl
 {
-    public HomeApplicationsSubPage()
+    public HomeApplicationsPage()
     {
         InitializeComponent();
         IsVisibleChanged += OnIsVisibleChanged;

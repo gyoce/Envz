@@ -1,19 +1,8 @@
-﻿using System.Windows.Input;
+﻿namespace Envz.UI.ViewModels.Pages.Environments;
 
-using Envz.UI.Services.Navigation;
-using Envz.UI.Utils;
-
-using Microsoft.Extensions.DependencyInjection;
-
-namespace Envz.UI.ViewModels.Pages.Environments;
-
-public class EnvironmentsPageViewModel : ViewModelWithMenu
+public class EnvironmentsPageViewModel : PageViewModel
 {
-    public ICommand NavigateToHomeCommand { get; }
-
-    public EnvironmentsPageViewModel([FromKeyedServices(ENavigationRegion.Environments)] INavigationService navigationService) : base(navigationService)
-    {
-        NavigateToHomeCommand = new RelayCommand(_ => NavigationService.NavigateTo<HomeEnvironmentsSubPageViewModel>());
-        NavigationService.NavigateTo<HomeEnvironmentsSubPageViewModel>();
-    }
+    public override string Title => "Environments";
+    public override Type? ParentPageType => null;
+    public override Type? RedirectType => typeof(HomeEnvironmentsPageViewModel);
 }

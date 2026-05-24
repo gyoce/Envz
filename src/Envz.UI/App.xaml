@@ -1,7 +1,8 @@
 ﻿<Application 
   x:Class="Envz.UI.App" 
   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
-  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:utils="clr-namespace:Envz.UI.Utils">
 
   <Application.Resources>
     <ResourceDictionary>
@@ -17,6 +18,7 @@
       </ResourceDictionary.MergedDictionaries>
 
       <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+      <utils:InverseBoolToVisibilityConverter x:Key="InverseBoolToVisibilityConverter" />
     </ResourceDictionary>
   </Application.Resources>
 

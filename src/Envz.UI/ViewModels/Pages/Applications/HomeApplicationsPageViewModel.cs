@@ -8,22 +8,22 @@ using Envz.UI.Services.Navigation;
 using Envz.UI.Utils;
 using Envz.UI.ViewModels.UserControls;
 
-using Microsoft.Extensions.DependencyInjection;
-
 namespace Envz.UI.ViewModels.Pages.Applications;
 
-public class HomeApplicationsSubPageViewModel : ViewModelBase
+public class HomeApplicationsPageViewModel : PageViewModel
 {
     public override string Title => "Home";
+    public override Type? ParentPageType => typeof(ApplicationsPageViewModel);
+
     public ICommand AddApplicationCommand { get; }
     public SearchableCollection<ApplicationViewModel, Application> SearchableApplications { get; }
 
     private readonly IMediator _mediator;
 
-    public HomeApplicationsSubPageViewModel([FromKeyedServices(ENavigationRegion.Applications)] INavigationService navigationService, IMediator mediator, ApplicationViewModelFactory applicationViewModelFactory)
+    public HomeApplicationsPageViewModel(INavigationService navigationService, IMediator mediator, ApplicationViewModelFactory applicationViewModelFactory)
     {
         _mediator = mediator;
-        AddApplicationCommand = new RelayCommand(_ => navigationService.NavigateTo<AddApplicationSubPageViewModel>());
+        AddApplicationCommand = new RelayCommand(_ => navigationService.NavigateTo<AddApplicationPageViewModel>());
         SearchableApplications = new SearchableCollection<ApplicationViewModel, Application>(app => app.Name, applicationViewModelFactory.Create);
         LoadApplications();
     }

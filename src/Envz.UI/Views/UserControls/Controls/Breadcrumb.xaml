@@ -9,12 +9,26 @@
   Height="{StaticResource BreadcrumbHeight}"
   x:Name="Root">
 
-  <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-    <Button Margin="30 0 0 0" Command="{Binding PrimaryMenuCommand, ElementName=Root}" Style="{StaticResource BreadcrumbButton}">
-      <TextBlock Text="{Binding PrimaryMenuText, ElementName=Root, FallbackValue=PrimaryMenuText}" Style="{StaticResource TextH3}" />
-    </Button>
-    <TextBlock Text=">" Style="{StaticResource TextH3}" Margin="8 0" Foreground="{StaticResource ForegroundMutedBrush}" />
-    <TextBlock Text="{Binding SecondaryMenuText, ElementName=Root, FallbackValue=SecondaryMenuText}" Style="{StaticResource TextH3}" />
-  </StackPanel>
+  <ItemsControl ItemsSource="{Binding Items, ElementName=Root}" VerticalAlignment="Center" Margin="30 0 0 0">
+    <ItemsControl.ItemsPanel>
+      <ItemsPanelTemplate>
+        <StackPanel Orientation="Horizontal" />
+      </ItemsPanelTemplate>
+    </ItemsControl.ItemsPanel>
+
+    <ItemsControl.ItemTemplate>
+      <DataTemplate>
+        <StackPanel Orientation="Horizontal">
+          <TextBlock Text=">" Style="{StaticResource TextH3}" Margin="8 0" Foreground="{StaticResource ForegroundMutedBrush}" Visibility="{Binding IsFirst, Converter={StaticResource InverseBoolToVisibilityConverter}}" />
+
+          <Button Style="{StaticResource BreadcrumbButton}" Command="{Binding NavigateCommand}" Visibility="{Binding IsClickable, Converter={StaticResource BoolToVisibilityConverter}}">
+            <TextBlock Text="{Binding Title}" Style="{StaticResource TextH3}" />
+          </Button>
+
+          <TextBlock Text="{Binding Title}" Style="{StaticResource TextH3}" Visibility="{Binding IsClickable, Converter={StaticResource InverseBoolToVisibilityConverter}}" />
+        </StackPanel>
+      </DataTemplate>
+    </ItemsControl.ItemTemplate>
+  </ItemsControl>
 
 </UserControl>

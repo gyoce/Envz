@@ -4,13 +4,16 @@
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-  xmlns:vPages="clr-namespace:Envz.UI.Views.Pages" 
-  xmlns:vmPages="clr-namespace:Envz.UI.ViewModels.Pages" 
   xmlns:vEnvironments="clr-namespace:Envz.UI.Views.Pages.Environments" 
   xmlns:vmEnvironments="clr-namespace:Envz.UI.ViewModels.Pages.Environments" 
   xmlns:vApplications="clr-namespace:Envz.UI.Views.Pages.Applications" 
   xmlns:vmApplications="clr-namespace:Envz.UI.ViewModels.Pages.Applications"
+  xmlns:vHome="clr-namespace:Envz.UI.Views.Pages.Home"
+  xmlns:vmHome="clr-namespace:Envz.UI.ViewModels.Pages.Home"
+  xmlns:vSettings="clr-namespace:Envz.UI.Views.Pages.Settings"
+  xmlns:vmSettings="clr-namespace:Envz.UI.ViewModels.Pages.Settings"
   xmlns:vm="clr-namespace:Envz.UI.ViewModels"
+  xmlns:controls="clr-namespace:Envz.UI.Views.UserControls.Controls"
   mc:Ignorable="d" 
   d:DataContext="{d:DesignInstance Type=vm:MainWindowViewModel}"
   Title="MainWindow" 
@@ -23,21 +26,33 @@
   WindowStartupLocation="CenterScreen">
 
   <Window.Resources>
-    <vPages:HomePage x:Key="HomePageInstance" />
-    <vEnvironments:EnvironmentsPage x:Key="EnvironmentsPageInstance" />
-    <vApplications:ApplicationsPage x:Key="ApplicationsPageInstance"/>
-    <vPages:SettingsPage x:Key="SettingsPageInstance" />
+    <vHome:HomePage x:Key="HomePageInstance" />
+    <vEnvironments:HomeEnvironmentsPage x:Key="HomeEnvironmentsPageInstance" />
+    <vEnvironments:CreateEnvironmentPage x:Key="CreateEnvironmentPageInstance" />
+    <vEnvironments:EditEnvironmentPage x:Key="EditEnvironmentPageInstance" />
+    <vApplications:HomeApplicationsPage x:Key="HomeApplicationsPageInstance" />
+    <vApplications:AddApplicationPage x:Key="AddApplicationPageInstance" />
+    <vSettings:SettingsPage x:Key="SettingsPageInstance" />
 
-    <DataTemplate DataType="{x:Type vmPages:HomePageViewModel}">
+    <DataTemplate DataType="{x:Type vmHome:HomePageViewModel}">
       <ContentPresenter Content="{StaticResource HomePageInstance}" />
     </DataTemplate>
-    <DataTemplate DataType="{x:Type vmEnvironments:EnvironmentsPageViewModel}">
-      <ContentPresenter Content="{StaticResource EnvironmentsPageInstance}" />
+    <DataTemplate DataType="{x:Type vmEnvironments:HomeEnvironmentsPageViewModel}">
+      <ContentPresenter Content="{StaticResource HomeEnvironmentsPageInstance}" />
     </DataTemplate>
-    <DataTemplate DataType="{x:Type vmApplications:ApplicationsPageViewModel}">
-      <ContentPresenter Content="{StaticResource ApplicationsPageInstance}" />
+    <DataTemplate DataType="{x:Type vmEnvironments:EditEnvironmentPageViewModel}">
+      <ContentPresenter Content="{StaticResource EditEnvironmentPageInstance}" />
     </DataTemplate>
-    <DataTemplate DataType="{x:Type vmPages:SettingsPageViewModel}">
+    <DataTemplate DataType="{x:Type vmEnvironments:CreateEnvironmentPageViewModel}">
+      <ContentPresenter Content="{StaticResource CreateEnvironmentPageInstance}" />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vmApplications:HomeApplicationsPageViewModel}">
+      <ContentPresenter Content="{StaticResource HomeApplicationsPageInstance}" />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vmApplications:AddApplicationPageViewModel}">
+      <ContentPresenter Content="{StaticResource AddApplicationPageInstance}" />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vmSettings:SettingsPageViewModel}">
       <ContentPresenter Content="{StaticResource SettingsPageInstance}" />
     </DataTemplate>
   </Window.Resources>
@@ -98,7 +113,15 @@
           </StackPanel>
 
           <!-- Main content -->
-          <ContentControl Grid.Column="1" Content="{Binding CurrentViewModel}" />
+          <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <controls:Breadcrumb Grid.Row="0" Items="{Binding BreadcrumbItems}" />
+            <ContentControl Grid.Row="1" Content="{Binding CurrentViewModel}" />
+          </Grid>
         </Grid>
       </Grid>
 

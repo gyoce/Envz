@@ -7,22 +7,22 @@ using Envz.UI.Services.Navigation;
 using Envz.UI.Utils;
 using Envz.UI.ViewModels.UserControls;
 
-using Microsoft.Extensions.DependencyInjection;
-
 namespace Envz.UI.ViewModels.Pages.Environments;
 
-public class HomeEnvironmentsSubPageViewModel : ViewModelBase
+public class HomeEnvironmentsPageViewModel : PageViewModel
 {
     public override string Title => "Home";
+    public override Type? ParentPageType => typeof(EnvironmentsPageViewModel);
+
     public ICommand NavigateToCreateEnvironmentCommand { get; }
     public SearchableCollection<EnvironmentViewModel, Environment> SearchableEnvironments { get; }
 
     private readonly IMediator _mediator;
 
-    public HomeEnvironmentsSubPageViewModel(IMediator mediator, EnvironmentViewModelFactory environmentViewModelFactory, [FromKeyedServices(ENavigationRegion.Environments)] INavigationService navigationService)
+    public HomeEnvironmentsPageViewModel(IMediator mediator, EnvironmentViewModelFactory environmentViewModelFactory, INavigationService navigationService)
     {
         _mediator = mediator;
-        NavigateToCreateEnvironmentCommand = new RelayCommand(_ => navigationService.NavigateTo<CreateEnvironmentSubPageViewModel>());
+        NavigateToCreateEnvironmentCommand = new RelayCommand(_ => navigationService.NavigateTo<CreateEnvironmentPageViewModel>());
         SearchableEnvironments = new SearchableCollection<EnvironmentViewModel, Environment>(env => env.Name, environmentViewModelFactory.Create);
         LoadEnvironments();
     }

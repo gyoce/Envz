@@ -13,9 +13,10 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Envz.UI.ViewModels.Pages.Applications;
 
-public class AddApplicationSubPageViewModel : ViewModelBase
+public class AddApplicationPageViewModel : PageViewModel
 {
     public override string Title => "Add application";
+    public override Type? ParentPageType => typeof(ApplicationsPageViewModel);
     public ICommand BrowseApplicationCommand { get; }
     public ICommand BrowseIconCommand { get; }
     public ICommand AddApplicationCommand { get; }
@@ -36,7 +37,7 @@ public class AddApplicationSubPageViewModel : ViewModelBase
     private readonly IIconExtractor _iconExtractor;
     private readonly IMediator _mediator;
 
-    public AddApplicationSubPageViewModel([FromKeyedServices(ENavigationRegion.Applications)] INavigationService navigationService, IFileDialogService fileDialogService, IIconExtractor iconExtractor, IMediator mediator)
+    public AddApplicationPageViewModel(INavigationService navigationService, IFileDialogService fileDialogService, IIconExtractor iconExtractor, IMediator mediator)
     {
         _navigationService = navigationService;
         _fileDialogService = fileDialogService;
@@ -52,7 +53,7 @@ public class AddApplicationSubPageViewModel : ViewModelBase
     private void AddApplication()
     {
         _mediator.Send(Request);
-        _navigationService.NavigateTo<HomeApplicationsSubPageViewModel>();
+        _navigationService.NavigateTo<HomeApplicationsPageViewModel>();
     }
 
     private bool CanAddApplication()
@@ -62,7 +63,7 @@ public class AddApplicationSubPageViewModel : ViewModelBase
 
     private void CancelAddApplication()
     {
-        _navigationService.NavigateTo<HomeApplicationsSubPageViewModel>();
+        _navigationService.NavigateTo<HomeApplicationsPageViewModel>();
     }
 
     private void BrowseIcon()

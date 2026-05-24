@@ -2,9 +2,9 @@
 
 namespace Envz.UI.Views.Pages.Environments;
 
-public partial class EditEnvironmentSubPage : UserControl
+public partial class CreateEnvironmentPage : UserControl
 {
-    public EditEnvironmentSubPage()
+    public CreateEnvironmentPage()
     {
         InitializeComponent();
     }

@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace Envz.UI.Views.Pages;
+namespace Envz.UI.Views.Pages.Settings;
 
 public partial class SettingsPage : UserControl
 {
