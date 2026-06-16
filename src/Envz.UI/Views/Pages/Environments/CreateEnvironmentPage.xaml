@@ -25,16 +25,31 @@
           <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <controls:TextInput Grid.Row="0" Label="Name" Text="{Binding Request.Name}" Margin="30 10 0 10" Width="400" HorizontalAlignment="Left" />
+        <controls:TextInput Grid.Row="0" 
+                            Label="Name" 
+                            Text="{Binding Request.Name}" 
+                            Margin="30 10 0 10" 
+                            Width="400" 
+                            HorizontalAlignment="Left" />
 
         <StackPanel Grid.Row="1" Orientation="Vertical" Margin="30 10 30 0">
           <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
-            <TextBlock Text="Applications" Margin="5 0 0 0" Style="{StaticResource TextBody}" VerticalAlignment="Center" />
-            <controls:ButtonImage Source="{StaticResource IconAddWhite}" Command="{Binding AddApplicationCommand}" Margin="10 0 0 0" ImageWidth="10" ImageHeight="14"/>
+            <TextBlock Text="Applications" 
+                       Margin="5 0 0 0" 
+                       Style="{StaticResource TextBody}" 
+                       VerticalAlignment="Center" />
+            <controls:ButtonImage Source="{StaticResource IconAddWhite}" 
+                                  Command="{Binding AddApplicationCommand}" 
+                                  Margin="10 0 0 0" 
+                                  ImageWidth="10" ImageHeight="14"/>
           </StackPanel>
           <ScrollViewer Style="{StaticResource PrimaryScrollViewer}">
             <Grid>
-              <TextBlock Text="No application has been added yet" Margin="5 10 0 0" Foreground="{StaticResource ForegroundMutedBrush}" HorizontalAlignment="Left" VerticalAlignment="Center">
+              <TextBlock Text="No application has been added yet" 
+                         Margin="5 10 0 0" 
+                         Foreground="{StaticResource ForegroundMutedBrush}" 
+                         HorizontalAlignment="Left" 
+                         VerticalAlignment="Center">
                 <TextBlock.Style>
                   <Style TargetType="TextBlock" BasedOn="{StaticResource TextBody}">
                     <Style.Triggers>
@@ -53,7 +68,8 @@
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                   <DataTemplate>
-                    <uc:EnvironmentApplication DataContext="{Binding}" Margin="0 0 0 5"
+                    <uc:EnvironmentApplication DataContext="{Binding}" 
+                                               Margin="0 0 0 5"
                                                Width="{StaticResource EnvironmentApplicationListItemWidth}"
                                                Height="{StaticResource EnvironmentApplicationListItemHeight}" />
                   </DataTemplate>

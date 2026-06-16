@@ -18,7 +18,7 @@ namespace Envz.UI.ViewModels.Pages.Environments;
 public class CreateEnvironmentPageViewModel : PageViewModel
 {
     public override string Title => "Create environment";
-    public override Type? ParentPageType => typeof(EnvironmentsPageViewModel);
+    public override Type ParentPageType => typeof(EnvironmentsPageViewModel);
 
     public ICommand CancelCreateEnvironmentCommand { get; }
     public ICommand CreateEnvironmentCommand { get; }
@@ -38,6 +38,7 @@ public class CreateEnvironmentPageViewModel : PageViewModel
         _navigationService = navigationService;
         _dialogService = dialogService;
         _environmentApplicationViewModelFactory = environmentApplicationViewModelFactory;
+
         CreateEnvironmentCommand = new RelayCommand(_ => CreateEnvironment(), _ => CanCreateEnvironment());
         CancelCreateEnvironmentCommand = new RelayCommand(_ => navigationService.NavigateTo<HomeEnvironmentsPageViewModel>());
         AddApplicationCommand = new RelayCommand(_ => AddApplication());
@@ -68,5 +69,12 @@ public class CreateEnvironmentPageViewModel : PageViewModel
 
         Request.Applications.Add(application);
         ApplicationViewModels.Add(_environmentApplicationViewModelFactory.Create(application));
+    }
+
+    public override void Dispose()
+    {
+        ApplicationViewModels.CollectionChanged -= OnApplicationViewModelsChanged;
+        base.Dispose();
+        GC.SuppressFinalize(this);
     }
 }

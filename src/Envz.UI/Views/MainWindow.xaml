@@ -57,29 +57,39 @@
     </DataTemplate>
   </Window.Resources>
 
-  <Border Background="{StaticResource BgPrimaryBrush}" BorderBrush="{StaticResource NeutralBrush}" BorderThickness="2" CornerRadius="4">
+  <Border Background="{StaticResource BgPrimaryBrush}" 
+          BorderBrush="{StaticResource NeutralBrush}" 
+          BorderThickness="2" 
+          CornerRadius="4">
     <Border.Effect>
-      <DropShadowEffect Color="#000000" BlurRadius="15" ShadowDepth="2" Opacity="0.25" Direction="270" />
+      <DropShadowEffect Color="#000000" 
+                        BlurRadius="15" 
+                        ShadowDepth="2" 
+                        Opacity="0.25" 
+                        Direction="270" />
     </Border.Effect>
-    <Border.Resources>
-      <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
-    </Border.Resources>
 
     <Grid>
       <Grid>
         <Grid.RowDefinitions>
-          <RowDefinition Height="60" />
+          <RowDefinition Height="Auto" />
           <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
         <!-- Title Bar -->
-        <Grid Grid.Row="0" MouseLeftButtonDown="TitleBarMouseLeftButtonDown" Background="{StaticResource SidebarBrush}">
+        <Grid Grid.Row="0"
+              Height="{StaticResource TitleBarHeight}"
+              MouseLeftButtonDown="TitleBarMouseLeftButtonDown" 
+              Background="{StaticResource SidebarBrush}">
           <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="Auto" />
           </Grid.ColumnDefinitions>
 
-          <TextBlock Grid.Column="0" Margin="10, 5, 0, 0" Style="{StaticResource TextH1}" Text="Envz" />
+          <TextBlock Grid.Column="0" 
+                     Margin="10 5 0 0" 
+                     Style="{StaticResource TextH1}" 
+                     Text="Envz" />
 
           <Grid Grid.Column="1" VerticalAlignment="Stretch">
             <Grid.ColumnDefinitions>
@@ -87,12 +97,19 @@
               <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Column="0" Style="{StaticResource TitleBarButton}" Click="MinimizeButtonClick">
-              <Image Margin="0, 10, 0, 0" Source="{StaticResource IconUnderscoreBlack}" Width="16" Height="16" />
+            <Button Grid.Column="0" 
+                    Style="{StaticResource TitleBarButton}" 
+                    Click="MinimizeButtonClick">
+              <Image Margin="0, 10, 0, 0" 
+                     Source="{StaticResource IconUnderscoreBlack}" 
+                     Width="16" Height="16" />
             </Button>
 
-            <Button Grid.Column="1" Style="{StaticResource TitleBarButton}" Click="CloseButtonClick">
-              <Image Source="{StaticResource IconCrossBlack}" Width="16" Height="16" />
+            <Button Grid.Column="1" 
+                    Style="{StaticResource TitleBarButton}" 
+                    Click="CloseButtonClick">
+              <Image Source="{StaticResource IconCrossBlack}" 
+                     Width="16" Height="16" />
             </Button>
           </Grid>
         </Grid>
@@ -100,16 +117,27 @@
         <!-- Content -->
         <Grid Grid.Row="1">
           <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="190" />
+            <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="*" />
           </Grid.ColumnDefinitions>
 
           <!-- Sidebar -->
-          <StackPanel Grid.Column="0" Background="{StaticResource SidebarBrush}">
-            <RadioButton Style="{StaticResource NavigationButton}" Content="Home" Command="{Binding ShowHomePageCommand}" IsChecked="True" />
-            <RadioButton Style="{StaticResource NavigationButton}" Content="Environments" Command="{Binding ShowEnvironmentsPageCommand}" />
-            <RadioButton Style="{StaticResource NavigationButton}" Content="Applications" Command="{Binding ShowApplicationsPageCommand}" />
-            <RadioButton Style="{StaticResource NavigationButton}" Content="Settings" Command="{Binding ShowSettingsPageCommand}" />
+          <StackPanel Grid.Column="0" 
+                      Width="{StaticResource SideBarWidth}"
+                      Background="{StaticResource SidebarBrush}">
+            <RadioButton Style="{StaticResource NavigationButton}" 
+                         Content="Home" 
+                         Command="{Binding ShowHomePageCommand}" 
+                         IsChecked="True" />
+            <RadioButton Style="{StaticResource NavigationButton}" 
+                         Content="Environments" 
+                         Command="{Binding ShowEnvironmentsPageCommand}" />
+            <RadioButton Style="{StaticResource NavigationButton}" 
+                         Content="Applications" 
+                         Command="{Binding ShowApplicationsPageCommand}" />
+            <RadioButton Style="{StaticResource NavigationButton}" 
+                         Content="Settings" 
+                         Command="{Binding ShowSettingsPageCommand}" />
           </StackPanel>
 
           <!-- Main content -->
@@ -119,13 +147,18 @@
               <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <controls:Breadcrumb Grid.Row="0" Items="{Binding BreadcrumbItems}" />
-            <ContentControl Grid.Row="1" Content="{Binding CurrentViewModel}" />
+            <controls:Breadcrumb Grid.Row="0" 
+                                 Items="{Binding BreadcrumbItems}" />
+            <ContentControl Grid.Row="1" 
+                            Content="{Binding CurrentViewModel}" />
           </Grid>
         </Grid>
       </Grid>
 
-      <Border Background="#80000000" Panel.ZIndex="10" Visibility="{Binding IsDialogOpen, Converter={StaticResource BooleanToVisibilityConverter}}" />
+      <Border Background="#80000000" 
+              Panel.ZIndex="10" 
+              Visibility="{Binding IsDialogOpen, Converter={StaticResource BoolToVisibilityConverter}}" 
+              d:Visibility="Collapsed" />
     </Grid>
   </Border>
 

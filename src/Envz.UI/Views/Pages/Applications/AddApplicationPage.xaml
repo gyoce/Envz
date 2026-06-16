@@ -27,21 +27,43 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="Auto"/>
           </Grid.ColumnDefinitions>
-          <controls:TextInput Grid.Column="0" Label="Path" Text="{Binding Request.Path}" VerticalAlignment="Top"/>
-          <controls:ButtonText Grid.Column="1" Text="Browse..." Command="{Binding BrowseApplicationCommand}" VerticalAlignment="Bottom" Width="100" Height="{StaticResource TextInputHeight}" Margin="10 0 0 0"/>
+          <controls:TextInput Grid.Column="0" 
+                              Label="Path" 
+                              Text="{Binding Request.Path}" 
+                              VerticalAlignment="Top"/>
+          <controls:ButtonText Grid.Column="1" 
+                               Text="Browse..." 
+                               Command="{Binding BrowseApplicationCommand}" 
+                               VerticalAlignment="Bottom" 
+                               Width="100" 
+                               Height="{StaticResource TextInputHeight}" 
+                               Margin="10 0 0 0"/>
         </Grid>
 
         <!-- Name -->
-        <controls:TextInput Label="Name" Text="{Binding Request.Name}" Margin="0 15 0 0"/>
+        <controls:TextInput Label="Name" 
+                            Text="{Binding Request.Name}" 
+                            Margin="0 15 0 0"/>
 
         <!-- Icon -->
         <StackPanel Orientation="Vertical" Margin="0 20 0 0">
           <TextBlock Text="Icon" Margin="5 0 0 3" Style="{StaticResource TextBody}"/>
           <StackPanel Orientation="Horizontal">
-            <Border Width="64" Height="64" Background="{StaticResource BgSecondaryBrush}" BorderBrush="{StaticResource NeutralBrush}" BorderThickness="1" CornerRadius="4">
-              <Image Source="{Binding ApplicationIcon}" Stretch="Uniform" Width="60" Height="60"/>
+            <Border Width="64" Height="64" 
+                    Background="{StaticResource BgSecondaryBrush}" 
+                    BorderBrush="{StaticResource NeutralBrush}" 
+                    BorderThickness="1" 
+                    CornerRadius="4">
+              <Image Source="{Binding ApplicationIcon}" 
+                     Stretch="Uniform" 
+                     Width="60" Height="60"/>
             </Border>
-            <controls:ButtonText Text="Browse..." Command="{Binding BrowseIconCommand}" VerticalAlignment="Bottom" Width="100" Height="{StaticResource TextInputHeight}" Margin="10 0 0 0"/>
+            <controls:ButtonText Text="Browse..." 
+                                 Command="{Binding BrowseIconCommand}" 
+                                 VerticalAlignment="Bottom" 
+                                 Width="100" 
+                                 Height="{StaticResource TextInputHeight}" 
+                                 Margin="10 0 0 0"/>
           </StackPanel>
         </StackPanel>
 

@@ -36,8 +36,12 @@
       <Image Grid.Column="0" Source="{Binding Icon}" Width="32" Height="32" />
 
       <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="10,0,0,0">
-        <TextBlock Text="{Binding Application.Name, FallbackValue=Application}" Style="{StaticResource TextBody}" />
-        <TextBlock Text="{Binding Application.Path, FallbackValue=C:\\path\\to\\application.exe}" Style="{StaticResource TextCaption}" Foreground="{StaticResource ForegroundMutedBrush}" TextTrimming="CharacterEllipsis" />
+        <TextBlock Text="{Binding Application.Name, FallbackValue=Application}" 
+                   Style="{StaticResource TextBody}" />
+        <TextBlock Text="{Binding Application.Path, FallbackValue=C:\\path\\to\\application.exe}" 
+                   Style="{StaticResource TextCaption}" 
+                   Foreground="{StaticResource ForegroundMutedBrush}" 
+                   TextTrimming="CharacterEllipsis" />
       </StackPanel>
     </Grid>
   </Border>

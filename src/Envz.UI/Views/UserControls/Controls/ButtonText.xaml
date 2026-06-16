@@ -8,8 +8,13 @@
   x:Name="Root"
   Background="Transparent">
 
-  <Button Command="{Binding Command, ElementName=Root}" Style="{Binding ButtonStyle, ElementName=Root, FallbackValue={StaticResource PrimaryButton}}" Click="Button_Click">
-    <TextBlock Text="{Binding Text, ElementName=Root, FallbackValue=Text}" Style="{Binding TextStyle, ElementName=Root, FallbackValue={StaticResource TextBody}}" Foreground="White" VerticalAlignment="Center" />
+  <Button Command="{Binding Command, ElementName=Root}" 
+          Style="{Binding ButtonStyle, ElementName=Root, FallbackValue={StaticResource PrimaryButton}}" 
+          Click="Button_Click">
+    <TextBlock Text="{Binding Text, ElementName=Root, FallbackValue=Text}" 
+               Style="{Binding TextStyle, ElementName=Root, FallbackValue={StaticResource TextBody}}" 
+               Foreground="White" 
+               VerticalAlignment="Center" />
   </Button>
 
 </UserControl>

@@ -43,17 +43,20 @@ public class MainWindowViewModel : ViewModelBase
     public MainWindowViewModel(INavigationService navigationService)
     {
         _navigationService = navigationService;
+
         _navigationService.OnNavigationChanged += OnNavigationChanged;
         ShowHomePageCommand = new RelayCommand(_ => _navigationService.NavigateTo<HomePageViewModel>());
         ShowEnvironmentsPageCommand = new RelayCommand(_ => _navigationService.NavigateTo<EnvironmentsPageViewModel>());
         ShowApplicationsPageCommand = new RelayCommand(_ => _navigationService.NavigateTo<ApplicationsPageViewModel>());
         ShowSettingsPageCommand = new RelayCommand(_ => _navigationService.NavigateTo<SettingsPageViewModel>());
+
         _navigationService.NavigateTo<HomePageViewModel>();
     }
 
     public override void Dispose()
     {
         _navigationService.OnNavigationChanged -= OnNavigationChanged;
+        base.Dispose();
         GC.SuppressFinalize(this);
     }
 

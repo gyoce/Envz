@@ -17,9 +17,16 @@
   Width="{StaticResource AppDialogWidth}"
   Height="{StaticResource AppDialogHeight}">
 
-  <Border Background="{StaticResource BgPrimaryBrush}" BorderBrush="{StaticResource NeutralBrush}" BorderThickness="2" CornerRadius="4">
+  <Border Background="{StaticResource BgPrimaryBrush}" 
+          BorderBrush="{StaticResource NeutralBrush}" 
+          BorderThickness="2" 
+          CornerRadius="4">
     <Border.Effect>
-      <DropShadowEffect Color="#000000" BlurRadius="15" ShadowDepth="2" Opacity="0.25" Direction="270" />
+      <DropShadowEffect Color="#000000" 
+                        BlurRadius="15" 
+                        ShadowDepth="2" 
+                        Opacity="0.25" 
+                        Direction="270" />
     </Border.Effect>
 
     <Grid>
@@ -31,13 +38,19 @@
       </Grid.RowDefinitions>
 
       <!-- Title bar -->
-      <Grid Grid.Row="0" Background="{StaticResource SidebarBrush}" MouseLeftButtonDown="TitleBarMouseLeftButtonDown">
+      <Grid Grid.Row="0" 
+            Background="{StaticResource SidebarBrush}" 
+            MouseLeftButtonDown="TitleBarMouseLeftButtonDown">
         <Grid.ColumnDefinitions>
           <ColumnDefinition Width="*"/>
           <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Column="0" Text="Select an application" Style="{StaticResource TextH2}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Grid.Column="0" 
+                   Text="Select an application" 
+                   Style="{StaticResource TextH2}" 
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Center"/>
         <Grid Grid.Column="1" VerticalAlignment="Stretch">
           <Button Style="{StaticResource TitleBarButton}" Click="CloseButtonClick">
             <Image Source="{StaticResource IconCrossBlack}" Width="16" Height="16" />
@@ -53,11 +66,24 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0" Margin="0 0 0 8">
-          <TextBox Style="{StaticResource TextBoxH4}" Padding="40,5,8,5" Text="{Binding SearchableApplications.SearchText, UpdateSourceTrigger=PropertyChanged}" />
-          <Image Source="{StaticResource IconSearchBlack}" Width="22" Height="22" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 0 0" IsHitTestVisible="False" />
+          <TextBox Style="{StaticResource TextBoxH4}" 
+                   Padding="40 5 8 5" 
+                   Text="{Binding SearchableApplications.SearchText, UpdateSourceTrigger=PropertyChanged}" />
+          <Image Source="{StaticResource IconSearchBlack}" 
+                 Width="22" Height="22" 
+                 HorizontalAlignment="Left" 
+                 VerticalAlignment="Center" 
+                 Margin="10 0 0 0" 
+                 IsHitTestVisible="False" />
         </Grid>
 
-        <ListBox Grid.Row="1" ItemsSource="{Binding SearchableApplications.Items}" SelectedItem="{Binding SelectedApplication}" ItemContainerStyle="{StaticResource ApplicationListBoxItemStyle}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Background="Transparent" BorderThickness="0">
+        <ListBox Grid.Row="1" 
+                 ItemsSource="{Binding SearchableApplications.Items}" 
+                 SelectedItem="{Binding SelectedApplication}" 
+                 ItemContainerStyle="{StaticResource ApplicationListBoxItemStyle}" 
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                 Background="Transparent" 
+                 BorderThickness="0">
           <ListBox.ItemTemplate>
             <DataTemplate>
               <uc:Application DataContext="{Binding}" />
@@ -66,12 +92,29 @@
         </ListBox>
       </Grid>
 
-      <controls:TextInput Grid.Row="2" Margin="20 10" Label="Parameter" Text="{Binding Parameter, UpdateSourceTrigger=PropertyChanged}" />
+      <controls:TextInput Grid.Row="2" 
+                          Margin="20 10" 
+                          Label="Parameter" 
+                          Text="{Binding Parameter, UpdateSourceTrigger=PropertyChanged}" />
 
       <!-- Bottom buttons -->
-      <StackPanel Grid.Row="3" Margin="0 0 0 10" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-        <controls:ButtonText ButtonStyle="{StaticResource SecondaryButton}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Cancel" Command="{Binding CancelCommand}" Width="120" />
-        <controls:ButtonText Margin="10 0 0 0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Select" Command="{Binding SelectApplicationCommand}" Width="120" />
+      <StackPanel Grid.Row="3" 
+                  Margin="0 0 0 10" 
+                  Orientation="Horizontal" 
+                  VerticalAlignment="Center" 
+                  HorizontalAlignment="Center">
+        <controls:ButtonText ButtonStyle="{StaticResource SecondaryButton}" 
+                             HorizontalAlignment="Center" 
+                             VerticalAlignment="Center" 
+                             Text="Cancel" 
+                             Command="{Binding CancelCommand}" 
+                             Width="120" />
+        <controls:ButtonText Margin="10 0 0 0" 
+                             HorizontalAlignment="Center" 
+                             VerticalAlignment="Center" 
+                             Text="Select" 
+                             Command="{Binding SelectApplicationCommand}" 
+                             Width="120" />
       </StackPanel>
     </Grid>
   </Border>

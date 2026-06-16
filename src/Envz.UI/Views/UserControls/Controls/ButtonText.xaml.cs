@@ -18,7 +18,7 @@ public partial class ButtonText : UserControl
     public static readonly DependencyProperty TextStyleProperty =
         DependencyProperty.Register(nameof(TextStyle), typeof(Style), typeof(ButtonText), new PropertyMetadata(System.Windows.Application.Current.FindResource("TextBody")));
 
-    public event RoutedEventHandler Click;
+    public event RoutedEventHandler? Click;
 
     public string Text
     {

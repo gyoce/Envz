@@ -13,7 +13,7 @@ namespace Envz.UI.ViewModels.Pages.Applications;
 public class HomeApplicationsPageViewModel : PageViewModel
 {
     public override string Title => "Home";
-    public override Type? ParentPageType => typeof(ApplicationsPageViewModel);
+    public override Type ParentPageType => typeof(ApplicationsPageViewModel);
 
     public ICommand AddApplicationCommand { get; }
     public SearchableCollection<ApplicationViewModel, Application> SearchableApplications { get; }
@@ -23,8 +23,10 @@ public class HomeApplicationsPageViewModel : PageViewModel
     public HomeApplicationsPageViewModel(INavigationService navigationService, IMediator mediator, ApplicationViewModelFactory applicationViewModelFactory)
     {
         _mediator = mediator;
+
         AddApplicationCommand = new RelayCommand(_ => navigationService.NavigateTo<AddApplicationPageViewModel>());
         SearchableApplications = new SearchableCollection<ApplicationViewModel, Application>(app => app.Name, applicationViewModelFactory.Create);
+        
         LoadApplications();
     }
 

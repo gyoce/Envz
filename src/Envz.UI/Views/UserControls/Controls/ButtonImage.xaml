@@ -8,8 +8,12 @@
   x:Name="Root"
   Background="Transparent">
 
-  <Button Command="{Binding Command, ElementName=Root}" Style="{Binding ButtonStyle, ElementName=Root, FallbackValue={StaticResource PrimaryButton}}">
-    <Image Source="{Binding Source, ElementName=Root, FallbackValue={StaticResource IconAddWhite}}" Width="{Binding ImageWidth, ElementName=Root, FallbackValue=16}" Height="{Binding ImageHeight, ElementName=Root, FallbackValue=16}" Stretch="Uniform" />
+  <Button Command="{Binding Command, ElementName=Root}" 
+          Style="{Binding ButtonStyle, ElementName=Root, FallbackValue={StaticResource PrimaryButton}}">
+    <Image Source="{Binding Source, ElementName=Root, FallbackValue={StaticResource IconAddWhite}}" 
+           Width="{Binding ImageWidth, ElementName=Root, FallbackValue=16}" 
+           Height="{Binding ImageHeight, ElementName=Root, FallbackValue=16}" 
+           Stretch="Uniform" />
   </Button>
 
 </UserControl>

@@ -2,4 +2,4 @@
 
 public interface IRequest;
 
-public interface IRequest<TReturn>;
+public interface IRequest<out TReturn>;

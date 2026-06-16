@@ -12,7 +12,7 @@ namespace Envz.UI.ViewModels.Pages.Environments;
 public class HomeEnvironmentsPageViewModel : PageViewModel
 {
     public override string Title => "Home";
-    public override Type? ParentPageType => typeof(EnvironmentsPageViewModel);
+    public override Type ParentPageType => typeof(EnvironmentsPageViewModel);
 
     public ICommand NavigateToCreateEnvironmentCommand { get; }
     public SearchableCollection<EnvironmentViewModel, Environment> SearchableEnvironments { get; }
@@ -22,8 +22,10 @@ public class HomeEnvironmentsPageViewModel : PageViewModel
     public HomeEnvironmentsPageViewModel(IMediator mediator, EnvironmentViewModelFactory environmentViewModelFactory, INavigationService navigationService)
     {
         _mediator = mediator;
+
         NavigateToCreateEnvironmentCommand = new RelayCommand(_ => navigationService.NavigateTo<CreateEnvironmentPageViewModel>());
         SearchableEnvironments = new SearchableCollection<EnvironmentViewModel, Environment>(env => env.Name, environmentViewModelFactory.Create);
+        
         LoadEnvironments();
     }
 

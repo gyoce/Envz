@@ -9,11 +9,15 @@
   <sys:Double x:Key="AppDialogWidth">960</sys:Double>
   <sys:Double x:Key="AppDialogHeight">425</sys:Double>
 
-  <sys:Double x:Key="PageWidth">1090</sys:Double>
-  <sys:Double x:Key="PageHeight">480</sys:Double>
+  <sys:Double x:Key="PageWidth">1090</sys:Double> <!-- PageWidth = AppWidth - SideBarWidth -->
+  <sys:Double x:Key="PageHeight">490</sys:Double> <!-- PageHeight = AppHeight - TitleBarHeight -->
 
-  <sys:Double x:Key="SubPageWidth">1090</sys:Double>
-  <sys:Double x:Key="SubPageHeight">440</sys:Double>
+  <sys:Double x:Key="SubPageWidth">1090</sys:Double> <!-- SubPageWidth = PageWidth -->
+  <sys:Double x:Key="SubPageHeight">450</sys:Double> <!-- SubPageHeight = PageHeight - BreadcrumbHeight -->
+
+  <sys:Double x:Key="TitleBarHeight">50</sys:Double>
+
+  <sys:Double x:Key="SideBarWidth">190</sys:Double>
 
   <sys:Double x:Key="BreadcrumbHeight">40</sys:Double>
   <sys:Double x:Key="BreadcrumbWidth">1090</sys:Double>

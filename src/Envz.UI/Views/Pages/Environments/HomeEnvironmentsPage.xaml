@@ -26,10 +26,23 @@
           <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
 
-        <TextBox x:Name="SearchTextBox" Grid.Column="0" Style="{StaticResource TextBoxH4}" Padding="40,5,8,5" Text="{Binding SearchableEnvironments.SearchText, UpdateSourceTrigger=PropertyChanged}" />
-        <Image Grid.Column="0" Source="{StaticResource IconSearchBlack}" Width="25" Height="25" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 0 0" IsHitTestVisible="False" />
-
-        <controls:ButtonImage Grid.Column="1" Source="{StaticResource IconAddWhite}" Command="{Binding NavigateToCreateEnvironmentCommand}" ImageWidth="20" ImageHeight="20" Margin="10 0 0 0" />
+        <TextBox x:Name="SearchTextBox" 
+                 Grid.Column="0" 
+                 Style="{StaticResource TextBoxH4}" 
+                 Padding="40 5 8 5" 
+                 Text="{Binding SearchableEnvironments.SearchText, UpdateSourceTrigger=PropertyChanged}" />
+        <Image Grid.Column="0" 
+               Source="{StaticResource IconSearchBlack}" 
+               Width="25" Height="25" 
+               HorizontalAlignment="Left" 
+               VerticalAlignment="Center" 
+               Margin="10 0 0 0" 
+               IsHitTestVisible="False" />
+        <controls:ButtonImage Grid.Column="1" 
+                              Source="{StaticResource IconAddWhite}" 
+                              Command="{Binding NavigateToCreateEnvironmentCommand}" 
+                              ImageWidth="20" ImageHeight="20" 
+                              Margin="10 0 0 0" />
       </Grid>
 
       <!-- Environments list -->

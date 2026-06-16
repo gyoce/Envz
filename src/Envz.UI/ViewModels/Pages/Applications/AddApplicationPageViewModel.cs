@@ -9,14 +9,12 @@ using Envz.UI.Services.Dialogs;
 using Envz.UI.Services.Navigation;
 using Envz.UI.Utils;
 
-using Microsoft.Extensions.DependencyInjection;
-
 namespace Envz.UI.ViewModels.Pages.Applications;
 
 public class AddApplicationPageViewModel : PageViewModel
 {
     public override string Title => "Add application";
-    public override Type? ParentPageType => typeof(ApplicationsPageViewModel);
+    public override Type ParentPageType => typeof(ApplicationsPageViewModel);
     public ICommand BrowseApplicationCommand { get; }
     public ICommand BrowseIconCommand { get; }
     public ICommand AddApplicationCommand { get; }

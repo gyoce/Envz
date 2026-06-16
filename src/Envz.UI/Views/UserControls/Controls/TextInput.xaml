@@ -16,10 +16,16 @@
     </Grid.RowDefinitions>
 
     <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="5 0 0 3">
-      <TextBlock Style="{StaticResource TextBody}" Text="{Binding Label, ElementName=Root, FallbackValue=Label}" />
-      <TextBlock Style="{StaticResource TextBody}" Text="{Binding ErrorMessage, ElementName=Root, FallbackValue=Error message}" Margin="10 0 0 0" Foreground="Red" />
+      <TextBlock Style="{StaticResource TextBody}" 
+                 Text="{Binding Label, ElementName=Root, FallbackValue=Label}" />
+      <TextBlock Style="{StaticResource TextBody}" 
+                 Text="{Binding ErrorMessage, ElementName=Root, FallbackValue=Error message}" 
+                 Margin="10 0 0 0" 
+                 Foreground="Red" />
     </StackPanel>
-    <TextBox Grid.Row="1" Style="{StaticResource TextBoxBody}" Text="{Binding Text, ElementName=Root, UpdateSourceTrigger=PropertyChanged, FallbackValue=Text input}" />
+    <TextBox Grid.Row="1" 
+             Style="{StaticResource TextBoxBody}" 
+             Text="{Binding Text, ElementName=Root, UpdateSourceTrigger=PropertyChanged, FallbackValue=Text input}" />
   </Grid>
 
 </UserControl>
