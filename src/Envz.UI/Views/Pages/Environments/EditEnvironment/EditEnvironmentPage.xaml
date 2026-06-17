@@ -1,0 +1,24 @@
+﻿<UserControl 
+  x:Class="Envz.UI.Views.Pages.Environments.EditEnvironment.EditEnvironmentPage" 
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:ctrls="clr-namespace:Envz.UI.Views.UserControls.Controls"
+  xmlns:ee="clr-namespace:Envz.UI.Views.Pages.Environments.EditEnvironment"
+  mc:Ignorable="d"
+  d:DataContext="{d:DesignInstance Type=ee:EditEnvironmentPageViewModel}"
+  Width="{StaticResource SubPageWidth}" 
+  Height="{StaticResource SubPageHeight}">
+
+  <Border Background="{StaticResource BgPrimaryBrush}">
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="*" />
+      </Grid.RowDefinitions>
+
+      <ctrls:ButtonText Grid.Row="0" Text="Return" Margin="10 0 0 0" HorizontalAlignment="Center" VerticalAlignment="Center" />
+    </Grid>
+  </Border>
+
+</UserControl>

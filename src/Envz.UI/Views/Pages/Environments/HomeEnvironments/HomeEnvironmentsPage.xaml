@@ -1,0 +1,66 @@
+﻿<UserControl 
+  x:Class="Envz.UI.Views.Pages.Environments.HomeEnvironments.HomeEnvironmentsPage" 
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+  xmlns:ctrls="clr-namespace:Envz.UI.Views.UserControls.Controls"
+  xmlns:ei="clr-namespace:Envz.UI.Views.UserControls.EnvironmentItem"
+  xmlns:he="clr-namespace:Envz.UI.Views.Pages.Environments.HomeEnvironments"
+  mc:Ignorable="d" 
+  d:DataContext="{d:DesignInstance Type=he:HomeEnvironmentsPageViewModel}"
+  Width="{StaticResource SubPageWidth}" 
+  Height="{StaticResource SubPageHeight}">
+
+  <Border Background="{StaticResource BgPrimaryBrush}">
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="*" />
+      </Grid.RowDefinitions>
+
+      <!-- Search bar -->
+      <Grid Grid.Row="0" Margin="30 10">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <TextBox x:Name="SearchTextBox" 
+                 Grid.Column="0" 
+                 Style="{StaticResource TextBoxH4}" 
+                 Padding="40 5 8 5" 
+                 Text="{Binding SearchableEnvironments.SearchText, UpdateSourceTrigger=PropertyChanged}" />
+        <Image Grid.Column="0" 
+               Source="{StaticResource IconSearchBlack}" 
+               Width="25" Height="25" 
+               HorizontalAlignment="Left" 
+               VerticalAlignment="Center" 
+               Margin="10 0 0 0" 
+               IsHitTestVisible="False" />
+        <ctrls:ButtonImage Grid.Column="1" 
+                              Source="{StaticResource IconAddWhite}" 
+                              Command="{Binding NavigateToCreateEnvironmentCommand}" 
+                              ImageWidth="20" ImageHeight="20" 
+                              Margin="10 0 0 0" />
+      </Grid>
+
+      <!-- Environments list -->
+      <ScrollViewer Grid.Row="1" Style="{StaticResource PrimaryScrollViewer}" Margin="30 0">
+        <ItemsControl ItemsSource="{Binding SearchableEnvironments.Items}">
+          <ItemsControl.ItemsPanel>
+            <ItemsPanelTemplate>
+              <WrapPanel Orientation="Horizontal" Margin="-10 0" />
+            </ItemsPanelTemplate>
+          </ItemsControl.ItemsPanel>
+          <ItemsControl.ItemTemplate>
+            <DataTemplate>
+              <ei:EnvironmentItem DataContext="{Binding}" Margin="10" />
+            </DataTemplate>
+          </ItemsControl.ItemTemplate>
+        </ItemsControl>
+      </ScrollViewer>
+    </Grid>
+  </Border>
+
+</UserControl>

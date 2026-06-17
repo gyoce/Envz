@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 
-using Envz.UI.ViewModels;
-using Envz.UI.ViewModels.Dialogs;
+using Envz.UI.Views;
+using Envz.UI.Views.Dialogs;
 
 using Microsoft.Extensions.DependencyInjection;
 
@@ -29,7 +29,7 @@ public class DialogService(IServiceProvider serviceProvider) : IDialogService
             window.Close();
         };
 
-        MainWindowViewModel? mainVm = Application.Current.MainWindow?.DataContext as MainWindowViewModel;
+        MainWindowViewModel? mainVm = System.Windows.Application.Current.MainWindow?.DataContext as MainWindowViewModel;
         mainVm?.IsDialogOpen = true;
         bool? ok = window.ShowDialog();
         mainVm?.IsDialogOpen = false;
@@ -41,7 +41,7 @@ public class DialogService(IServiceProvider serviceProvider) : IDialogService
     {
         TDialog windowDialog = serviceProvider.GetRequiredService<TDialog>();
         windowDialog.DataContext = viewModel;
-        windowDialog.Owner = Application.Current.MainWindow;
+        windowDialog.Owner = System.Windows.Application.Current.MainWindow;
         return windowDialog;
     }
 }

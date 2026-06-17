@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-using Envz.UI.ViewModels.Pages;
+using Envz.UI.Views.Pages;
 
 using Microsoft.Extensions.DependencyInjection;
 

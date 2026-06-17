@@ -1,15 +1,18 @@
 ﻿using Envz.UI.Services;
 using Envz.UI.Services.Dialogs;
 using Envz.UI.Services.Navigation;
-using Envz.UI.ViewModels;
-using Envz.UI.ViewModels.Dialogs;
-using Envz.UI.ViewModels.Pages.Applications;
-using Envz.UI.ViewModels.Pages.Environments;
-using Envz.UI.ViewModels.Pages.Home;
-using Envz.UI.ViewModels.Pages.Settings;
-using Envz.UI.ViewModels.UserControls;
 using Envz.UI.Views;
-using Envz.UI.Views.Dialogs;
+using Envz.UI.Views.Pages.Applications;
+using Envz.UI.Views.Pages.Applications.AddApplication;
+using Envz.UI.Views.Pages.Applications.HomeApplications;
+using Envz.UI.Views.Pages.Environments;
+using Envz.UI.Views.Pages.Environments.CreateEnvironment;
+using Envz.UI.Views.Pages.Environments.EditEnvironment;
+using Envz.UI.Views.Pages.Environments.HomeEnvironments;
+using Envz.UI.Views.Pages.Environments.SelectApplication;
+using Envz.UI.Views.Pages.Home;
+using Envz.UI.Views.Pages.Settings;
+using Envz.UI.Views.UserControls.EnvironmentItem;
 
 using Microsoft.Extensions.DependencyInjection;
 
@@ -24,15 +27,12 @@ public static class DependencyInjection
         services.AddSingleton<IFileDialogService, FileDialogService>();
         services.AddSingleton<IIconExtractor, IconExtractor>();
 
-        services.AddSingleton<EnvironmentViewModelFactory>();
-        services.AddSingleton<ApplicationViewModelFactory>();
+        services.AddSingleton<EnvironmentViewItemModelFactory>();
+        services.AddSingleton<ApplicationItemViewModelFactory>();
         services.AddSingleton<EnvironmentApplicationViewModelFactory>();
 
         services.AddSingleton<MainWindow>();
         services.AddSingleton<MainWindowViewModel>();
-
-        services.AddTransient<SelectApplicationDialog>();
-        services.AddTransient<SelectApplicationDialogViewModel>();
 
         services.AddSingleton<HomePageViewModel>();
 
@@ -40,7 +40,8 @@ public static class DependencyInjection
         services.AddSingleton<HomeEnvironmentsPageViewModel>();
         services.AddSingleton<CreateEnvironmentPageViewModel>();
         services.AddSingleton<EditEnvironmentPageViewModel>();
-        services.AddTransient<EnvironmentViewModel>();
+        services.AddSingleton<SelectApplicationPageViewModel>();
+        services.AddTransient<EnvironmentItemViewModel>();
 
         services.AddSingleton<ApplicationsPageViewModel>();
         services.AddSingleton<HomeApplicationsPageViewModel>();

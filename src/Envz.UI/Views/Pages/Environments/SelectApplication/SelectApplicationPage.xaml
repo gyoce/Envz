@@ -1,0 +1,78 @@
+﻿<UserControl 
+  x:Class="Envz.UI.Views.Pages.Environments.SelectApplication.SelectApplicationPage"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+  xmlns:ctrls="clr-namespace:Envz.UI.Views.UserControls.Controls"
+  xmlns:ai="clr-namespace:Envz.UI.Views.UserControls.ApplicationItem"
+  xmlns:sa="clr-namespace:Envz.UI.Views.Pages.Environments.SelectApplication"
+  mc:Ignorable="d" 
+  d:DataContext="{d:DesignInstance Type=sa:SelectApplicationPageViewModel}"
+  Width="{StaticResource SubPageWidth}" 
+  Height="{StaticResource SubPageHeight}">
+
+  <Border Background="{StaticResource BgPrimaryBrush}">
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="*" />
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+
+      <!-- Applications List -->
+      <Grid Grid.Row="0" Margin="20 10">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Margin="0 0 0 8">
+          <TextBox Style="{StaticResource TextBoxH4}" 
+                 Padding="40 5 8 5" 
+                 Text="{Binding SearchableApplications.SearchText, UpdateSourceTrigger=PropertyChanged}" />
+          <Image Source="{StaticResource IconSearchBlack}" 
+               Width="22" Height="22" 
+               HorizontalAlignment="Left" 
+               VerticalAlignment="Center" 
+               Margin="10 0 0 0" 
+               IsHitTestVisible="False" />
+        </Grid>
+
+        <ListBox Grid.Row="1" 
+               ItemsSource="{Binding SearchableApplications.Items}" 
+               SelectedItem="{Binding SelectedApplication}" 
+               ItemContainerStyle="{StaticResource ApplicationListBoxItemStyle}" 
+               ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+               Background="Transparent" 
+               BorderThickness="0">
+          <ListBox.ItemTemplate>
+            <DataTemplate>
+              <ai:ApplicationItem DataContext="{Binding}" />
+            </DataTemplate>
+          </ListBox.ItemTemplate>
+        </ListBox>
+      </Grid>
+
+      <!-- Bottom buttons -->
+      <StackPanel Grid.Row="1" 
+                Margin="0 0 0 10" 
+                Orientation="Horizontal" 
+                VerticalAlignment="Center" 
+                HorizontalAlignment="Center">
+        <ctrls:ButtonText ButtonStyle="{StaticResource SecondaryButton}" 
+                           HorizontalAlignment="Center" 
+                           VerticalAlignment="Center" 
+                           Text="Cancel" 
+                           Command="{Binding CancelCommand}" 
+                           Width="120" />
+        <ctrls:ButtonText Margin="10 0 0 0" 
+                           HorizontalAlignment="Center" 
+                           VerticalAlignment="Center" 
+                           Text="Select" 
+                           Command="{Binding SelectApplicationCommand}" 
+                           Width="120" />
+      </StackPanel>
+    </Grid>
+  </Border>
+
+</UserControl>

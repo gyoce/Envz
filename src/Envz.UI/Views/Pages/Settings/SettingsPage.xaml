@@ -4,9 +4,9 @@
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-  xmlns:vm="clr-namespace:Envz.UI.ViewModels.Pages.Settings"
+  xmlns:settings="clr-namespace:Envz.UI.Views.Pages.Settings"
   mc:Ignorable="d" 
-  d:DataContext="{d:DesignInstance Type=vm:SettingsPageViewModel}"
+  d:DataContext="{d:DesignInstance Type=settings:SettingsPageViewModel}"
   Width="{StaticResource PageWidth}" 
   Height="{StaticResource PageHeight}">
 

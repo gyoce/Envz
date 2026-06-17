@@ -1,8 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Input;
 
-using Envz.UI.ViewModels;
-
 namespace Envz.UI.Views;
 
 public partial class MainWindow : Window

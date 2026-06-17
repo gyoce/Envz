@@ -4,18 +4,18 @@
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-  xmlns:vEnvironments="clr-namespace:Envz.UI.Views.Pages.Environments" 
-  xmlns:vmEnvironments="clr-namespace:Envz.UI.ViewModels.Pages.Environments" 
-  xmlns:vApplications="clr-namespace:Envz.UI.Views.Pages.Applications" 
-  xmlns:vmApplications="clr-namespace:Envz.UI.ViewModels.Pages.Applications"
-  xmlns:vHome="clr-namespace:Envz.UI.Views.Pages.Home"
-  xmlns:vmHome="clr-namespace:Envz.UI.ViewModels.Pages.Home"
-  xmlns:vSettings="clr-namespace:Envz.UI.Views.Pages.Settings"
-  xmlns:vmSettings="clr-namespace:Envz.UI.ViewModels.Pages.Settings"
-  xmlns:vm="clr-namespace:Envz.UI.ViewModels"
-  xmlns:controls="clr-namespace:Envz.UI.Views.UserControls.Controls"
+  xmlns:home="clr-namespace:Envz.UI.Views.Pages.Home"
+  xmlns:settings="clr-namespace:Envz.UI.Views.Pages.Settings"
+  xmlns:breadcrumb="clr-namespace:Envz.UI.Views.UserControls.Breadcrumb"
+  xmlns:homeApplications="clr-namespace:Envz.UI.Views.Pages.Applications.HomeApplications"
+  xmlns:homeEnvironments="clr-namespace:Envz.UI.Views.Pages.Environments.HomeEnvironments"
+  xmlns:editEnvironment="clr-namespace:Envz.UI.Views.Pages.Environments.EditEnvironment"
+  xmlns:createEnvironment="clr-namespace:Envz.UI.Views.Pages.Environments.CreateEnvironment"
+  xmlns:addApplication="clr-namespace:Envz.UI.Views.Pages.Applications.AddApplication"
+  xmlns:views="clr-namespace:Envz.UI.Views"
+  xmlns:selectApplication="clr-namespace:Envz.UI.Views.Pages.Environments.SelectApplication"
   mc:Ignorable="d" 
-  d:DataContext="{d:DesignInstance Type=vm:MainWindowViewModel}"
+  d:DataContext="{d:DesignInstance Type=views:MainWindowViewModel}"
   Title="MainWindow" 
   Width="{StaticResource AppWidth}" 
   Height="{StaticResource AppHeight}" 
@@ -26,33 +26,43 @@
   WindowStartupLocation="CenterScreen">
 
   <Window.Resources>
-    <vHome:HomePage x:Key="HomePageInstance" />
-    <vEnvironments:HomeEnvironmentsPage x:Key="HomeEnvironmentsPageInstance" />
-    <vEnvironments:CreateEnvironmentPage x:Key="CreateEnvironmentPageInstance" />
-    <vEnvironments:EditEnvironmentPage x:Key="EditEnvironmentPageInstance" />
-    <vApplications:HomeApplicationsPage x:Key="HomeApplicationsPageInstance" />
-    <vApplications:AddApplicationPage x:Key="AddApplicationPageInstance" />
-    <vSettings:SettingsPage x:Key="SettingsPageInstance" />
+    <home:HomePage x:Key="HomePageInstance" />
 
-    <DataTemplate DataType="{x:Type vmHome:HomePageViewModel}">
+    <homeEnvironments:HomeEnvironmentsPage x:Key="HomeEnvironmentsPageInstance" />
+    <createEnvironment:CreateEnvironmentPage x:Key="CreateEnvironmentPageInstance" />
+    <editEnvironment:EditEnvironmentPage x:Key="EditEnvironmentPageInstance" />
+    <selectApplication:SelectApplicationPage x:Key="SelectApplicationPageInstance" />
+
+    <homeApplications:HomeApplicationsPage x:Key="HomeApplicationsPageInstance" />
+    <addApplication:AddApplicationPage x:Key="AddApplicationPageInstance" />
+
+    <settings:SettingsPage x:Key="SettingsPageInstance" />
+
+    <DataTemplate DataType="{x:Type home:HomePageViewModel}">
       <ContentPresenter Content="{StaticResource HomePageInstance}" />
     </DataTemplate>
-    <DataTemplate DataType="{x:Type vmEnvironments:HomeEnvironmentsPageViewModel}">
+
+    <DataTemplate DataType="{x:Type homeEnvironments:HomeEnvironmentsPageViewModel}">
       <ContentPresenter Content="{StaticResource HomeEnvironmentsPageInstance}" />
     </DataTemplate>
-    <DataTemplate DataType="{x:Type vmEnvironments:EditEnvironmentPageViewModel}">
+    <DataTemplate DataType="{x:Type editEnvironment:EditEnvironmentPageViewModel}">
       <ContentPresenter Content="{StaticResource EditEnvironmentPageInstance}" />
     </DataTemplate>
-    <DataTemplate DataType="{x:Type vmEnvironments:CreateEnvironmentPageViewModel}">
+    <DataTemplate DataType="{x:Type createEnvironment:CreateEnvironmentPageViewModel}">
       <ContentPresenter Content="{StaticResource CreateEnvironmentPageInstance}" />
     </DataTemplate>
-    <DataTemplate DataType="{x:Type vmApplications:HomeApplicationsPageViewModel}">
+    <DataTemplate DataType="{x:Type selectApplication:SelectApplicationPageViewModel}">
+      <ContentPresenter Content="{StaticResource SelectApplicationPageInstance}" />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type homeApplications:HomeApplicationsPageViewModel}">
       <ContentPresenter Content="{StaticResource HomeApplicationsPageInstance}" />
     </DataTemplate>
-    <DataTemplate DataType="{x:Type vmApplications:AddApplicationPageViewModel}">
+    <DataTemplate DataType="{x:Type addApplication:AddApplicationPageViewModel}">
       <ContentPresenter Content="{StaticResource AddApplicationPageInstance}" />
     </DataTemplate>
-    <DataTemplate DataType="{x:Type vmSettings:SettingsPageViewModel}">
+
+    <DataTemplate DataType="{x:Type settings:SettingsPageViewModel}">
       <ContentPresenter Content="{StaticResource SettingsPageInstance}" />
     </DataTemplate>
   </Window.Resources>
@@ -147,7 +157,7 @@
               <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <controls:Breadcrumb Grid.Row="0" 
+            <breadcrumb:Breadcrumb Grid.Row="0" 
                                  Items="{Binding BreadcrumbItems}" />
             <ContentControl Grid.Row="1" 
                             Content="{Binding CurrentViewModel}" />
