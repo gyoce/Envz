@@ -28,15 +28,11 @@ public class CreateEnvironmentPageViewModel : PageViewModel
 
     private readonly IMediator _mediator;
     private readonly INavigationService _navigationService;
-    private readonly IDialogService _dialogService;
-    private readonly EnvironmentApplicationViewModelFactory _environmentApplicationViewModelFactory;
 
-    public CreateEnvironmentPageViewModel(IMediator mediator, INavigationService navigationService, IDialogService dialogService, EnvironmentApplicationViewModelFactory environmentApplicationViewModelFactory)
+    public CreateEnvironmentPageViewModel(IMediator mediator, INavigationService navigationService, IDialogService dialogService)
     {
         _mediator = mediator;
         _navigationService = navigationService;
-        _dialogService = dialogService;
-        _environmentApplicationViewModelFactory = environmentApplicationViewModelFactory;
 
         CreateEnvironmentCommand = new RelayCommand(_ => CreateEnvironment(), _ => CanCreateEnvironment());
         CancelCreateEnvironmentCommand = new RelayCommand(_ => navigationService.NavigateTo<HomeEnvironmentsPageViewModel>());

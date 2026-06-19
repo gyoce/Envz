@@ -26,10 +26,7 @@ public static class DependencyInjection
         services.AddSingleton<IDialogService, DialogService>();
         services.AddSingleton<IFileDialogService, FileDialogService>();
         services.AddSingleton<IIconExtractor, IconExtractor>();
-
-        services.AddSingleton<EnvironmentViewItemModelFactory>();
-        services.AddSingleton<ApplicationItemViewModelFactory>();
-        services.AddSingleton<EnvironmentApplicationViewModelFactory>();
+        services.AddSingleton<ViewModelFactory>();
 
         services.AddSingleton<MainWindow>();
         services.AddSingleton<MainWindowViewModel>();

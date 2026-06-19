@@ -27,9 +27,10 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0" Margin="0 0 0 8">
-          <TextBox Style="{StaticResource TextBoxH4}" 
-                 Padding="40 5 8 5" 
-                 Text="{Binding SearchableApplications.SearchText, UpdateSourceTrigger=PropertyChanged}" />
+          <TextBox x:Name="SearchApplicationTextBox"
+                   Style="{StaticResource TextBoxH4}" 
+                   Padding="40 5 8 5" 
+                   Text="{Binding SearchableApplications.SearchText, UpdateSourceTrigger=PropertyChanged}" />
           <Image Source="{StaticResource IconSearchBlack}" 
                Width="22" Height="22" 
                HorizontalAlignment="Left" 
@@ -55,22 +56,17 @@
 
       <!-- Bottom buttons -->
       <StackPanel Grid.Row="1" 
-                Margin="0 0 0 10" 
-                Orientation="Horizontal" 
-                VerticalAlignment="Center" 
-                HorizontalAlignment="Center">
-        <ctrls:ButtonText ButtonStyle="{StaticResource SecondaryButton}" 
-                           HorizontalAlignment="Center" 
-                           VerticalAlignment="Center" 
-                           Text="Cancel" 
-                           Command="{Binding CancelCommand}" 
-                           Width="120" />
-        <ctrls:ButtonText Margin="10 0 0 0" 
-                           HorizontalAlignment="Center" 
-                           VerticalAlignment="Center" 
-                           Text="Select" 
-                           Command="{Binding SelectApplicationCommand}" 
-                           Width="120" />
+                  Orientation="Horizontal" 
+                  HorizontalAlignment="Center" 
+                  Margin="0 0 0 20">
+        <ctrls:ButtonText Text="Cancel" 
+                          ButtonStyle="{StaticResource SecondaryButton}" 
+                          Command="{Binding CancelCommand}" 
+                          Width="150" Height="35" 
+                          Margin="0 0 20 0" />
+        <ctrls:ButtonText Text="Create" 
+                          Command="{Binding SelectApplicationCommand}" 
+                          Width="150" Height="35" />
       </StackPanel>
     </Grid>
   </Border>

@@ -20,12 +20,15 @@ public class HomeApplicationsPageViewModel : PageViewModel
 
     private readonly IMediator _mediator;
 
-    public HomeApplicationsPageViewModel(INavigationService navigationService, IMediator mediator, ApplicationItemViewModelFactory applicationItemViewModelFactory)
+    public HomeApplicationsPageViewModel(INavigationService navigationService, IMediator mediator, ViewModelFactory viewModelFactory)
     {
         _mediator = mediator;
 
         AddApplicationCommand = new RelayCommand(_ => navigationService.NavigateTo<AddApplicationPageViewModel>());
-        SearchableApplications = new SearchableCollection<ApplicationItemViewModel, Application>(app => app.Name, applicationItemViewModelFactory.Create);
+        SearchableApplications = new SearchableCollection<ApplicationItemViewModel, Application>(
+            app => app.Name, 
+            app => viewModelFactory.Create<ApplicationItemViewModel>(app)
+        );
 
         LoadApplications();
     }

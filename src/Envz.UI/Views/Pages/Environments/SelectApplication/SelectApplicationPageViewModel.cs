@@ -29,11 +29,14 @@ public class SelectApplicationPageViewModel : PageViewModel
 
     private readonly IMediator _mediator;
 
-    public SelectApplicationPageViewModel(IMediator mediator, ApplicationItemViewModelFactory applicationViewModelFactory, INavigationService navigationService)
+    public SelectApplicationPageViewModel(IMediator mediator, ViewModelFactory viewModelFactory, INavigationService navigationService)
     {
         _mediator = mediator;
 
-        SearchableApplications = new SearchableCollection<ApplicationItemViewModel, Application>(app => app.Name, applicationViewModelFactory.Create)
+        SearchableApplications = new SearchableCollection<ApplicationItemViewModel, Application>(
+            app => app.Name, 
+            app => viewModelFactory.Create<ApplicationItemViewModel>(app)
+        )
         {
             UnfilteredItems = _mediator.Send(new GetApplicationsRequest())
         };

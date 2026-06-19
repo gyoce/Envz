@@ -20,12 +20,15 @@ public class HomeEnvironmentsPageViewModel : PageViewModel
 
     private readonly IMediator _mediator;
 
-    public HomeEnvironmentsPageViewModel(IMediator mediator, EnvironmentViewItemModelFactory environmentViewModelFactory, INavigationService navigationService)
+    public HomeEnvironmentsPageViewModel(IMediator mediator, ViewModelFactory viewModelFactory, INavigationService navigationService)
     {
         _mediator = mediator;
 
         NavigateToCreateEnvironmentCommand = new RelayCommand(_ => navigationService.NavigateTo<CreateEnvironmentPageViewModel>());
-        SearchableEnvironments = new SearchableCollection<EnvironmentItemViewModel, Environment>(env => env.Name, environmentViewModelFactory.Create);
+        SearchableEnvironments = new SearchableCollection<EnvironmentItemViewModel, Environment>(
+            env => env.Name, 
+            env => viewModelFactory.Create<EnvironmentItemViewModel>(env)
+        );
 
         LoadEnvironments();
     }
