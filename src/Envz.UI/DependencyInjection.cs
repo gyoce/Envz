@@ -1,6 +1,6 @@
-﻿using Envz.UI.Services;
+﻿using Envz.Common.Services.Navigation;
+using Envz.UI.Services;
 using Envz.UI.Services.Dialogs;
-using Envz.UI.Services.Navigation;
 using Envz.UI.Views;
 using Envz.UI.Views.Pages.Applications;
 using Envz.UI.Views.Pages.Applications.AddApplication;
@@ -33,14 +33,12 @@ public static class DependencyInjection
 
         services.AddSingleton<HomePageViewModel>();
 
-        services.AddSingleton<EnvironmentsPageViewModel>();
         services.AddSingleton<HomeEnvironmentsPageViewModel>();
         services.AddSingleton<CreateEnvironmentPageViewModel>();
         services.AddSingleton<EditEnvironmentPageViewModel>();
         services.AddSingleton<SelectApplicationPageViewModel>();
         services.AddTransient<EnvironmentItemViewModel>();
-
-        services.AddSingleton<ApplicationsPageViewModel>();
+        
         services.AddSingleton<HomeApplicationsPageViewModel>();
         services.AddSingleton<AddApplicationPageViewModel>();
 

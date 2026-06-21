@@ -1,9 +1,8 @@
 ﻿using System.Windows.Input;
-
+using Envz.Common.Services.Navigation;
 using Envz.Functional.Applications;
 using Envz.Functional.Mediator;
 using Envz.UI.Services;
-using Envz.UI.Services.Navigation;
 using Envz.UI.Utils;
 using Envz.UI.Views.Pages.Environments.CreateEnvironment;
 using Envz.UI.Views.UserControls.ApplicationItem;
@@ -12,8 +11,10 @@ namespace Envz.UI.Views.Pages.Environments.SelectApplication;
 
 public class SelectApplicationPageViewModel : PageViewModel
 {
+    public override ENavigationCategory Category => ENavigationCategory.Environments;
     public override string Title => "Select application";
-    public override Type ParentPageType => typeof(CreateEnvironmentPageViewModel);
+    public override int Level => 2;
+
     public ICommand SelectApplicationCommand { get; }
     public ICommand CancelCommand { get; }
     public SearchableCollection<ApplicationItemViewModel, Application> SearchableApplications { get; }

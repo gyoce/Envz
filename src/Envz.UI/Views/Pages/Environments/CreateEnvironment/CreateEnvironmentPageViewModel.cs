@@ -1,12 +1,10 @@
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Windows.Input;
-
+using Envz.Common.Services.Navigation;
 using Envz.Functional.Environments;
 using Envz.Functional.Mediator;
-using Envz.UI.Services;
 using Envz.UI.Services.Dialogs;
-using Envz.UI.Services.Navigation;
 using Envz.UI.Utils;
 using Envz.UI.Views.Pages.Environments.HomeEnvironments;
 using Envz.UI.Views.Pages.Environments.SelectApplication;
@@ -16,8 +14,8 @@ namespace Envz.UI.Views.Pages.Environments.CreateEnvironment;
 
 public class CreateEnvironmentPageViewModel : PageViewModel
 {
+    public override ENavigationCategory Category => ENavigationCategory.Environments;
     public override string Title => "Create environment";
-    public override Type ParentPageType => typeof(EnvironmentsPageViewModel);
 
     public ICommand CancelCreateEnvironmentCommand { get; }
     public ICommand CreateEnvironmentCommand { get; }

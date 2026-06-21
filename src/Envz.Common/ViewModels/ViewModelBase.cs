@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace Envz.UI.Views;
+namespace Envz.Common.ViewModels;
 
 public abstract class ViewModelBase : INotifyPropertyChanged, IDisposable
 {

@@ -1,7 +1,8 @@
-﻿namespace Envz.UI.Views.Pages.Home;
+﻿using Envz.Common.Services.Navigation;
+
+namespace Envz.UI.Views.Pages.Home;
 
 public class HomePageViewModel : PageViewModel
 {
-    public override string Title => "Home";
-    public override Type? ParentPageType => null;
+    public override ENavigationCategory Category => ENavigationCategory.Home;
 }

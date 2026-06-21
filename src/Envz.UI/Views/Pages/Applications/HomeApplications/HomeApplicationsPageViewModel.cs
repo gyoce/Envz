@@ -1,9 +1,8 @@
 ﻿using System.Windows.Input;
-
+using Envz.Common.Services.Navigation;
 using Envz.Functional.Applications;
 using Envz.Functional.Mediator;
 using Envz.UI.Services;
-using Envz.UI.Services.Navigation;
 using Envz.UI.Utils;
 using Envz.UI.Views.Pages.Applications.AddApplication;
 using Envz.UI.Views.UserControls.ApplicationItem;
@@ -12,8 +11,8 @@ namespace Envz.UI.Views.Pages.Applications.HomeApplications;
 
 public class HomeApplicationsPageViewModel : PageViewModel
 {
+    public override ENavigationCategory Category => ENavigationCategory.Applications;
     public override string Title => "Home";
-    public override Type ParentPageType => typeof(ApplicationsPageViewModel);
 
     public ICommand AddApplicationCommand { get; }
     public SearchableCollection<ApplicationItemViewModel, Application> SearchableApplications { get; }

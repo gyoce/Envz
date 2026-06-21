@@ -1,8 +1,10 @@
-﻿namespace Envz.UI.Views.Pages.Environments.EditEnvironment;
+﻿using Envz.Common.Services.Navigation;
+
+namespace Envz.UI.Views.Pages.Environments.EditEnvironment;
 
 public class EditEnvironmentPageViewModel : PageViewModel
 {
+    public override ENavigationCategory Category => ENavigationCategory.Environments;
     public override string Title => "Edit environment";
-    public override Type ParentPageType => typeof(EnvironmentsPageViewModel);
     public Environment Environment { get; set; } = null!;
 }

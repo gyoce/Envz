@@ -1,9 +1,8 @@
 ﻿using System.Windows.Input;
-
+using Envz.Common.Services.Navigation;
 using Envz.Functional.Environments;
 using Envz.Functional.Mediator;
 using Envz.UI.Services;
-using Envz.UI.Services.Navigation;
 using Envz.UI.Utils;
 using Envz.UI.Views.Pages.Environments.CreateEnvironment;
 using Envz.UI.Views.UserControls.EnvironmentItem;
@@ -13,7 +12,7 @@ namespace Envz.UI.Views.Pages.Environments.HomeEnvironments;
 public class HomeEnvironmentsPageViewModel : PageViewModel
 {
     public override string Title => "Home";
-    public override Type ParentPageType => typeof(EnvironmentsPageViewModel);
+    public override ENavigationCategory Category => ENavigationCategory.Environments;
 
     public ICommand NavigateToCreateEnvironmentCommand { get; }
     public SearchableCollection<EnvironmentItemViewModel, Environment> SearchableEnvironments { get; }

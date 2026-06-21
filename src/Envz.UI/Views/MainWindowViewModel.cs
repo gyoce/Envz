@@ -1,11 +1,10 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
 
-using Envz.UI.Services.Navigation;
+using Envz.Common.Services.Navigation;
 using Envz.UI.Utils;
-using Envz.UI.Views.Pages;
-using Envz.UI.Views.Pages.Applications;
-using Envz.UI.Views.Pages.Environments;
+using Envz.UI.Views.Pages.Applications.HomeApplications;
+using Envz.UI.Views.Pages.Environments.HomeEnvironments;
 using Envz.UI.Views.Pages.Home;
 using Envz.UI.Views.Pages.Settings;
 using Envz.UI.Views.UserControls.Breadcrumb;
@@ -18,7 +17,16 @@ public class MainWindowViewModel : ViewModelBase
     public ICommand ShowEnvironmentsPageCommand { get; }
     public ICommand ShowSettingsPageCommand { get; }
     public ICommand ShowApplicationsPageCommand { get; }
-    public ObservableCollection<BreadcrumbItemViewModel> BreadcrumbItems { get; } = [];
+
+    public IEnumerable<BreadcrumbItemViewModel> BreadcrumbItems
+    {
+        get;
+        set
+        {
+            field = value;
+            OnPropertyChanged();
+        }
+    } = [];
     public bool IsDialogOpen
     {
         get;
@@ -46,8 +54,8 @@ public class MainWindowViewModel : ViewModelBase
 
         _navigationService.OnNavigationChanged += OnNavigationChanged;
         ShowHomePageCommand = new RelayCommand(_ => _navigationService.NavigateTo<HomePageViewModel>());
-        ShowEnvironmentsPageCommand = new RelayCommand(_ => _navigationService.NavigateTo<EnvironmentsPageViewModel>());
-        ShowApplicationsPageCommand = new RelayCommand(_ => _navigationService.NavigateTo<ApplicationsPageViewModel>());
+        ShowEnvironmentsPageCommand = new RelayCommand(_ => _navigationService.NavigateTo<HomeEnvironmentsPageViewModel>());
+        ShowApplicationsPageCommand = new RelayCommand(_ => _navigationService.NavigateTo<HomeApplicationsPageViewModel>());
         ShowSettingsPageCommand = new RelayCommand(_ => _navigationService.NavigateTo<SettingsPageViewModel>());
 
         _navigationService.NavigateTo<HomePageViewModel>();
@@ -68,20 +76,22 @@ public class MainWindowViewModel : ViewModelBase
 
     private void RebuildBreadcrumb()
     {
-        BreadcrumbItems.Clear();
-        IReadOnlyList<PageViewModel> chain = _navigationService.Breadcrumb;
+        List<BreadcrumbItemViewModel> items = [];
+        IReadOnlyList<BreadcrumbItem> chain = _navigationService.Breadcrumb;
 
         for (int i = 0; i < chain.Count; i++)
         {
-            PageViewModel page = chain[i];
-            bool isLast = i == chain.Count - 1;
+            BreadcrumbItem item = chain[i];
             bool isFirst = i == 0;
+            bool isLast = i == chain.Count - 1;
 
             ICommand? command = isLast
                 ? null
-                : new RelayCommand(_ => _navigationService.NavigateTo(page.GetType()));
+                : new RelayCommand(_ => _navigationService.NavigateTo(item.ViewModelType));
 
-            BreadcrumbItems.Add(new BreadcrumbItemViewModel(page.Title, isFirst, !isLast, command));
+            items.Add(new BreadcrumbItemViewModel(item.Title, isFirst, !isLast, command));
         }
+
+        BreadcrumbItems = items;
     }
 }
