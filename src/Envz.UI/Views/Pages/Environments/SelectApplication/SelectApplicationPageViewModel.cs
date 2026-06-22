@@ -1,4 +1,5 @@
 ﻿using System.Windows.Input;
+
 using Envz.Common.Services.Navigation;
 using Envz.Functional.Applications;
 using Envz.Functional.Mediator;
@@ -35,7 +36,7 @@ public class SelectApplicationPageViewModel : PageViewModel
         _mediator = mediator;
 
         SearchableApplications = new SearchableCollection<ApplicationItemViewModel, Application>(
-            app => app.Name, 
+            app => app.Name,
             app => viewModelFactory.Create<ApplicationItemViewModel>(app)
         )
         {

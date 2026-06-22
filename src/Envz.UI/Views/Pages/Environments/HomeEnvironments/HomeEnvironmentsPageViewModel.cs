@@ -1,4 +1,5 @@
 ﻿using System.Windows.Input;
+
 using Envz.Common.Services.Navigation;
 using Envz.Functional.Environments;
 using Envz.Functional.Mediator;
@@ -25,7 +26,7 @@ public class HomeEnvironmentsPageViewModel : PageViewModel
 
         NavigateToCreateEnvironmentCommand = new RelayCommand(_ => navigationService.NavigateTo<CreateEnvironmentPageViewModel>());
         SearchableEnvironments = new SearchableCollection<EnvironmentItemViewModel, Environment>(
-            env => env.Name, 
+            env => env.Name,
             env => viewModelFactory.Create<EnvironmentItemViewModel>(env)
         );
 

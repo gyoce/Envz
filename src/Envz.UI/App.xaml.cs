@@ -1,8 +1,6 @@
 ﻿using System.Windows;
 
 using Envz.Functional;
-using Envz.Functional.Environments;
-using Envz.Functional.Mediator;
 using Envz.Infrastructure;
 using Envz.UI.Views;
 
@@ -18,14 +16,6 @@ public partial class App : System.Windows.Application
     {
         ServiceCollection serviceCollection = ConfigureServices();
         ServiceProvider = serviceCollection.BuildServiceProvider();
-
-        // TEMPORARY
-        IMediator mediator = ServiceProvider.GetRequiredService<IMediator>();
-        for (int i = 0; i < 10; i++)
-            mediator.Send(new CreateEnvironmentRequest
-            {
-                Name = Random.Shared.NextInt64().ToString()
-            });
 
         MainWindow mainWindow = ServiceProvider.GetRequiredService<MainWindow>();
         mainWindow.Show();

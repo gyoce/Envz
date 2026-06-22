@@ -2,10 +2,8 @@
 using Envz.UI.Services;
 using Envz.UI.Services.Dialogs;
 using Envz.UI.Views;
-using Envz.UI.Views.Pages.Applications;
 using Envz.UI.Views.Pages.Applications.AddApplication;
 using Envz.UI.Views.Pages.Applications.HomeApplications;
-using Envz.UI.Views.Pages.Environments;
 using Envz.UI.Views.Pages.Environments.CreateEnvironment;
 using Envz.UI.Views.Pages.Environments.EditEnvironment;
 using Envz.UI.Views.Pages.Environments.HomeEnvironments;
@@ -38,7 +36,7 @@ public static class DependencyInjection
         services.AddSingleton<EditEnvironmentPageViewModel>();
         services.AddSingleton<SelectApplicationPageViewModel>();
         services.AddTransient<EnvironmentItemViewModel>();
-        
+
         services.AddSingleton<HomeApplicationsPageViewModel>();
         services.AddSingleton<AddApplicationPageViewModel>();
 

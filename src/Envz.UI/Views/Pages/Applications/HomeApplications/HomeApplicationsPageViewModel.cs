@@ -1,4 +1,5 @@
 ﻿using System.Windows.Input;
+
 using Envz.Common.Services.Navigation;
 using Envz.Functional.Applications;
 using Envz.Functional.Mediator;
@@ -25,7 +26,7 @@ public class HomeApplicationsPageViewModel : PageViewModel
 
         AddApplicationCommand = new RelayCommand(_ => navigationService.NavigateTo<AddApplicationPageViewModel>());
         SearchableApplications = new SearchableCollection<ApplicationItemViewModel, Application>(
-            app => app.Name, 
+            app => app.Name,
             app => viewModelFactory.Create<ApplicationItemViewModel>(app)
         );
 
