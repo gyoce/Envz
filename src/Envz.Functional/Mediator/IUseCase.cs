@@ -2,10 +2,10 @@
 
 public interface IUseCase<in TParam>
 {
-    public void Execute(TParam parameter);
+    void Execute(TParam parameter);
 }
 
 public interface IUseCase<in TParam, out TReturn>
 {
-    public TReturn Execute(TParam parameter);
+    TReturn Execute(TParam parameter);
 }

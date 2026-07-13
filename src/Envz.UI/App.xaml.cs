@@ -26,7 +26,7 @@ public partial class App : System.Windows.Application
         ServiceCollection services = new();
         services.AddUi();
         services.AddInfrastructure();
-        services.AddApplication();
+        services.AddFunctional();
         return services;
     }
 }

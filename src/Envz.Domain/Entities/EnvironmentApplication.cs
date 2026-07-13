@@ -2,6 +2,6 @@
 
 public class EnvironmentApplication
 {
-    public required int ApplicationId { get; set; }
+    public required string ApplicationName { get; set; }
     public string? Parameter { get; set; }
 }

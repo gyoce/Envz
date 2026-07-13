@@ -1,10 +1,8 @@
-﻿using Shouldly;
-
-namespace Envz.FunctionalTests.Navigation;
+﻿namespace Envz.FunctionalTests.Navigation;
 
 public class NavigationTests : NavigationTestFixture
 {
-    [Test]
+    [Fact]
     public void ShouldNavigateCorrectlyFirstTime()
     {
         NavigationService.OnNavigationChanged += viewModel =>
@@ -16,7 +14,7 @@ public class NavigationTests : NavigationTestFixture
         NavigationService.Breadcrumb[0].Title.ShouldBe("Home");
     }
 
-    [Test(Description = "Home[Home] > PageViewModelWithTitle[Home] => Environments")]
+    [Fact(DisplayName = "Home[Home] > PageViewModelWithTitle[Home] => Environments")]
     public void ShouldResetAndRebuildBreadcrumbWhenNavigatingToAnotherCategory()
     {
         NavigationService.NavigateTo<PageViewModelHomeWithoutTitle>();
@@ -28,7 +26,7 @@ public class NavigationTests : NavigationTestFixture
         NavigationService.Breadcrumb[0].Title.ShouldBe("Environments");
     }
 
-    [Test(Description = "Home[Home] > PageViewModelWithTitle[Home] => Environments[Env] > PageViewModelWithTitle[Env]")]
+    [Fact(DisplayName = "Home[Home] > PageViewModelWithTitle[Home] => Environments[Env] > PageViewModelWithTitle[Env]")]
     public void ShouldResetAndGoToSecondLevel()
     {
         NavigationService.NavigateTo<PageViewModelHomeWithTitle>();
@@ -40,7 +38,7 @@ public class NavigationTests : NavigationTestFixture
         NavigationService.Breadcrumb[1].Title.ShouldBe("Environments Sub Page");
     }
 
-    [Test(Description = "Home[Home] > PageViewModelWithTitle[Home] => Home[Home] > AnotherTitle[Home]")]
+    [Fact(DisplayName = "Home[Home] > PageViewModelWithTitle[Home] => Home[Home] > AnotherTitle[Home]")]
     public void ShouldReplaceCurrentLevelWhenNavigatingToSiblingWithTitle()
     {
         NavigationService.NavigateTo<PageViewModelHomeWithoutTitle>();
@@ -54,7 +52,7 @@ public class NavigationTests : NavigationTestFixture
         NavigationService.Breadcrumb[1].Title.ShouldBe("Another Title");
     }
 
-    [Test(Description = "Home[Home] => Home[Home] > PageViewModelWithTitle[Home]")]
+    [Fact(DisplayName = "Home[Home] => Home[Home] > PageViewModelWithTitle[Home]")]
     public void ShouldAppendItemAtEndOfBreadcrumbWhenNavigatingToSubPage()
     {
         NavigationService.NavigateTo<PageViewModelHomeWithoutTitle>();
@@ -67,7 +65,7 @@ public class NavigationTests : NavigationTestFixture
         NavigationService.Breadcrumb[1].Title.ShouldBe("Page View Model With Title");
     }
 
-    [Test(Description = "Home[Home] > PageViewModelWithTitle[Home] => Home[Home] > PageViewModelWithTitle[Home] > ThirdLevel[Home]")]
+    [Fact(DisplayName = "Home[Home] > PageViewModelWithTitle[Home] => Home[Home] > PageViewModelWithTitle[Home] > ThirdLevel[Home]")]
     public void ShouldWorkWithThirdLevel()
     {
         NavigationService.NavigateTo<PageViewModelHomeWithTitle>();
@@ -82,11 +80,11 @@ public class NavigationTests : NavigationTestFixture
         NavigationService.Breadcrumb[2].Title.ShouldBe("Third level");
     }
 
-    [Test]
+    [Fact]
     public void ShouldCallCallbackAsManyTimesAsNavigateTo()
     {
         int numberOfCallback = 0;
-        NavigationService.OnNavigationChanged += viewModel =>
+        NavigationService.OnNavigationChanged += _ =>
         {
             numberOfCallback++;
         };

@@ -8,7 +8,7 @@ namespace Envz.Functional;
 
 public static class DependencyInjection
 {
-    public static IServiceCollection AddApplication(this IServiceCollection services)
+    public static IServiceCollection AddFunctional(this IServiceCollection services)
     {
         services.AddMediator(Assembly.GetExecutingAssembly());
         return services;
