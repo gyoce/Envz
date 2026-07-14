@@ -21,7 +21,7 @@ public class NavigationService(IServiceProvider serviceProvider) : INavigationSe
     public void NavigateTo(Type viewModelType)
     {
         if (!typeof(PageViewModel).IsAssignableFrom(viewModelType))
-            throw new ArgumentException($"Le type '{viewModelType}' n'est pas un {nameof(PageViewModel)}.", nameof(viewModelType));
+            throw new ArgumentException($"Typeof '{viewModelType}' is not one of {nameof(PageViewModel)}.", nameof(viewModelType));
 
         PageViewModel viewModel = (PageViewModel)serviceProvider.GetRequiredService(viewModelType);
         NavigateTo(viewModel, viewModelType);

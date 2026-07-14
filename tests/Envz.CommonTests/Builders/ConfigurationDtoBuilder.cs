@@ -12,8 +12,19 @@ public class ConfigurationDtoBuilder
         return this;
     }
 
+    public ConfigurationDtoBuilder WithEnvironment(EnvironmentDto environment)
+    {
+        _configuration.Environments.Add(environment);
+        return this;
+    }
+
     public ConfigurationDto Build()
     {
         return _configuration;
+    }
+
+    public static ConfigurationDto EmptyConfiguration()
+    {
+        return new ConfigurationDto();
     }
 }

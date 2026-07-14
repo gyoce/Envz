@@ -11,12 +11,16 @@ public record CreateEnvironmentRequest : IRequest
     public List<EnvironmentApplication> Applications { get; set; } = [];
 }
 
-public class CreateEnvironmentUseCase(IEnvironmentRepository environmentRepository) : IUseCase<CreateEnvironmentRequest>
+public class CreateEnvironmentUseCase(IEnvironmentRepository environmentRepository, IApplicationRepository applicationRepository) : IUseCase<CreateEnvironmentRequest>
 {
     public void Execute(CreateEnvironmentRequest request)
     {
         if (string.IsNullOrWhiteSpace(request.Name))
             throw new ValidationException($"{nameof(Environment.Name)} must not be null or white space.");
+
+        foreach (EnvironmentApplication envApp in request.Applications)
+            if (!applicationRepository.Exists(envApp.ApplicationName))
+                throw new ApplicationNotFoundException($"Application with name {envApp.ApplicationName} does not exists.");
 
         environmentRepository.Save(new Environment
         {

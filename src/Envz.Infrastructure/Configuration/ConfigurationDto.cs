@@ -2,8 +2,6 @@
 
 namespace Envz.Infrastructure.Configuration;
 
-using Domain.Entities;
-
 public class ConfigurationDto
 {
     [JsonPropertyName("environments")]
@@ -20,15 +18,6 @@ public class EnvironmentDto
 
     [JsonPropertyName("applications")]
     public List<EnvironmentApplicationDto> Applications { get; set; } = [];
-
-    public Environment ToDomainEntity()
-    {
-        return new Environment
-        {
-            Name = Name,
-            Applications = Applications.Select(app => app.ToDomainEntity()).ToList()
-        };
-    }
 }
 
 public class ApplicationDto
@@ -39,14 +28,8 @@ public class ApplicationDto
     [JsonPropertyName("path")]
     public string Path { get; set; } = string.Empty;
 
-    public Application ToDomainEntity()
-    {
-        return new Application
-        {
-            Name = Name,
-            Path = Path
-        };
-    }
+    [JsonPropertyName("icon")]
+    public string? Icon { get; set; }
 }
 
 public class EnvironmentApplicationDto
@@ -56,52 +39,4 @@ public class EnvironmentApplicationDto
 
     [JsonPropertyName("parameter")]
     public string? Parameter { get; set; }
-
-    public EnvironmentApplication ToDomainEntity()
-    {
-        return new EnvironmentApplication
-        {
-            ApplicationName = ApplicationName,
-            Parameter = Parameter
-        };
-    }
-}
-
-public static class ConfigurationDtoExtensionMethods
-{
-    extension(Application application)
-    {
-        public ApplicationDto ToDto()
-        {
-            return new ApplicationDto
-            {
-                Name = application.Name,
-                Path = application.Path
-            };
-        }
-    }
-
-    extension(Environment environment)
-    {
-        public EnvironmentDto ToDto()
-        {
-            return new EnvironmentDto
-            {
-                Name = environment.Name,
-                Applications = environment.Applications.Select(app => app.ToDto()).ToList()
-            };
-        }
-    }
-
-    extension(EnvironmentApplication environmentApplication)
-    {
-        public EnvironmentApplicationDto ToDto()
-        {
-            return new EnvironmentApplicationDto
-            {
-                ApplicationName = environmentApplication.ApplicationName,
-                Parameter = environmentApplication.Parameter
-            };
-        }
-    }
 }

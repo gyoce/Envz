@@ -6,4 +6,5 @@ public interface IApplicationRepository
 {
     IReadOnlyCollection<Application> GetAll();
     void Save(Application application);
+    bool Exists(string applicationName);
 }

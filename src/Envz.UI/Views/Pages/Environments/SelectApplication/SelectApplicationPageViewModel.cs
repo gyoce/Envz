@@ -43,12 +43,17 @@ public class SelectApplicationPageViewModel : PageViewModel
             UnfilteredItems = _mediator.Send(new GetApplicationsRequest())
         };
 
-        //SelectApplicationCommand = new RelayCommand(_ => SelectApplication(), _ => SelectedApplication is not null);
+        SelectApplicationCommand = new RelayCommand(_ => SelectApplication(), _ => SelectedApplication is not null);
         CancelCommand = new RelayCommand(_ => navigationService.NavigateTo<CreateEnvironmentPageViewModel>());
     }
 
     public override void OnEnable()
     {
         SearchableApplications.UnfilteredItems = _mediator.Send(new GetApplicationsRequest());
+    }
+
+    private void SelectApplication()
+    {
+
     }
 }

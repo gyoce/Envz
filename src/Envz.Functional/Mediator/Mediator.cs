@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using System.Runtime.ExceptionServices;
 
 using Microsoft.Extensions.DependencyInjection;
 
@@ -12,7 +13,15 @@ public class Mediator(IServiceProvider serviceProvider) : IMediator
         Type useCaseType = typeof(IUseCase<>).MakeGenericType(requestType);
         object useCase = serviceProvider.GetRequiredService(useCaseType);
         MethodInfo executeMethod = useCaseType.GetMethod(nameof(IUseCase<>.Execute))!;
-        executeMethod.Invoke(useCase, [request]);
+
+        try
+        {
+            executeMethod.Invoke(useCase, [request]);
+        }
+        catch (TargetInvocationException ex) when (ex.InnerException is not null)
+        {
+            ExceptionDispatchInfo.Capture(ex.InnerException).Throw();
+        }
     }
 
     public TReturn Send<TReturn>(IRequest<TReturn> request)
@@ -21,6 +30,15 @@ public class Mediator(IServiceProvider serviceProvider) : IMediator
         Type useCaseType = typeof(IUseCase<,>).MakeGenericType(requestType, typeof(TReturn));
         object useCase = serviceProvider.GetRequiredService(useCaseType);
         MethodInfo executeMethod = useCaseType.GetMethod(nameof(IUseCase<,>.Execute))!;
-        return (TReturn)executeMethod.Invoke(useCase, [request])!;
+
+        try
+        {
+            return (TReturn)executeMethod.Invoke(useCase, [request])!;
+        }
+        catch (TargetInvocationException ex) when (ex.InnerException is not null)
+        {
+            ExceptionDispatchInfo.Capture(ex.InnerException).Throw();
+            throw;
+        }
     }
 }

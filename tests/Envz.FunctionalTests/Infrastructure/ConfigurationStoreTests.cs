@@ -1,6 +1,6 @@
 using Envz.Infrastructure.Configuration;
 
-namespace Envz.FunctionalTests.Configuration;
+namespace Envz.FunctionalTests.Infrastructure;
 
 public class ConfigurationStoreTests : BaseTestFixture
 {

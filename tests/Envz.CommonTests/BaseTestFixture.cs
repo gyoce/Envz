@@ -16,7 +16,7 @@ public class BaseTestFixture : IDisposable
         get => field ??= Services.BuildServiceProvider();
     }
 
-    private IServiceScope Scope
+    private IServiceScope? Scope
     {
         get => field ??= ServiceProvider!.CreateScope();
     }
@@ -44,19 +44,19 @@ public class BaseTestFixture : IDisposable
         where TService : class
         where TCast : class
     {
-        return (Scope.ServiceProvider.GetRequiredService<TService>() as TCast)!;
+        return (Scope!.ServiceProvider.GetRequiredService<TService>() as TCast)!;
     }
 
     public TService GetService<TService>()
         where TService : class
     {
-        return Scope.ServiceProvider.GetRequiredService<TService>();
+        return Scope!.ServiceProvider.GetRequiredService<TService>();
     }
 
     public Mock<TService> GetMock<TService>()
         where TService : class
     {
-        return Scope.ServiceProvider.GetRequiredService<Mock<TService>>();
+        return Scope!.ServiceProvider.GetRequiredService<Mock<TService>>();
     }
 
     public TReturn Send<TReturn>(IRequest<TReturn> request)
@@ -77,8 +77,8 @@ public class BaseTestFixture : IDisposable
 
     public void Dispose()
     {
+        Scope?.Dispose();
         ServiceProvider?.Dispose();
-        Scope.Dispose();
         GC.SuppressFinalize(this);
     }
 }

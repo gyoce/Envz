@@ -30,7 +30,7 @@ public class AddApplicationPageViewModel : PageViewModel
             OnPropertyChanged();
         }
     } = new();
-    public ImageSource? ApplicationIcon => Request.Icon.Length > 0 ? _iconExtractor.DecodeFromPngBytes(Request.Icon) : null;
+    public ImageSource? ApplicationIcon => Request.Icon?.Length > 0 ? _iconExtractor.DecodeFromPngBytes(Request.Icon) : null;
 
     private readonly INavigationService _navigationService;
     private readonly IFileDialogService _fileDialogService;
