@@ -8,6 +8,6 @@ public interface INavigationService
 
     IReadOnlyList<BreadcrumbItem> Breadcrumb { get; }
 
-    void NavigateTo<TViewModel>() where TViewModel : PageViewModel;
+    void NavigateTo<TViewModel>(Action<TViewModel>? configure = null) where TViewModel : PageViewModel;
     void NavigateTo(Type viewModelType);
 }

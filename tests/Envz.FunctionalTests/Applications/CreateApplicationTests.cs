@@ -1,5 +1,6 @@
 using Envz.Functional.Applications;
-using Envz.Infrastructure.Configuration;
+using Envz.Infrastructure.Configuration.Dtos;
+using Envz.Infrastructure.Configuration.Stores;
 
 namespace Envz.FunctionalTests.Applications;
 

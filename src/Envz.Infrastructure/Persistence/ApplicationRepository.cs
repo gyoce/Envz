@@ -1,19 +1,24 @@
 using Envz.Domain.Entities;
 using Envz.Domain.Ports;
-using Envz.Infrastructure.Configuration;
+using Envz.Infrastructure.Configuration.Dtos;
+using Envz.Infrastructure.Configuration.Stores;
 
 namespace Envz.Infrastructure.Persistence;
 
-public class ApplicationRepository(IConfigurationStore configurationStore, IFileSystem fileSystem) : IApplicationRepository
+public class ApplicationRepository(IConfigurationStore configurationStore, IIconStore iconStore) : IApplicationRepository
 {
     public IReadOnlyCollection<Application> GetAll()
     {
+        Dictionary<string, string> icons = iconStore.Icons.ApplicationIcons;
+
         return configurationStore.Configuration.Applications.Select(applicationDto =>
             new Application
             {
                 Name = applicationDto.Name,
                 Path = applicationDto.Path,
-                Icon = string.IsNullOrWhiteSpace(applicationDto.Icon) ? null : Convert.FromBase64String(applicationDto.Icon)
+                Icon = icons.TryGetValue(applicationDto.Name, out string? icon) && !string.IsNullOrWhiteSpace(icon)
+                    ? Convert.FromBase64String(icon)
+                    : null
             }
         ).ToList();
     }
@@ -24,11 +29,16 @@ public class ApplicationRepository(IConfigurationStore configurationStore, IFile
             new ApplicationDto
             {
                 Name = application.Name,
-                Path = application.Path,
-                Icon = application.Icon is null ? null : Convert.ToBase64String(application.Icon)
+                Path = application.Path
             }
         );
         configurationStore.Save();
+
+        if (application.Icon is not null && application.Icon.Length > 0)
+        {
+            iconStore.Icons.ApplicationIcons[application.Name] = Convert.ToBase64String(application.Icon);
+            iconStore.Save();
+        }
     }
 
     public bool Exists(string applicationName)

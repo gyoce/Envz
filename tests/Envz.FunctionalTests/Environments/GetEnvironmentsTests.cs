@@ -1,5 +1,5 @@
 ﻿using Envz.Functional.Environments;
-using Envz.Infrastructure.Configuration;
+using Envz.Infrastructure.Configuration.Dtos;
 
 namespace Envz.FunctionalTests.Environments;
 

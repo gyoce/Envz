@@ -8,14 +8,16 @@ public class NavigationService(IServiceProvider serviceProvider) : INavigationSe
 {
     public event Action<PageViewModel>? OnNavigationChanged;
 
-    private ENavigationCategory? _currentNavigationCategory;
-
     public IReadOnlyList<BreadcrumbItem> Breadcrumb => _breadcrumbs;
+
+    private ENavigationCategory? _currentNavigationCategory;
     private readonly List<BreadcrumbItem> _breadcrumbs = [];
 
-    public void NavigateTo<TViewModel>() where TViewModel : PageViewModel
+    public void NavigateTo<TViewModel>(Action<TViewModel>? configure = null) where TViewModel : PageViewModel
     {
-        NavigateTo(serviceProvider.GetRequiredService<TViewModel>(), typeof(TViewModel));
+        TViewModel viewModel = serviceProvider.GetRequiredService<TViewModel>();
+        NavigateTo(viewModel, typeof(TViewModel));
+        configure?.Invoke(viewModel);
     }
 
     public void NavigateTo(Type viewModelType)

@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Envz.Infrastructure.Configuration;
+namespace Envz.Infrastructure.Configuration.Dtos;
 
 public class ConfigurationDto
 {
@@ -27,9 +27,6 @@ public class ApplicationDto
 
     [JsonPropertyName("path")]
     public string Path { get; set; } = string.Empty;
-
-    [JsonPropertyName("icon")]
-    public string? Icon { get; set; }
 }
 
 public class EnvironmentApplicationDto

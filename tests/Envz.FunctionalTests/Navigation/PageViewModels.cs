@@ -12,6 +12,8 @@ public class PageViewModelHomeWithTitle : PageViewModel
 {
     public override ENavigationCategory Category => ENavigationCategory.Home;
     public override string Title => "Page View Model With Title";
+
+    public int CallbackTest { get; set; }
 }
 
 public class PageViewModelHomeWithTitleThirdLevel : PageViewModel

@@ -2,61 +2,63 @@
 using Envz.Functional.Mediator;
 using Envz.Infrastructure;
 using Envz.Infrastructure.Configuration;
-
+using Envz.Infrastructure.Configuration.Dtos;
+using Envz.Infrastructure.Configuration.Stores;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Envz.CommonTests;
 
-public class BaseTestFixture : IDisposable
+public abstract class BaseTestFixture : IDisposable
 {
+    private readonly Dictionary<Type, Mock> _mocks = [];
+    private readonly Lazy<ServiceProvider> _serviceProvider;
+    private readonly Lazy<IServiceScope> _scope;
     private IServiceCollection Services { get; } = new ServiceCollection();
 
-    private ServiceProvider? ServiceProvider
+    protected BaseTestFixture()
     {
-        get => field ??= Services.BuildServiceProvider();
-    }
+        _serviceProvider = new Lazy<ServiceProvider>(BuildServiceProvider);
+        _scope = new Lazy<IServiceScope>(() => _serviceProvider.Value.CreateScope());
 
-    private IServiceScope? Scope
-    {
-        get => field ??= ServiceProvider!.CreateScope();
-    }
-
-    public BaseTestFixture()
-    {
         Services.AddFunctional();
         Services.AddInfrastructure();
+        Services.Replace<IFileSystem, InMemoryFileSystem>();
     }
 
     public IServiceCollection ReplaceService<TOld, TNew>()
         where TNew : class
         where TOld : class
     {
+        EnsureServiceProviderNotBuilt();
         return Services.Replace<TOld, TNew>();
     }
 
     public IServiceCollection ReplaceByMock<TService>()
         where TService : class
     {
-        return Services.ReplaceByMock<TService>();
+        EnsureServiceProviderNotBuilt();
+        return Services.ReplaceByMock(GetMock<TService>());
+    }
+
+    public TService GetService<TService>() 
+        where TService : class
+    {
+        return _scope.Value.ServiceProvider.GetRequiredService<TService>();
     }
 
     public TCast GetServiceAs<TService, TCast>()
         where TService : class
         where TCast : class
     {
-        return (Scope!.ServiceProvider.GetRequiredService<TService>() as TCast)!;
-    }
-
-    public TService GetService<TService>()
-        where TService : class
-    {
-        return Scope!.ServiceProvider.GetRequiredService<TService>();
+        return (GetService<TService>() as TCast)!;
     }
 
     public Mock<TService> GetMock<TService>()
         where TService : class
     {
-        return Scope!.ServiceProvider.GetRequiredService<Mock<TService>>();
+        if (!_mocks.TryGetValue(typeof(TService), out Mock? mock))
+            _mocks[typeof(TService)] = mock = new Mock<TService>();
+        return (Mock<TService>)mock;
     }
 
     public TReturn Send<TReturn>(IRequest<TReturn> request)
@@ -69,16 +71,35 @@ public class BaseTestFixture : IDisposable
         GetService<IMediator>().Send(request);
     }
 
-    public void SetConfiguration(ConfigurationDto configuration)
+    protected virtual void ConfigureServices(IServiceCollection services) { }
+
+    public void SetConfiguration(ConfigurationDto configuration, IconsDto? icons = null)
     {
-        Services.ReplaceByMock<IConfigurationStore>();
+        ReplaceByMock<IConfigurationStore>();
+        ReplaceByMock<IIconStore>();
+
         GetMock<IConfigurationStore>().Setup(store => store.Configuration).Returns(configuration);
+        GetMock<IIconStore>().Setup(store => store.Icons).Returns(icons ?? new IconsDto());
+    }
+
+    private void EnsureServiceProviderNotBuilt()
+    {
+        if (_serviceProvider.IsValueCreated)
+            throw new InvalidOperationException("Services cannot be modified once the service provider has been built.");
+    }
+
+    private ServiceProvider BuildServiceProvider()
+    {
+        ConfigureServices(Services);
+        return Services.BuildServiceProvider();
     }
 
     public void Dispose()
     {
-        Scope?.Dispose();
-        ServiceProvider?.Dispose();
+        if (_scope.IsValueCreated) 
+            _scope.Value.Dispose();
+        if (_serviceProvider.IsValueCreated) 
+            _serviceProvider.Value.Dispose();
         GC.SuppressFinalize(this);
     }
 }

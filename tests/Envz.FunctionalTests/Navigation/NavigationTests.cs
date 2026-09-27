@@ -1,4 +1,6 @@
-﻿namespace Envz.FunctionalTests.Navigation;
+﻿using Microsoft.Extensions.DependencyInjection;
+
+namespace Envz.FunctionalTests.Navigation;
 
 public class NavigationTests : NavigationTestFixture
 {
@@ -94,5 +96,21 @@ public class NavigationTests : NavigationTestFixture
 
         NavigationService.NavigateTo<PageViewModelHomeWithTitleThirdLevel>();
         numberOfCallback.ShouldBe(2);
+    }
+
+    [Fact]
+    public void ShouldConfigureViewModel()
+    {
+        int localVariable = 21;
+        ServiceProvider.GetRequiredService<PageViewModelHomeWithTitle>().CallbackTest.ShouldBe(0);
+
+        NavigationService.NavigateTo<PageViewModelHomeWithTitle>(viewModel =>
+        {
+            localVariable = 31;
+            viewModel.CallbackTest = 5;
+        });
+
+        localVariable.ShouldBe(31);
+        ServiceProvider.GetRequiredService<PageViewModelHomeWithTitle>().CallbackTest.ShouldBe(5);
     }
 }

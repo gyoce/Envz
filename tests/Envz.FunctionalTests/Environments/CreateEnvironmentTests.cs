@@ -1,7 +1,8 @@
 ﻿using Envz.Domain.Entities;
 using Envz.Domain.Exceptions;
 using Envz.Functional.Environments;
-using Envz.Infrastructure.Configuration;
+using Envz.Infrastructure.Configuration.Dtos;
+using Envz.Infrastructure.Configuration.Stores;
 
 namespace Envz.FunctionalTests.Environments;
 

@@ -19,7 +19,7 @@ public static class DependencyInjectionExtensionMethods
             return services;
         }
 
-        public IServiceCollection ReplaceByMock<TService>()
+        public IServiceCollection ReplaceByMock<TService>(Mock<TService> mock)
             where TService : class
         {
             ServiceDescriptor? serviceDescriptor = services.FirstOrDefault(sd => sd.ServiceType == typeof(TService));
@@ -27,8 +27,7 @@ public static class DependencyInjectionExtensionMethods
                 throw new Exception($"No service of type {typeof(TService)} was found.");
 
             services.Remove(serviceDescriptor);
-            services.Add(new ServiceDescriptor(typeof(Mock<TService>), typeof(Mock<TService>), serviceDescriptor.Lifetime));
-            services.Add(new ServiceDescriptor(typeof(TService), sp => sp.GetRequiredService<Mock<TService>>().Object, serviceDescriptor.Lifetime));
+            services.Add(new ServiceDescriptor(typeof(TService), _ => mock.Object, serviceDescriptor.Lifetime));
             return services;
         }
     }

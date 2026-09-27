@@ -6,8 +6,8 @@ namespace Envz.FunctionalTests.Navigation;
 
 public class NavigationTestFixture : IDisposable
 {
-    protected IServiceProvider ServiceProvider = null!;
-    protected INavigationService NavigationService = null!;
+    protected IServiceProvider ServiceProvider;
+    protected INavigationService NavigationService;
 
     public NavigationTestFixture()
     {

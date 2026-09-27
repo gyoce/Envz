@@ -1,6 +1,6 @@
 using Envz.Domain.Entities;
 using Envz.Functional.Applications;
-using Envz.Infrastructure.Configuration;
+using Envz.Infrastructure.Configuration.Dtos;
 
 namespace Envz.FunctionalTests.Applications;
 

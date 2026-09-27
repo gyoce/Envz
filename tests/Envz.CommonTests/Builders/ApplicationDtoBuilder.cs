@@ -1,4 +1,4 @@
-﻿using Envz.Infrastructure.Configuration;
+﻿using Envz.Infrastructure.Configuration.Dtos;
 
 namespace Envz.CommonTests.Builders;
 

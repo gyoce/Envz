@@ -1,6 +1,7 @@
 using Envz.Domain.Entities;
 using Envz.Domain.Ports;
-using Envz.Infrastructure.Configuration;
+using Envz.Infrastructure.Configuration.Dtos;
+using Envz.Infrastructure.Configuration.Stores;
 
 namespace Envz.Infrastructure.Persistence;
 

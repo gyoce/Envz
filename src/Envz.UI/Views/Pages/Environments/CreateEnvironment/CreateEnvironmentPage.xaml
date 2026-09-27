@@ -27,7 +27,7 @@
 
         <ctrls:TextInput Grid.Row="0" 
                             Label="Name" 
-                            Text="{Binding Request.Name}" 
+                            Text="{Binding CreateEnvironmentRequest.Name}" 
                             Margin="30 10 0 10" 
                             Width="400" 
                             HorizontalAlignment="Left" />
