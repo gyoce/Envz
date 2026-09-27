@@ -1,12 +1,11 @@
-﻿using System.Windows.Input;
-
-using Envz.Common.Services.Navigation;
+﻿using Envz.Common.Services.Navigation;
 using Envz.Functional.Applications;
 using Envz.Functional.Mediator;
 using Envz.UI.Services;
 using Envz.UI.Utils;
 using Envz.UI.Views.Pages.Applications.AddApplication;
 using Envz.UI.Views.UserControls.ApplicationItem;
+using System.Windows.Input;
 
 namespace Envz.UI.Views.Pages.Applications.HomeApplications;
 

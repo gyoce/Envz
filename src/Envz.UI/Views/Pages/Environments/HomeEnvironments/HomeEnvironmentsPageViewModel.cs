@@ -1,12 +1,11 @@
-﻿using System.Windows.Input;
-
-using Envz.Common.Services.Navigation;
+﻿using Envz.Common.Services.Navigation;
 using Envz.Functional.Environments;
 using Envz.Functional.Mediator;
 using Envz.UI.Services;
 using Envz.UI.Utils;
 using Envz.UI.Views.Pages.Environments.CreateEnvironment;
 using Envz.UI.Views.UserControls.EnvironmentItem;
+using System.Windows.Input;
 
 namespace Envz.UI.Views.Pages.Environments.HomeEnvironments;
 

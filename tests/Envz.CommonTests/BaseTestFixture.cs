@@ -40,7 +40,7 @@ public abstract class BaseTestFixture : IDisposable
         return Services.ReplaceByMock(GetMock<TService>());
     }
 
-    public TService GetService<TService>() 
+    public TService GetService<TService>()
         where TService : class
     {
         return _scope.Value.ServiceProvider.GetRequiredService<TService>();
@@ -96,9 +96,9 @@ public abstract class BaseTestFixture : IDisposable
 
     public void Dispose()
     {
-        if (_scope.IsValueCreated) 
+        if (_scope.IsValueCreated)
             _scope.Value.Dispose();
-        if (_serviceProvider.IsValueCreated) 
+        if (_serviceProvider.IsValueCreated)
             _serviceProvider.Value.Dispose();
         GC.SuppressFinalize(this);
     }

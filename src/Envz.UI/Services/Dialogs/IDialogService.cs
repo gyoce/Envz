@@ -1,6 +1,5 @@
-﻿using System.Windows;
-
-using Envz.UI.Views.Dialogs;
+﻿using Envz.UI.Views.Dialogs;
+using System.Windows;
 
 namespace Envz.UI.Services.Dialogs;
 

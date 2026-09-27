@@ -9,7 +9,7 @@ public interface IConfigurationStore
     void Save();
 }
 
-public class ConfigurationStore(IFileSystem fileSystem, IConfigurationFilesPathProvider filesPathProvider) 
+public class ConfigurationStore(IFileSystem fileSystem, IConfigurationFilesPathProvider filesPathProvider)
     : JsonFileStore<ConfigurationDto>(fileSystem), IConfigurationStore
 {
     protected override string FilePath => filesPathProvider.ConfigurationFilePath;

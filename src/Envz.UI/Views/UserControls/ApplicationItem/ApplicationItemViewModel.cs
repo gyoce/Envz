@@ -1,6 +1,5 @@
-﻿using System.Windows.Media;
-
-using Envz.UI.Services;
+﻿using Envz.UI.Services;
+using System.Windows.Media;
 
 namespace Envz.UI.Views.UserControls.ApplicationItem;
 

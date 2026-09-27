@@ -1,8 +1,6 @@
-﻿using System.Reflection;
-
-using Envz.Functional.Mediator;
-
+﻿using Envz.Functional.Mediator;
 using Microsoft.Extensions.DependencyInjection;
+using System.Reflection;
 
 namespace Envz.Functional;
 

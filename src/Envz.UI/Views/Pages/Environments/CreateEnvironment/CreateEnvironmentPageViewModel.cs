@@ -1,16 +1,14 @@
-using System.Collections.ObjectModel;
-using System.Collections.Specialized;
-using System.Windows.Input;
-
 using Envz.Common.Services.Navigation;
 using Envz.Functional.Environments;
 using Envz.Functional.Mediator;
-using Envz.UI.Services.Dialogs;
 using Envz.UI.Utils;
 using Envz.UI.Views.Pages.Environments.HomeEnvironments;
 using Envz.UI.Views.Pages.Environments.SelectApplication;
 using Envz.UI.Views.UserControls.ApplicationItem;
 using Envz.UI.Views.UserControls.EnvironmentApplicationItem;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
+using System.Windows.Input;
 
 namespace Envz.UI.Views.Pages.Environments.CreateEnvironment;
 
@@ -65,7 +63,7 @@ public class CreateEnvironmentPageViewModel : PageViewModel
             _selectedApplication = selectApplicationviewModel.SelectedApplication;
             if (_selectedApplication is not null)
             {
-                
+
             }
         });
     }
