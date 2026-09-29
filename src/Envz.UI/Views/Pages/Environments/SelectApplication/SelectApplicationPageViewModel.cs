@@ -1,15 +1,15 @@
 ﻿using Envz.Common.Services.Navigation;
+using Envz.Common.Utils;
 using Envz.Functional.Applications;
 using Envz.Functional.Mediator;
 using Envz.UI.Services;
 using Envz.UI.Utils;
-using Envz.UI.Views.Pages.Environments.CreateEnvironment;
 using Envz.UI.Views.UserControls.ApplicationItem;
 using System.Windows.Input;
 
 namespace Envz.UI.Views.Pages.Environments.SelectApplication;
 
-public class SelectApplicationPageViewModel : PageViewModel
+public class SelectApplicationPageViewModel : ResultPageViewModel<Application>
 {
     public override ENavigationCategory Category => ENavigationCategory.Environments;
     public override string Title => "Select application";
@@ -30,7 +30,7 @@ public class SelectApplicationPageViewModel : PageViewModel
 
     private readonly IMediator _mediator;
 
-    public SelectApplicationPageViewModel(IMediator mediator, ViewModelFactory viewModelFactory, INavigationService navigationService)
+    public SelectApplicationPageViewModel(IMediator mediator, ViewModelFactory viewModelFactory)
     {
         _mediator = mediator;
 
@@ -42,17 +42,14 @@ public class SelectApplicationPageViewModel : PageViewModel
             UnfilteredItems = _mediator.Send(new GetApplicationsRequest())
         };
 
-        SelectApplicationCommand = new RelayCommand(_ => SelectApplication(), _ => SelectedApplication is not null);
-        CancelCommand = new RelayCommand(_ => navigationService.NavigateTo<CreateEnvironmentPageViewModel>());
+        SelectApplicationCommand = new RelayCommand(_ => Complete(SelectedApplication!.Application), _ => SelectedApplication is not null);
+        CancelCommand = new RelayCommand(_ => Cancel());
     }
 
     public override void OnEnable()
     {
+        SelectedApplication = null;
+        SearchableApplications.SearchText = string.Empty;
         SearchableApplications.UnfilteredItems = _mediator.Send(new GetApplicationsRequest());
-    }
-
-    private void SelectApplication()
-    {
-
     }
 }

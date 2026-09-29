@@ -1,5 +1,5 @@
 ﻿using Envz.Common.Services.Navigation;
-using Envz.UI.Utils;
+using Envz.Common.Utils;
 using Envz.UI.Views.Pages.Environments.EditEnvironment;
 using System.Windows.Input;
 

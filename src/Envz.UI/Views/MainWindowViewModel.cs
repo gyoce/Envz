@@ -1,5 +1,5 @@
 ﻿using Envz.Common.Services.Navigation;
-using Envz.UI.Utils;
+using Envz.Common.Utils;
 using Envz.UI.Views.Pages.Applications.HomeApplications;
 using Envz.UI.Views.Pages.Environments.HomeEnvironments;
 using Envz.UI.Views.Pages.Home;

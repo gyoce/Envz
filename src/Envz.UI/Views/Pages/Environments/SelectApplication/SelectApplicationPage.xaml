@@ -64,7 +64,7 @@
                           Command="{Binding CancelCommand}" 
                           Width="150" Height="35" 
                           Margin="0 0 20 0" />
-        <ctrls:ButtonText Text="Create" 
+        <ctrls:ButtonText Text="Select" 
                           Command="{Binding SelectApplicationCommand}" 
                           Width="150" Height="35" />
       </StackPanel>

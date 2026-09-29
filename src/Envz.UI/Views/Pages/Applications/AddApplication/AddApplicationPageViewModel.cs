@@ -1,9 +1,9 @@
 using Envz.Common.Services.Navigation;
+using Envz.Common.Utils;
 using Envz.Functional.Applications;
 using Envz.Functional.Mediator;
 using Envz.UI.Services;
 using Envz.UI.Services.Dialogs;
-using Envz.UI.Utils;
 using Envz.UI.Views.Pages.Applications.HomeApplications;
 using System.IO;
 using System.Windows.Input;

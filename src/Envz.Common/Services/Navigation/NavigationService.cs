@@ -9,15 +9,18 @@ public class NavigationService(IServiceProvider serviceProvider) : INavigationSe
     public event Action<PageViewModel>? OnNavigationChanged;
 
     public IReadOnlyList<BreadcrumbItem> Breadcrumb => _breadcrumbs;
+    public PageViewModel? CurrentPage { get; private set; }
 
-    private ENavigationCategory? _currentNavigationCategory;
     private readonly List<BreadcrumbItem> _breadcrumbs = [];
 
-    public void NavigateTo<TViewModel>(Action<TViewModel>? configure = null) where TViewModel : PageViewModel
+    private ENavigationCategory? _currentNavigationCategory;
+
+    public void NavigateTo<TViewModel>(Action<TViewModel>? configure = null)
+        where TViewModel : PageViewModel
     {
         TViewModel viewModel = serviceProvider.GetRequiredService<TViewModel>();
-        NavigateTo(viewModel, typeof(TViewModel));
         configure?.Invoke(viewModel);
+        NavigateTo(viewModel, typeof(TViewModel));
     }
 
     public void NavigateTo(Type viewModelType)
@@ -29,7 +32,39 @@ public class NavigationService(IServiceProvider serviceProvider) : INavigationSe
         NavigateTo(viewModel, viewModelType);
     }
 
+    public async Task<TResult?> NavigateForResultAsync<TViewModel, TResult>(Action<TViewModel>? configure = null)
+        where TViewModel : ResultPageViewModel<TResult>
+    {
+        PageViewModel? parent = CurrentPage;
+
+        TViewModel viewModel = serviceProvider.GetRequiredService<TViewModel>();
+        configure?.Invoke(viewModel);
+        Task<TResult?> resultTask = viewModel.WaitForResult();
+        NavigateTo(viewModel, typeof(TViewModel));
+
+        TResult? result = await resultTask;
+
+        if (parent is not null && CurrentPage == viewModel)
+            NavigateTo(parent, parent.GetType());
+
+        return result;
+    }
+
     private void NavigateTo(PageViewModel viewModel, Type viewModelType)
+    {
+        PageViewModel? previousPage = CurrentPage;
+        CurrentPage = viewModel;
+
+        if (previousPage is IResultPageViewModel resultPage && previousPage != viewModel)
+            resultPage.Cancel();
+
+        UpdateBreadcrumb(viewModel, viewModelType);
+
+        OnNavigationChanged?.Invoke(viewModel);
+        viewModel.OnEnable();
+    }
+
+    private void UpdateBreadcrumb(PageViewModel viewModel, Type viewModelType)
     {
         _currentNavigationCategory ??= viewModel.Category;
 
@@ -49,8 +84,5 @@ public class NavigationService(IServiceProvider serviceProvider) : INavigationSe
 
             _breadcrumbs.Add(new BreadcrumbItem(viewModel.Title!, viewModelType));
         }
-
-        OnNavigationChanged?.Invoke(viewModel);
-        viewModel.OnEnable();
     }
 }

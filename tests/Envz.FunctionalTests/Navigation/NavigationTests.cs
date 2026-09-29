@@ -113,4 +113,41 @@ public class NavigationTests : NavigationTestFixture
         localVariable.ShouldBe(31);
         ServiceProvider.GetRequiredService<PageViewModelHomeWithTitle>().CallbackTest.ShouldBe(5);
     }
+
+    [Fact]
+    public async Task ShouldReturnResultAndGoBackToParent()
+    {
+        NavigationService.NavigateTo<PageViewModelHomeWithTitle>();
+        Task<string?> resultTask = NavigationService.NavigateForResultAsync<PageViewModelHomeResult, string>();
+        NavigationService.CurrentPage.ShouldBeOfType<PageViewModelHomeResult>();
+
+        ((PageViewModelHomeResult)NavigationService.CurrentPage!).Select("App1");
+
+        (await resultTask).ShouldBe("App1");
+        NavigationService.CurrentPage.ShouldBeOfType<PageViewModelHomeWithTitle>();
+    }
+
+    [Fact]
+    public async Task ShouldReturnNullAndGoBackToParentWhenCancelled()
+    {
+        NavigationService.NavigateTo<PageViewModelHomeWithTitle>();
+        Task<string?> resultTask = NavigationService.NavigateForResultAsync<PageViewModelHomeResult, string>();
+
+        ((PageViewModelHomeResult)NavigationService.CurrentPage!).Abort();
+
+        (await resultTask).ShouldBeNull();
+        NavigationService.CurrentPage.ShouldBeOfType<PageViewModelHomeWithTitle>();
+    }
+
+    [Fact]
+    public async Task ShouldReturnNullWithoutGoingBackWhenLeavingElsewhere()
+    {
+        NavigationService.NavigateTo<PageViewModelHomeWithTitle>();
+        Task<string?> resultTask = NavigationService.NavigateForResultAsync<PageViewModelHomeResult, string>();
+
+        NavigationService.NavigateTo<PageViewModelEnvironmentsWithoutTitle>();
+
+        (await resultTask).ShouldBeNull();
+        NavigationService.CurrentPage.ShouldBeOfType<PageViewModelEnvironmentsWithoutTitle>();
+    }
 }

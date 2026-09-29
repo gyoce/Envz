@@ -18,6 +18,7 @@ public class NavigationTestFixture : IDisposable
         services.AddSingleton<PageViewModelEnvironmentsWithoutTitle>();
         services.AddSingleton<PageViewModelEnvironmentsWithTitle>();
         services.AddSingleton<PageViewModelHomeWithTitleThirdLevel>();
+        services.AddSingleton<PageViewModelHomeResult>();
         ServiceProvider = services.BuildServiceProvider();
 
         NavigationService = new NavigationService(ServiceProvider);

@@ -1,10 +1,11 @@
 using Envz.Common.Services.Navigation;
+using Envz.Common.Utils;
+using Envz.Domain.Entities;
 using Envz.Functional.Environments;
 using Envz.Functional.Mediator;
-using Envz.UI.Utils;
+using Envz.UI.Services;
 using Envz.UI.Views.Pages.Environments.HomeEnvironments;
 using Envz.UI.Views.Pages.Environments.SelectApplication;
-using Envz.UI.Views.UserControls.ApplicationItem;
 using Envz.UI.Views.UserControls.EnvironmentApplicationItem;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
@@ -24,19 +25,19 @@ public class CreateEnvironmentPageViewModel : PageViewModel
     public ObservableCollection<EnvironmentApplicationItemViewModel> ApplicationViewModels { get; } = [];
     public bool HasApplications => ApplicationViewModels.Count > 0;
 
-    private ApplicationItemViewModel? _selectedApplication;
-
     private readonly IMediator _mediator;
     private readonly INavigationService _navigationService;
+    private readonly ViewModelFactory _viewModelFactory;
 
-    public CreateEnvironmentPageViewModel(IMediator mediator, INavigationService navigationService)
+    public CreateEnvironmentPageViewModel(IMediator mediator, INavigationService navigationService, ViewModelFactory viewModelFactory)
     {
         _mediator = mediator;
         _navigationService = navigationService;
+        _viewModelFactory = viewModelFactory;
 
         CreateEnvironmentCommand = new RelayCommand(_ => CreateEnvironment(), _ => CanCreateEnvironment());
         CancelCreateEnvironmentCommand = new RelayCommand(_ => navigationService.NavigateTo<HomeEnvironmentsPageViewModel>());
-        AddApplicationCommand = new RelayCommand(_ => AddApplication());
+        AddApplicationCommand = new AsyncRelayCommand(async _ => await AddApplicationAsync());
         ApplicationViewModels.CollectionChanged += OnApplicationViewModelsChanged;
     }
 
@@ -56,16 +57,15 @@ public class CreateEnvironmentPageViewModel : PageViewModel
         return !string.IsNullOrWhiteSpace(CreateEnvironmentRequest.Name) && CreateEnvironmentRequest.Applications.Count > 0;
     }
 
-    private void AddApplication()
+    private async Task AddApplicationAsync()
     {
-        _navigationService.NavigateTo<SelectApplicationPageViewModel>(selectApplicationviewModel =>
+        Application? application = await _navigationService.NavigateForResultAsync<SelectApplicationPageViewModel, Application>();
+        if (application is not null)
         {
-            _selectedApplication = selectApplicationviewModel.SelectedApplication;
-            if (_selectedApplication is not null)
-            {
-
-            }
-        });
+            EnvironmentApplication environmentApplication = new() { ApplicationName = application.Name };
+            CreateEnvironmentRequest.Applications.Add(environmentApplication);
+            ApplicationViewModels.Add(_viewModelFactory.Create<EnvironmentApplicationItemViewModel>(environmentApplication, application));
+        }
     }
 
     public override void Dispose()

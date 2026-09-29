@@ -39,3 +39,13 @@ public class PageViewModelEnvironmentsWithTitle : PageViewModel
     public override ENavigationCategory Category => ENavigationCategory.Environments;
     public override string Title => "Environments Sub Page";
 }
+
+public class PageViewModelHomeResult : ResultPageViewModel<string>
+{
+    public override ENavigationCategory Category => ENavigationCategory.Home;
+    public override string Title => "Result page";
+    public override int Level => 2;
+
+    public void Select(string value) => Complete(value);
+    public void Abort() => Cancel();
+}
