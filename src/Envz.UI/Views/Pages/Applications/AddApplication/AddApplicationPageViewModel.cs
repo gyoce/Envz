@@ -2,12 +2,12 @@ using Envz.Common.Services.Navigation;
 using Envz.Common.Utils;
 using Envz.Functional.Applications;
 using Envz.Functional.Mediator;
-using Envz.UI.Services;
-using Envz.UI.Services.Dialogs;
 using Envz.UI.Views.Pages.Applications.HomeApplications;
 using System.IO;
 using System.Windows.Input;
 using System.Windows.Media;
+using Envz.Common.Services;
+using Envz.Common.Services.Dialogs;
 
 namespace Envz.UI.Views.Pages.Applications.AddApplication;
 

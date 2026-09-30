@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace Envz.UI.Services;
+namespace Envz.Common.Services;
 
 public class ViewModelFactory(IServiceProvider serviceProvider)
 {

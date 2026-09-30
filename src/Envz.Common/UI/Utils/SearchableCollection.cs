@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
 
-namespace Envz.UI.Utils;
+namespace Envz.Common.UI.Utils;
 
 public class SearchableCollection<TViewModel, TItem>(Expression<Func<TItem, string>> searchSelector, Func<TItem, TViewModel> viewModelFactory) : INotifyPropertyChanged
 {

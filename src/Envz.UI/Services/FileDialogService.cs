@@ -1,6 +1,7 @@
-﻿using Microsoft.Win32;
+﻿using Envz.Common.Services.Dialogs;
+using Microsoft.Win32;
 
-namespace Envz.UI.Services.Dialogs;
+namespace Envz.UI.Services;
 
 public class FileDialogService : IFileDialogService
 {

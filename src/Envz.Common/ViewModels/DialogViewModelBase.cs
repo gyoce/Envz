@@ -1,4 +1,4 @@
-﻿namespace Envz.UI.Views.Dialogs;
+﻿namespace Envz.Common.ViewModels;
 
 public abstract class DialogViewModelBase<TResult> : ViewModelBase
 {

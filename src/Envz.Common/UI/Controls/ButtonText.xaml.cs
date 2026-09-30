@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace Envz.UI.Views.UserControls.Controls;
+namespace Envz.Common.UI.Controls;
 
 public partial class ButtonText : UserControl
 {

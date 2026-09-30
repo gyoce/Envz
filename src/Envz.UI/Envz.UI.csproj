@@ -13,13 +13,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Assets\Fonts\Poppins-Bold.ttf" />
-    <None Remove="Assets\Fonts\Poppins-Medium.ttf" />
-    <None Remove="Assets\Fonts\Poppins-Regular.ttf" />
-    <None Remove="Assets\Fonts\Poppins-SemiBold.ttf" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.9" />
   </ItemGroup>
 
@@ -27,13 +20,6 @@
     <ProjectReference Include="..\Envz.Common\Envz.Common.csproj" />
     <ProjectReference Include="..\Envz.Functional\Envz.Functional.csproj" />
     <ProjectReference Include="..\Envz.Infrastructure\Envz.Infrastructure.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="Assets\Fonts\Poppins-Bold.ttf" />
-    <Resource Include="Assets\Fonts\Poppins-Medium.ttf" />
-    <Resource Include="Assets\Fonts\Poppins-Regular.ttf" />
-    <Resource Include="Assets\Fonts\Poppins-SemiBold.ttf" />
   </ItemGroup>
 
 </Project>

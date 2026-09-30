@@ -1,6 +1,6 @@
 using Envz.Domain.Entities;
-using Envz.UI.Services;
 using System.Windows.Media;
+using Envz.Common.Services;
 
 namespace Envz.UI.Views.UserControls.EnvironmentApplicationItem;
 

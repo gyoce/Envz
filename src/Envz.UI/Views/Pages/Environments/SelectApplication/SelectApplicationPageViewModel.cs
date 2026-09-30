@@ -2,10 +2,10 @@
 using Envz.Common.Utils;
 using Envz.Functional.Applications;
 using Envz.Functional.Mediator;
-using Envz.UI.Services;
-using Envz.UI.Utils;
 using Envz.UI.Views.UserControls.ApplicationItem;
 using System.Windows.Input;
+using Envz.Common.UI.Utils;
+using Envz.Common.Services;
 
 namespace Envz.UI.Views.Pages.Environments.SelectApplication;
 

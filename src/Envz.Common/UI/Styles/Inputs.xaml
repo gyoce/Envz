@@ -3,7 +3,7 @@
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
   <ResourceDictionary.MergedDictionaries>
-    <ResourceDictionary Source="/Envz.UI;component/Styles/Sizes.xaml" />
+    <ResourceDictionary Source="/Envz.Common;component/UI/Styles/Sizes.xaml" />
   </ResourceDictionary.MergedDictionaries>
 
   <Style x:Key="TextBoxBase" TargetType="TextBox">

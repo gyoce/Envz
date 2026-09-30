@@ -1,6 +1,7 @@
-﻿using Envz.Common.Services.Navigation;
+﻿using Envz.Common.Services;
+using Envz.Common.Services.Dialogs;
+using Envz.Common.Services.Navigation;
 using Envz.UI.Services;
-using Envz.UI.Services.Dialogs;
 using Envz.UI.Views;
 using Envz.UI.Views.Pages.Applications.AddApplication;
 using Envz.UI.Views.Pages.Applications.HomeApplications;

@@ -3,7 +3,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
-namespace Envz.UI.Views.UserControls.Controls;
+namespace Envz.Common.UI.Controls;
 
 public partial class ButtonImage : UserControl
 {

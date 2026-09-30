@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace Envz.UI.Views.UserControls.Controls;
+namespace Envz.Common.UI.Controls;
 
 public partial class TextInput : UserControl
 {

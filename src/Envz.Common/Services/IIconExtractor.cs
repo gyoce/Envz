@@ -1,6 +1,6 @@
 ﻿using System.Windows.Media;
 
-namespace Envz.UI.Services;
+namespace Envz.Common.Services;
 
 public interface IIconExtractor
 {

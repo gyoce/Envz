@@ -1,7 +1,7 @@
-﻿using Envz.UI.Views.Dialogs;
+﻿using Envz.Common.ViewModels;
 using System.Windows;
 
-namespace Envz.UI.Services.Dialogs;
+namespace Envz.Common.Services.Dialogs;
 
 public interface IDialogService
 {

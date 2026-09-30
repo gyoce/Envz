@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Data;
 
-namespace Envz.UI.Utils;
+namespace Envz.Common.UI.Utils;
 
 public class InverseBoolToVisibilityConverter : IValueConverter
 {

@@ -1,4 +1,4 @@
-﻿namespace Envz.UI.Services.Dialogs;
+﻿namespace Envz.Common.Services.Dialogs;
 
 public interface IFileDialogService
 {

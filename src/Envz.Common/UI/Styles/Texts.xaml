@@ -3,10 +3,10 @@
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
   <FontFamily x:Key="PoppinsRegular">
-    pack://application:,,,/Assets/Fonts/#Poppins
+    pack://application:,,,/Envz.Common;component/UI/Assets/Fonts/#Poppins
   </FontFamily>
   <FontFamily x:Key="PoppinsBold">
-    pack://application:,,,/Assets/Fonts/#Poppins Bold
+    pack://application:,,,/Envz.Common;component/UI/Assets/Fonts/#Poppins Bold
   </FontFamily>
 
   <Style x:Key="TextBase" TargetType="TextBlock">

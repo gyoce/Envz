@@ -3,13 +3,13 @@ using Envz.Common.Utils;
 using Envz.Domain.Entities;
 using Envz.Functional.Environments;
 using Envz.Functional.Mediator;
-using Envz.UI.Services;
 using Envz.UI.Views.Pages.Environments.HomeEnvironments;
 using Envz.UI.Views.Pages.Environments.SelectApplication;
 using Envz.UI.Views.UserControls.EnvironmentApplicationItem;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Windows.Input;
+using Envz.Common.Services;
 
 namespace Envz.UI.Views.Pages.Environments.CreateEnvironment;
 
