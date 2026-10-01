@@ -1,7 +1,7 @@
 ﻿using Envz.Common.Services.Navigation;
 using Envz.Common.ViewModels;
 
-namespace Envz.FunctionalTests.Navigation;
+namespace Envz.UITests.Navigation;
 
 public class PageViewModelHomeWithoutTitle : PageViewModel
 {

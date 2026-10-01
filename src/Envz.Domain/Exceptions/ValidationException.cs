@@ -1,3 +1,3 @@
 ﻿namespace Envz.Domain.Exceptions;
 
-public class ValidationException(string message) : Exception(message);
+public class ValidationException(string message) : EnvzException(message);

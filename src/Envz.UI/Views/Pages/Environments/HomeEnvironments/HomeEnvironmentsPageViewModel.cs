@@ -1,12 +1,12 @@
 ﻿using Envz.Common.Services.Navigation;
+using Envz.Common.UI.Utils;
 using Envz.Common.Utils;
 using Envz.Functional.Environments;
 using Envz.Functional.Mediator;
+using Envz.UI.Services;
 using Envz.UI.Views.Pages.Environments.CreateEnvironment;
 using Envz.UI.Views.UserControls.EnvironmentItem;
 using System.Windows.Input;
-using Envz.Common.UI.Utils;
-using Envz.Common.Services;
 
 namespace Envz.UI.Views.Pages.Environments.HomeEnvironments;
 
@@ -20,14 +20,14 @@ public class HomeEnvironmentsPageViewModel : PageViewModel
 
     private readonly IMediator _mediator;
 
-    public HomeEnvironmentsPageViewModel(IMediator mediator, ViewModelFactory viewModelFactory, INavigationService navigationService)
+    public HomeEnvironmentsPageViewModel(IMediator mediator, EnvironmentItemViewModelFactory viewModelFactory, INavigationService navigationService)
     {
         _mediator = mediator;
 
         NavigateToCreateEnvironmentCommand = new RelayCommand(_ => navigationService.NavigateTo<CreateEnvironmentPageViewModel>());
         SearchableEnvironments = new SearchableCollection<EnvironmentItemViewModel, Environment>(
             env => env.Name,
-            env => viewModelFactory.Create<EnvironmentItemViewModel>(env)
+            env => viewModelFactory.Create(env)
         );
 
         LoadEnvironments();

@@ -1,7 +1,7 @@
-﻿using System.Windows;
-using Envz.Common.Services.Dialogs;
+﻿using Envz.Common.Services.Dialogs;
 using Envz.UI.Views;
 using Microsoft.Extensions.DependencyInjection;
+using System.Windows;
 
 namespace Envz.UI.Services;
 

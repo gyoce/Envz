@@ -16,6 +16,7 @@
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="40" />
         <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="40" />
       </Grid.ColumnDefinitions>
 
       <Image Grid.Column="0" Source="{Binding Icon}" Width="32" Height="32" />
@@ -28,6 +29,13 @@
                    Foreground="{StaticResource ForegroundMutedBrush}" 
                    TextTrimming="CharacterEllipsis" />
       </StackPanel>
+
+      <ctrls:ButtonImage Grid.Column="2" 
+                         Source="{StaticResource IconTrashBlack}" 
+                         ButtonStyle="{StaticResource TransparentBlackButton}"
+                         ImageHeight="32"
+                         Command="{Binding DeleteCommand}" 
+                         Visibility="{Binding CanDelete, Converter={StaticResource BoolToVisibilityConverter}}"/>
     </Grid>
   </Border>
 

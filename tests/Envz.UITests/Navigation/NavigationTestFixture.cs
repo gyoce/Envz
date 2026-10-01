@@ -1,8 +1,8 @@
 ﻿using Envz.Common.Services.Navigation;
-
+using Envz.UI.Services;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Envz.FunctionalTests.Navigation;
+namespace Envz.UITests.Navigation;
 
 public class NavigationTestFixture : IDisposable
 {

@@ -26,6 +26,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Envz.FunctionalTests", "tes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Envz.CommonTests", "tests\Envz.CommonTests\Envz.CommonTests.csproj", "{BAF2C630-E2F3-4D8C-8FB1-670C3D86D784}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Envz.UITests", "tests\Envz.UITests\Envz.UITests.csproj", "{04E93323-4373-4188-94FF-9FA5ED1098BF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -60,6 +62,10 @@ Global
 		{BAF2C630-E2F3-4D8C-8FB1-670C3D86D784}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BAF2C630-E2F3-4D8C-8FB1-670C3D86D784}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BAF2C630-E2F3-4D8C-8FB1-670C3D86D784}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04E93323-4373-4188-94FF-9FA5ED1098BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04E93323-4373-4188-94FF-9FA5ED1098BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04E93323-4373-4188-94FF-9FA5ED1098BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04E93323-4373-4188-94FF-9FA5ED1098BF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -72,6 +78,7 @@ Global
 		{5973C643-EFD1-4EAB-822F-4C91A65EC954} = {ACEEFEE0-EB5D-4129-8486-420B2C9853D2}
 		{9C7B6815-1FCB-4104-B990-3828C30AB1BE} = {ADFD8BD6-BDBE-44AA-8DF8-8F963FF6406D}
 		{BAF2C630-E2F3-4D8C-8FB1-670C3D86D784} = {ADFD8BD6-BDBE-44AA-8DF8-8F963FF6406D}
+		{04E93323-4373-4188-94FF-9FA5ED1098BF} = {ADFD8BD6-BDBE-44AA-8DF8-8F963FF6406D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {39B12CDF-DB5C-4B33-AF02-9D76B4F71479}

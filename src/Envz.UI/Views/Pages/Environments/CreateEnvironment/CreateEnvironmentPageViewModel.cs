@@ -3,13 +3,13 @@ using Envz.Common.Utils;
 using Envz.Domain.Entities;
 using Envz.Functional.Environments;
 using Envz.Functional.Mediator;
+using Envz.UI.Services;
 using Envz.UI.Views.Pages.Environments.HomeEnvironments;
 using Envz.UI.Views.Pages.Environments.SelectApplication;
 using Envz.UI.Views.UserControls.EnvironmentApplicationItem;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Windows.Input;
-using Envz.Common.Services;
 
 namespace Envz.UI.Views.Pages.Environments.CreateEnvironment;
 
@@ -27,9 +27,9 @@ public class CreateEnvironmentPageViewModel : PageViewModel
 
     private readonly IMediator _mediator;
     private readonly INavigationService _navigationService;
-    private readonly ViewModelFactory _viewModelFactory;
+    private readonly EnvironmentApplicationItemViewModelFactory _viewModelFactory;
 
-    public CreateEnvironmentPageViewModel(IMediator mediator, INavigationService navigationService, ViewModelFactory viewModelFactory)
+    public CreateEnvironmentPageViewModel(IMediator mediator, INavigationService navigationService, EnvironmentApplicationItemViewModelFactory viewModelFactory)
     {
         _mediator = mediator;
         _navigationService = navigationService;
@@ -64,7 +64,7 @@ public class CreateEnvironmentPageViewModel : PageViewModel
         {
             EnvironmentApplication environmentApplication = new() { ApplicationName = application.Name };
             CreateEnvironmentRequest.Applications.Add(environmentApplication);
-            ApplicationViewModels.Add(_viewModelFactory.Create<EnvironmentApplicationItemViewModel>(environmentApplication, application));
+            ApplicationViewModels.Add(_viewModelFactory.Create(environmentApplication, application));
         }
     }
 

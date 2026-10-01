@@ -13,7 +13,7 @@
           Click="Button_Click">
     <TextBlock Text="{Binding Text, ElementName=Root, FallbackValue=Text}" 
                Style="{Binding TextStyle, ElementName=Root, FallbackValue={StaticResource TextBody}}" 
-               Foreground="White" 
+               Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"
                VerticalAlignment="Center" />
   </Button>
 

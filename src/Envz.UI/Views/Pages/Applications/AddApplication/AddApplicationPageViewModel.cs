@@ -1,3 +1,5 @@
+using Envz.Common.Services;
+using Envz.Common.Services.Dialogs;
 using Envz.Common.Services.Navigation;
 using Envz.Common.Utils;
 using Envz.Functional.Applications;
@@ -6,8 +8,6 @@ using Envz.UI.Views.Pages.Applications.HomeApplications;
 using System.IO;
 using System.Windows.Input;
 using System.Windows.Media;
-using Envz.Common.Services;
-using Envz.Common.Services.Dialogs;
 
 namespace Envz.UI.Views.Pages.Applications.AddApplication;
 
@@ -47,6 +47,11 @@ public class AddApplicationPageViewModel : PageViewModel
         CancelAddApplicationCommand = new RelayCommand(_ => CancelAddApplication());
         BrowseIconCommand = new RelayCommand(_ => BrowseIcon());
         BrowseApplicationCommand = new RelayCommand(_ => BrowseApplication());
+    }
+
+    public override void OnEnable()
+    {
+        Request = new CreateApplicationRequest();
     }
 
     private void AddApplication()

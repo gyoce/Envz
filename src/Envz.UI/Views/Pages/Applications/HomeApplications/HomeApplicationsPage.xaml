@@ -19,7 +19,6 @@
         <RowDefinition Height="*" />
       </Grid.RowDefinitions>
 
-      <!-- Search bar -->
       <Grid Grid.Row="0" Margin="30 10">
         <Grid.ColumnDefinitions>
           <ColumnDefinition Width="*" />
@@ -40,15 +39,14 @@
                IsHitTestVisible="False" />
 
         <ctrls:ButtonImage Grid.Column="1" 
-                              Source="{StaticResource IconAddWhite}" 
-                              Command="{Binding AddApplicationCommand}" 
-                              ImageWidth="20" ImageHeight="20" 
-                              Margin="10 0 0 0" />
+                           Source="{StaticResource IconAddWhite}" 
+                           Command="{Binding AddApplicationCommand}" 
+                           ImageWidth="20" ImageHeight="20" 
+                           Margin="10 0 0 0" />
       </Grid>
 
-      <!-- Applications list -->
       <ScrollViewer Grid.Row="1" Style="{StaticResource PrimaryScrollViewer}" Margin="30 0">
-        <ItemsControl ItemsSource="{Binding SearchableApplications.Items}">
+        <ItemsControl ItemsSource="{Binding SearchableApplications.Items}" d:ItemsSource="{d:SampleData ItemCount=5}">
           <ItemsControl.ItemsPanel>
             <ItemsPanelTemplate>
               <WrapPanel Orientation="Horizontal" Margin="-10 0" />
@@ -57,9 +55,9 @@
           <ItemsControl.ItemTemplate>
             <DataTemplate>
               <ai:ApplicationItem DataContext="{Binding}" 
-                              Margin="10" 
-                              Width="{StaticResource ApplicationListItemWidth}" 
-                              Height="{StaticResource ApplicationListItemHeight}" />
+                                  Margin="10 5 10 5" 
+                                  Width="{StaticResource ApplicationListItemWidth}" 
+                                  Height="{StaticResource ApplicationListItemHeight}" />
             </DataTemplate>
           </ItemsControl.ItemTemplate>
         </ItemsControl>

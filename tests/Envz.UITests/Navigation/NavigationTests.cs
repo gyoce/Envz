@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Shouldly;
 
-namespace Envz.FunctionalTests.Navigation;
+namespace Envz.UITests.Navigation;
 
 public class NavigationTests : NavigationTestFixture
 {

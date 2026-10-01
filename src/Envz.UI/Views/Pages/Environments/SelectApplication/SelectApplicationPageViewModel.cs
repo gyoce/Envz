@@ -1,11 +1,11 @@
 ﻿using Envz.Common.Services.Navigation;
+using Envz.Common.UI.Utils;
 using Envz.Common.Utils;
 using Envz.Functional.Applications;
 using Envz.Functional.Mediator;
+using Envz.UI.Services;
 using Envz.UI.Views.UserControls.ApplicationItem;
 using System.Windows.Input;
-using Envz.Common.UI.Utils;
-using Envz.Common.Services;
 
 namespace Envz.UI.Views.Pages.Environments.SelectApplication;
 
@@ -30,13 +30,13 @@ public class SelectApplicationPageViewModel : ResultPageViewModel<Application>
 
     private readonly IMediator _mediator;
 
-    public SelectApplicationPageViewModel(IMediator mediator, ViewModelFactory viewModelFactory)
+    public SelectApplicationPageViewModel(IMediator mediator, ApplicationItemViewModelFactory viewModelFactory)
     {
         _mediator = mediator;
 
         SearchableApplications = new SearchableCollection<ApplicationItemViewModel, Application>(
             app => app.Name,
-            app => viewModelFactory.Create<ApplicationItemViewModel>(app)
+            app => viewModelFactory.Create(app)
         )
         {
             UnfilteredItems = _mediator.Send(new GetApplicationsRequest())

@@ -45,4 +45,12 @@ public class ApplicationRepository(IConfigurationStore configurationStore, IIcon
     {
         return configurationStore.Configuration.Applications.Any(app => app.Name == applicationName);
     }
+
+    public void Delete(string applicationName)
+    {
+        configurationStore.Configuration.Applications.RemoveAll(app => app.Name == applicationName);
+        configurationStore.Save();
+        iconStore.Icons.ApplicationIcons.Remove(applicationName);
+        iconStore.Save();
+    }
 }

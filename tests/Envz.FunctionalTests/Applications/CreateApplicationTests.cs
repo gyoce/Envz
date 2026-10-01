@@ -1,3 +1,4 @@
+using Envz.Domain.Exceptions;
 using Envz.Functional.Applications;
 using Envz.Infrastructure.Configuration.Dtos;
 using Envz.Infrastructure.Configuration.Stores;
@@ -31,5 +32,13 @@ public class CreateApplicationTests : BaseTestFixture
         Send(new CreateApplicationRequest { Name = "App", Path = "path" });
 
         GetMock<IConfigurationStore>().Verify(store => store.Save(), Times.Once);
+    }
+
+    [Fact]
+    public void ShouldCheckForUnicity()
+    {
+        SetConfiguration(new ConfigurationDtoBuilder().WithApplication(new ApplicationDtoBuilder().WithName("App1").Build()).Build());
+
+        Should.Throw<ApplicationAlreadyExistsException>(() => Send(new CreateApplicationRequest { Name = "App1", Path = "path" }));
     }
 }

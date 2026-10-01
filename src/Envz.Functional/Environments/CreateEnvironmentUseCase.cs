@@ -19,8 +19,10 @@ public class CreateEnvironmentUseCase(IEnvironmentRepository environmentReposito
             throw new ValidationException($"{nameof(Environment.Name)} must not be null or white space.");
 
         foreach (EnvironmentApplication envApp in request.Applications)
+        {
             if (!applicationRepository.Exists(envApp.ApplicationName))
-                throw new ApplicationNotFoundException($"Application with name {envApp.ApplicationName} does not exists.");
+                throw new ApplicationNotFoundException($"Application with name `{envApp.ApplicationName}` does not exists.");
+        }
 
         environmentRepository.Save(new Environment
         {

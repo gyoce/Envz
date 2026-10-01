@@ -1,3 +1,3 @@
 ﻿namespace Envz.Domain.Exceptions;
 
-public class ApplicationNotFoundException(string message) : Exception(message);
+public class ApplicationNotFoundException(string message) : EnvzException(message);

@@ -11,8 +11,6 @@ using Envz.UI.Views.Pages.Environments.HomeEnvironments;
 using Envz.UI.Views.Pages.Environments.SelectApplication;
 using Envz.UI.Views.Pages.Home;
 using Envz.UI.Views.Pages.Settings;
-using Envz.UI.Views.UserControls.EnvironmentApplicationItem;
-using Envz.UI.Views.UserControls.EnvironmentItem;
 
 using Microsoft.Extensions.DependencyInjection;
 
@@ -26,7 +24,10 @@ public static class DependencyInjection
         services.AddSingleton<IDialogService, DialogService>();
         services.AddSingleton<IFileDialogService, FileDialogService>();
         services.AddSingleton<IIconExtractor, IconExtractor>();
-        services.AddSingleton<ViewModelFactory>();
+
+        services.AddSingleton<ApplicationItemViewModelFactory>();
+        services.AddSingleton<EnvironmentApplicationItemViewModelFactory>();
+        services.AddSingleton<EnvironmentItemViewModelFactory>();
 
         services.AddSingleton<MainWindow>();
         services.AddSingleton<MainWindowViewModel>();
@@ -37,8 +38,6 @@ public static class DependencyInjection
         services.AddSingleton<CreateEnvironmentPageViewModel>();
         services.AddSingleton<EditEnvironmentPageViewModel>();
         services.AddSingleton<SelectApplicationPageViewModel>();
-        services.AddTransient<EnvironmentItemViewModel>();
-        services.AddTransient<EnvironmentApplicationItemViewModel>();
 
         services.AddSingleton<HomeApplicationsPageViewModel>();
         services.AddSingleton<AddApplicationPageViewModel>();

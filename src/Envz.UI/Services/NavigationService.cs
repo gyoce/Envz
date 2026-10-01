@@ -1,8 +1,7 @@
-using Envz.Common.ViewModels;
-
+using Envz.Common.Services.Navigation;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Envz.Common.Services.Navigation;
+namespace Envz.UI.Services;
 
 public class NavigationService(IServiceProvider serviceProvider) : INavigationService
 {

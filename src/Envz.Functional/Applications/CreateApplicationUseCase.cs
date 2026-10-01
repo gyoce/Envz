@@ -1,4 +1,5 @@
 ﻿using Envz.Domain.Entities;
+using Envz.Domain.Exceptions;
 using Envz.Domain.Ports;
 using Envz.Functional.Mediator;
 
@@ -13,13 +14,18 @@ public record CreateApplicationRequest : IRequest
 
 public class CreateApplicationUseCase(IApplicationRepository applicationRepository) : IUseCase<CreateApplicationRequest>
 {
-    public void Execute(CreateApplicationRequest parameter)
+    public void Execute(CreateApplicationRequest request)
     {
+        if (applicationRepository.Exists(request.Name))
+        {
+            throw new ApplicationAlreadyExistsException($"Application `{request.Name}` already exists.");
+        }
+
         applicationRepository.Save(new Application
         {
-            Name = parameter.Name,
-            Icon = parameter.Icon,
-            Path = parameter.Path
+            Name = request.Name,
+            Icon = request.Icon,
+            Path = request.Path
         });
     }
 }

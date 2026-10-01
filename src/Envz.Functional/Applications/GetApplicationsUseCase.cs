@@ -8,7 +8,7 @@ public record GetApplicationsRequest : IRequest<IReadOnlyCollection<Application>
 
 public class GetApplicationsUseCase(IApplicationRepository applicationRepository) : IUseCase<GetApplicationsRequest, IReadOnlyCollection<Application>>
 {
-    public IReadOnlyCollection<Application> Execute(GetApplicationsRequest parameter)
+    public IReadOnlyCollection<Application> Execute(GetApplicationsRequest request)
     {
         return applicationRepository.GetAll();
     }

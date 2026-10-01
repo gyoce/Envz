@@ -1,12 +1,12 @@
 ﻿using Envz.Common.Services.Navigation;
+using Envz.Common.UI.Utils;
 using Envz.Common.Utils;
 using Envz.Functional.Applications;
 using Envz.Functional.Mediator;
+using Envz.UI.Services;
 using Envz.UI.Views.Pages.Applications.AddApplication;
 using Envz.UI.Views.UserControls.ApplicationItem;
 using System.Windows.Input;
-using Envz.Common.UI.Utils;
-using Envz.Common.Services;
 
 namespace Envz.UI.Views.Pages.Applications.HomeApplications;
 
@@ -20,16 +20,25 @@ public class HomeApplicationsPageViewModel : PageViewModel
 
     private readonly IMediator _mediator;
 
-    public HomeApplicationsPageViewModel(INavigationService navigationService, IMediator mediator, ViewModelFactory viewModelFactory)
+    public HomeApplicationsPageViewModel(INavigationService navigationService, IMediator mediator, ApplicationItemViewModelFactory viewModelFactory)
     {
         _mediator = mediator;
 
         AddApplicationCommand = new RelayCommand(_ => navigationService.NavigateTo<AddApplicationPageViewModel>());
         SearchableApplications = new SearchableCollection<ApplicationItemViewModel, Application>(
             app => app.Name,
-            app => viewModelFactory.Create<ApplicationItemViewModel>(app)
+            app => viewModelFactory.Create(app, DeleteApplication)
         );
 
+        LoadApplications();
+    }
+
+    private void DeleteApplication(Application app)
+    {
+        _mediator.Send(new DeleteApplicationRequest
+        {
+            ApplicationName = app.Name
+        });
         LoadApplications();
     }
 
