@@ -3,6 +3,8 @@ using Envz.Common.Services.Dialogs;
 using Envz.Common.Services.Navigation;
 using Envz.UI.Services;
 using Envz.UI.Views;
+using Envz.UI.Views.Dialogs.Confirm;
+using Envz.UI.Views.Dialogs.Error;
 using Envz.UI.Views.Pages.Applications.AddApplication;
 using Envz.UI.Views.Pages.Applications.HomeApplications;
 using Envz.UI.Views.Pages.Environments.CreateEnvironment;
@@ -24,6 +26,7 @@ public static class DependencyInjection
         services.AddSingleton<IDialogService, DialogService>();
         services.AddSingleton<IFileDialogService, FileDialogService>();
         services.AddSingleton<IIconExtractor, IconExtractor>();
+        services.AddSingleton<GlobalExceptionHandler>();
 
         services.AddSingleton<ApplicationItemViewModelFactory>();
         services.AddSingleton<EnvironmentApplicationItemViewModelFactory>();
@@ -43,6 +46,9 @@ public static class DependencyInjection
         services.AddSingleton<AddApplicationPageViewModel>();
 
         services.AddSingleton<SettingsPageViewModel>();
+
+        services.AddTransient<ErrorDialogViewModel>();
+        services.AddTransient<ConfirmDialogViewModel>();
 
         return services;
     }

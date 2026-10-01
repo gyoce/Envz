@@ -2,37 +2,56 @@
 using Envz.UI.Views;
 using Microsoft.Extensions.DependencyInjection;
 using System.Windows;
+using Envz.UI.Views.Dialogs;
 
 namespace Envz.UI.Services;
 
 public class DialogService(IServiceProvider serviceProvider) : IDialogService
 {
-    public TResult? ShowDialog<TDialog, TViewModel, TResult>(Action<TViewModel>? configure = null)
-        where TViewModel : DialogViewModelBase<TResult>
-        where TDialog : Window
-    {
-        DialogViewModelBase<TResult> viewModel = serviceProvider.GetRequiredService<TViewModel>();
-        TDialog window = CreateWindow<TDialog, TResult>(viewModel);
+    private int _openDialogCount;
 
-        viewModel.RequestClose += result =>
+    public TResult? ShowDialog<TViewModel, TResult>(Action<TViewModel>? configure = null)
+        where TViewModel : DialogViewModelBase<TResult>
+    {
+        TViewModel viewModel = serviceProvider.GetRequiredService<TViewModel>();
+        configure?.Invoke(viewModel);
+
+        MainDialogWindow window = new()
         {
-            window.DialogResult = result;
-            window.Close();
+            DataContext = viewModel,
+            Owner = GetOwner()
         };
 
-        MainWindowViewModel? mainVm = System.Windows.Application.Current.MainWindow?.DataContext as MainWindowViewModel;
-        mainVm?.IsDialogOpen = true;
-        bool? ok = window.ShowDialog();
-        mainVm?.IsDialogOpen = false;
-        return ok == true ? viewModel.Result : default;
+        void OnRequestClose(bool? result)
+        {
+            window.DialogResult = result;
+        }
+
+        viewModel.RequestClose += OnRequestClose;
+        _openDialogCount++;
+        SetOverlayVisible(true);
+        try
+        {
+            bool? ok = window.ShowDialog();
+            return ok == true ? viewModel.Result : default;
+        }
+        finally
+        {
+            viewModel.RequestClose -= OnRequestClose;
+            _openDialogCount--;
+            SetOverlayVisible(_openDialogCount > 0);
+        }
     }
 
-    private TDialog CreateWindow<TDialog, TResult>(DialogViewModelBase<TResult> viewModel)
-        where TDialog : Window
+    private static Window? GetOwner()
     {
-        TDialog windowDialog = serviceProvider.GetRequiredService<TDialog>();
-        windowDialog.DataContext = viewModel;
-        windowDialog.Owner = System.Windows.Application.Current.MainWindow;
-        return windowDialog;
+        System.Windows.Application app = System.Windows.Application.Current;
+        return app.Windows.OfType<Window>().FirstOrDefault(w => w.IsActive) ?? app.MainWindow;
+    }
+
+    private static void SetOverlayVisible(bool isVisible)
+    {
+        if (System.Windows.Application.Current.MainWindow?.DataContext is MainWindowViewModel mainVm)
+            mainVm.IsDialogOpen = isVisible;
     }
 }

@@ -3,6 +3,7 @@ using Envz.Infrastructure;
 using Envz.UI.Views;
 using Microsoft.Extensions.DependencyInjection;
 using System.Windows;
+using Envz.UI.Services;
 
 namespace Envz.UI;
 
@@ -12,8 +13,8 @@ public partial class App : System.Windows.Application
 
     protected override void OnStartup(StartupEventArgs e)
     {
-        ServiceCollection serviceCollection = ConfigureServices();
-        ServiceProvider = serviceCollection.BuildServiceProvider();
+        ServiceProvider = ConfigureServices().BuildServiceProvider();
+        ServiceProvider.GetRequiredService<GlobalExceptionHandler>().Register(this);
 
         MainWindow mainWindow = ServiceProvider.GetRequiredService<MainWindow>();
         mainWindow.Show();

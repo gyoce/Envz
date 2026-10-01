@@ -1,0 +1,69 @@
+﻿<Window 
+  x:Class="Envz.UI.Views.Dialogs.MainDialogWindow"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  xmlns:vm="clr-namespace:Envz.Common.ViewModels;assembly=Envz.Common"
+  xmlns:error="clr-namespace:Envz.UI.Views.Dialogs.Error"
+  xmlns:confirm="clr-namespace:Envz.UI.Views.Dialogs.Confirm"
+  mc:Ignorable="d"
+  d:DataContext="{d:DesignInstance Type=vm:IDialogViewModel}"
+  Title="{Binding Title}"
+  WindowStyle="None"
+  AllowsTransparency="True"
+  Background="Transparent"
+  ResizeMode="NoResize"
+  ShowInTaskbar="False"
+  SizeToContent="WidthAndHeight"
+  WindowStartupLocation="CenterOwner"
+  Width="{StaticResource DialogWidth}"
+  Height="{StaticResource DialogHeight}">
+
+  <Window.Resources>
+    <DataTemplate DataType="{x:Type error:ErrorDialogViewModel}">
+      <error:ErrorDialog />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type confirm:ConfirmDialogViewModel}">
+      <confirm:ConfirmDialog />
+    </DataTemplate>
+  </Window.Resources>
+
+  <Border Background="{StaticResource SurfaceBrush}"
+          BorderBrush="{StaticResource NeutralBrush}"
+          BorderThickness="1"
+          CornerRadius="4">
+    <Border.Effect>
+      <DropShadowEffect Color="#000000" BlurRadius="15" ShadowDepth="2" Opacity="0.25" Direction="270" />
+    </Border.Effect>
+
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="*" />
+      </Grid.RowDefinitions>
+
+      <Grid Grid.Row="0" Height="{StaticResource DialogTitleBarHeight}">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Column="0" 
+                   Style="{StaticResource TextH2}" 
+                   Text="{Binding Title}" 
+                   VerticalAlignment="Center" />
+
+        <Button Grid.Column="1"
+                Style="{StaticResource TransparentBlackButton}"
+                Click="CloseButtonClick"
+                Visibility="{Binding IsCancellable, Converter={StaticResource BoolToVisibilityConverter}}">
+          <Image Source="{StaticResource IconCrossBlack}" Width="12" Height="12" />
+        </Button>
+      </Grid>
+
+      <ContentControl Grid.Row="1" Content="{Binding}" Focusable="False" />
+    </Grid>
+  </Border>
+
+</Window>

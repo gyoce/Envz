@@ -6,8 +6,8 @@
   <sys:Double x:Key="AppWidth">1280</sys:Double>
   <sys:Double x:Key="AppHeight">540</sys:Double>
 
-  <sys:Double x:Key="AppDialogWidth">960</sys:Double>
-  <sys:Double x:Key="AppDialogHeight">425</sys:Double>
+  <sys:Double x:Key="DialogWidth">960</sys:Double>
+  <sys:Double x:Key="DialogHeight">425</sys:Double>
 
   <sys:Double x:Key="PageWidth">1090</sys:Double> <!-- PageWidth = AppWidth - SideBarWidth -->
   <sys:Double x:Key="PageHeight">490</sys:Double> <!-- PageHeight = AppHeight - TitleBarHeight -->
@@ -15,7 +15,11 @@
   <sys:Double x:Key="SubPageWidth">1090</sys:Double> <!-- SubPageWidth = PageWidth -->
   <sys:Double x:Key="SubPageHeight">450</sys:Double> <!-- SubPageHeight = PageHeight - BreadcrumbHeight -->
 
+  <sys:Double x:Key="DialogPageWidth">960</sys:Double> <!-- DialogPageWidth = DialogWidth -->
+  <sys:Double x:Key="DialogPageHeight">385</sys:Double><!-- DialogPageHeight = DialogHeight - DialogTitleBarHeight -->
+
   <sys:Double x:Key="TitleBarHeight">50</sys:Double>
+  <sys:Double x:Key="DialogTitleBarHeight">40</sys:Double>
 
   <sys:Double x:Key="SideBarWidth">190</sys:Double>
 
