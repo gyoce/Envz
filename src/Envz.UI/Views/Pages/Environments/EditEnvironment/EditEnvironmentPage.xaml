@@ -8,17 +8,14 @@
   xmlns:ee="clr-namespace:Envz.UI.Views.Pages.Environments.EditEnvironment"
   mc:Ignorable="d"
   d:DataContext="{d:DesignInstance Type=ee:EditEnvironmentPageViewModel}"
-  Width="{StaticResource SubPageWidth}" 
-  Height="{StaticResource SubPageHeight}">
+  Style="{StaticResource PageStyle}">
 
-  <Border Background="{StaticResource BgPrimaryBrush}">
-    <Grid>
-      <Grid.RowDefinitions>
-        <RowDefinition Height="*" />
-      </Grid.RowDefinitions>
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="*" />
+    </Grid.RowDefinitions>
 
-      <ctrls:ButtonText Grid.Row="0" Text="Return" Margin="10 0 0 0" HorizontalAlignment="Center" VerticalAlignment="Center" />
-    </Grid>
-  </Border>
+    <ctrls:ButtonText Grid.Row="0" Text="Return" Margin="10 0 0 0" HorizontalAlignment="Center" VerticalAlignment="Center" />
+  </Grid>
 
 </UserControl>

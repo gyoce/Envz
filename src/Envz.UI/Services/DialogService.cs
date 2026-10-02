@@ -1,22 +1,35 @@
 ﻿using Envz.Common.Services.Dialogs;
 using Envz.UI.Views;
+using Envz.UI.Views.Dialogs;
 using Microsoft.Extensions.DependencyInjection;
 using System.Windows;
-using Envz.UI.Views.Dialogs;
 
 namespace Envz.UI.Services;
 
-public class DialogService(IServiceProvider serviceProvider) : IDialogService
+public class DialogService(IServiceProvider serviceProvider, ViewLocator viewLocator) : IDialogService
 {
     private int _openDialogCount;
+
+    public void ShowDialog<TViewModel>(Action<TViewModel>? configure = null)
+        where TViewModel : DialogViewModelBase
+    {
+        Show(configure);
+    }
 
     public TResult? ShowDialog<TViewModel, TResult>(Action<TViewModel>? configure = null)
         where TViewModel : DialogViewModelBase<TResult>
     {
+        (bool ok, TViewModel viewModel) = Show(configure);
+        return ok ? viewModel.Result : default;
+    }
+
+    private (bool Ok, TViewModel ViewModel) Show<TViewModel>(Action<TViewModel>? configure)
+        where TViewModel : DialogViewModelBase
+    {
         TViewModel viewModel = serviceProvider.GetRequiredService<TViewModel>();
         configure?.Invoke(viewModel);
 
-        MainDialogWindow window = new()
+        MainDialogWindow window = new(viewLocator)
         {
             DataContext = viewModel,
             Owner = GetOwner()
@@ -32,8 +45,7 @@ public class DialogService(IServiceProvider serviceProvider) : IDialogService
         SetOverlayVisible(true);
         try
         {
-            bool? ok = window.ShowDialog();
-            return ok == true ? viewModel.Result : default;
+            return (window.ShowDialog() == true, viewModel);
         }
         finally
         {

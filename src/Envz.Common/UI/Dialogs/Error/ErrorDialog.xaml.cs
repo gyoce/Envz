@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace Envz.UI.Views.Dialogs.Error;
+namespace Envz.Common.UI.Dialogs.Error;
 
 public partial class ErrorDialog : UserControl
 {

@@ -9,60 +9,57 @@
   xmlns:ha="clr-namespace:Envz.UI.Views.Pages.Applications.HomeApplications"
   mc:Ignorable="d" 
   d:DataContext="{d:DesignInstance Type=ha:HomeApplicationsPageViewModel}"
-  Width="{StaticResource SubPageWidth}" 
-  Height="{StaticResource SubPageHeight}">
+  Style="{StaticResource PageStyle}">
 
-  <Border Background="{StaticResource BgPrimaryBrush}">
-    <Grid>
-      <Grid.RowDefinitions>
-        <RowDefinition Height="Auto" />
-        <RowDefinition Height="*" />
-      </Grid.RowDefinitions>
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="*" />
+    </Grid.RowDefinitions>
 
-      <Grid Grid.Row="0" Margin="30 10">
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="*" />
-          <ColumnDefinition Width="Auto" />
-        </Grid.ColumnDefinitions>
+    <Grid Grid.Row="0" Margin="30 10">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="Auto" />
+      </Grid.ColumnDefinitions>
 
-        <TextBox x:Name="SearchTextBox" 
-                 Grid.Column="0" 
-                 Style="{StaticResource TextBoxH4}" 
-                 Padding="40 5 8 5" 
-                 Text="{Binding SearchableApplications.SearchText, UpdateSourceTrigger=PropertyChanged}" />
-        <Image Grid.Column="0" 
-               Source="{StaticResource IconSearchBlack}" 
-               Width="25" Height="25" 
-               HorizontalAlignment="Left" 
-               VerticalAlignment="Center" 
-               Margin="10 0 0 0" 
-               IsHitTestVisible="False" />
+      <TextBox x:Name="SearchTextBox" 
+               Grid.Column="0" 
+               Style="{StaticResource TextBoxH4}" 
+               Padding="40 5 8 5" 
+               Text="{Binding SearchableApplications.SearchText, UpdateSourceTrigger=PropertyChanged}" />
+      <Image Grid.Column="0" 
+             Source="{StaticResource IconSearchBlack}" 
+             Width="25" Height="25" 
+             HorizontalAlignment="Left" 
+             VerticalAlignment="Center" 
+             Margin="10 0 0 0" 
+             IsHitTestVisible="False" />
 
-        <ctrls:ButtonImage Grid.Column="1" 
-                           Source="{StaticResource IconAddWhite}" 
-                           Command="{Binding AddApplicationCommand}" 
-                           ImageWidth="20" ImageHeight="20" 
-                           Margin="10 0 0 0" />
-      </Grid>
-
-      <ScrollViewer Grid.Row="1" Style="{StaticResource PrimaryScrollViewer}" Margin="30 0">
-        <ItemsControl ItemsSource="{Binding SearchableApplications.Items}" d:ItemsSource="{d:SampleData ItemCount=5}">
-          <ItemsControl.ItemsPanel>
-            <ItemsPanelTemplate>
-              <WrapPanel Orientation="Horizontal" Margin="-10 0" />
-            </ItemsPanelTemplate>
-          </ItemsControl.ItemsPanel>
-          <ItemsControl.ItemTemplate>
-            <DataTemplate>
-              <ai:ApplicationItem DataContext="{Binding}" 
-                                  Margin="10 5 10 5" 
-                                  Width="{StaticResource ApplicationListItemWidth}" 
-                                  Height="{StaticResource ApplicationListItemHeight}" />
-            </DataTemplate>
-          </ItemsControl.ItemTemplate>
-        </ItemsControl>
-      </ScrollViewer>
+      <ctrls:ButtonImage Grid.Column="1" 
+                         Source="{StaticResource IconAddWhite}" 
+                         Command="{Binding AddApplicationCommand}" 
+                         ImageWidth="20" ImageHeight="20" 
+                         Margin="10 0 0 0" />
     </Grid>
-  </Border>
+
+    <ScrollViewer Grid.Row="1" Style="{StaticResource PrimaryScrollViewer}" Margin="30 0">
+      <ItemsControl ItemsSource="{Binding SearchableApplications.Items}" d:ItemsSource="{d:SampleData ItemCount=5}">
+        <ItemsControl.ItemsPanel>
+          <ItemsPanelTemplate>
+            <WrapPanel Orientation="Horizontal" Margin="-10 0" />
+          </ItemsPanelTemplate>
+        </ItemsControl.ItemsPanel>
+        <ItemsControl.ItemTemplate>
+          <DataTemplate>
+            <ai:ApplicationItem DataContext="{Binding}" 
+                                Margin="10 5 10 5" 
+                                Width="{StaticResource ApplicationListItemWidth}" 
+                                Height="{StaticResource ApplicationListItemHeight}" />
+          </DataTemplate>
+        </ItemsControl.ItemTemplate>
+      </ItemsControl>
+    </ScrollViewer>
+  </Grid>
 
 </UserControl>

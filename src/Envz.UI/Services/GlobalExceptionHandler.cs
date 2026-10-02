@@ -1,6 +1,6 @@
 ﻿using Envz.Common.Services.Dialogs;
+using Envz.Common.UI.Dialogs.Error;
 using Envz.Domain.Exceptions;
-using Envz.UI.Views.Dialogs.Error;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Threading;
@@ -55,7 +55,7 @@ public class GlobalExceptionHandler(IDialogService dialogService)
             Window? mainWindow = System.Windows.Application.Current.MainWindow;
             if (mainWindow is { IsLoaded: true })
             {
-                dialogService.ShowDialog<ErrorDialogViewModel, bool>(vm =>
+                dialogService.ShowDialog<ErrorDialogViewModel>(vm =>
                 {
                     vm.Title = title;
                     vm.Message = message;

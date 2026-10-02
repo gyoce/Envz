@@ -6,9 +6,8 @@ public interface IDialogViewModel
     bool IsCancellable { get; }
 }
 
-public abstract class DialogViewModelBase<TResult> : ViewModelBase, IDialogViewModel
+public abstract class DialogViewModelBase : ViewModelBase, IDialogViewModel
 {
-    public TResult? Result { get; set; }
     public event Action<bool?>? RequestClose;
     public string Title
     {
@@ -21,9 +20,16 @@ public abstract class DialogViewModelBase<TResult> : ViewModelBase, IDialogViewM
     } = string.Empty;
     public virtual bool IsCancellable => true;
 
-    protected void Close(bool dialogResult, TResult? result = default)
+    protected void Close(bool dialogResult = true) => RequestClose?.Invoke(dialogResult);
+}
+
+public abstract class DialogViewModelBase<TResult> : DialogViewModelBase
+{
+    public TResult? Result { get; set; }
+
+    protected void Close(bool dialogResult, TResult? result)
     {
         Result = result;
-        RequestClose?.Invoke(dialogResult);
+        base.Close(dialogResult);
     }
 }

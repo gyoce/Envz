@@ -9,66 +9,61 @@
   xmlns:sa="clr-namespace:Envz.UI.Views.Pages.Environments.SelectApplication"
   mc:Ignorable="d" 
   d:DataContext="{d:DesignInstance Type=sa:SelectApplicationPageViewModel}"
-  Width="{StaticResource SubPageWidth}" 
-  Height="{StaticResource SubPageHeight}">
+  Style="{StaticResource PageStyle}">
 
-  <Border Background="{StaticResource BgPrimaryBrush}">
-    <Grid>
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="*" />
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+
+    <Grid Grid.Row="0" Margin="20 10">
       <Grid.RowDefinitions>
-        <RowDefinition Height="*" />
         <RowDefinition Height="Auto" />
+        <RowDefinition Height="*" />
       </Grid.RowDefinitions>
 
-      <!-- Applications List -->
-      <Grid Grid.Row="0" Margin="20 10">
-        <Grid.RowDefinitions>
-          <RowDefinition Height="Auto" />
-          <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-
-        <Grid Grid.Row="0" Margin="0 0 0 8">
-          <TextBox x:Name="SearchApplicationTextBox"
-                   Style="{StaticResource TextBoxH4}" 
-                   Padding="40 5 8 5" 
-                   Text="{Binding SearchableApplications.SearchText, UpdateSourceTrigger=PropertyChanged}" />
-          <Image Source="{StaticResource IconSearchBlack}" 
-               Width="22" Height="22" 
-               HorizontalAlignment="Left" 
-               VerticalAlignment="Center" 
-               Margin="10 0 0 0" 
-               IsHitTestVisible="False" />
-        </Grid>
-
-        <ListBox Grid.Row="1" 
-               ItemsSource="{Binding SearchableApplications.Items}" 
-               SelectedItem="{Binding SelectedApplication}" 
-               ItemContainerStyle="{StaticResource ApplicationListBoxItemStyle}" 
-               ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
-               Background="Transparent" 
-               BorderThickness="0">
-          <ListBox.ItemTemplate>
-            <DataTemplate>
-              <ai:ApplicationItem DataContext="{Binding}" />
-            </DataTemplate>
-          </ListBox.ItemTemplate>
-        </ListBox>
+      <Grid Grid.Row="0" Margin="0 0 0 8">
+        <TextBox x:Name="SearchApplicationTextBox"
+               Style="{StaticResource TextBoxH4}" 
+               Padding="40 5 8 5" 
+               Text="{Binding SearchableApplications.SearchText, UpdateSourceTrigger=PropertyChanged}" />
+        <Image Source="{StaticResource IconSearchBlack}" 
+           Width="22" Height="22" 
+           HorizontalAlignment="Left" 
+           VerticalAlignment="Center" 
+           Margin="10 0 0 0" 
+           IsHitTestVisible="False" />
       </Grid>
 
-      <!-- Bottom buttons -->
-      <StackPanel Grid.Row="1" 
-                  Orientation="Horizontal" 
-                  HorizontalAlignment="Center" 
-                  Margin="0 0 0 20">
-        <ctrls:ButtonText Text="Cancel" 
-                          ButtonStyle="{StaticResource SecondaryButton}" 
-                          Command="{Binding CancelCommand}" 
-                          Width="150" Height="35" 
-                          Margin="0 0 20 0" />
-        <ctrls:ButtonText Text="Select" 
-                          Command="{Binding SelectApplicationCommand}" 
-                          Width="150" Height="35" />
-      </StackPanel>
+      <ListBox Grid.Row="1" 
+           ItemsSource="{Binding SearchableApplications.Items}" 
+           SelectedItem="{Binding SelectedApplication}" 
+           ItemContainerStyle="{StaticResource ApplicationListBoxItemStyle}" 
+           ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+           Background="Transparent" 
+           BorderThickness="0">
+        <ListBox.ItemTemplate>
+          <DataTemplate>
+            <ai:ApplicationItem DataContext="{Binding}" />
+          </DataTemplate>
+        </ListBox.ItemTemplate>
+      </ListBox>
     </Grid>
-  </Border>
+
+    <StackPanel Grid.Row="1" 
+              Orientation="Horizontal" 
+              HorizontalAlignment="Center" 
+              Margin="0 0 0 20">
+      <ctrls:ButtonText Text="Cancel" 
+                      ButtonStyle="{StaticResource SecondaryButton}" 
+                      Command="{Binding CancelCommand}" 
+                      Width="150" Height="35" 
+                      Margin="0 0 20 0" />
+      <ctrls:ButtonText Text="Select" 
+                      Command="{Binding SelectApplicationCommand}" 
+                      Width="150" Height="35" />
+    </StackPanel>
+  </Grid>
 
 </UserControl>

@@ -1,13 +1,16 @@
-﻿using System.Windows;
+﻿using Envz.UI.Services;
+using System.Windows;
+using System.Windows.Data;
 using System.Windows.Input;
 
 namespace Envz.UI.Views;
 
 public partial class MainWindow : Window
 {
-    public MainWindow(MainWindowViewModel viewModel)
+    public MainWindow(MainWindowViewModel viewModel, ViewLocator viewLocator)
     {
         InitializeComponent();
+        PageHost.SetBinding(ContentProperty, new Binding(nameof(MainWindowViewModel.CurrentViewModel)) { Converter = viewLocator });
         DataContext = viewModel;
     }
 

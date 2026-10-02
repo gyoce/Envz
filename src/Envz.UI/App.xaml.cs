@@ -1,9 +1,9 @@
 ﻿using Envz.Functional;
 using Envz.Infrastructure;
+using Envz.UI.Services;
 using Envz.UI.Views;
 using Microsoft.Extensions.DependencyInjection;
 using System.Windows;
-using Envz.UI.Services;
 
 namespace Envz.UI;
 

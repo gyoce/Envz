@@ -1,15 +1,14 @@
 ﻿<UserControl 
-  x:Class="Envz.UI.Views.Dialogs.Error.ErrorDialog"
+  x:Class="Envz.Common.UI.Dialogs.Error.ErrorDialog"
   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-  xmlns:ctrls="clr-namespace:Envz.Common.UI.Controls;assembly=Envz.Common"
-  xmlns:error="clr-namespace:Envz.UI.Views.Dialogs.Error"
+  xmlns:ctrls="clr-namespace:Envz.Common.UI.Controls"
+  xmlns:error="clr-namespace:Envz.Common.UI.Dialogs.Error"
   mc:Ignorable="d"
   d:DataContext="{d:DesignInstance Type=error:ErrorDialogViewModel}"
-  Width="{StaticResource DialogPageWidth}"
-  Height="{StaticResource DialogPageHeight}">
+  Style="{StaticResource DialogStyle}">
 
   <Grid>
     <Grid.RowDefinitions>

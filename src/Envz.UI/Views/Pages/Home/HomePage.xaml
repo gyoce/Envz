@@ -7,16 +7,13 @@
   xmlns:home="clr-namespace:Envz.UI.Views.Pages.Home"
   mc:Ignorable="d" 
   d:DataContext="{d:DesignInstance Type=home:HomePageViewModel}"
-  Width="{StaticResource PageWidth}" 
-  Height="{StaticResource PageHeight}">
+  Style="{StaticResource PageStyle}">
 
-  <Border Background="{StaticResource BgPrimaryBrush}">
-    <Grid>
-      <Grid.RowDefinitions>
-        <RowDefinition Height="Auto" />
-        <RowDefinition Height="*" />
-      </Grid.RowDefinitions>
-    </Grid>
-  </Border>
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="*" />
+    </Grid.RowDefinitions>
+  </Grid>
 
 </UserControl>

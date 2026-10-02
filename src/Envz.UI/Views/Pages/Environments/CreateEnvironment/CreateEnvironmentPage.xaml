@@ -9,83 +9,80 @@
   xmlns:ce="clr-namespace:Envz.UI.Views.Pages.Environments.CreateEnvironment"
   mc:Ignorable="d"
   d:DataContext="{d:DesignInstance Type=ce:CreateEnvironmentPageViewModel}"
-  Width="{StaticResource SubPageWidth}"
-  Height="{StaticResource SubPageHeight}">
+  Style="{StaticResource PageStyle}">
 
-  <Border Background="{StaticResource BgPrimaryBrush}">
-    <Grid>
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="*" />
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+
+    <Grid Grid.Row="0">
       <Grid.RowDefinitions>
-        <RowDefinition Height="*" />
+        <RowDefinition Height="Auto" />
         <RowDefinition Height="Auto" />
       </Grid.RowDefinitions>
 
-      <Grid Grid.Row="0">
-        <Grid.RowDefinitions>
-          <RowDefinition Height="Auto" />
-          <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
+      <ctrls:TextInput Grid.Row="0" 
+                        Label="Name" 
+                        Text="{Binding CreateEnvironmentRequest.Name}" 
+                        Margin="30 10 0 10" 
+                        Width="400" 
+                        HorizontalAlignment="Left" />
 
-        <ctrls:TextInput Grid.Row="0" 
-                            Label="Name" 
-                            Text="{Binding CreateEnvironmentRequest.Name}" 
-                            Margin="30 10 0 10" 
-                            Width="400" 
-                            HorizontalAlignment="Left" />
-
-        <StackPanel Grid.Row="1" Orientation="Vertical" Margin="30 10 30 0">
-          <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
-            <TextBlock Text="Applications" 
-                       Margin="5 0 0 0" 
-                       Style="{StaticResource TextBody}" 
-                       VerticalAlignment="Center" />
-            <ctrls:ButtonImage Source="{StaticResource IconAddWhite}" 
-                                  Command="{Binding AddApplicationCommand}" 
-                                  Margin="10 0 0 0" 
-                                  ImageWidth="10" ImageHeight="14"/>
-          </StackPanel>
-          <ScrollViewer Style="{StaticResource PrimaryScrollViewer}">
-            <Grid>
-              <TextBlock Text="No application has been added yet" 
-                         Margin="5 10 0 0" 
-                         Foreground="{StaticResource ForegroundMutedBrush}" 
-                         HorizontalAlignment="Left" 
-                         VerticalAlignment="Center">
-                <TextBlock.Style>
-                  <Style TargetType="TextBlock" BasedOn="{StaticResource TextBody}">
-                    <Style.Triggers>
-                      <DataTrigger Binding="{Binding HasApplications}" Value="True">
-                        <Setter Property="Visibility" Value="Collapsed" />
-                      </DataTrigger>
-                    </Style.Triggers>
-                  </Style>
-                </TextBlock.Style>
-              </TextBlock>
-              <ItemsControl ItemsSource="{Binding ApplicationViewModels}">
-                <ItemsControl.ItemsPanel>
-                  <ItemsPanelTemplate>
-                    <WrapPanel Orientation="Vertical" />
-                  </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-                <ItemsControl.ItemTemplate>
-                  <DataTemplate>
-                    <eai:EnvironmentApplicationItem DataContext="{Binding}" 
-                                                    Margin="0 0 0 5"
-                                                    Width="{StaticResource EnvironmentApplicationListItemWidth}"
-                                                    Height="{StaticResource EnvironmentApplicationListItemHeight}" />
-                  </DataTemplate>
-                </ItemsControl.ItemTemplate>
-              </ItemsControl>
-            </Grid>
-          </ScrollViewer>
+      <StackPanel Grid.Row="1" Orientation="Vertical" Margin="30 10 30 0">
+        <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
+          <TextBlock Text="Applications" 
+                   Margin="5 0 0 0" 
+                   Style="{StaticResource TextBody}" 
+                   VerticalAlignment="Center" />
+          <ctrls:ButtonImage Source="{StaticResource IconAddWhite}" 
+                              Command="{Binding AddApplicationCommand}" 
+                              Margin="10 0 0 0" 
+                              ImageWidth="10" ImageHeight="14"/>
         </StackPanel>
-      </Grid>
-
-      <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 0 0 20">
-        <ctrls:ButtonText Text="Cancel" ButtonStyle="{StaticResource SecondaryButton}" Command="{Binding CancelCreateEnvironmentCommand}" Width="150" Height="35" Margin="0 0 20 0" />
-        <ctrls:ButtonText Text="Create" Command="{Binding CreateEnvironmentCommand}" Width="150" Height="35" />
+        <ScrollViewer Style="{StaticResource PrimaryScrollViewer}">
+          <Grid>
+            <TextBlock Text="No application has been added yet" 
+                     Margin="5 10 0 0" 
+                     Foreground="{StaticResource ForegroundMutedBrush}" 
+                     HorizontalAlignment="Left" 
+                     VerticalAlignment="Center">
+              <TextBlock.Style>
+                <Style TargetType="TextBlock" BasedOn="{StaticResource TextBody}">
+                  <Style.Triggers>
+                    <DataTrigger Binding="{Binding HasApplications}" Value="True">
+                      <Setter Property="Visibility" Value="Collapsed" />
+                    </DataTrigger>
+                  </Style.Triggers>
+                </Style>
+              </TextBlock.Style>
+            </TextBlock>
+            <ItemsControl ItemsSource="{Binding ApplicationViewModels}">
+              <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                  <WrapPanel Orientation="Vertical" />
+                </ItemsPanelTemplate>
+              </ItemsControl.ItemsPanel>
+              <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                  <eai:EnvironmentApplicationItem DataContext="{Binding}" 
+                                                Margin="0 0 0 5"
+                                                Width="{StaticResource EnvironmentApplicationListItemWidth}"
+                                                Height="{StaticResource EnvironmentApplicationListItemHeight}" />
+                </DataTemplate>
+              </ItemsControl.ItemTemplate>
+            </ItemsControl>
+          </Grid>
+        </ScrollViewer>
       </StackPanel>
-
     </Grid>
-  </Border>
+
+    <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 0 0 20">
+      <ctrls:ButtonText Text="Cancel" ButtonStyle="{StaticResource SecondaryButton}" Command="{Binding CancelCreateEnvironmentCommand}" Width="150" Height="35" Margin="0 0 20 0" />
+      <ctrls:ButtonText Text="Create" Command="{Binding CreateEnvironmentCommand}" Width="150" Height="35" />
+    </StackPanel>
+
+  </Grid>
 
 </UserControl>

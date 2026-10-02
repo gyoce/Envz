@@ -1,13 +1,16 @@
-﻿using System.Windows;
+﻿using Envz.UI.Services;
+using System.Windows;
+using System.Windows.Data;
 using System.Windows.Input;
 
 namespace Envz.UI.Views.Dialogs;
 
 public partial class MainDialogWindow : Window
 {
-    public MainDialogWindow()
+    public MainDialogWindow(ViewLocator viewLocator)
     {
         InitializeComponent();
+        DialogHost.SetBinding(ContentProperty, new Binding { Converter = viewLocator });
     }
 
     protected override void OnPreviewKeyDown(KeyEventArgs e)

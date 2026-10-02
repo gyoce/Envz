@@ -1,9 +1,10 @@
 ﻿using Envz.Common.Utils;
+using Envz.Common.ViewModels;
 using System.Windows.Input;
 
-namespace Envz.UI.Views.Dialogs.Error;
+namespace Envz.Common.UI.Dialogs.Error;
 
-public class ErrorDialogViewModel : DialogViewModelBase<bool>
+public class ErrorDialogViewModel : DialogViewModelBase
 {
     public string Message { get; set; } = string.Empty;
     public ICommand CloseCommand { get; }
@@ -11,6 +12,6 @@ public class ErrorDialogViewModel : DialogViewModelBase<bool>
     public ErrorDialogViewModel()
     {
         Title = "Error";
-        CloseCommand = new RelayCommand(_ => Close(true, true));
+        CloseCommand = new RelayCommand(_ => Close());
     }
 }

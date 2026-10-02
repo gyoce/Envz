@@ -1,22 +1,14 @@
 ﻿<Window 
-  x:Class="Envz.UI.Views.MainWindow" 
-  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
-  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
-  xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-  xmlns:home="clr-namespace:Envz.UI.Views.Pages.Home"
-  xmlns:settings="clr-namespace:Envz.UI.Views.Pages.Settings"
-  xmlns:breadcrumb="clr-namespace:Envz.UI.Views.UserControls.Breadcrumb"
-  xmlns:homeApplications="clr-namespace:Envz.UI.Views.Pages.Applications.HomeApplications"
-  xmlns:homeEnvironments="clr-namespace:Envz.UI.Views.Pages.Environments.HomeEnvironments"
-  xmlns:editEnvironment="clr-namespace:Envz.UI.Views.Pages.Environments.EditEnvironment"
-  xmlns:createEnvironment="clr-namespace:Envz.UI.Views.Pages.Environments.CreateEnvironment"
-  xmlns:addApplication="clr-namespace:Envz.UI.Views.Pages.Applications.AddApplication"
+  x:Class="Envz.UI.Views.MainWindow"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   xmlns:views="clr-namespace:Envz.UI.Views"
-  xmlns:selectApplication="clr-namespace:Envz.UI.Views.Pages.Environments.SelectApplication"
+  xmlns:breadcrumb="clr-namespace:Envz.UI.Views.UserControls.Breadcrumb"
   mc:Ignorable="d" 
   d:DataContext="{d:DesignInstance Type=views:MainWindowViewModel}"
-  Title="MainWindow" 
+  Title="Envz" 
   Width="{StaticResource AppWidth}" 
   Height="{StaticResource AppHeight}" 
   ResizeMode="NoResize"
@@ -24,48 +16,6 @@
   AllowsTransparency="True"
   Background="Transparent"
   WindowStartupLocation="CenterScreen">
-
-  <Window.Resources>
-    <home:HomePage x:Key="HomePageInstance" />
-
-    <homeEnvironments:HomeEnvironmentsPage x:Key="HomeEnvironmentsPageInstance" />
-    <createEnvironment:CreateEnvironmentPage x:Key="CreateEnvironmentPageInstance" />
-    <editEnvironment:EditEnvironmentPage x:Key="EditEnvironmentPageInstance" />
-    <selectApplication:SelectApplicationPage x:Key="SelectApplicationPageInstance" />
-
-    <homeApplications:HomeApplicationsPage x:Key="HomeApplicationsPageInstance" />
-    <addApplication:AddApplicationPage x:Key="AddApplicationPageInstance" />
-
-    <settings:SettingsPage x:Key="SettingsPageInstance" />
-
-    <DataTemplate DataType="{x:Type home:HomePageViewModel}">
-      <ContentPresenter Content="{StaticResource HomePageInstance}" />
-    </DataTemplate>
-
-    <DataTemplate DataType="{x:Type homeEnvironments:HomeEnvironmentsPageViewModel}">
-      <ContentPresenter Content="{StaticResource HomeEnvironmentsPageInstance}" />
-    </DataTemplate>
-    <DataTemplate DataType="{x:Type editEnvironment:EditEnvironmentPageViewModel}">
-      <ContentPresenter Content="{StaticResource EditEnvironmentPageInstance}" />
-    </DataTemplate>
-    <DataTemplate DataType="{x:Type createEnvironment:CreateEnvironmentPageViewModel}">
-      <ContentPresenter Content="{StaticResource CreateEnvironmentPageInstance}" />
-    </DataTemplate>
-    <DataTemplate DataType="{x:Type selectApplication:SelectApplicationPageViewModel}">
-      <ContentPresenter Content="{StaticResource SelectApplicationPageInstance}" />
-    </DataTemplate>
-
-    <DataTemplate DataType="{x:Type homeApplications:HomeApplicationsPageViewModel}">
-      <ContentPresenter Content="{StaticResource HomeApplicationsPageInstance}" />
-    </DataTemplate>
-    <DataTemplate DataType="{x:Type addApplication:AddApplicationPageViewModel}">
-      <ContentPresenter Content="{StaticResource AddApplicationPageInstance}" />
-    </DataTemplate>
-
-    <DataTemplate DataType="{x:Type settings:SettingsPageViewModel}">
-      <ContentPresenter Content="{StaticResource SettingsPageInstance}" />
-    </DataTemplate>
-  </Window.Resources>
 
   <Border Background="{StaticResource BgPrimaryBrush}" 
           BorderBrush="{StaticResource NeutralBrush}" 
@@ -86,7 +36,6 @@
           <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <!-- Title Bar -->
         <Grid Grid.Row="0"
               Height="{StaticResource TitleBarHeight}"
               MouseLeftButtonDown="TitleBarMouseLeftButtonDown" 
@@ -124,14 +73,12 @@
           </Grid>
         </Grid>
 
-        <!-- Content -->
         <Grid Grid.Row="1">
           <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="*" />
           </Grid.ColumnDefinitions>
 
-          <!-- Sidebar -->
           <StackPanel Grid.Column="0" 
                       Width="{StaticResource SideBarWidth}"
                       Background="{StaticResource SidebarBrush}">
@@ -150,17 +97,14 @@
                          Command="{Binding ShowSettingsPageCommand}" />
           </StackPanel>
 
-          <!-- Main content -->
           <Grid Grid.Column="1">
             <Grid.RowDefinitions>
               <RowDefinition Height="Auto" />
               <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <breadcrumb:Breadcrumb Grid.Row="0" 
-                                 Items="{Binding BreadcrumbItems}" />
-            <ContentControl Grid.Row="1" 
-                            Content="{Binding CurrentViewModel}" />
+            <breadcrumb:Breadcrumb Grid.Row="0" Items="{Binding BreadcrumbItems}" />
+            <ContentControl Grid.Row="1" x:Name="PageHost" />
           </Grid>
         </Grid>
       </Grid>
