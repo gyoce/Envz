@@ -4,7 +4,7 @@
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-  xmlns:breadcrumb="clr-namespace:Envz.UI.Views.UserControls.Breadcrumb"
+  xmlns:bc="clr-namespace:Envz.UI.Views.UserControls.Breadcrumb"
   mc:Ignorable="d"
   Width="{StaticResource BreadcrumbWidth}" 
   Height="{StaticResource BreadcrumbHeight}"
@@ -19,14 +19,23 @@
 
     <ItemsControl.ItemTemplate>
       <DataTemplate>
-        <StackPanel Orientation="Horizontal" d:DataContext="{d:DesignInstance Type=breadcrumb:BreadcrumbItemViewModel}">
-          <TextBlock Text=">" Style="{StaticResource TextH3}" Margin="8 0" Foreground="{StaticResource ForegroundMutedBrush}" Visibility="{Binding IsFirst, Converter={StaticResource InverseBoolToVisibilityConverter}}" />
+        <StackPanel Orientation="Horizontal" d:DataContext="{d:DesignInstance Type=bc:BreadcrumbItemViewModel}">
+          <TextBlock Text=">" 
+                     Style="{StaticResource TextH3}" 
+                     Margin="8 0" 
+                     Foreground="{StaticResource ForegroundMutedBrush}" 
+                     Visibility="{Binding IsFirst, Converter={StaticResource InverseBoolToVisibilityConverter}}" />
 
-          <Button Style="{StaticResource BreadcrumbButton}" Command="{Binding NavigateCommand}" Visibility="{Binding IsClickable, Converter={StaticResource BoolToVisibilityConverter}}">
-            <TextBlock Text="{Binding Title}" Style="{StaticResource TextH3}" />
+          <Button Style="{StaticResource BreadcrumbButton}" 
+                  Command="{Binding NavigateCommand}" 
+                  Visibility="{Binding IsClickable, Converter={StaticResource BoolToVisibilityConverter}}">
+            <TextBlock Text="{Binding Title}" 
+                       Style="{StaticResource TextH3}" />
           </Button>
 
-          <TextBlock Text="{Binding Title}" Style="{StaticResource TextH3}" Visibility="{Binding IsClickable, Converter={StaticResource InverseBoolToVisibilityConverter}}" />
+          <TextBlock Text="{Binding Title}" 
+                     Style="{StaticResource TextH3}" 
+                     Visibility="{Binding IsClickable, Converter={StaticResource InverseBoolToVisibilityConverter}}" />
         </StackPanel>
       </DataTemplate>
     </ItemsControl.ItemTemplate>

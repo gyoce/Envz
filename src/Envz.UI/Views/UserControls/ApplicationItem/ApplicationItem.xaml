@@ -4,10 +4,10 @@
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-  xmlns:applicationItem="clr-namespace:Envz.UI.Views.UserControls.ApplicationItem"
+  xmlns:ai="clr-namespace:Envz.UI.Views.UserControls.ApplicationItem"
   xmlns:ctrls="clr-namespace:Envz.Common.UI.Controls;assembly=Envz.Common"
   mc:Ignorable="d"
-  d:DataContext="{d:DesignInstance Type=applicationItem:ApplicationItemViewModel}"
+  d:DataContext="{d:DesignInstance Type=ai:ApplicationItemViewModel}"
   d:DesignWidth="{StaticResource ApplicationListItemWidth}"
   d:DesignHeight="{StaticResource ApplicationListItemHeight}">
 

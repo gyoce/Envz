@@ -1,6 +1,7 @@
 using Envz.Common.Services;
 using Envz.Common.Services.Dialogs;
 using Envz.Common.Services.Navigation;
+using Envz.Common.UI.Loc;
 using Envz.Common.Utils;
 using Envz.Functional.Applications;
 using Envz.Functional.Mediator;
@@ -14,7 +15,7 @@ namespace Envz.UI.Views.Pages.Applications.AddApplication;
 public class AddApplicationPageViewModel : PageViewModel
 {
     public override ENavigationCategory Category => ENavigationCategory.Applications;
-    public override string Title => "Add application";
+    public override string Title => Strings.AddApplication_Title;
 
     public ICommand BrowseApplicationCommand { get; }
     public ICommand BrowseIconCommand { get; }

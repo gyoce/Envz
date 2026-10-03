@@ -1,6 +1,8 @@
 ﻿using Envz.Common.Services.Navigation;
+using Envz.Common.UI.Loc;
 using Envz.UI.Services;
 using Microsoft.Extensions.DependencyInjection;
+using System.Globalization;
 
 namespace Envz.UITests.Navigation;
 
@@ -11,6 +13,8 @@ public class NavigationTestFixture : IDisposable
 
     public NavigationTestFixture()
     {
+        Strings.Culture = new CultureInfo("en");
+
         IServiceCollection services = new ServiceCollection();
         services.AddSingleton<PageViewModelHomeWithoutTitle>();
         services.AddSingleton<PageViewModelHomeWithTitle>();

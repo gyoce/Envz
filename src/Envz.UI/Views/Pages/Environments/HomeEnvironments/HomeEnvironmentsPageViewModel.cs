@@ -1,4 +1,5 @@
 ﻿using Envz.Common.Services.Navigation;
+using Envz.Common.UI.Loc;
 using Envz.Common.UI.Utils;
 using Envz.Common.Utils;
 using Envz.Functional.Environments;
@@ -12,7 +13,7 @@ namespace Envz.UI.Views.Pages.Environments.HomeEnvironments;
 
 public class HomeEnvironmentsPageViewModel : PageViewModel
 {
-    public override string Title => "Home";
+    public override string Title => Strings.HomeEnvironments_Title;
     public override ENavigationCategory Category => ENavigationCategory.Environments;
 
     public ICommand NavigateToCreateEnvironmentCommand { get; }

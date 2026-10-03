@@ -74,14 +74,14 @@ public class NavigationService(IServiceProvider serviceProvider) : INavigationSe
         }
 
         if (_breadcrumbs.Count == 0)
-            _breadcrumbs.Add(new BreadcrumbItem(viewModel.Category.ToBreadcrumbTitle(), viewModelType));
+            _breadcrumbs.Add(new BreadcrumbItem(() => viewModel.Category.ToBreadcrumbTitle(), viewModelType));
 
         if (viewModel.Level > 0)
         {
             if (_breadcrumbs.Count > viewModel.Level)
                 _breadcrumbs.RemoveRange(viewModel.Level, _breadcrumbs.Count - viewModel.Level);
 
-            _breadcrumbs.Add(new BreadcrumbItem(viewModel.Title!, viewModelType));
+            _breadcrumbs.Add(new BreadcrumbItem(() => viewModel.Title!, viewModelType));
         }
     }
 }

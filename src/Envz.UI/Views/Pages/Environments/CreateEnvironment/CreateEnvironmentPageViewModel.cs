@@ -1,4 +1,5 @@
 using Envz.Common.Services.Navigation;
+using Envz.Common.UI.Loc;
 using Envz.Common.Utils;
 using Envz.Domain.Entities;
 using Envz.Functional.Environments;
@@ -16,7 +17,7 @@ namespace Envz.UI.Views.Pages.Environments.CreateEnvironment;
 public class CreateEnvironmentPageViewModel : PageViewModel
 {
     public override ENavigationCategory Category => ENavigationCategory.Environments;
-    public override string Title => "Create environment";
+    public override string Title => Strings.CreateEnvironment_Title;
 
     public ICommand CancelCreateEnvironmentCommand { get; }
     public ICommand CreateEnvironmentCommand { get; }

@@ -9,6 +9,9 @@ public class ConfigurationDto
 
     [JsonPropertyName("applications")]
     public List<ApplicationDto> Applications { get; set; } = [];
+
+    [JsonPropertyName("settings")]
+    public SettingsDto Settings { get; set; } = new();
 }
 
 public class EnvironmentDto
@@ -36,4 +39,10 @@ public class EnvironmentApplicationDto
 
     [JsonPropertyName("parameter")]
     public string? Parameter { get; set; }
+}
+
+public class SettingsDto
+{
+    [JsonPropertyName("language")]
+    public string Language { get; set; } = "en";
 }

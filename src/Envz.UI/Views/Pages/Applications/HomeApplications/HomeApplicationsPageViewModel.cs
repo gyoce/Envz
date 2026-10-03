@@ -1,4 +1,5 @@
 ﻿using Envz.Common.Services.Navigation;
+using Envz.Common.UI.Loc;
 using Envz.Common.UI.Utils;
 using Envz.Common.Utils;
 using Envz.Functional.Applications;
@@ -13,7 +14,7 @@ namespace Envz.UI.Views.Pages.Applications.HomeApplications;
 public class HomeApplicationsPageViewModel : PageViewModel
 {
     public override ENavigationCategory Category => ENavigationCategory.Applications;
-    public override string Title => "Home";
+    public override string Title => Strings.HomeApplications_Title;
 
     public ICommand AddApplicationCommand { get; }
     public SearchableCollection<ApplicationItemViewModel, Application> SearchableApplications { get; }

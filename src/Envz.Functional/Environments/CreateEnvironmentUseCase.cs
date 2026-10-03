@@ -21,7 +21,7 @@ public class CreateEnvironmentUseCase(IEnvironmentRepository environmentReposito
         foreach (EnvironmentApplication envApp in request.Applications)
         {
             if (!applicationRepository.Exists(envApp.ApplicationName))
-                throw new ApplicationNotFoundException($"Application with name `{envApp.ApplicationName}` does not exists.");
+                throw new ApplicationNotFoundException(envApp.ApplicationName);
         }
 
         environmentRepository.Save(new Environment

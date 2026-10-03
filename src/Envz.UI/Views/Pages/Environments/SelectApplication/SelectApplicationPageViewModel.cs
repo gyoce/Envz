@@ -1,4 +1,5 @@
 ﻿using Envz.Common.Services.Navigation;
+using Envz.Common.UI.Loc;
 using Envz.Common.UI.Utils;
 using Envz.Common.Utils;
 using Envz.Functional.Applications;
@@ -12,7 +13,7 @@ namespace Envz.UI.Views.Pages.Environments.SelectApplication;
 public class SelectApplicationPageViewModel : ResultPageViewModel<Application>
 {
     public override ENavigationCategory Category => ENavigationCategory.Environments;
-    public override string Title => "Select application";
+    public override string Title => Strings.SelectApplication_Title;
     public override int Level => 2;
 
     public ICommand SelectApplicationCommand { get; }

@@ -4,9 +4,9 @@
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-  xmlns:environmentApplicationItem="clr-namespace:Envz.UI.Views.UserControls.EnvironmentApplicationItem"
+  xmlns:eai="clr-namespace:Envz.UI.Views.UserControls.EnvironmentApplicationItem"
   mc:Ignorable="d"
-  d:DataContext="{d:DesignInstance Type=environmentApplicationItem:EnvironmentApplicationItemViewModel}"
+  d:DataContext="{d:DesignInstance Type=eai:EnvironmentApplicationItemViewModel}"
   Width="{StaticResource EnvironmentApplicationListItemWidth}"
   Height="{StaticResource EnvironmentApplicationListItemHeight}">
 

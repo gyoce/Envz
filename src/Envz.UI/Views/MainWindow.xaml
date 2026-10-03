@@ -5,7 +5,8 @@
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   xmlns:views="clr-namespace:Envz.UI.Views"
-  xmlns:breadcrumb="clr-namespace:Envz.UI.Views.UserControls.Breadcrumb"
+  xmlns:bc="clr-namespace:Envz.UI.Views.UserControls.Breadcrumb"
+  xmlns:loc="clr-namespace:Envz.Common.UI.Loc;assembly=Envz.Common"
   mc:Ignorable="d" 
   d:DataContext="{d:DesignInstance Type=views:MainWindowViewModel}"
   Title="Envz" 
@@ -83,17 +84,17 @@
                       Width="{StaticResource SideBarWidth}"
                       Background="{StaticResource SidebarBrush}">
             <RadioButton Style="{StaticResource NavigationButton}" 
-                         Content="Home" 
+                         Content="{loc:Translate Global_Home}" 
                          Command="{Binding ShowHomePageCommand}" 
                          IsChecked="True" />
             <RadioButton Style="{StaticResource NavigationButton}" 
-                         Content="Environments" 
+                         Content="{loc:Translate Global_Environments}" 
                          Command="{Binding ShowEnvironmentsPageCommand}" />
             <RadioButton Style="{StaticResource NavigationButton}" 
-                         Content="Applications" 
+                         Content="{loc:Translate Global_Applications}" 
                          Command="{Binding ShowApplicationsPageCommand}" />
             <RadioButton Style="{StaticResource NavigationButton}" 
-                         Content="Settings" 
+                         Content="{loc:Translate Global_Settings}" 
                          Command="{Binding ShowSettingsPageCommand}" />
           </StackPanel>
 
@@ -103,7 +104,7 @@
               <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <breadcrumb:Breadcrumb Grid.Row="0" Items="{Binding BreadcrumbItems}" />
+            <bc:Breadcrumb Grid.Row="0" Items="{Binding BreadcrumbItems}" />
             <ContentControl Grid.Row="1" x:Name="PageHost" />
           </Grid>
         </Grid>

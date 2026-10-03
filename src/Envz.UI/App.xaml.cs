@@ -1,4 +1,8 @@
-﻿using Envz.Functional;
+﻿using Envz.Common.UI.Loc;
+using Envz.Domain.Entities;
+using Envz.Functional;
+using Envz.Functional.Mediator;
+using Envz.Functional.Settings;
 using Envz.Infrastructure;
 using Envz.UI.Services;
 using Envz.UI.Views;
@@ -14,10 +18,18 @@ public partial class App : System.Windows.Application
     protected override void OnStartup(StartupEventArgs e)
     {
         ServiceProvider = ConfigureServices().BuildServiceProvider();
-        ServiceProvider.GetRequiredService<GlobalExceptionHandler>().Register(this);
+        Init();
 
         MainWindow mainWindow = ServiceProvider.GetRequiredService<MainWindow>();
         mainWindow.Show();
+    }
+
+    private void Init()
+    {
+        ServiceProvider!.GetRequiredService<GlobalExceptionHandler>().Register(this);
+
+        UserSettings settings = ServiceProvider!.GetRequiredService<IMediator>().Send(new GetSettingsRequest());
+        Localizer.Instance.SetLanguage(SupportedLanguages.Find(settings.Language));
     }
 
     private static ServiceCollection ConfigureServices()

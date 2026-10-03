@@ -1,4 +1,6 @@
-﻿namespace Envz.Common.Services.Navigation;
+﻿using Envz.Common.UI.Loc;
+
+namespace Envz.Common.Services.Navigation;
 
 public enum ENavigationCategory
 {
@@ -16,10 +18,10 @@ public static class NavigationCategoryExtensionMethods
         {
             return navigatonCategory switch
             {
-                ENavigationCategory.Home => "Home",
-                ENavigationCategory.Environments => "Environments",
-                ENavigationCategory.Applications => "Applications",
-                ENavigationCategory.Settings => "Settings",
+                ENavigationCategory.Home => Strings.Global_Home,
+                ENavigationCategory.Environments => Strings.Global_Environments,
+                ENavigationCategory.Applications => Strings.Global_Applications,
+                ENavigationCategory.Settings => Strings.Global_Settings,
                 _ => throw new ArgumentOutOfRangeException(nameof(navigatonCategory), navigatonCategory, null)
             };
         }

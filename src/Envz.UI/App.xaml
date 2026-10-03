@@ -17,6 +17,7 @@
         <ResourceDictionary Source="/Envz.Common;component/UI/Styles/ListBox.xaml" />
         <ResourceDictionary Source="/Envz.Common;component/UI/Styles/Borders.xaml" />
         <ResourceDictionary Source="/Envz.Common;component/UI/Styles/Views.xaml" />
+        <ResourceDictionary Source="/Envz.Common;component/UI/Styles/ComboBox.xaml" />
       </ResourceDictionary.MergedDictionaries>
 
       <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter" />

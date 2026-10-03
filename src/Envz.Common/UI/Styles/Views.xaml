@@ -11,6 +11,7 @@
   <Style x:Key="DialogStyle" TargetType="UserControl">
     <Setter Property="Width" Value="{StaticResource DialogPageWidth}" />
     <Setter Property="Height" Value="{StaticResource DialogPageHeight}" />
+    <Setter Property="Background" Value="{StaticResource BgPrimaryBrush}" />
   </Style>
 
 </ResourceDictionary>

@@ -7,6 +7,7 @@
   xmlns:ctrls="clr-namespace:Envz.Common.UI.Controls;assembly=Envz.Common"
   xmlns:eai="clr-namespace:Envz.UI.Views.UserControls.EnvironmentApplicationItem"
   xmlns:ce="clr-namespace:Envz.UI.Views.Pages.Environments.CreateEnvironment"
+  xmlns:loc="clr-namespace:Envz.Common.UI.Loc;assembly=Envz.Common"
   mc:Ignorable="d"
   d:DataContext="{d:DesignInstance Type=ce:CreateEnvironmentPageViewModel}"
   Style="{StaticResource PageStyle}">
@@ -24,30 +25,30 @@
       </Grid.RowDefinitions>
 
       <ctrls:TextInput Grid.Row="0" 
-                        Label="Name" 
-                        Text="{Binding CreateEnvironmentRequest.Name}" 
-                        Margin="30 10 0 10" 
-                        Width="400" 
-                        HorizontalAlignment="Left" />
+                       Label="{loc:Translate Global_Name}" 
+                       Text="{Binding CreateEnvironmentRequest.Name}" 
+                       Margin="30 10 0 10" 
+                       Width="400" 
+                       HorizontalAlignment="Left" />
 
       <StackPanel Grid.Row="1" Orientation="Vertical" Margin="30 10 30 0">
         <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
-          <TextBlock Text="Applications" 
-                   Margin="5 0 0 0" 
-                   Style="{StaticResource TextBody}" 
-                   VerticalAlignment="Center" />
+          <TextBlock Text="{loc:Translate Global_Applications}" 
+                     Margin="5 0 0 0" 
+                     Style="{StaticResource TextBody}" 
+                     VerticalAlignment="Center" />
           <ctrls:ButtonImage Source="{StaticResource IconAddWhite}" 
-                              Command="{Binding AddApplicationCommand}" 
-                              Margin="10 0 0 0" 
-                              ImageWidth="10" ImageHeight="14"/>
+                             Command="{Binding AddApplicationCommand}" 
+                             Margin="10 0 0 0" 
+                             ImageWidth="10" ImageHeight="14"/>
         </StackPanel>
         <ScrollViewer Style="{StaticResource PrimaryScrollViewer}">
           <Grid>
-            <TextBlock Text="No application has been added yet" 
-                     Margin="5 10 0 0" 
-                     Foreground="{StaticResource ForegroundMutedBrush}" 
-                     HorizontalAlignment="Left" 
-                     VerticalAlignment="Center">
+            <TextBlock Text="{loc:Translate CreateEnvironment_NoApplications}" 
+                       Margin="5 10 0 0" 
+                       Foreground="{StaticResource ForegroundMutedBrush}" 
+                       HorizontalAlignment="Left" 
+                       VerticalAlignment="Center">
               <TextBlock.Style>
                 <Style TargetType="TextBlock" BasedOn="{StaticResource TextBody}">
                   <Style.Triggers>
@@ -67,9 +68,9 @@
               <ItemsControl.ItemTemplate>
                 <DataTemplate>
                   <eai:EnvironmentApplicationItem DataContext="{Binding}" 
-                                                Margin="0 0 0 5"
-                                                Width="{StaticResource EnvironmentApplicationListItemWidth}"
-                                                Height="{StaticResource EnvironmentApplicationListItemHeight}" />
+                                                  Margin="0 0 0 5"
+                                                  Width="{StaticResource EnvironmentApplicationListItemWidth}"
+                                                  Height="{StaticResource EnvironmentApplicationListItemHeight}" />
                 </DataTemplate>
               </ItemsControl.ItemTemplate>
             </ItemsControl>
@@ -79,10 +80,14 @@
     </Grid>
 
     <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 0 0 20">
-      <ctrls:ButtonText Text="Cancel" ButtonStyle="{StaticResource SecondaryButton}" Command="{Binding CancelCreateEnvironmentCommand}" Width="150" Height="35" Margin="0 0 20 0" />
-      <ctrls:ButtonText Text="Create" Command="{Binding CreateEnvironmentCommand}" Width="150" Height="35" />
+      <ctrls:ButtonText Text="{loc:Translate Global_Cancel}" 
+                        ButtonStyle="{StaticResource SecondaryButton}" 
+                        Command="{Binding CancelCreateEnvironmentCommand}" 
+                        Width="150" Height="35" Margin="0 0 20 0" />
+      <ctrls:ButtonText Text="{loc:Translate Global_Create}" 
+                        Command="{Binding CreateEnvironmentCommand}" 
+                        Width="150" Height="35" />
     </StackPanel>
-
   </Grid>
 
 </UserControl>

@@ -18,6 +18,7 @@ public static class DependencyInjection
 
         services.AddSingleton<IEnvironmentRepository, EnvironmentRepository>();
         services.AddSingleton<IApplicationRepository, ApplicationRepository>();
+        services.AddSingleton<ISettingsRepository, SettingsRepository>();
 
         return services;
     }

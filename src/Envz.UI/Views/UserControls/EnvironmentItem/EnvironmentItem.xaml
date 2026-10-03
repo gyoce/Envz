@@ -5,9 +5,9 @@
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
   xmlns:ctrls="clr-namespace:Envz.Common.UI.Controls;assembly=Envz.Common"
-  xmlns:environmentItem="clr-namespace:Envz.UI.Views.UserControls.EnvironmentItem"
+  xmlns:ei="clr-namespace:Envz.UI.Views.UserControls.EnvironmentItem"
   mc:Ignorable="d"
-  d:DataContext="{d:DesignInstance Type=environmentItem:EnvironmentItemViewModel}"
+  d:DataContext="{d:DesignInstance Type=ei:EnvironmentItemViewModel}"
   Width="{StaticResource EnvironmentListItemWidth}" 
   Height="{StaticResource EnvironmentListItemHeight}">
 

@@ -7,6 +7,7 @@
   xmlns:ctrls="clr-namespace:Envz.Common.UI.Controls;assembly=Envz.Common"
   xmlns:ai="clr-namespace:Envz.UI.Views.UserControls.ApplicationItem"
   xmlns:sa="clr-namespace:Envz.UI.Views.Pages.Environments.SelectApplication"
+  xmlns:loc="clr-namespace:Envz.Common.UI.Loc;assembly=Envz.Common"
   mc:Ignorable="d" 
   d:DataContext="{d:DesignInstance Type=sa:SelectApplicationPageViewModel}"
   Style="{StaticResource PageStyle}">
@@ -25,24 +26,24 @@
 
       <Grid Grid.Row="0" Margin="0 0 0 8">
         <TextBox x:Name="SearchApplicationTextBox"
-               Style="{StaticResource TextBoxH4}" 
-               Padding="40 5 8 5" 
-               Text="{Binding SearchableApplications.SearchText, UpdateSourceTrigger=PropertyChanged}" />
+                 Style="{StaticResource TextBoxH4}" 
+                 Padding="40 5 8 5" 
+                 Text="{Binding SearchableApplications.SearchText, UpdateSourceTrigger=PropertyChanged}" />
         <Image Source="{StaticResource IconSearchBlack}" 
-           Width="22" Height="22" 
-           HorizontalAlignment="Left" 
-           VerticalAlignment="Center" 
-           Margin="10 0 0 0" 
-           IsHitTestVisible="False" />
+               Width="22" Height="22" 
+               HorizontalAlignment="Left" 
+               VerticalAlignment="Center" 
+               Margin="10 0 0 0" 
+               IsHitTestVisible="False" />
       </Grid>
 
       <ListBox Grid.Row="1" 
-           ItemsSource="{Binding SearchableApplications.Items}" 
-           SelectedItem="{Binding SelectedApplication}" 
-           ItemContainerStyle="{StaticResource ApplicationListBoxItemStyle}" 
-           ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
-           Background="Transparent" 
-           BorderThickness="0">
+               ItemsSource="{Binding SearchableApplications.Items}" 
+               SelectedItem="{Binding SelectedApplication}" 
+               ItemContainerStyle="{StaticResource ApplicationListBoxItemStyle}" 
+               ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+               Background="Transparent" 
+               BorderThickness="0">
         <ListBox.ItemTemplate>
           <DataTemplate>
             <ai:ApplicationItem DataContext="{Binding}" />
@@ -52,17 +53,17 @@
     </Grid>
 
     <StackPanel Grid.Row="1" 
-              Orientation="Horizontal" 
-              HorizontalAlignment="Center" 
-              Margin="0 0 0 20">
-      <ctrls:ButtonText Text="Cancel" 
-                      ButtonStyle="{StaticResource SecondaryButton}" 
-                      Command="{Binding CancelCommand}" 
-                      Width="150" Height="35" 
-                      Margin="0 0 20 0" />
-      <ctrls:ButtonText Text="Select" 
-                      Command="{Binding SelectApplicationCommand}" 
-                      Width="150" Height="35" />
+                Orientation="Horizontal" 
+                HorizontalAlignment="Center" 
+                Margin="0 0 0 20">
+      <ctrls:ButtonText Text="{loc:Translate Global_Cancel}" 
+                        ButtonStyle="{StaticResource SecondaryButton}" 
+                        Command="{Binding CancelCommand}" 
+                        Width="150" Height="35" 
+                        Margin="0 0 20 0" />
+      <ctrls:ButtonText Text="{loc:Translate Global_Select}" 
+                        Command="{Binding SelectApplicationCommand}" 
+                        Width="150" Height="35" />
     </StackPanel>
   </Grid>
 
