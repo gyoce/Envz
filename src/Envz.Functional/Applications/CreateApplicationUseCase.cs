@@ -18,7 +18,11 @@ public class CreateApplicationUseCase(IApplicationRepository applicationReposito
     {
         if (applicationRepository.Exists(request.Name))
         {
-            throw new ApplicationAlreadyExistsException(request.Name);
+            throw new ApplicationAlreadyExistsException(
+                $"Could not create application with name `{request.Name}` because it already exists.",
+                ExceptionCode.CreateApplicationAlreadyExists,
+                request.Name
+            );
         }
 
         applicationRepository.Save(new Application

@@ -19,12 +19,15 @@
     <TextBlock Grid.Row="0" 
                Margin="24 16 24 24" 
                Style="{StaticResource TextBody}" 
-               Text="{Binding Message}" 
+               Text="{Binding Message, FallbackValue=Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.}" 
                TextWrapping="Wrap" />
 
-    <Border Grid.Row="1" Style="{StaticResource DialogFooterBorder}">
-      <ctrls:ButtonText HorizontalAlignment="Right" Text="OK" Command="{Binding CloseCommand}" />
-    </Border>
+    <ctrls:ButtonText Width="100"
+                      Grid.Row="1" 
+                      HorizontalAlignment="Center" 
+                      Text="OK" 
+                      Command="{Binding CloseCommand}" 
+                      Margin="0 0 0 10"/>
   </Grid>
 
 </UserControl>

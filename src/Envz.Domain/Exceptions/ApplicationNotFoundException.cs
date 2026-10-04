@@ -1,7 +1,4 @@
 ﻿namespace Envz.Domain.Exceptions;
 
-public class ApplicationNotFoundException(string applicationName)
-    : EnvzException($"Application `{applicationName}` not found.")
-{
-    public string ApplicationName { get; } = applicationName;
-}
+public class ApplicationNotFoundException(string message, ExceptionCode code, string applicationName)
+    : EnvzException(message, code, applicationName);

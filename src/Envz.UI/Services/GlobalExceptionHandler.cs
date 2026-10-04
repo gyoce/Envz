@@ -1,5 +1,6 @@
 ﻿using Envz.Common.Services.Dialogs;
 using Envz.Common.UI.Dialogs.Error;
+using Envz.Common.UI.Loc;
 using Envz.Domain.Exceptions;
 using System.Diagnostics;
 using System.Windows;
@@ -37,11 +38,7 @@ public class GlobalExceptionHandler(IDialogService dialogService)
 
     private void Show(Exception exception)
     {
-        (string title, string message) = exception switch
-        {
-            EnvzException => ("Impossible operation", exception.Message),
-            _ => ("Unexpected error", $"An unexcepted error has occrued.\n\n{exception.Message}")
-        };
+        (string title, string message) = ExtractInfoFromException(exception);
 
         if (_isShowing)
         {
@@ -75,5 +72,14 @@ public class GlobalExceptionHandler(IDialogService dialogService)
         {
             _isShowing = false;
         }
+    }
+
+    private static (string title, string message) ExtractInfoFromException(Exception exception)
+    {
+        return exception switch
+        {
+            EnvzException e => (Strings.KnownError_Title, string.Format(Localizer.Instance[$"KnownError_{e.Code}"], e.Args)),
+            _ => (Strings.UnknownError_Title, Strings.UnknownError_Message)
+        };
     }
 }

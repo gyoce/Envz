@@ -135,7 +135,7 @@
   <data name="Global_Applications" xml:space="preserve">
     <value>Applications</value>
   </data>
-  <data name="Global_Browse..." xml:space="preserve">
+  <data name="Global_Browse" xml:space="preserve">
     <value>Parcourir...</value>
   </data>
   <data name="Global_Cancel" xml:space="preserve">
@@ -176,5 +176,29 @@
   </data>
   <data name="Global_Language" xml:space="preserve">
     <value>Langue</value>
+  </data>
+  <data name="KnownError_Title" xml:space="preserve">
+    <value>Opération impossible</value>
+  </data>
+  <data name="UnknownError_Title" xml:space="preserve">
+    <value>Erreur inattendue</value>
+  </data>
+  <data name="UnknownError_Message" xml:space="preserve">
+    <value>Une erreur inattendue est survenue.</value>
+  </data>
+  <data name="KnownError_CreateApplicationAlreadyExists" xml:space="preserve">
+    <value>L'application « {0} » n'a pas pu être créée, car une application porte déjà ce nom.</value>
+  </data>
+  <data name="KnownError_DeleteApplicationNotFound" xml:space="preserve">
+    <value>L'application « {0} » n'a pas pu être supprimée, car elle est introuvable.</value>
+  </data>
+  <data name="KnownError_DeleteApplicationStillUsed" xml:space="preserve">
+    <value>L'application « {0} » n'a pas pu être supprimée, car elle est encore utilisée par un environnement.</value>
+  </data>
+  <data name="KnownError_CreateEnvironmentApplicationNotFound" xml:space="preserve">
+    <value>L'environnement n'a pas pu être créé, car l'application « {0} » est introuvable.</value>
+  </data>
+  <data name="KnownError_CreateEnvironmentInvalidEnvironmentName" xml:space="preserve">
+    <value>L'environnement n'a pas pu être créé, car son nom est vide.</value>
   </data>
 </root>

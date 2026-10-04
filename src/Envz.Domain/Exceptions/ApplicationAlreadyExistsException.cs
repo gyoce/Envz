@@ -1,7 +1,4 @@
 ﻿namespace Envz.Domain.Exceptions;
 
-public class ApplicationAlreadyExistsException(string applicationName)
-    : EnvzException($"Application `{applicationName}` already exists.")
-{
-    public string ApplicationName { get; } = applicationName;
-}
+public class ApplicationAlreadyExistsException(string message, ExceptionCode code, string applicationName)
+    : EnvzException(message, code, applicationName);

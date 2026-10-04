@@ -18,7 +18,7 @@
   Width="{StaticResource DialogWidth}"
   Height="{StaticResource DialogHeight}">
 
-  <Border Background="{StaticResource SurfaceBrush}"
+  <Border Background="{StaticResource BgPrimaryBrush}"
           BorderBrush="{StaticResource NeutralBrush}"
           BorderThickness="1"
           CornerRadius="4">
@@ -32,24 +32,31 @@
         <RowDefinition Height="*" />
       </Grid.RowDefinitions>
 
-      <Grid Grid.Row="0" Height="{StaticResource DialogTitleBarHeight}">
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="*" />
-          <ColumnDefinition Width="Auto" />
-        </Grid.ColumnDefinitions>
+      <Border Grid.Row="0"
+              Height="{StaticResource DialogTitleBarHeight}"
+              Background="{StaticResource SidebarBrush}"
+              CornerRadius="3 3 0 0">
 
-        <TextBlock Grid.Column="0" 
-                   Style="{StaticResource TextH2}" 
-                   Text="{Binding Title}" 
-                   VerticalAlignment="Center" />
+        <Grid Height="{StaticResource DialogTitleBarHeight}">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+          </Grid.ColumnDefinitions>
 
-        <Button Grid.Column="1"
-                Style="{StaticResource TransparentBlackButton}"
-                Click="CloseButtonClick"
-                Visibility="{Binding IsCancellable, Converter={StaticResource BoolToVisibilityConverter}}">
-          <Image Source="{StaticResource IconCrossBlack}" Width="12" Height="12" />
-        </Button>
-      </Grid>
+          <TextBlock Grid.Column="0" 
+                     Style="{StaticResource TextH3}" 
+                     Text="{Binding Title, FallbackValue=Dialog Title}"
+                     VerticalAlignment="Center"
+                     HorizontalAlignment="Center"/>
+
+          <Button Grid.Column="1"
+                  Style="{StaticResource TransparentBlackButton}"
+                  Click="CloseButtonClick"
+                  Visibility="{Binding IsCancellable, Converter={StaticResource BoolToVisibilityConverter}}">
+            <Image Source="{StaticResource IconCrossBlack}" Width="12" Height="12" />
+          </Button>
+        </Grid>
+      </Border>
 
       <ContentControl x:Name="DialogHost" Grid.Row="1" Focusable="False" />
     </Grid>

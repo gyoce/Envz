@@ -1,13 +1,13 @@
-﻿using System.ComponentModel;
-using Envz.Common.Services.Navigation;
+﻿using Envz.Common.Services.Navigation;
+using Envz.Common.UI.Loc;
 using Envz.Common.Utils;
 using Envz.UI.Views.Pages.Applications.HomeApplications;
 using Envz.UI.Views.Pages.Environments.HomeEnvironments;
 using Envz.UI.Views.Pages.Home;
 using Envz.UI.Views.Pages.Settings;
 using Envz.UI.Views.UserControls.Breadcrumb;
+using System.ComponentModel;
 using System.Windows.Input;
-using Envz.Common.UI.Loc;
 
 namespace Envz.UI.Views;
 

@@ -15,13 +15,21 @@ public class DeleteApplicationUseCase(IApplicationRepository applicationReposito
     {
         if (!applicationRepository.Exists(request.ApplicationName))
         {
-            throw new ApplicationNotFoundException(request.ApplicationName);
+            throw new ApplicationNotFoundException(
+                $"Could not delete application `{request.ApplicationName}` because it was not found.",
+                ExceptionCode.DeleteApplicationNotFound,
+                request.ApplicationName
+            );
         }
 
         IReadOnlyCollection<Environment> environments = environmentRepository.GetAll();
         if (environments.Any(env => env.Applications.Any(app => app.ApplicationName == request.ApplicationName)))
         {
-            throw new ApplicationInUseException(request.ApplicationName);
+            throw new ApplicationInUseException(
+                $"Could not delete application `{request.ApplicationName}` because it is still in use.",
+                ExceptionCode.DeleteApplicationStillUsed,
+                request.ApplicationName
+            );
         }
 
         applicationRepository.Delete(request.ApplicationName);

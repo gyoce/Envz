@@ -29,7 +29,7 @@
                          Text="{Binding Request.Path}" 
                          VerticalAlignment="Top"/>
         <ctrls:ButtonText Grid.Column="1" 
-                        Text="{loc:Translate Global_Browse...}" 
+                        Text="{loc:Translate Global_Browse}" 
                         Command="{Binding BrowseApplicationCommand}" 
                         VerticalAlignment="Bottom" 
                         Width="100" 
@@ -55,7 +55,7 @@
                    Stretch="Uniform" 
                    Width="60" Height="60"/>
           </Border>
-          <ctrls:ButtonText Text="{loc:Translate Global_Browse...}" 
+          <ctrls:ButtonText Text="{loc:Translate Global_Browse}" 
                             Command="{Binding BrowseIconCommand}" 
                             VerticalAlignment="Bottom" 
                             Width="100" 

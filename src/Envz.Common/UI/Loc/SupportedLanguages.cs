@@ -9,14 +9,14 @@ public record LanguageOption(CultureInfo Culture)
 
 public static class SupportedLanguages
 {
-    public static IReadOnlyList<LanguageOption> All { get; } = 
+    public static IReadOnlyList<LanguageOption> All { get; } =
     [
-        new(new CultureInfo("en")), 
+        new(new CultureInfo("en")),
         new(new CultureInfo("fr"))
     ];
 
     public static LanguageOption Find(string? name)
     {
         return All.FirstOrDefault(language => language.Culture.Name == name) ?? All[0];
-    }        
+    }
 }

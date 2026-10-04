@@ -117,9 +117,9 @@ namespace Envz.Common.UI.Loc {
         /// <summary>
         ///   Looks up a localized string similar to Browse....
         /// </summary>
-        public static string Global_Browse___ {
+        public static string Global_Browse {
             get {
-                return ResourceManager.GetString("Global_Browse...", resourceCulture);
+                return ResourceManager.GetString("Global_Browse", resourceCulture);
             }
         }
         
@@ -232,11 +232,83 @@ namespace Envz.Common.UI.Loc {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The application &quot;{0}&quot; could not be created because an application with this name already exists..
+        /// </summary>
+        public static string KnownError_CreateApplicationAlreadyExists {
+            get {
+                return ResourceManager.GetString("KnownError_CreateApplicationAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The environment could not be created because the application &quot;{0}&quot; was not found..
+        /// </summary>
+        public static string KnownError_CreateEnvironmentApplicationNotFound {
+            get {
+                return ResourceManager.GetString("KnownError_CreateEnvironmentApplicationNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The environment could not be created because its name is empty..
+        /// </summary>
+        public static string KnownError_CreateEnvironmentInvalidEnvironmentName {
+            get {
+                return ResourceManager.GetString("KnownError_CreateEnvironmentInvalidEnvironmentName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The application &quot;{0}&quot; could not be deleted because it was not found..
+        /// </summary>
+        public static string KnownError_DeleteApplicationNotFound {
+            get {
+                return ResourceManager.GetString("KnownError_DeleteApplicationNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The application &quot;{0}&quot; could not be deleted because it is still used by an environment..
+        /// </summary>
+        public static string KnownError_DeleteApplicationStillUsed {
+            get {
+                return ResourceManager.GetString("KnownError_DeleteApplicationStillUsed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Impossible operation.
+        /// </summary>
+        public static string KnownError_Title {
+            get {
+                return ResourceManager.GetString("KnownError_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select an application.
         /// </summary>
         public static string SelectApplication_Title {
             get {
                 return ResourceManager.GetString("SelectApplication_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An unexpected error has occurred..
+        /// </summary>
+        public static string UnknownError_Message {
+            get {
+                return ResourceManager.GetString("UnknownError_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unhandled error.
+        /// </summary>
+        public static string UnknownError_Title {
+            get {
+                return ResourceManager.GetString("UnknownError_Title", resourceCulture);
             }
         }
     }
