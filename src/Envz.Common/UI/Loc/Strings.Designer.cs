@@ -97,6 +97,33 @@ namespace Envz.Common.UI.Loc {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} applications.
+        /// </summary>
+        public static string EnvironmentItem_ApplicationCountMany {
+            get {
+                return ResourceManager.GetString("EnvironmentItem_ApplicationCountMany", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} application.
+        /// </summary>
+        public static string EnvironmentItem_ApplicationCountOne {
+            get {
+                return ResourceManager.GetString("EnvironmentItem_ApplicationCountOne", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No application.
+        /// </summary>
+        public static string EnvironmentItem_ApplicationCountZero {
+            get {
+                return ResourceManager.GetString("EnvironmentItem_ApplicationCountZero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add.
         /// </summary>
         public static string Global_Add {
@@ -138,6 +165,24 @@ namespace Envz.Common.UI.Loc {
         public static string Global_Create {
             get {
                 return ResourceManager.GetString("Global_Create", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Duplicate.
+        /// </summary>
+        public static string Global_Duplicate {
+            get {
+                return ResourceManager.GetString("Global_Duplicate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit.
+        /// </summary>
+        public static string Global_Edit {
+            get {
+                return ResourceManager.GetString("Global_Edit", resourceCulture);
             }
         }
         

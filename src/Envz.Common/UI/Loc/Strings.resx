@@ -201,4 +201,19 @@
   <data name="KnownError_CreateEnvironmentInvalidEnvironmentName" xml:space="preserve">
     <value>The environment could not be created because its name is empty.</value>
   </data>
+  <data name="Global_Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="Global_Duplicate" xml:space="preserve">
+    <value>Duplicate</value>
+  </data>
+  <data name="EnvironmentItem_ApplicationCountZero" xml:space="preserve">
+    <value>No application</value>
+  </data>
+  <data name="EnvironmentItem_ApplicationCountOne" xml:space="preserve">
+    <value>{0} application</value>
+  </data>
+  <data name="EnvironmentItem_ApplicationCountMany" xml:space="preserve">
+    <value>{0} applications</value>
+  </data>
 </root>

@@ -50,7 +50,7 @@
                      HorizontalAlignment="Center"/>
 
           <Button Grid.Column="1"
-                  Style="{StaticResource TransparentBlackButton}"
+                  Style="{StaticResource TitleBarButton}"
                   Click="CloseButtonClick"
                   Visibility="{Binding IsCancellable, Converter={StaticResource BoolToVisibilityConverter}}">
             <Image Source="{StaticResource IconCrossBlack}" Width="12" Height="12" />
