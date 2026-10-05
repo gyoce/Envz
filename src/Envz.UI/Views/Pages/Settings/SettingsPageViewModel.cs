@@ -1,5 +1,6 @@
 ﻿using Envz.Common.Services.Navigation;
 using Envz.Common.UI.Loc;
+using Envz.Common.ViewModels;
 using Envz.Functional.Mediator;
 using Envz.Functional.Settings;
 

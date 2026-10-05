@@ -1,4 +1,5 @@
 using Envz.Common.Services.Navigation;
+using Envz.Common.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Envz.UI.Services;

@@ -1,6 +1,7 @@
 using Envz.Common.Services.Navigation;
 using Envz.Common.UI.Loc;
 using Envz.Common.Utils;
+using Envz.Common.ViewModels;
 using Envz.Domain.Entities;
 using Envz.Functional.Environments;
 using Envz.Functional.Mediator;
@@ -40,6 +41,13 @@ public class CreateEnvironmentPageViewModel : PageViewModel
         CancelCreateEnvironmentCommand = new RelayCommand(_ => navigationService.NavigateTo<HomeEnvironmentsPageViewModel>());
         AddApplicationCommand = new AsyncRelayCommand(async _ => await AddApplicationAsync());
         ApplicationViewModels.CollectionChanged += OnApplicationViewModelsChanged;
+    }
+
+    public override void OnEnable()
+    {
+        CreateEnvironmentRequest = new CreateEnvironmentRequest();
+        OnPropertyChanged(nameof(CreateEnvironmentRequest));
+        ApplicationViewModels.Clear();
     }
 
     private void OnApplicationViewModelsChanged(object? sender, NotifyCollectionChangedEventArgs e)

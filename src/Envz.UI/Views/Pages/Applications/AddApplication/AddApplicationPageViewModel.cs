@@ -3,6 +3,7 @@ using Envz.Common.Services.Dialogs;
 using Envz.Common.Services.Navigation;
 using Envz.Common.UI.Loc;
 using Envz.Common.Utils;
+using Envz.Common.ViewModels;
 using Envz.Functional.Applications;
 using Envz.Functional.Mediator;
 using Envz.UI.Views.Pages.Applications.HomeApplications;

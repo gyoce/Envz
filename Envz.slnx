@@ -1,6 +1,7 @@
 <Solution>
   <Folder Name="/Solution Items/">
     <File Path=".editorconfig" />
+    <File Path="Directory.Packages.props" />
   </Folder>
   <Folder Name="/src/">
     <Project Path="src/Envz.Common/Envz.Common.csproj" />
@@ -13,5 +14,6 @@
     <Project Path="tests/Envz.CommonTests/Envz.CommonTests.csproj" />
     <Project Path="tests/Envz.FunctionalTests/Envz.FunctionalTests.csproj" />
     <Project Path="tests/Envz.UITests/Envz.UITests.csproj" />
+    <Project Path="tests/Envz.UnitTests/Envz.UnitTests.csproj" />
   </Folder>
 </Solution>

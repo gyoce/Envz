@@ -2,6 +2,7 @@
 using Envz.Common.UI.Loc;
 using Envz.Common.UI.Utils;
 using Envz.Common.Utils;
+using Envz.Common.ViewModels;
 using Envz.Functional.Environments;
 using Envz.Functional.Mediator;
 using Envz.UI.Services;
