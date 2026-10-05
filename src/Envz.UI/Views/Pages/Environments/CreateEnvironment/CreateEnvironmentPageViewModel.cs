@@ -63,7 +63,7 @@ public class CreateEnvironmentPageViewModel : PageViewModel
         Application? application = await _navigationService.NavigateForResultAsync<SelectApplicationPageViewModel, Application>();
         if (application is not null)
         {
-            EnvironmentApplication environmentApplication = new() { ApplicationName = application.Name };
+            EnvironmentApplication environmentApplication = new(application.Name);
             CreateEnvironmentRequest.Applications.Add(environmentApplication);
             ApplicationViewModels.Add(_viewModelFactory.Create(environmentApplication, application));
         }

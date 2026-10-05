@@ -38,16 +38,6 @@ public class ConfigurationStoreTests : BaseTestFixture
     }
 
     [Fact]
-    public void ShouldReturnEmptyConfigurationWhenFileIsCorrupted()
-    {
-        GetServiceAs<IFileSystem, InMemoryFileSystem>().Files[Path] = "{ this is not json";
-
-        IConfigurationStore store = GetService<IConfigurationStore>();
-
-        store.Configuration.Applications.ShouldBeEmpty();
-    }
-
-    [Fact]
     public void ShouldWriteConfigurationToFile()
     {
         IConfigurationStore store = GetService<IConfigurationStore>();
@@ -99,7 +89,7 @@ public class ConfigurationStoreTests : BaseTestFixture
     public void ShouldGetIconFromIconStore()
     {
         SetConfiguration(
-            new ConfigurationDtoBuilder().WithApplication(new ApplicationDtoBuilder().WithName("App1").Build()).Build(),
+            new ConfigurationDtoBuilder().WithApplication(new ApplicationDtoBuilder().WithName("App1").WithPath("ABC").Build()).Build(),
             new IconsDtoBuilder().WithIcon("App1", Convert.ToBase64String(new byte[] { 1, 2, 3 })).Build()
         );
 

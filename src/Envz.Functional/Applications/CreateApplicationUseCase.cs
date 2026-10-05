@@ -1,5 +1,6 @@
 ﻿using Envz.Domain.Entities;
 using Envz.Domain.Exceptions;
+using Envz.Domain.Exceptions.Applications;
 using Envz.Domain.Ports;
 using Envz.Functional.Mediator;
 
@@ -25,11 +26,6 @@ public class CreateApplicationUseCase(IApplicationRepository applicationReposito
             );
         }
 
-        applicationRepository.Save(new Application
-        {
-            Name = request.Name,
-            Icon = request.Icon,
-            Path = request.Path
-        });
+        applicationRepository.Save(new Application(request.Name, request.Path, request.Icon));
     }
 }

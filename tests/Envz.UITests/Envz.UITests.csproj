@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\Envz.Common\Envz.Common.csproj" />
     <ProjectReference Include="..\..\src\Envz.UI\Envz.UI.csproj" />
   </ItemGroup>
 

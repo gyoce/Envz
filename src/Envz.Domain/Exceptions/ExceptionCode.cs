@@ -2,9 +2,15 @@
 
 public enum ExceptionCode
 {
-    CreateApplicationAlreadyExists,
-    DeleteApplicationNotFound,
-    DeleteApplicationStillUsed,
+    ApplicationInvalidName,
+    ApplicationInvalidPath,
+    EnvironmentInvalidName,
+
+    ConfigurationInvalid,
+
     CreateEnvironmentApplicationNotFound,
-    CreateEnvironmentInvalidEnvironmentName
+    CreateApplicationAlreadyExists,
+    CreateEnvironmentAlreadyExists,
+    DeleteApplicationStillUsed,
+    DeleteApplicationNotFound,
 }

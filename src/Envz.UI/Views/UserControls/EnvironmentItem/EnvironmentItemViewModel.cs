@@ -1,8 +1,8 @@
 ﻿using Envz.Common.Services.Navigation;
+using Envz.Common.UI.Loc;
 using Envz.Common.Utils;
 using Envz.UI.Views.Pages.Environments.EditEnvironment;
 using System.Windows.Input;
-using Envz.Common.UI.Loc;
 
 namespace Envz.UI.Views.UserControls.EnvironmentItem;
 

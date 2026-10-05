@@ -1,5 +1,7 @@
 ﻿using Envz.Domain.Entities;
 using Envz.Domain.Exceptions;
+using Envz.Domain.Exceptions.Applications;
+using Envz.Domain.Exceptions.Environments;
 using Envz.Functional.Environments;
 using Envz.Infrastructure.Configuration.Dtos;
 using Envz.Infrastructure.Configuration.Stores;
@@ -19,7 +21,7 @@ public class CreateEnvironmentTests : BaseTestFixture
             Name = "MyEnvironment",
             Applications =
             [
-                new EnvironmentApplication { ApplicationName = "App1", Parameter = "--dev" }
+                new EnvironmentApplication("App1", "--dev")
             ]
         });
 
@@ -40,8 +42,8 @@ public class CreateEnvironmentTests : BaseTestFixture
             Name = "MyEnvironment",
             Applications =
             [
-                new EnvironmentApplication { ApplicationName = "App1", Parameter = "--dev" },
-                new EnvironmentApplication { ApplicationName = "App2", Parameter = "--dev" }
+                new EnvironmentApplication("App1", "--dev"),
+                new EnvironmentApplication("App2", "--dev"),
             ]
         }));
     }
@@ -74,6 +76,14 @@ public class CreateEnvironmentTests : BaseTestFixture
 
         configuration.Environments.ShouldBeEmpty();
         GetMock<IConfigurationStore>().Verify(store => store.Save(), Times.Never);
+    }
+
+    [Fact]
+    public void ShouldThrowIfEnvironmentWithSameNameAlreadyExists()
+    {
+        SetConfiguration(new ConfigurationDtoBuilder().WithEnvironment(new EnvironmentDtoBuilder().WithName("Env1").Build()).Build());
+
+        Should.Throw<EnvironmentAlreadyExistsException>(() => Send(new CreateEnvironmentRequest { Name = "Env1" }));
     }
 
     private static ConfigurationDto ConfigurationWithOneApplication(string appName) =>

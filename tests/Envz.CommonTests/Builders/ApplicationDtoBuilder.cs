@@ -12,6 +12,12 @@ public class ApplicationDtoBuilder
         return this;
     }
 
+    public ApplicationDtoBuilder WithPath(string path)
+    {
+        _applicationDto.Path = path;
+        return this;
+    }
+
     public ApplicationDto Build()
     {
         return _applicationDto;

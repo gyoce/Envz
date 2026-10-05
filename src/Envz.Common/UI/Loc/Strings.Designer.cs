@@ -277,6 +277,33 @@ namespace Envz.Common.UI.Loc {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The application has an invalid name..
+        /// </summary>
+        public static string KnownError_ApplicationInvalidName {
+            get {
+                return ResourceManager.GetString("KnownError_ApplicationInvalidName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The application has an invalid path..
+        /// </summary>
+        public static string KnownError_ApplicationInvalidPath {
+            get {
+                return ResourceManager.GetString("KnownError_ApplicationInvalidPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The configuration is invalid: {0}.
+        /// </summary>
+        public static string KnownError_ConfigurationInvalid {
+            get {
+                return ResourceManager.GetString("KnownError_ConfigurationInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The application &quot;{0}&quot; could not be created because an application with this name already exists..
         /// </summary>
         public static string KnownError_CreateApplicationAlreadyExists {
@@ -286,20 +313,20 @@ namespace Envz.Common.UI.Loc {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The environment could not be created because an environment with the same name already exists..
+        /// </summary>
+        public static string KnownError_CreateEnvironmentAlreadyExists {
+            get {
+                return ResourceManager.GetString("KnownError_CreateEnvironmentAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The environment could not be created because the application &quot;{0}&quot; was not found..
         /// </summary>
         public static string KnownError_CreateEnvironmentApplicationNotFound {
             get {
                 return ResourceManager.GetString("KnownError_CreateEnvironmentApplicationNotFound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The environment could not be created because its name is empty..
-        /// </summary>
-        public static string KnownError_CreateEnvironmentInvalidEnvironmentName {
-            get {
-                return ResourceManager.GetString("KnownError_CreateEnvironmentInvalidEnvironmentName", resourceCulture);
             }
         }
         
@@ -318,6 +345,15 @@ namespace Envz.Common.UI.Loc {
         public static string KnownError_DeleteApplicationStillUsed {
             get {
                 return ResourceManager.GetString("KnownError_DeleteApplicationStillUsed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The environment has an invalid name..
+        /// </summary>
+        public static string KnownError_EnvironmentInvalidName {
+            get {
+                return ResourceManager.GetString("KnownError_EnvironmentInvalidName", resourceCulture);
             }
         }
         

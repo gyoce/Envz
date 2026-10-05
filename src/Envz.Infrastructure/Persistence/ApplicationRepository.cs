@@ -7,25 +7,17 @@ namespace Envz.Infrastructure.Persistence;
 
 public class ApplicationRepository(IConfigurationStore configurationStore, IIconStore iconStore) : IApplicationRepository
 {
+    private List<ApplicationDto> Applications => configurationStore.Configuration.Applications;
+
     public IReadOnlyCollection<Application> GetAll()
     {
         Dictionary<string, string> icons = iconStore.Icons.ApplicationIcons;
-
-        return configurationStore.Configuration.Applications.Select(applicationDto =>
-            new Application
-            {
-                Name = applicationDto.Name,
-                Path = applicationDto.Path,
-                Icon = icons.TryGetValue(applicationDto.Name, out string? icon) && !string.IsNullOrWhiteSpace(icon)
-                    ? Convert.FromBase64String(icon)
-                    : null
-            }
-        ).ToList();
+        return Applications.Select(applicationDto => applicationDto.ToEntity(icons)).ToList();
     }
 
     public void Save(Application application)
     {
-        configurationStore.Configuration.Applications.Add(
+        Applications.Add(
             new ApplicationDto
             {
                 Name = application.Name,
@@ -43,12 +35,12 @@ public class ApplicationRepository(IConfigurationStore configurationStore, IIcon
 
     public bool Exists(string applicationName)
     {
-        return configurationStore.Configuration.Applications.Any(app => app.Name == applicationName);
+        return Applications.Any(app => app.Name == applicationName);
     }
 
     public void Delete(string applicationName)
     {
-        configurationStore.Configuration.Applications.RemoveAll(app => app.Name == applicationName);
+        Applications.RemoveAll(app => app.Name == applicationName);
         configurationStore.Save();
         iconStore.Icons.ApplicationIcons.Remove(applicationName);
         iconStore.Save();

@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using Envz.Domain.Exceptions;
+using System.Text.Json;
 
 namespace Envz.Infrastructure.Configuration.Stores;
 
@@ -33,9 +34,9 @@ public abstract class JsonFileStore<TDto>(IFileSystem fileSystem)
             string json = fileSystem.ReadAllText(FilePath);
             return JsonSerializer.Deserialize<TDto>(json, SerializerOptions) ?? new TDto();
         }
-        catch (JsonException)
+        catch (JsonException ex)
         {
-            return new TDto();
+            throw new InvalidConfigurationException($"{FilePath}: {ex.Message}");
         }
     }
 }

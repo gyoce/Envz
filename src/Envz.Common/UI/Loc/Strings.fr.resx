@@ -198,9 +198,6 @@
   <data name="KnownError_CreateEnvironmentApplicationNotFound" xml:space="preserve">
     <value>L'environnement n'a pas pu être créé, car l'application « {0} » est introuvable.</value>
   </data>
-  <data name="KnownError_CreateEnvironmentInvalidEnvironmentName" xml:space="preserve">
-    <value>L'environnement n'a pas pu être créé, car son nom est vide.</value>
-  </data>
   <data name="Global_Edit" xml:space="preserve">
     <value>Éditer</value>
   </data>
@@ -215,5 +212,20 @@
   </data>
   <data name="EnvironmentItem_ApplicationCountMany" xml:space="preserve">
     <value>{0} applications</value>
+  </data>
+  <data name="KnownError_ApplicationInvalidName" xml:space="preserve">
+    <value>L'application a un nom invalide.</value>
+  </data>
+  <data name="KnownError_ApplicationInvalidPath" xml:space="preserve">
+    <value>L'application a un chemin invalide.</value>
+  </data>
+  <data name="KnownError_EnvironmentInvalidName" xml:space="preserve">
+    <value>L'environnement a un nom invalide.</value>
+  </data>
+  <data name="KnownError_CreateEnvironmentAlreadyExists" xml:space="preserve">
+    <value>L'environnement n'a pas pu être créé car un environnement avec le même nom existe déjà.</value>
+  </data>
+  <data name="KnownError_ConfigurationInvalid" xml:space="preserve">
+    <value>La configuration est invalide : {0}</value>
   </data>
 </root>

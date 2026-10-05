@@ -33,9 +33,9 @@ public class GetApplicationsTests : BaseTestFixture
 
     private static ConfigurationDto ConfigurationWithThreeApplications =>
         new ConfigurationDtoBuilder()
-            .WithApplication(new ApplicationDtoBuilder().WithName("MainApplication1").Build())
-            .WithApplication(new ApplicationDtoBuilder().WithName("MainApplication2").Build())
-            .WithApplication(new ApplicationDtoBuilder().WithName("MainApplication3").Build())
+            .WithApplication(new ApplicationDtoBuilder().WithName("MainApplication1").WithPath("ABC").Build())
+            .WithApplication(new ApplicationDtoBuilder().WithName("MainApplication2").WithPath("ABC").Build())
+            .WithApplication(new ApplicationDtoBuilder().WithName("MainApplication3").WithPath("ABC").Build())
         .Build();
 
     private static ConfigurationDto ConfigurationWithNoApplications =>

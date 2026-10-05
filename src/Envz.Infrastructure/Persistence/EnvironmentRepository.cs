@@ -1,4 +1,3 @@
-using Envz.Domain.Entities;
 using Envz.Domain.Ports;
 using Envz.Infrastructure.Configuration.Dtos;
 using Envz.Infrastructure.Configuration.Stores;
@@ -7,26 +6,16 @@ namespace Envz.Infrastructure.Persistence;
 
 public class EnvironmentRepository(IConfigurationStore configurationStore) : IEnvironmentRepository
 {
+    private List<EnvironmentDto> Environments => configurationStore.Configuration.Environments;
+
     public IReadOnlyCollection<Environment> GetAll()
     {
-        return configurationStore.Configuration.Environments.Select(
-            environmentDto => new Environment
-            {
-                Name = environmentDto.Name,
-                Applications = environmentDto.Applications.Select(envAppDto =>
-                    new EnvironmentApplication
-                    {
-                        ApplicationName = envAppDto.ApplicationName,
-                        Parameter = envAppDto.Parameter
-                    }
-                ).ToList()
-            }
-        ).ToList();
+        return Environments.Select(environmentDto => environmentDto.ToEntity()).ToList();
     }
 
     public void Save(Environment environment)
     {
-        configurationStore.Configuration.Environments.Add(
+        Environments.Add(
             new EnvironmentDto
             {
                 Name = environment.Name,
@@ -40,5 +29,10 @@ public class EnvironmentRepository(IConfigurationStore configurationStore) : IEn
             }
         );
         configurationStore.Save();
+    }
+
+    public bool Exists(string environmentName)
+    {
+        return Environments.Any(env => env.Name == environmentName);
     }
 }

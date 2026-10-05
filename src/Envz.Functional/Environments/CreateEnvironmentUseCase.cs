@@ -1,5 +1,7 @@
 ﻿using Envz.Domain.Entities;
 using Envz.Domain.Exceptions;
+using Envz.Domain.Exceptions.Applications;
+using Envz.Domain.Exceptions.Environments;
 using Envz.Domain.Ports;
 using Envz.Functional.Mediator;
 
@@ -15,11 +17,12 @@ public class CreateEnvironmentUseCase(IEnvironmentRepository environmentReposito
 {
     public void Execute(CreateEnvironmentRequest request)
     {
-        if (string.IsNullOrWhiteSpace(request.Name))
+        if (environmentRepository.Exists(request.Name))
         {
-            throw new ValidationException(
-                $"Could not create environment because it must not be null or white space.",
-                ExceptionCode.CreateEnvironmentInvalidEnvironmentName
+            throw new EnvironmentAlreadyExistsException(
+                $"Could not create environment because environment `{request.Name}` already exists",
+                ExceptionCode.CreateEnvironmentAlreadyExists,
+                request.Name
             );
         }
 
@@ -35,10 +38,6 @@ public class CreateEnvironmentUseCase(IEnvironmentRepository environmentReposito
             }
         }
 
-        environmentRepository.Save(new Environment
-        {
-            Name = request.Name,
-            Applications = request.Applications
-        });
+        environmentRepository.Save(new Environment(request.Name, request.Applications));
     }
 }

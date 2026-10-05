@@ -1,4 +1,5 @@
 ﻿using Envz.Domain.Exceptions;
+using Envz.Domain.Exceptions.Applications;
 using Envz.Domain.Ports;
 using Envz.Functional.Mediator;
 
@@ -6,7 +7,7 @@ namespace Envz.Functional.Applications;
 
 public record DeleteApplicationRequest : IRequest
 {
-    public required string ApplicationName { get; set; } = string.Empty;
+    public required string ApplicationName { get; set; }
 }
 
 public class DeleteApplicationUseCase(IApplicationRepository applicationRepository, IEnvironmentRepository environmentRepository) : IUseCase<DeleteApplicationRequest>

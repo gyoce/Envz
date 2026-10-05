@@ -1,4 +1,4 @@
-﻿using Envz.Domain.Exceptions;
+﻿using Envz.Domain.Exceptions.Applications;
 using Envz.Functional.Applications;
 using Envz.Infrastructure.Configuration.Dtos;
 using Envz.Infrastructure.Configuration.Stores;
