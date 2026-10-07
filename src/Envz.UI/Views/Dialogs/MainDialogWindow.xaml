@@ -40,14 +40,15 @@
         <Grid Height="{StaticResource DialogTitleBarHeight}">
           <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="42" />
           </Grid.ColumnDefinitions>
 
           <TextBlock Grid.Column="0" 
                      Style="{StaticResource TextH3}" 
                      Text="{Binding Title, FallbackValue=Dialog Title}"
                      VerticalAlignment="Center"
-                     HorizontalAlignment="Center"/>
+                     HorizontalAlignment="Center" 
+                     Margin="42 0 0 0"/>
 
           <Button Grid.Column="1"
                   Style="{StaticResource TitleBarButton}"

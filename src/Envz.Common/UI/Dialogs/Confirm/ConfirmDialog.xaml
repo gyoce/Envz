@@ -4,11 +4,35 @@
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:ctrls="clr-namespace:Envz.Common.UI.Controls"
+  xmlns:confirm="clr-namespace:Envz.Common.UI.Dialogs.Confirm"
   mc:Ignorable="d" 
+  d:DataContext="{d:DesignInstance Type=confirm:ConfirmDialogViewModel}"
   Style="{StaticResource DialogStyle}">
 
   <Grid>
-    
+    <Grid.RowDefinitions>
+      <RowDefinition Height="*" />
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+
+    <TextBlock Grid.Row="0" 
+               Margin="24 16 24 24" 
+               Style="{StaticResource TextBody}" 
+               Text="{Binding Message, FallbackValue=Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.}" 
+               TextWrapping="Wrap" />
+
+    <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 0 0 10">
+      <ctrls:ButtonText Width="100"
+                        Text="{Binding TextDecline}"
+                        Command="{Binding CloseDeclineCommand}" 
+                        Margin="0 0 20 0"
+                        ButtonStyle="{StaticResource SecondaryButton}"/>
+
+      <ctrls:ButtonText Width="100"
+                        Text="{Binding TextAccept}"  
+                        Command="{Binding CloseAcceptCommand}" />
+    </StackPanel>
   </Grid>
 
 </UserControl>

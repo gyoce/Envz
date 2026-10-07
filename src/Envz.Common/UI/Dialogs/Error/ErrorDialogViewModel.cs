@@ -11,7 +11,6 @@ public class ErrorDialogViewModel : DialogViewModelBase
 
     public ErrorDialogViewModel()
     {
-        Title = "Error";
         CloseCommand = new RelayCommand(_ => Close());
     }
 }

@@ -54,6 +54,7 @@ public class AddApplicationPageViewModel : PageViewModel
     public override void OnEnable()
     {
         Request = new CreateApplicationRequest();
+        OnPropertyChanged(nameof(ApplicationIcon));
     }
 
     private void AddApplication()

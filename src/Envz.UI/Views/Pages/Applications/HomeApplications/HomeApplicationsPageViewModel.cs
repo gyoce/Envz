@@ -9,6 +9,8 @@ using Envz.UI.Services;
 using Envz.UI.Views.Pages.Applications.AddApplication;
 using Envz.UI.Views.UserControls.ApplicationItem;
 using System.Windows.Input;
+using Envz.Common.Services.Dialogs;
+using Envz.Common.UI.Dialogs.Confirm;
 
 namespace Envz.UI.Views.Pages.Applications.HomeApplications;
 
@@ -21,10 +23,12 @@ public class HomeApplicationsPageViewModel : PageViewModel
     public SearchableCollection<ApplicationItemViewModel, Application> SearchableApplications { get; }
 
     private readonly IMediator _mediator;
+    private readonly IDialogService _dialogService;
 
-    public HomeApplicationsPageViewModel(INavigationService navigationService, IMediator mediator, ApplicationItemViewModelFactory viewModelFactory)
+    public HomeApplicationsPageViewModel(INavigationService navigationService, IMediator mediator, ApplicationItemViewModelFactory viewModelFactory, IDialogService dialogService)
     {
         _mediator = mediator;
+        _dialogService = dialogService;
 
         AddApplicationCommand = new RelayCommand(_ => navigationService.NavigateTo<AddApplicationPageViewModel>());
         SearchableApplications = new SearchableCollection<ApplicationItemViewModel, Application>(
@@ -37,6 +41,15 @@ public class HomeApplicationsPageViewModel : PageViewModel
 
     private void DeleteApplication(Application app)
     {
+        bool confirmed = _dialogService.ShowDialog<ConfirmDialogViewModel>(viewModel =>
+        {
+            viewModel.Message = string.Format(Strings.ConfirmDialog_DeleteApplicationMessage, app.Name);
+            viewModel.Title = Strings.ConfirmDialog_DeleteApplicationTitle;
+        }).Result;
+
+        if (!confirmed)
+            return;
+
         _mediator.Send(new DeleteApplicationRequest
         {
             ApplicationName = app.Name

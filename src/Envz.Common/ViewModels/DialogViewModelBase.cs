@@ -8,7 +8,7 @@ public interface IDialogViewModel
 
 public abstract class DialogViewModelBase : ViewModelBase, IDialogViewModel
 {
-    public event Action<bool?>? RequestClose;
+    public event Action? RequestClose;
     public string Title
     {
         get;
@@ -20,16 +20,16 @@ public abstract class DialogViewModelBase : ViewModelBase, IDialogViewModel
     } = string.Empty;
     public virtual bool IsCancellable => true;
 
-    protected void Close(bool dialogResult = true) => RequestClose?.Invoke(dialogResult);
+    protected void Close() => RequestClose?.Invoke();
 }
 
 public abstract class DialogViewModelBase<TResult> : DialogViewModelBase
 {
     public TResult? Result { get; set; }
 
-    protected void Close(bool dialogResult, TResult? result)
+    protected void Close(TResult? result)
     {
         Result = result;
-        base.Close(dialogResult);
+        Close();
     }
 }

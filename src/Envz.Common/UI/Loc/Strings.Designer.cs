@@ -70,6 +70,24 @@ namespace Envz.Common.UI.Loc {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Do you really want to delete the application &quot;{0}&quot;?.
+        /// </summary>
+        public static string ConfirmDialog_DeleteApplicationMessage {
+            get {
+                return ResourceManager.GetString("ConfirmDialog_DeleteApplicationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete application.
+        /// </summary>
+        public static string ConfirmDialog_DeleteApplicationTitle {
+            get {
+                return ResourceManager.GetString("ConfirmDialog_DeleteApplicationTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No application has been added yet.
         /// </summary>
         public static string CreateEnvironment_NoApplications {
@@ -232,6 +250,24 @@ namespace Envz.Common.UI.Loc {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No.
+        /// </summary>
+        public static string Global_No {
+            get {
+                return ResourceManager.GetString("Global_No", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OK.
+        /// </summary>
+        public static string Global_Ok {
+            get {
+                return ResourceManager.GetString("Global_Ok", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Path.
         /// </summary>
         public static string Global_Path {
@@ -255,6 +291,15 @@ namespace Envz.Common.UI.Loc {
         public static string Global_Settings {
             get {
                 return ResourceManager.GetString("Global_Settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yes.
+        /// </summary>
+        public static string Global_Yes {
+            get {
+                return ResourceManager.GetString("Global_Yes", resourceCulture);
             }
         }
         

@@ -30,6 +30,8 @@ public class CreateEnvironmentPageViewModel : PageViewModel
     private readonly IMediator _mediator;
     private readonly INavigationService _navigationService;
     private readonly EnvironmentApplicationItemViewModelFactory _viewModelFactory;
+    
+    private bool _isSelectingApplication = false;
 
     public CreateEnvironmentPageViewModel(IMediator mediator, INavigationService navigationService, EnvironmentApplicationItemViewModelFactory viewModelFactory)
     {
@@ -45,6 +47,9 @@ public class CreateEnvironmentPageViewModel : PageViewModel
 
     public override void OnEnable()
     {
+        if (_isSelectingApplication)
+            return;
+
         CreateEnvironmentRequest = new CreateEnvironmentRequest();
         OnPropertyChanged(nameof(CreateEnvironmentRequest));
         ApplicationViewModels.Clear();
@@ -68,7 +73,17 @@ public class CreateEnvironmentPageViewModel : PageViewModel
 
     private async Task AddApplicationAsync()
     {
-        Application? application = await _navigationService.NavigateForResultAsync<SelectApplicationPageViewModel, Application>();
+        _isSelectingApplication = true;
+        Application? application;
+        try
+        {
+            application = await _navigationService.NavigateForResultAsync<SelectApplicationPageViewModel, Application>();
+        }
+        finally
+        {
+            _isSelectingApplication = false;
+        }
+
         if (application is not null)
         {
             EnvironmentApplication environmentApplication = new(application.Name);

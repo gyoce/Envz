@@ -11,20 +11,7 @@ public class DialogService(IServiceProvider serviceProvider, ViewLocator viewLoc
 {
     private int _openDialogCount;
 
-    public void ShowDialog<TViewModel>(Action<TViewModel>? configure = null)
-        where TViewModel : DialogViewModelBase
-    {
-        Show(configure);
-    }
-
-    public TResult? ShowDialog<TViewModel, TResult>(Action<TViewModel>? configure = null)
-        where TViewModel : DialogViewModelBase<TResult>
-    {
-        (bool ok, TViewModel viewModel) = Show(configure);
-        return ok ? viewModel.Result : default;
-    }
-
-    private (bool Ok, TViewModel ViewModel) Show<TViewModel>(Action<TViewModel>? configure)
+    public TViewModel ShowDialog<TViewModel>(Action<TViewModel>? configure = null)
         where TViewModel : DialogViewModelBase
     {
         TViewModel viewModel = serviceProvider.GetRequiredService<TViewModel>();
@@ -36,21 +23,17 @@ public class DialogService(IServiceProvider serviceProvider, ViewLocator viewLoc
             Owner = GetOwner()
         };
 
-        void OnRequestClose(bool? result)
-        {
-            window.DialogResult = result;
-        }
-
-        viewModel.RequestClose += OnRequestClose;
+        viewModel.RequestClose += window.Close;
         _openDialogCount++;
         SetOverlayVisible(true);
         try
         {
-            return (window.ShowDialog() == true, viewModel);
+            window.ShowDialog();
+            return viewModel;
         }
         finally
         {
-            viewModel.RequestClose -= OnRequestClose;
+            viewModel.RequestClose -= window.Close;
             _openDialogCount--;
             SetOverlayVisible(_openDialogCount > 0);
         }

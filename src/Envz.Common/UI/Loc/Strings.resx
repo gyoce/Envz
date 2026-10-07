@@ -228,4 +228,19 @@
   <data name="KnownError_ConfigurationInvalid" xml:space="preserve">
     <value>The configuration is invalid: {0}</value>
   </data>
+  <data name="Global_Yes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="Global_No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="ConfirmDialog_DeleteApplicationMessage" xml:space="preserve">
+    <value>Do you really want to delete the application "{0}"?</value>
+  </data>
+  <data name="ConfirmDialog_DeleteApplicationTitle" xml:space="preserve">
+    <value>Delete application</value>
+  </data>
+  <data name="Global_Ok" xml:space="preserve">
+    <value>OK</value>
+  </data>
 </root>
