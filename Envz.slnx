@@ -16,4 +16,7 @@
     <Project Path="tests/Envz.UITests/Envz.UITests.csproj" />
     <Project Path="tests/Envz.UnitTests/Envz.UnitTests.csproj" />
   </Folder>
+  <Folder Name="/tools/">
+    <Project Path="tools/Envz.Templates/Envz.Templates.csproj" />
+  </Folder>
 </Solution>

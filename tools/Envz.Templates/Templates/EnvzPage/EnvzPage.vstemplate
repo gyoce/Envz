@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<VSTemplate Version="3.0.0" Type="Item" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">
+
+  <TemplateData>
+    <Name>Envz Page</Name>
+    <Description>Envz Page: xaml view, code-behind and PageViewModel.</Description>
+    <ProjectType>CSharp</ProjectType>
+    <DefaultName>NewDialog.xaml</DefaultName>
+    <SortOrder>10</SortOrder>
+  </TemplateData>
+
+  <TemplateContent>
+    <ProjectItem TargetFileName="$fileinputname$Page.xaml" ReplaceParameters="true">Page.xaml</ProjectItem>
+    <ProjectItem TargetFileName="$fileinputname$Page.xaml.cs" ReplaceParameters="true">Page.xaml.cs</ProjectItem>
+    <ProjectItem TargetFileName="$fileinputname$PageViewModel.cs" ReplaceParameters="true" OpenInEditor="true">PageViewModel.cs</ProjectItem>
+  </TemplateContent>
+
+</VSTemplate>

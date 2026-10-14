@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<VSTemplate Version="3.0.0" Type="Item" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">
+
+  <TemplateData>
+    <Name>Envz Dialog</Name>
+    <Description>Envz Dialog: xaml view, code-behind and DialogViewModel.</Description>
+    <ProjectType>CSharp</ProjectType>
+    <DefaultName>NewPage.xaml</DefaultName>
+    <SortOrder>10</SortOrder>
+  </TemplateData>
+
+  <TemplateContent>
+    <ProjectItem TargetFileName="$fileinputname$Dialog.xaml" ReplaceParameters="true">Dialog.xaml</ProjectItem>
+    <ProjectItem TargetFileName="$fileinputname$Dialog.xaml.cs" ReplaceParameters="true">Dialog.xaml.cs</ProjectItem>
+    <ProjectItem TargetFileName="$fileinputname$DialogViewModel.cs" ReplaceParameters="true" OpenInEditor="true">DialogViewModel.cs</ProjectItem>
+  </TemplateContent>
+
+</VSTemplate>
