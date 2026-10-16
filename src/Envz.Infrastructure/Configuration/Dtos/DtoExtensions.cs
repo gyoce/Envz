@@ -3,7 +3,7 @@ using Envz.Domain.Exceptions;
 
 namespace Envz.Infrastructure.Configuration.Dtos;
 
-public static class DtoExtensionMethods
+public static class DtoExtensions
 {
     public static Application ToEntity(this ApplicationDto dto, Dictionary<string, string> icons)
     {

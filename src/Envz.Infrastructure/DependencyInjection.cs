@@ -2,7 +2,7 @@
 using Envz.Infrastructure.Configuration;
 using Envz.Infrastructure.Configuration.Stores;
 using Envz.Infrastructure.Persistence;
-
+using Envz.Infrastructure.Services;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Envz.Infrastructure;
@@ -19,6 +19,7 @@ public static class DependencyInjection
         services.AddSingleton<IEnvironmentRepository, EnvironmentRepository>();
         services.AddSingleton<IApplicationRepository, ApplicationRepository>();
         services.AddSingleton<ISettingsRepository, SettingsRepository>();
+        services.AddSingleton<IInstalledApplicationProvider, InstalledApplicationProvider>();
 
         return services;
     }

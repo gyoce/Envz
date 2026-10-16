@@ -61,11 +61,65 @@ namespace Envz.Common.UI.Loc {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add ({0}).
+        /// </summary>
+        public static string AddApplication_AddSelected {
+            get {
+                return ResourceManager.GetString("AddApplication_AddSelected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Application already added.
+        /// </summary>
+        public static string AddApplication_AlreadyAdded {
+            get {
+                return ResourceManager.GetString("AddApplication_AlreadyAdded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Detecting applications....
+        /// </summary>
+        public static string AddApplication_Detecting {
+            get {
+                return ResourceManager.GetString("AddApplication_Detecting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No known applications were detected..
+        /// </summary>
+        public static string AddApplication_NoneDetected {
+            get {
+                return ResourceManager.GetString("AddApplication_NoneDetected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No applications match the search..
+        /// </summary>
+        public static string AddApplication_NoResult {
+            get {
+                return ResourceManager.GetString("AddApplication_NoResult", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add application.
         /// </summary>
         public static string AddApplication_Title {
             get {
                 return ResourceManager.GetString("AddApplication_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add custom application.
+        /// </summary>
+        public static string AddCustomApplication_Title {
+            get {
+                return ResourceManager.GetString("AddCustomApplication_Title", resourceCulture);
             }
         }
         
@@ -138,6 +192,24 @@ namespace Envz.Common.UI.Loc {
         public static string EnvironmentItem_ApplicationCountZero {
             get {
                 return ResourceManager.GetString("EnvironmentItem_ApplicationCountZero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select an application.
+        /// </summary>
+        public static string FileDialog_BrowseApplicationTitle {
+            get {
+                return ResourceManager.GetString("FileDialog_BrowseApplicationTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select an icon.
+        /// </summary>
+        public static string FileDialog_BrowseIconTitle {
+            get {
+                return ResourceManager.GetString("FileDialog_BrowseIconTitle", resourceCulture);
             }
         }
         
@@ -273,6 +345,15 @@ namespace Envz.Common.UI.Loc {
         public static string Global_Path {
             get {
                 return ResourceManager.GetString("Global_Path", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search an application....
+        /// </summary>
+        public static string Global_SearchApplication {
+            get {
+                return ResourceManager.GetString("Global_SearchApplication", resourceCulture);
             }
         }
         

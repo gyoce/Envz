@@ -1,4 +1,5 @@
-﻿using Envz.Domain.Exceptions;
+﻿using Envz.CommonTests.Services;
+using Envz.Domain.Exceptions;
 using Envz.Functional.Applications;
 using Envz.Functional.Environments;
 using Envz.Infrastructure.Configuration;

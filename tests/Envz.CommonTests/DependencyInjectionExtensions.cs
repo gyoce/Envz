@@ -2,7 +2,7 @@
 
 namespace Envz.CommonTests;
 
-public static class DependencyInjectionExtensionMethods
+public static class DependencyInjectionExtensions
 {
     extension(IServiceCollection services)
     {

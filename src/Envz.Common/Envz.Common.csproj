@@ -13,6 +13,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Envz.Domain\Envz.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="UI\Assets\Fonts\Poppins-Bold.ttf" />
     <Resource Include="UI\Assets\Fonts\Poppins-Medium.ttf" />
     <Resource Include="UI\Assets\Fonts\Poppins-Regular.ttf" />

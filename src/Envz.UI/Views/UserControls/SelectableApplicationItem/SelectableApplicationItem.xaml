@@ -1,0 +1,88 @@
+﻿<UserControl
+  x:Class="Envz.UI.Views.UserControls.SelectableApplicationItem.SelectableApplicationItem"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:sai="clr-namespace:Envz.UI.Views.UserControls.SelectableApplicationItem"
+  xmlns:loc="clr-namespace:Envz.Common.UI.Loc;assembly=Envz.Common"
+  mc:Ignorable="d"
+  d:DataContext="{d:DesignInstance Type=sai:SelectableApplicationItemViewModel}"
+  d:DesignWidth="{StaticResource ApplicationListItemWidth}"
+  d:DesignHeight="{StaticResource ApplicationListItemHeight}">
+
+  <ToggleButton IsChecked="{Binding IsSelected}"
+                IsEnabled="{Binding CanBeSelected}"
+                FocusVisualStyle="{x:Null}">
+    <ToggleButton.Template>
+      <ControlTemplate TargetType="ToggleButton">
+        <Border x:Name="card" Style="{StaticResource ApplicationBorderStyle}" Cursor="Hand">
+          <Grid Margin="5">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="30" />
+              <ColumnDefinition Width="40" />
+              <ColumnDefinition Width="*" />
+              <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Border x:Name="check" Grid.Column="0"
+                    Width="18" Height="18" CornerRadius="4" BorderThickness="2"
+                    BorderBrush="{StaticResource NeutralFocusBrush}"
+                    Background="{StaticResource SurfaceBrush}"
+                    HorizontalAlignment="Center" VerticalAlignment="Center">
+              <Path x:Name="checkMark"
+                    Data="M 3,7 L 6,10 L 11,4"
+                    Stroke="White" StrokeThickness="2"
+                    StrokeStartLineCap="Round" StrokeEndLineCap="Round" StrokeLineJoin="Round"
+                    Visibility="Collapsed" />
+            </Border>
+
+            <Image x:Name="icon" Grid.Column="1" 
+                   Source="{Binding Icon}" 
+                   Width="32" Height="32" />
+
+            <StackPanel x:Name="texts" Grid.Column="2" VerticalAlignment="Center" Margin="10 0 0 0">
+              <TextBlock Text="{Binding Application.Name}"
+                         d:Text="Application"
+                         Style="{StaticResource TextBody}"
+                         TextTrimming="CharacterEllipsis" />
+              <TextBlock Text="{Binding Application.Path}"
+                         d:Text="C:\Path\To\Application.exe"
+                         Style="{StaticResource TextCaption}"
+                         Foreground="{StaticResource ForegroundMutedBrush}"
+                         TextTrimming="CharacterEllipsis" />
+            </StackPanel>
+
+            <TextBlock x:Name="badge" Grid.Column="3"
+                       Text="{loc:Translate AddApplication_AlreadyAdded}"
+                       Style="{StaticResource TextCaption}"
+                       Foreground="{StaticResource ForegroundMutedBrush}"
+                       VerticalAlignment="Center" Margin="10 0 5 0"
+                       Visibility="Collapsed" />
+          </Grid>
+        </Border>
+
+        <ControlTemplate.Triggers>
+          <Trigger Property="IsMouseOver" Value="True">
+            <Setter TargetName="check" Property="BorderBrush" Value="{StaticResource NeutralBrush}" />
+          </Trigger>
+          <Trigger Property="IsChecked" Value="True">
+            <Setter TargetName="card" Property="BorderBrush" Value="{StaticResource AccentBrush}" />
+            <Setter TargetName="check" Property="Background" Value="{StaticResource AccentBrush}" />
+            <Setter TargetName="check" Property="BorderBrush" Value="{StaticResource AccentBrush}" />
+            <Setter TargetName="checkMark" Property="Visibility" Value="Visible" />
+          </Trigger>
+          <Trigger Property="IsEnabled" Value="False">
+            <Setter TargetName="card" Property="Background" Value="{StaticResource BgSecondaryBrush}" />
+            <Setter TargetName="card" Property="Cursor" Value="Arrow" />
+            <Setter TargetName="check" Property="Visibility" Value="Hidden" />
+            <Setter TargetName="icon" Property="Opacity" Value="0.5" />
+            <Setter TargetName="texts" Property="Opacity" Value="0.5" />
+            <Setter TargetName="badge" Property="Visibility" Value="Visible" />
+          </Trigger>
+        </ControlTemplate.Triggers>
+      </ControlTemplate>
+    </ToggleButton.Template>
+  </ToggleButton>
+
+</UserControl>

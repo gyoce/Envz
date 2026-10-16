@@ -1,0 +1,45 @@
+﻿<UserControl
+  x:Class="Envz.Common.UI.Controls.SearchBox"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  mc:Ignorable="d"
+  d:DesignWidth="400"
+  x:Name="Root">
+
+  <Grid>
+    <TextBox x:Name="InputTextBox"
+             Style="{StaticResource TextBoxBody}"
+             Padding="40 5 8 5"
+             Text="{Binding Text, ElementName=Root, UpdateSourceTrigger=PropertyChanged}"
+             PreviewKeyDown="InputTextBox_PreviewKeyDown" />
+
+    <Image Source="{StaticResource IconSearchBlack}"
+           Width="22" Height="22"
+           HorizontalAlignment="Left"
+           VerticalAlignment="Center"
+           Margin="10 0 0 0"
+           IsHitTestVisible="False" />
+
+    <TextBlock Text="{Binding Placeholder, ElementName=Root}"
+               Foreground="{StaticResource ForegroundMutedBrush}"
+               Margin="44 0 0 0"
+               VerticalAlignment="Center"
+               IsHitTestVisible="False"
+               d:Visibility="Visible"
+               d:Text="Placeholder...">
+      <TextBlock.Style>
+        <Style TargetType="TextBlock" BasedOn="{StaticResource TextBody}">
+          <Setter Property="Visibility" Value="Collapsed" />
+          <Style.Triggers>
+            <DataTrigger Binding="{Binding Text, ElementName=Root}" Value="">
+              <Setter Property="Visibility" Value="Visible" />
+            </DataTrigger>
+          </Style.Triggers>
+        </Style>
+      </TextBlock.Style>
+    </TextBlock>
+  </Grid>
+
+</UserControl>

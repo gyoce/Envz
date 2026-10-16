@@ -1,6 +1,6 @@
 using Envz.Infrastructure.Configuration;
 
-namespace Envz.CommonTests;
+namespace Envz.CommonTests.Services;
 
 public class InMemoryFileSystem : IFileSystem
 {

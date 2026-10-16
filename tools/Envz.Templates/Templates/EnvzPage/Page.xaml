@@ -9,7 +9,7 @@
   d:DataContext="{d:DesignInstance Type=local:$fileinputname$PageViewModel}"
   Style="{StaticResource PageStyle}">
 
-  <Grid>
+  <Grid Margin="30 10">
 
   </Grid>
 

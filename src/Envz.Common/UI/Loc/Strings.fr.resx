@@ -117,8 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AddApplication_Title" xml:space="preserve">
-    <value>Ajouter une application</value>
+  <data name="AddCustomApplication_Title" xml:space="preserve">
+    <value>Ajouter une application personnalisée</value>
   </data>
   <data name="CreateEnvironment_NoApplications" xml:space="preserve">
     <value>Aucune application n'a été ajoutée</value>
@@ -242,5 +242,32 @@
   </data>
   <data name="Global_Ok" xml:space="preserve">
     <value>OK</value>
+  </data>
+  <data name="AddApplication_Title" xml:space="preserve">
+    <value>Ajouter une application</value>
+  </data>
+  <data name="Global_SearchApplication" xml:space="preserve">
+    <value>Rechercher une application...</value>
+  </data>
+  <data name="AddApplication_AddSelected" xml:space="preserve">
+    <value>Ajouter ({0})</value>
+  </data>
+  <data name="AddApplication_Detecting" xml:space="preserve">
+    <value>Recherche d'applications...</value>
+  </data>
+  <data name="AddApplication_NoneDetected" xml:space="preserve">
+    <value>Aucune application connue n'a été détectée.</value>
+  </data>
+  <data name="AddApplication_NoResult" xml:space="preserve">
+    <value>Aucune application ne correspond à la recherche.</value>
+  </data>
+  <data name="FileDialog_BrowseApplicationTitle" xml:space="preserve">
+    <value>Sélectionner une application</value>
+  </data>
+  <data name="FileDialog_BrowseIconTitle" xml:space="preserve">
+    <value>Sélectionner une icône</value>
+  </data>
+  <data name="AddApplication_AlreadyAdded" xml:space="preserve">
+    <value>Application déjà ajoutée</value>
   </data>
 </root>

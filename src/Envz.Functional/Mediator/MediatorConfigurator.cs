@@ -29,6 +29,9 @@ public static class MediatorConfigurator
             return false;
 
         Type definition = type.GetGenericTypeDefinition();
-        return definition == typeof(IUseCase<>) || definition == typeof(IUseCase<,>);
+        return definition == typeof(IUseCase<>)
+            || definition == typeof(IUseCase<,>)
+            || definition == typeof(IAsyncUseCase<>)
+            || definition == typeof(IAsyncUseCase<,>);
     }
 }

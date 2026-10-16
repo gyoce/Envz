@@ -30,7 +30,7 @@ public class CreateEnvironmentPageViewModel : PageViewModel
     private readonly IMediator _mediator;
     private readonly INavigationService _navigationService;
     private readonly EnvironmentApplicationItemViewModelFactory _viewModelFactory;
-    
+
     private bool _isSelectingApplication = false;
 
     public CreateEnvironmentPageViewModel(IMediator mediator, INavigationService navigationService, EnvironmentApplicationItemViewModelFactory viewModelFactory)

@@ -1,4 +1,6 @@
-﻿using Envz.Common.Services.Navigation;
+﻿using Envz.Common.Services.Dialogs;
+using Envz.Common.Services.Navigation;
+using Envz.Common.UI.Dialogs.Confirm;
 using Envz.Common.UI.Loc;
 using Envz.Common.UI.Utils;
 using Envz.Common.Utils;
@@ -9,8 +11,6 @@ using Envz.UI.Services;
 using Envz.UI.Views.Pages.Applications.AddApplication;
 using Envz.UI.Views.UserControls.ApplicationItem;
 using System.Windows.Input;
-using Envz.Common.Services.Dialogs;
-using Envz.Common.UI.Dialogs.Confirm;
 
 namespace Envz.UI.Views.Pages.Applications.HomeApplications;
 
@@ -29,7 +29,6 @@ public class HomeApplicationsPageViewModel : PageViewModel
     {
         _mediator = mediator;
         _dialogService = dialogService;
-
         AddApplicationCommand = new RelayCommand(_ => navigationService.NavigateTo<AddApplicationPageViewModel>());
         SearchableApplications = new SearchableCollection<ApplicationItemViewModel, Application>(
             app => app.Name,

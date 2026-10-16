@@ -7,6 +7,7 @@
   xmlns:ctrls="clr-namespace:Envz.Common.UI.Controls;assembly=Envz.Common"
   xmlns:ai="clr-namespace:Envz.UI.Views.UserControls.ApplicationItem"
   xmlns:ha="clr-namespace:Envz.UI.Views.Pages.Applications.HomeApplications"
+  xmlns:loc="clr-namespace:Envz.Common.UI.Loc;assembly=Envz.Common"
   mc:Ignorable="d" 
   d:DataContext="{d:DesignInstance Type=ha:HomeApplicationsPageViewModel}"
   Style="{StaticResource PageStyle}">
@@ -23,18 +24,9 @@
         <ColumnDefinition Width="Auto" />
       </Grid.ColumnDefinitions>
 
-      <TextBox x:Name="SearchTextBox" 
-               Grid.Column="0" 
-               Style="{StaticResource TextBoxH4}" 
-               Padding="40 5 8 5" 
-               Text="{Binding SearchableApplications.SearchText, UpdateSourceTrigger=PropertyChanged}" />
-      <Image Grid.Column="0" 
-             Source="{StaticResource IconSearchBlack}" 
-             Width="25" Height="25" 
-             HorizontalAlignment="Left" 
-             VerticalAlignment="Center" 
-             Margin="10 0 0 0" 
-             IsHitTestVisible="False" />
+      <ctrls:SearchBox Grid.Column="0"
+                       Text="{Binding SearchableApplications.SearchText}"
+                       Placeholder="{loc:Translate Global_SearchApplication}"/>
 
       <ctrls:ButtonImage Grid.Column="1" 
                          Source="{StaticResource IconAddWhite}" 

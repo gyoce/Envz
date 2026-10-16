@@ -10,7 +10,7 @@ public enum ENavigationCategory
     Settings
 }
 
-public static class NavigationCategoryExtensionMethods
+public static class NavigationCategoryExtensions
 {
     extension(ENavigationCategory navigatonCategory)
     {

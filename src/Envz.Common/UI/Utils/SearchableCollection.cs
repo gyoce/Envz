@@ -29,8 +29,11 @@ public class SearchableCollection<TViewModel, TItem> : INotifyPropertyChanged
             field = value;
             OnPropertyChanged();
             Items.Refresh();
+            OnPropertyChanged(nameof(HasNoMatch));
         }
     } = string.Empty;
+    public bool HasItems => _searchKeys.Count > 0;
+    public bool HasNoMatch => HasItems && Items.IsEmpty;
 
     private readonly Func<TItem, string> _searchSelector;
     private readonly Func<TItem, TViewModel> _viewModelFactory;
@@ -62,6 +65,8 @@ public class SearchableCollection<TViewModel, TItem> : INotifyPropertyChanged
 
         Items = CreateView(viewModels);
         OnPropertyChanged(nameof(Items));
+        OnPropertyChanged(nameof(HasItems));
+        OnPropertyChanged(nameof(HasNoMatch));
     }
 
     private bool Matches(object obj)

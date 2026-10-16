@@ -24,18 +24,9 @@
         <RowDefinition Height="*" />
       </Grid.RowDefinitions>
 
-      <Grid Grid.Row="0" Margin="0 0 0 8">
-        <TextBox x:Name="SearchApplicationTextBox"
-                 Style="{StaticResource TextBoxH4}" 
-                 Padding="40 5 8 5" 
-                 Text="{Binding SearchableApplications.SearchText, UpdateSourceTrigger=PropertyChanged}" />
-        <Image Source="{StaticResource IconSearchBlack}" 
-               Width="22" Height="22" 
-               HorizontalAlignment="Left" 
-               VerticalAlignment="Center" 
-               Margin="10 0 0 0" 
-               IsHitTestVisible="False" />
-      </Grid>
+      <ctrls:SearchBox Grid.Row="0" 
+                       Text="{Binding SearchableApplications.SearchText}"
+                       Placeholder="{loc:Translate Global_SearchApplication}" />
 
       <ListBox Grid.Row="1" 
                ItemsSource="{Binding SearchableApplications.Items}" 
