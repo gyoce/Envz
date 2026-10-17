@@ -1,10 +1,10 @@
-﻿using Envz.Common.UI.Loc;
+﻿using Envz.Application;
+using Envz.Application.Mediator;
+using Envz.Application.Requests.Settings;
+using Envz.Application.Requests.Tools;
+using Envz.Application.Requests.Workspaces;
+using Envz.Common.UI.Loc;
 using Envz.Domain.Entities;
-using Envz.Functional;
-using Envz.Functional.Applications;
-using Envz.Functional.Environments;
-using Envz.Functional.Mediator;
-using Envz.Functional.Settings;
 using Envz.Infrastructure;
 using Envz.UI.Services;
 using Envz.UI.Views;
@@ -34,8 +34,8 @@ public partial class App : System.Windows.Application
         UserSettings settings = mediator.Send(new GetSettingsRequest());
         Localizer.Instance.SetLanguage(SupportedLanguages.Find(settings.Language));
 
-        mediator.Send(new GetApplicationsRequest());
-        mediator.Send(new GetEnvironmentsRequest());
+        mediator.Send(new GetToolsRequest());
+        mediator.Send(new GetWorkspacesRequest());
     }
 
     private static ServiceCollection ConfigureServices()
@@ -43,7 +43,7 @@ public partial class App : System.Windows.Application
         ServiceCollection services = new();
         services.AddUi();
         services.AddInfrastructure();
-        services.AddFunctional();
+        services.AddTool();
         return services;
     }
 }

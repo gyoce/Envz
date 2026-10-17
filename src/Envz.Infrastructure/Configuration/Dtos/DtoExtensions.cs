@@ -5,11 +5,11 @@ namespace Envz.Infrastructure.Configuration.Dtos;
 
 public static class DtoExtensions
 {
-    public static Application ToEntity(this ApplicationDto dto, Dictionary<string, string> icons)
+    public static Tool ToEntity(this ToolDto dto, Dictionary<string, string> icons)
     {
         try
         {
-            return new Application(
+            return new Tool(
                 dto.Name,
                 dto.Path,
                 icons.TryGetValue(dto.Name, out string? icon) && !string.IsNullOrWhiteSpace(icon) ? Convert.FromBase64String(icon) : null
@@ -17,26 +17,26 @@ public static class DtoExtensions
         }
         catch (ValidationException ex)
         {
-            throw new InvalidConfigurationException($"Application \"{dto.Name}\": {ex.Message}");
+            throw new InvalidConfigurationException($"Tool \"{dto.Name}\": {ex.Message}");
         }
         catch (FormatException)
         {
-            throw new InvalidConfigurationException($"Application \"{dto.Name}\": icon is not valid base64");
+            throw new InvalidConfigurationException($"Tool \"{dto.Name}\": icon is not valid base64");
         }
     }
 
-    public static Environment ToEntity(this EnvironmentDto dto)
+    public static Workspace ToEntity(this WorkspaceDto dto)
     {
         try
         {
-            return new Environment(
+            return new Workspace(
                 dto.Name,
-                dto.Applications.Select(envAppDto => new EnvironmentApplication(envAppDto.ApplicationName, envAppDto.Parameter))
+                dto.Tools.Select(workspaceToolDto => new WorkspaceTool(workspaceToolDto.ToolName, workspaceToolDto.Parameter))
             );
         }
         catch (ValidationException ex)
         {
-            throw new InvalidConfigurationException($"Environment \"{dto.Name}\": {ex.Message}");
+            throw new InvalidConfigurationException($"Workspace \"{dto.Name}\": {ex.Message}");
         }
     }
 }

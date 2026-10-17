@@ -7,15 +7,15 @@ using Envz.Common.UI.Dialogs.Error;
 using Envz.Domain.Entities;
 using Envz.UI.Services;
 using Envz.UI.Views;
-using Envz.UI.Views.Pages.Applications.AddApplication;
-using Envz.UI.Views.Pages.Applications.AddCustomApplication;
-using Envz.UI.Views.Pages.Applications.HomeApplications;
-using Envz.UI.Views.Pages.Environments.CreateEnvironment;
-using Envz.UI.Views.Pages.Environments.EditEnvironment;
-using Envz.UI.Views.Pages.Environments.HomeEnvironments;
-using Envz.UI.Views.Pages.Environments.SelectApplication;
 using Envz.UI.Views.Pages.Home;
 using Envz.UI.Views.Pages.Settings;
+using Envz.UI.Views.Pages.Tools.AddCustomTool;
+using Envz.UI.Views.Pages.Tools.AddTool;
+using Envz.UI.Views.Pages.Tools.HomeTools;
+using Envz.UI.Views.Pages.Workspaces.CreateWorkspace;
+using Envz.UI.Views.Pages.Workspaces.EditWorkspace;
+using Envz.UI.Views.Pages.Workspaces.HomeWorkspaces;
+using Envz.UI.Views.Pages.Workspaces.SelectTool;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Envz.UI;
@@ -33,17 +33,17 @@ public static class DependencyInjection
             services.AddSingleton<GlobalExceptionHandler>();
             services.AddSingleton<ViewLocator>();
 
-            services.AddSingleton<ApplicationItemViewModelFactory>();
-            services.AddSingleton<EnvironmentApplicationItemViewModelFactory>();
-            services.AddSingleton<EnvironmentItemViewModelFactory>();
-            services.AddSingleton<SelectableApplicationItemViewModelFactory>();
+            services.AddSingleton<ToolItemViewModelFactory>();
+            services.AddSingleton<WorkspaceToolItemViewModelFactory>();
+            services.AddSingleton<WorkspaceItemViewModelFactory>();
+            services.AddSingleton<SelectableToolItemViewModelFactory>();
 
             services.AddSingleton<MainWindow>();
             services.AddSingleton<MainWindowViewModel>();
 
             services.AddPages();
             services.AddDialogs();
-            services.AddBasicSuggestedApplications();
+            services.AddBasicSuggestedTools();
 
             return services;
         }
@@ -60,28 +60,27 @@ public static class DependencyInjection
         {
             services.AddPage<HomePage, HomePageViewModel>();
 
-            services.AddPage<HomeEnvironmentsPage, HomeEnvironmentsPageViewModel>();
-            services.AddPage<CreateEnvironmentPage, CreateEnvironmentPageViewModel>();
-            services.AddPage<EditEnvironmentPage, EditEnvironmentPageViewModel>();
+            services.AddPage<HomeWorkspacesPage, HomeWorkspacesPageViewModel>();
+            services.AddPage<CreateWorkspacePage, CreateWorkspacePageViewModel>();
+            services.AddPage<EditWorkspacePage, EditWorkspacePageViewModel>();
 
-            services.AddPage<SelectApplicationPage, SelectApplicationPageViewModel>();
-            services.AddPage<HomeApplicationsPage, HomeApplicationsPageViewModel>();
-            services.AddPage<AddApplicationPage, AddApplicationPageViewModel>();
-            services.AddPage<AddCustomApplicationPage, AddCustomApplicationPageViewModel>();
+            services.AddPage<SelectToolPage, SelectToolPageViewModel>();
+            services.AddPage<HomeToolsPage, HomeToolsPageViewModel>();
+            services.AddPage<AddToolPage, AddToolPageViewModel>();
+            services.AddPage<AddCustomToolPage, AddCustomToolPageViewModel>();
 
             services.AddPage<SettingsPage, SettingsPageViewModel>();
 
             return services;
         }
 
-        private IServiceCollection AddBasicSuggestedApplications()
+        private IServiceCollection AddBasicSuggestedTools()
         {
-            services.AddSuggestedApplications(
-                new SuggestedApplicationCandidate("Visual Studio Code", @"%LOCALAPPDATA%\Programs\Microsoft VS Code\Code.exe"),
-                new SuggestedApplicationCandidate("Visual Studio 2026", @"%ProgramFiles%\Microsoft Visual Studio\18\Community\Common7\IDE\devenv.exe"),
-                new SuggestedApplicationCandidate("Visual Studio 2022", @"%ProgramFiles%\Microsoft Visual Studio\2022\Community\Common7\IDE\devenv.exe"),
-                new SuggestedApplicationCandidate("Google Chrome", @"%ProgramFiles%\Google\Chrome\Application\chrome.exe"),
-                new SuggestedApplicationCandidate("Firefox", @"%ProgramFiles%\Mozilla Firefox\firefox.exe")
+            services.AddSuggestedTools(
+                new SuggestedToolCandidate("Visual Studio Code", @"%LOCALAPPDATA%\Programs\Microsoft VS Code\Code.exe"),
+                new SuggestedToolCandidate("Visual Studio 2026", @"%ProgramFiles%\Microsoft Visual Studio\18\Community\Common7\IDE\devenv.exe"),
+                new SuggestedToolCandidate("Visual Studio 2022", @"%ProgramFiles%\Microsoft Visual Studio\2022\Community\Common7\IDE\devenv.exe"),
+                new SuggestedToolCandidate("Firefox", @"%ProgramFiles%\Mozilla Firefox\firefox.exe")
             );
             return services;
         }

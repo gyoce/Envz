@@ -1,6 +1,6 @@
 using Envz.CommonTests.Services;
 using Envz.Domain.Entities;
-using Envz.Functional.Applications;
+using Envz.Application.Requests.Tools;
 using Envz.Infrastructure.Configuration;
 using Envz.Infrastructure.Configuration.Dtos;
 using Envz.Infrastructure.Configuration.Stores;
@@ -23,8 +23,8 @@ public class ConfigurationStoreTests : BaseTestFixture
     {
         IConfigurationStore store = GetService<IConfigurationStore>();
 
-        store.Configuration.Applications.ShouldBeEmpty();
-        store.Configuration.Environments.ShouldBeEmpty();
+        store.Configuration.Tools.ShouldBeEmpty();
+        store.Configuration.Workspaces.ShouldBeEmpty();
     }
 
     [Fact]
@@ -34,15 +34,15 @@ public class ConfigurationStoreTests : BaseTestFixture
 
         IConfigurationStore store = GetService<IConfigurationStore>();
 
-        store.Configuration.Applications.Count.ShouldBe(1);
-        store.Configuration.Applications[0].Name.ShouldBe("App");
+        store.Configuration.Tools.Count.ShouldBe(1);
+        store.Configuration.Tools[0].Name.ShouldBe("App");
     }
 
     [Fact]
     public void ShouldWriteConfigurationToFile()
     {
         IConfigurationStore store = GetService<IConfigurationStore>();
-        store.Configuration.Applications.Add(new ApplicationDto { Name = "App", Path = "C:\\app.exe" });
+        store.Configuration.Tools.Add(new ToolDto { Name = "App", Path = "C:\\app.exe" });
 
         store.Save();
 
@@ -70,18 +70,18 @@ public class ConfigurationStoreTests : BaseTestFixture
         SetConfiguration(new ConfigurationDtoBuilder().Build(), icons);
         byte[] icon = [1, 2, 3];
 
-        Send(new CreateApplicationRequest { Name = "App", Path = "path", Icon = icon });
+        Send(new CreateToolRequest { Name = "App", Path = "path", Icon = icon });
 
-        icons.ApplicationIcons["App"].ShouldBe(Convert.ToBase64String(icon));
+        icons.ToolIcons["App"].ShouldBe(Convert.ToBase64String(icon));
         GetMock<IIconStore>().Verify(store => store.Save(), Times.Once);
     }
 
     [Fact]
-    public void ShouldNotSaveIconStoreWhenApplicationHasNoIcon()
+    public void ShouldNotSaveIconStoreWhenToolHasNoIcon()
     {
         SetConfiguration(new ConfigurationDtoBuilder().Build());
 
-        Send(new CreateApplicationRequest { Name = "App", Path = "path", Icon = [] });
+        Send(new CreateToolRequest { Name = "App", Path = "path", Icon = [] });
 
         GetMock<IIconStore>().Verify(store => store.Save(), Times.Never);
     }
@@ -90,11 +90,11 @@ public class ConfigurationStoreTests : BaseTestFixture
     public void ShouldGetIconFromIconStore()
     {
         SetConfiguration(
-            new ConfigurationDtoBuilder().WithApplication(new ApplicationDtoBuilder().WithName("App1").WithPath("ABC").Build()).Build(),
+            new ConfigurationDtoBuilder().WithTool(new ToolDtoBuilder().WithName("App1").WithPath("ABC").Build()).Build(),
             new IconsDtoBuilder().WithIcon("App1", Convert.ToBase64String(new byte[] { 1, 2, 3 })).Build()
         );
 
-        Application app = Send(new GetApplicationsRequest()).Single();
+        Tool app = Send(new GetToolsRequest()).Single();
 
         app.Icon.ShouldBe([1, 2, 3]);
     }

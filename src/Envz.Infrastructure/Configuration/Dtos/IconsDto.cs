@@ -5,5 +5,6 @@ namespace Envz.Infrastructure.Configuration.Dtos;
 public class IconsDto
 {
     [JsonPropertyName("applications")]
-    public Dictionary<string, string> ApplicationIcons { get; set; } = [];
+    [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
+    public Dictionary<string, string> ToolIcons { get; set; } = new(StringComparer.OrdinalIgnoreCase);
 }

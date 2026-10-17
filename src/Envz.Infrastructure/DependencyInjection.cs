@@ -16,10 +16,10 @@ public static class DependencyInjection
         services.AddSingleton<IConfigurationStore, ConfigurationStore>();
         services.AddSingleton<IIconStore, IconStore>();
 
-        services.AddSingleton<IEnvironmentRepository, EnvironmentRepository>();
-        services.AddSingleton<IApplicationRepository, ApplicationRepository>();
+        services.AddSingleton<IWorkspaceRepository, WorkspaceRepository>();
+        services.AddSingleton<IToolRepository, ToolRepository>();
         services.AddSingleton<ISettingsRepository, SettingsRepository>();
-        services.AddSingleton<IInstalledApplicationProvider, InstalledApplicationProvider>();
+        services.AddSingleton<IInstalledToolProvider, InstalledToolProvider>();
 
         return services;
     }

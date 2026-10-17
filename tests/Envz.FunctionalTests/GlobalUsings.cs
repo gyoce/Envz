@@ -7,4 +7,4 @@ global using Shouldly;
 
 global using Xunit;
 
-global using Environment = Envz.Domain.Entities.Environment;
+global using Envz.Domain.Entities;

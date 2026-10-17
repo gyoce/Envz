@@ -2,10 +2,10 @@
 using Envz.Common.UI.Loc;
 using Envz.Common.Utils;
 using Envz.Common.ViewModels;
-using Envz.UI.Views.Pages.Applications.HomeApplications;
-using Envz.UI.Views.Pages.Environments.HomeEnvironments;
 using Envz.UI.Views.Pages.Home;
 using Envz.UI.Views.Pages.Settings;
+using Envz.UI.Views.Pages.Tools.HomeTools;
+using Envz.UI.Views.Pages.Workspaces.HomeWorkspaces;
 using Envz.UI.Views.UserControls.Breadcrumb;
 using System.ComponentModel;
 using System.Windows.Input;
@@ -15,9 +15,9 @@ namespace Envz.UI.Views;
 public class MainWindowViewModel : ViewModelBase
 {
     public ICommand ShowHomePageCommand { get; }
-    public ICommand ShowEnvironmentsPageCommand { get; }
+    public ICommand ShowWorkspacesPageCommand { get; }
     public ICommand ShowSettingsPageCommand { get; }
-    public ICommand ShowApplicationsPageCommand { get; }
+    public ICommand ShowToolsPageCommand { get; }
 
     public IEnumerable<BreadcrumbItemViewModel> BreadcrumbItems
     {
@@ -55,8 +55,8 @@ public class MainWindowViewModel : ViewModelBase
 
         _navigationService.OnNavigationChanged += OnNavigationChanged;
         ShowHomePageCommand = new RelayCommand(_ => _navigationService.NavigateTo<HomePageViewModel>());
-        ShowEnvironmentsPageCommand = new RelayCommand(_ => _navigationService.NavigateTo<HomeEnvironmentsPageViewModel>());
-        ShowApplicationsPageCommand = new RelayCommand(_ => _navigationService.NavigateTo<HomeApplicationsPageViewModel>());
+        ShowWorkspacesPageCommand = new RelayCommand(_ => _navigationService.NavigateTo<HomeWorkspacesPageViewModel>());
+        ShowToolsPageCommand = new RelayCommand(_ => _navigationService.NavigateTo<HomeToolsPageViewModel>());
         ShowSettingsPageCommand = new RelayCommand(_ => _navigationService.NavigateTo<SettingsPageViewModel>());
 
         _navigationService.NavigateTo<HomePageViewModel>();

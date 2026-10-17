@@ -7,9 +7,9 @@ public static class FileDialogServiceExtensions
 {
     extension(IFileDialogService fileDialogService)
     {
-        public string? BrowseApplication()
+        public string? BrowseTool()
         {
-            return fileDialogService.OpenFile(Strings.FileDialog_BrowseApplicationTitle, "Executable files (*.exe)|*.exe|All files (*.*)|*.*");
+            return fileDialogService.OpenFile(Strings.FileDialog_BrowseToolTitle, "Executable files (*.exe)|*.exe|All files (*.*)|*.*");
         }
 
         public string? BrowseIcon()

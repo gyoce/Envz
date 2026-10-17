@@ -117,22 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AddCustomApplication_Title" xml:space="preserve">
+  <data name="AddCustomTool_Title" xml:space="preserve">
     <value>Ajouter une application personnalisée</value>
   </data>
-  <data name="CreateEnvironment_NoApplications" xml:space="preserve">
+  <data name="CreateWorkspace_NoTools" xml:space="preserve">
     <value>Aucune application n'a été ajoutée</value>
   </data>
-  <data name="CreateEnvironment_Title" xml:space="preserve">
+  <data name="CreateWorkspace_Title" xml:space="preserve">
     <value>Créer un environnement</value>
   </data>
-  <data name="EditEnvironment_Title" xml:space="preserve">
+  <data name="EditWorkspace_Title" xml:space="preserve">
     <value>Éditer un environnement</value>
   </data>
   <data name="Global_Add" xml:space="preserve">
     <value>Ajouter</value>
   </data>
-  <data name="Global_Applications" xml:space="preserve">
+  <data name="Global_Tools" xml:space="preserve">
     <value>Applications</value>
   </data>
   <data name="Global_Browse" xml:space="preserve">
@@ -159,16 +159,16 @@
   <data name="Global_Select" xml:space="preserve">
     <value>Sélectionner</value>
   </data>
-  <data name="HomeApplications_Title" xml:space="preserve">
+  <data name="HomeTools_Title" xml:space="preserve">
     <value>Accueil</value>
   </data>
-  <data name="HomeEnvironments_Title" xml:space="preserve">
+  <data name="HomeWorkspaces_Title" xml:space="preserve">
     <value>Accueil</value>
   </data>
-  <data name="SelectApplication_Title" xml:space="preserve">
+  <data name="SelectTool_Title" xml:space="preserve">
     <value>Sélectionner une application</value>
   </data>
-  <data name="Global_Environments" xml:space="preserve">
+  <data name="Global_Workspaces" xml:space="preserve">
     <value>Environnements</value>
   </data>
   <data name="Global_Settings" xml:space="preserve">
@@ -186,16 +186,16 @@
   <data name="UnknownError_Message" xml:space="preserve">
     <value>Une erreur inattendue est survenue.</value>
   </data>
-  <data name="KnownError_CreateApplicationAlreadyExists" xml:space="preserve">
+  <data name="KnownError_CreateToolAlreadyExists" xml:space="preserve">
     <value>L'application « {0} » n'a pas pu être créée, car une application porte déjà ce nom.</value>
   </data>
-  <data name="KnownError_DeleteApplicationNotFound" xml:space="preserve">
+  <data name="KnownError_DeleteToolNotFound" xml:space="preserve">
     <value>L'application « {0} » n'a pas pu être supprimée, car elle est introuvable.</value>
   </data>
-  <data name="KnownError_DeleteApplicationStillUsed" xml:space="preserve">
+  <data name="KnownError_DeleteToolStillUsed" xml:space="preserve">
     <value>L'application « {0} » n'a pas pu être supprimée, car elle est encore utilisée par un environnement.</value>
   </data>
-  <data name="KnownError_CreateEnvironmentApplicationNotFound" xml:space="preserve">
+  <data name="KnownError_CreateWorkspaceToolNotFound" xml:space="preserve">
     <value>L'environnement n'a pas pu être créé, car l'application « {0} » est introuvable.</value>
   </data>
   <data name="Global_Edit" xml:space="preserve">
@@ -204,25 +204,25 @@
   <data name="Global_Duplicate" xml:space="preserve">
     <value>Dupliquer</value>
   </data>
-  <data name="EnvironmentItem_ApplicationCountZero" xml:space="preserve">
+  <data name="WorkspaceItem_ToolCountZero" xml:space="preserve">
     <value>Aucune application</value>
   </data>
-  <data name="EnvironmentItem_ApplicationCountOne" xml:space="preserve">
+  <data name="WorkspaceItem_ToolCountOne" xml:space="preserve">
     <value>{0} application</value>
   </data>
-  <data name="EnvironmentItem_ApplicationCountMany" xml:space="preserve">
+  <data name="WorkspaceItem_ToolCountMany" xml:space="preserve">
     <value>{0} applications</value>
   </data>
-  <data name="KnownError_ApplicationInvalidName" xml:space="preserve">
+  <data name="KnownError_ToolInvalidName" xml:space="preserve">
     <value>L'application a un nom invalide.</value>
   </data>
-  <data name="KnownError_ApplicationInvalidPath" xml:space="preserve">
+  <data name="KnownError_ToolInvalidPath" xml:space="preserve">
     <value>L'application a un chemin invalide.</value>
   </data>
-  <data name="KnownError_EnvironmentInvalidName" xml:space="preserve">
+  <data name="KnownError_WorkspaceInvalidName" xml:space="preserve">
     <value>L'environnement a un nom invalide.</value>
   </data>
-  <data name="KnownError_CreateEnvironmentAlreadyExists" xml:space="preserve">
+  <data name="KnownError_CreateWorkspaceAlreadyExists" xml:space="preserve">
     <value>L'environnement n'a pas pu être créé car un environnement avec le même nom existe déjà.</value>
   </data>
   <data name="KnownError_ConfigurationInvalid" xml:space="preserve">
@@ -234,40 +234,40 @@
   <data name="Global_No" xml:space="preserve">
     <value>Non</value>
   </data>
-  <data name="ConfirmDialog_DeleteApplicationMessage" xml:space="preserve">
+  <data name="ConfirmDialog_DeleteToolMessage" xml:space="preserve">
     <value>Voulez-vous vraiment supprimer l'application « {0} » ?</value>
   </data>
-  <data name="ConfirmDialog_DeleteApplicationTitle" xml:space="preserve">
+  <data name="ConfirmDialog_DeleteToolTitle" xml:space="preserve">
     <value>Supprimer l'application</value>
   </data>
   <data name="Global_Ok" xml:space="preserve">
     <value>OK</value>
   </data>
-  <data name="AddApplication_Title" xml:space="preserve">
+  <data name="AddTool_Title" xml:space="preserve">
     <value>Ajouter une application</value>
   </data>
-  <data name="Global_SearchApplication" xml:space="preserve">
+  <data name="Global_SearchTool" xml:space="preserve">
     <value>Rechercher une application...</value>
   </data>
-  <data name="AddApplication_AddSelected" xml:space="preserve">
+  <data name="AddTool_AddSelected" xml:space="preserve">
     <value>Ajouter ({0})</value>
   </data>
-  <data name="AddApplication_Detecting" xml:space="preserve">
+  <data name="AddTool_Detecting" xml:space="preserve">
     <value>Recherche d'applications...</value>
   </data>
-  <data name="AddApplication_NoneDetected" xml:space="preserve">
+  <data name="AddTool_NoneDetected" xml:space="preserve">
     <value>Aucune application connue n'a été détectée.</value>
   </data>
-  <data name="AddApplication_NoResult" xml:space="preserve">
+  <data name="AddTool_NoResult" xml:space="preserve">
     <value>Aucune application ne correspond à la recherche.</value>
   </data>
-  <data name="FileDialog_BrowseApplicationTitle" xml:space="preserve">
+  <data name="FileDialog_BrowseToolTitle" xml:space="preserve">
     <value>Sélectionner une application</value>
   </data>
   <data name="FileDialog_BrowseIconTitle" xml:space="preserve">
     <value>Sélectionner une icône</value>
   </data>
-  <data name="AddApplication_AlreadyAdded" xml:space="preserve">
+  <data name="AddTool_AlreadyAdded" xml:space="preserve">
     <value>Application déjà ajoutée</value>
   </data>
 </root>

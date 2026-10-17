@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Envz.Functional\Envz.Functional.csproj" />
+    <ProjectReference Include="..\..\src\Envz.Application\Envz.Application.csproj" />
     <ProjectReference Include="..\..\src\Envz.Infrastructure\Envz.Infrastructure.csproj" />
   </ItemGroup>
 

@@ -1,6 +1,6 @@
-﻿using Envz.CommonTests.Services;
-using Envz.Functional;
-using Envz.Functional.Mediator;
+﻿using Envz.Application;
+using Envz.Application.Mediator;
+using Envz.CommonTests.Services;
 using Envz.Infrastructure;
 using Envz.Infrastructure.Configuration;
 using Envz.Infrastructure.Configuration.Dtos;
@@ -21,7 +21,7 @@ public abstract class BaseTestFixture : IDisposable
         _serviceProvider = new Lazy<ServiceProvider>(BuildServiceProvider);
         _scope = new Lazy<IServiceScope>(() => _serviceProvider.Value.CreateScope());
 
-        Services.AddFunctional();
+        Services.AddTool();
         Services.AddInfrastructure();
         Services.Replace<IFileSystem, InMemoryFileSystem>();
     }

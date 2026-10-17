@@ -1,9 +1,9 @@
-﻿using Envz.Common.ViewModels;
-using Microsoft.Extensions.DependencyInjection;
-using System.Windows;
-using Envz.Common.Services;
+﻿using Envz.Common.Services;
+using Envz.Common.ViewModels;
 using Envz.Domain.Entities;
 using Envz.Domain.Ports;
+using Microsoft.Extensions.DependencyInjection;
+using System.Windows;
 
 namespace Envz.Common;
 
@@ -29,9 +29,9 @@ public static class DependencyInjection
             return services;
         }
 
-        public IServiceCollection AddSuggestedApplications(params SuggestedApplicationCandidate[] candidates)
+        public IServiceCollection AddSuggestedTools(params SuggestedToolCandidate[] candidates)
         {
-            services.AddSingleton<ISuggestedApplicationSource>(new StaticSuggestedApplicationSource(candidates));
+            services.AddSingleton<ISuggestedToolSource>(new StaticSuggestedToolSource(candidates));
             return services;
         }
     }

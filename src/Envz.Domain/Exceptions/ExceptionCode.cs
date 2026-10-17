@@ -2,15 +2,15 @@
 
 public enum ExceptionCode
 {
-    ApplicationInvalidName,
-    ApplicationInvalidPath,
-    EnvironmentInvalidName,
+    ToolInvalidName,
+    ToolInvalidPath,
+    WorkspaceInvalidName,
 
     ConfigurationInvalid,
 
-    CreateEnvironmentApplicationNotFound,
-    CreateApplicationAlreadyExists,
-    CreateEnvironmentAlreadyExists,
-    DeleteApplicationStillUsed,
-    DeleteApplicationNotFound,
+    CreateWorkspaceToolNotFound,
+    CreateToolAlreadyExists,
+    CreateWorkspaceAlreadyExists,
+    DeleteToolStillUsed,
+    DeleteToolNotFound,
 }

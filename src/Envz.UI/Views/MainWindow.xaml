@@ -88,11 +88,11 @@
                          Command="{Binding ShowHomePageCommand}" 
                          IsChecked="True" />
             <RadioButton Style="{StaticResource NavigationButton}" 
-                         Content="{loc:Translate Global_Environments}" 
-                         Command="{Binding ShowEnvironmentsPageCommand}" />
+                         Content="{loc:Translate Global_Workspaces}" 
+                         Command="{Binding ShowWorkspacesPageCommand}" />
             <RadioButton Style="{StaticResource NavigationButton}" 
-                         Content="{loc:Translate Global_Applications}" 
-                         Command="{Binding ShowApplicationsPageCommand}" />
+                         Content="{loc:Translate Global_Tools}" 
+                         Command="{Binding ShowToolsPageCommand}" />
             <RadioButton Style="{StaticResource NavigationButton}" 
                          Content="{loc:Translate Global_Settings}" 
                          Command="{Binding ShowSettingsPageCommand}" />

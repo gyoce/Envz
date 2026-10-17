@@ -5,8 +5,8 @@ namespace Envz.Common.Services.Navigation;
 public enum ENavigationCategory
 {
     Home,
-    Environments,
-    Applications,
+    Workspaces,
+    Tools,
     Settings
 }
 
@@ -19,8 +19,8 @@ public static class NavigationCategoryExtensions
             return navigatonCategory switch
             {
                 ENavigationCategory.Home => Strings.Global_Home,
-                ENavigationCategory.Environments => Strings.Global_Environments,
-                ENavigationCategory.Applications => Strings.Global_Applications,
+                ENavigationCategory.Workspaces => Strings.Global_Workspaces,
+                ENavigationCategory.Tools => Strings.Global_Tools,
                 ENavigationCategory.Settings => Strings.Global_Settings,
                 _ => throw new ArgumentOutOfRangeException(nameof(navigatonCategory), navigatonCategory, null)
             };

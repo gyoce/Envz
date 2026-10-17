@@ -6,7 +6,7 @@
   <Folder Name="/src/">
     <Project Path="src/Envz.Common/Envz.Common.csproj" />
     <Project Path="src/Envz.Domain/Envz.Domain.csproj" />
-    <Project Path="src/Envz.Functional/Envz.Functional.csproj" />
+    <Project Path="src/Envz.Application/Envz.Application.csproj" />
     <Project Path="src/Envz.Infrastructure/Envz.Infrastructure.csproj" />
     <Project Path="src/Envz.UI/Envz.UI.csproj" />
   </Folder>

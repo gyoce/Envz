@@ -6,9 +6,9 @@ public class IconsDtoBuilder
 {
     private readonly IconsDto _iconsDto = new();
 
-    public IconsDtoBuilder WithIcon(string applicationName, string icon)
+    public IconsDtoBuilder WithIcon(string toolName, string icon)
     {
-        _iconsDto.ApplicationIcons[applicationName] = icon;
+        _iconsDto.ToolIcons[toolName] = icon;
         return this;
     }
 

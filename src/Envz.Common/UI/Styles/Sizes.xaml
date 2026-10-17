@@ -23,17 +23,17 @@
   <sys:Double x:Key="BreadcrumbHeight">40</sys:Double>
   <sys:Double x:Key="BreadcrumbWidth">1090</sys:Double>
 
-  <sys:Double x:Key="EnvironmentListItemWidth">330</sys:Double>
-  <sys:Double x:Key="EnvironmentListItemHeight">170</sys:Double>
+  <sys:Double x:Key="WorkspaceListItemWidth">330</sys:Double>
+  <sys:Double x:Key="WorkspaceListItemHeight">170</sys:Double>
 
-  <sys:Double x:Key="ApplicationListItemWidth">1030</sys:Double>
-  <sys:Double x:Key="ApplicationListItemHeight">50</sys:Double>
+  <sys:Double x:Key="ToolListItemWidth">1030</sys:Double>
+  <sys:Double x:Key="ToolListItemHeight">50</sys:Double>
 
-  <sys:Double x:Key="DialogApplicationListItemWidth">920</sys:Double>
-  <sys:Double x:Key="DialogApplicationListItemHeight">50</sys:Double>
+  <sys:Double x:Key="DialogToolListItemWidth">920</sys:Double>
+  <sys:Double x:Key="DialogToolListItemHeight">50</sys:Double>
 
-  <sys:Double x:Key="EnvironmentApplicationListItemWidth">1030</sys:Double>
-  <sys:Double x:Key="EnvironmentApplicationListItemHeight">50</sys:Double>
+  <sys:Double x:Key="WorkspaceToolListItemWidth">1030</sys:Double>
+  <sys:Double x:Key="WorkspaceToolListItemHeight">50</sys:Double>
 
   <sys:Double x:Key="TextInputHeight">35</sys:Double>
 

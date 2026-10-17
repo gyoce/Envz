@@ -1,7 +1,7 @@
-﻿using Envz.CommonTests.Services;
+﻿using Envz.Application.Requests.Tools;
+using Envz.Application.Requests.Workspaces;
+using Envz.CommonTests.Services;
 using Envz.Domain.Exceptions;
-using Envz.Functional.Applications;
-using Envz.Functional.Environments;
 using Envz.Infrastructure.Configuration;
 using Envz.Infrastructure.Configuration.Stores;
 using Microsoft.Extensions.DependencyInjection;
@@ -37,40 +37,40 @@ public class InvalidConfigurationTests : BaseTestFixture
     {
         WriteConfigurationFile(NotJson);
 
-        Should.Throw<InvalidConfigurationException>(() => Send(new CreateApplicationRequest { Name = "App", Path = @"C:\app.exe" }));
+        Should.Throw<InvalidConfigurationException>(() => Send(new CreateToolRequest { Name = "App", Path = @"C:\app.exe" }));
 
         ReadConfigurationFile().ShouldBe(NotJson);
     }
 
     [Fact]
-    public void ShouldNameTheInvalidApplication()
+    public void ShouldNameTheInvalidTool()
     {
         WriteConfigurationFile("""{ "applications": [ { "name": "Chrome", "path": "" } ] }""");
 
-        InvalidConfigurationException exception = Should.Throw<InvalidConfigurationException>(() => Send(new GetApplicationsRequest()));
+        InvalidConfigurationException exception = Should.Throw<InvalidConfigurationException>(() => Send(new GetToolsRequest()));
 
         exception.Code.ShouldBe(ExceptionCode.ConfigurationInvalid);
         Detail(exception).ShouldContain("Chrome");
     }
 
     [Fact]
-    public void ShouldNameTheInvalidEnvironment()
+    public void ShouldNameTheInvalidWorkspace()
     {
         WriteConfigurationFile("""{ "environments": [ { "name": "Dev", "applications": [ { "applicationName": "" } ] } ] }""");
 
-        InvalidConfigurationException exception = Should.Throw<InvalidConfigurationException>(() => Send(new GetEnvironmentsRequest()));
+        InvalidConfigurationException exception = Should.Throw<InvalidConfigurationException>(() => Send(new GetWorkspacesRequest()));
 
         exception.Code.ShouldBe(ExceptionCode.ConfigurationInvalid);
         Detail(exception).ShouldContain("Dev");
     }
 
     [Fact]
-    public void ShouldNameTheApplicationWithInvalidIcon()
+    public void ShouldNameTheToolWithInvalidIcon()
     {
         WriteConfigurationFile("""{ "applications": [ { "name": "Chrome", "path": "C:\\chrome.exe" } ] }""");
         GetServiceAs<IFileSystem, InMemoryFileSystem>().Files[IconsPath] = """{ "applications": { "Chrome": "not base64!" } }""";
 
-        InvalidConfigurationException exception = Should.Throw<InvalidConfigurationException>(() => Send(new GetApplicationsRequest()));
+        InvalidConfigurationException exception = Should.Throw<InvalidConfigurationException>(() => Send(new GetToolsRequest()));
 
         Detail(exception).ShouldContain("Chrome");
     }

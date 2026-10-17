@@ -29,15 +29,15 @@ public class PageViewModelHomeWithAnotherTitle : PageViewModel
     public override string Title => "Another Title";
 }
 
-public class PageViewModelEnvironmentsWithoutTitle : PageViewModel
+public class PageViewModelWorkspacesWithoutTitle : PageViewModel
 {
-    public override ENavigationCategory Category => ENavigationCategory.Environments;
+    public override ENavigationCategory Category => ENavigationCategory.Workspaces;
 }
 
-public class PageViewModelEnvironmentsWithTitle : PageViewModel
+public class PageViewModelWorkspacesWithTitle : PageViewModel
 {
-    public override ENavigationCategory Category => ENavigationCategory.Environments;
-    public override string Title => "Environments Sub Page";
+    public override ENavigationCategory Category => ENavigationCategory.Workspaces;
+    public override string Title => "Workspaces Sub Page";
 }
 
 public class PageViewModelHomeResult : ResultPageViewModel<string>

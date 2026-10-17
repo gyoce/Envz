@@ -23,7 +23,7 @@ public class NavigationTests : NavigationTestFixture
         NavigationService.NavigateTo<PageViewModelHomeWithTitle>();
         NavigationService.Breadcrumb.Count.ShouldBe(2);
 
-        NavigationService.NavigateTo<PageViewModelEnvironmentsWithoutTitle>();
+        NavigationService.NavigateTo<PageViewModelWorkspacesWithoutTitle>();
         NavigationService.Breadcrumb.Count.ShouldBe(1);
         NavigationService.Breadcrumb[0].Title.ShouldBe("Environments");
     }
@@ -34,10 +34,10 @@ public class NavigationTests : NavigationTestFixture
         NavigationService.NavigateTo<PageViewModelHomeWithTitle>();
         NavigationService.Breadcrumb.Count.ShouldBe(2);
 
-        NavigationService.NavigateTo<PageViewModelEnvironmentsWithTitle>();
+        NavigationService.NavigateTo<PageViewModelWorkspacesWithTitle>();
         NavigationService.Breadcrumb.Count.ShouldBe(2);
         NavigationService.Breadcrumb[0].Title.ShouldBe("Environments");
-        NavigationService.Breadcrumb[1].Title.ShouldBe("Environments Sub Page");
+        NavigationService.Breadcrumb[1].Title.ShouldBe("Workspaces Sub Page");
     }
 
     [Fact(DisplayName = "Home[Home] > PageViewModelWithTitle[Home] => Home[Home] > AnotherTitle[Home]")]
@@ -145,9 +145,9 @@ public class NavigationTests : NavigationTestFixture
         NavigationService.NavigateTo<PageViewModelHomeWithTitle>();
         Task<string?> resultTask = NavigationService.NavigateForResultAsync<PageViewModelHomeResult, string>();
 
-        NavigationService.NavigateTo<PageViewModelEnvironmentsWithoutTitle>();
+        NavigationService.NavigateTo<PageViewModelWorkspacesWithoutTitle>();
 
         (await resultTask).ShouldBeNull();
-        NavigationService.CurrentPage.ShouldBeOfType<PageViewModelEnvironmentsWithoutTitle>();
+        NavigationService.CurrentPage.ShouldBeOfType<PageViewModelWorkspacesWithoutTitle>();
     }
 }

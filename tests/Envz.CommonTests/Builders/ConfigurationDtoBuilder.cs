@@ -6,15 +6,15 @@ public class ConfigurationDtoBuilder
 {
     private readonly ConfigurationDto _configuration = new();
 
-    public ConfigurationDtoBuilder WithApplication(ApplicationDto application)
+    public ConfigurationDtoBuilder WithTool(ToolDto tool)
     {
-        _configuration.Applications.Add(application);
+        _configuration.Tools.Add(tool);
         return this;
     }
 
-    public ConfigurationDtoBuilder WithEnvironment(EnvironmentDto environment)
+    public ConfigurationDtoBuilder WithWorkspace(WorkspaceDto workspace)
     {
-        _configuration.Environments.Add(environment);
+        _configuration.Workspaces.Add(workspace);
         return this;
     }
 

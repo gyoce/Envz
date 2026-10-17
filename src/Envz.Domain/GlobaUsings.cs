@@ -1,1 +1,0 @@
-﻿global using Environment = Envz.Domain.Entities.Environment;
