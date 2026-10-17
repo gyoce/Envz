@@ -1,5 +1,4 @@
-﻿using Envz.Domain.Entities;
-using Envz.Domain.Exceptions;
+﻿using Envz.Domain.Exceptions;
 using Shouldly;
 
 namespace Envz.UnitTests.Entities;

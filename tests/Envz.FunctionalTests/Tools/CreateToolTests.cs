@@ -1,5 +1,5 @@
-using Envz.Domain.Exceptions.Tools;
 using Envz.Application.Requests.Tools;
+using Envz.Domain.Exceptions.Tools;
 using Envz.Infrastructure.Configuration.Dtos;
 using Envz.Infrastructure.Configuration.Stores;
 

@@ -1,4 +1,3 @@
-using Envz.Domain.Entities;
 using Envz.Application.Requests.Tools;
 using Envz.Infrastructure.Configuration.Dtos;
 

@@ -6,7 +6,7 @@ namespace Envz.Application.Requests.Tools;
 
 public record GetSuggestedToolsRequest : IRequest<IReadOnlyCollection<SuggestedTool>>;
 
-public class GetSuggestedToolsUseCase(IInstalledToolProvider installedToolProvider, IToolRepository toolRepository) 
+public class GetSuggestedToolsUseCase(IInstalledToolProvider installedToolProvider, IToolRepository toolRepository)
     : IAsyncUseCase<GetSuggestedToolsRequest, IReadOnlyCollection<SuggestedTool>>
 {
     public async Task<IReadOnlyCollection<SuggestedTool>> ExecuteAsync(GetSuggestedToolsRequest request)
@@ -22,6 +22,6 @@ public class GetSuggestedToolsUseCase(IInstalledToolProvider installedToolProvid
 
     private static bool IsAlreadyAdded(Tool app, IReadOnlyCollection<Tool> existing)
     {
-        return existing.Any(tool => tool.Name == app.Name ||  string.Equals(tool.Path, app.Path, StringComparison.OrdinalIgnoreCase));
+        return existing.Any(tool => tool.Name == app.Name || string.Equals(tool.Path, app.Path, StringComparison.OrdinalIgnoreCase));
     }
 }
