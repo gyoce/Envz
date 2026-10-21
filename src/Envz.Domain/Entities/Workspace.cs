@@ -10,7 +10,7 @@ public class Workspace
     public Workspace(string name, IEnumerable<WorkspaceTool> tools)
     {
         if (string.IsNullOrWhiteSpace(name))
-            throw new ValidationException("Workspace name must not be empty.", ExceptionCode.WorkspaceInvalidName);
+            throw new ValidationException("Workspace name must not be empty.", ErrorCode.WorkspaceInvalidName);
 
         Name = name;
         Tools = tools.ToList();

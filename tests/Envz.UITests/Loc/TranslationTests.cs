@@ -14,7 +14,7 @@ public class TranslationTests
             ResourceSet? resources = Strings.ResourceManager.GetResourceSet(language.Culture, true, false);
             resources.ShouldNotBeNull($"No resources for {language.Culture.Name}");
 
-            foreach (ExceptionCode code in Enum.GetValues<ExceptionCode>())
+            foreach (ErrorCode code in Enum.GetValues<ErrorCode>())
                 resources.GetString($"KnownError_{code}").ShouldNotBeNullOrEmpty($"{code} is not translated in `{language.Culture.Name}`.");
         }
     }

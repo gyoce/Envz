@@ -11,13 +11,13 @@ public class Tool
     public Tool(string name, string path, byte[]? icon = null)
     {
         if (string.IsNullOrWhiteSpace(name))
-            throw new ValidationException("Tool name must not be empty", ExceptionCode.ToolInvalidName);
+            throw new ValidationException("Tool name must not be empty", ErrorCode.ToolInvalidName);
 
         if (string.IsNullOrWhiteSpace(path))
-            throw new ValidationException("Tool path must not be empty", ExceptionCode.ToolInvalidPath);
+            throw new ValidationException("Tool path must not be empty", ErrorCode.ToolInvalidPath);
 
-        Name = name;
-        Path = path;
+        Name = name.Trim();
+        Path = path.Trim();
         Icon = icon;
     }
 }

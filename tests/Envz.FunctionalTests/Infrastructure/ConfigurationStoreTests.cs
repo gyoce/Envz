@@ -69,7 +69,7 @@ public class ConfigurationStoreTests : BaseTestFixture
         SetConfiguration(new ConfigurationDtoBuilder().Build(), icons);
         byte[] icon = [1, 2, 3];
 
-        Send(new CreateToolRequest { Name = "App", Path = "path", Icon = icon });
+        Send(GetCreateToolsRequest(new ToolToCreate("App", "path", icon)));
 
         icons.ToolIcons["App"].ShouldBe(Convert.ToBase64String(icon));
         GetMock<IIconStore>().Verify(store => store.Save(), Times.Once);
@@ -80,7 +80,7 @@ public class ConfigurationStoreTests : BaseTestFixture
     {
         SetConfiguration(new ConfigurationDtoBuilder().Build());
 
-        Send(new CreateToolRequest { Name = "App", Path = "path", Icon = [] });
+        Send(GetCreateToolsRequest(new ToolToCreate("App", "path")));
 
         GetMock<IIconStore>().Verify(store => store.Save(), Times.Never);
     }
@@ -97,4 +97,6 @@ public class ConfigurationStoreTests : BaseTestFixture
 
         app.Icon.ShouldBe([1, 2, 3]);
     }
+
+    private static CreateToolsRequest GetCreateToolsRequest(params ToolToCreate[] tools) => new() { Tools = tools };
 }

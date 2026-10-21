@@ -10,10 +10,10 @@ public class SuggestedToolCandidate
     public SuggestedToolCandidate(string name, string path)
     {
         if (string.IsNullOrWhiteSpace(name))
-            throw new ValidationException("SuggestedToolCandidate name must not be empty", ExceptionCode.ToolInvalidName);
+            throw new ValidationException("SuggestedToolCandidate name must not be empty", ErrorCode.ToolInvalidName);
 
         if (string.IsNullOrWhiteSpace(path))
-            throw new ValidationException("SuggestedToolCandidate path must not be empty", ExceptionCode.ToolInvalidPath);
+            throw new ValidationException("SuggestedToolCandidate path must not be empty", ErrorCode.ToolInvalidPath);
 
         Name = name;
         Path = path;

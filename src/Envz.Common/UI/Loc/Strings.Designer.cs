@@ -61,6 +61,15 @@ namespace Envz.Common.UI.Loc {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add custom application.
+        /// </summary>
+        public static string AddCustomTool_Title {
+            get {
+                return ResourceManager.GetString("AddCustomTool_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add ({0}).
         /// </summary>
         public static string AddTool_AddSelected {
@@ -115,15 +124,6 @@ namespace Envz.Common.UI.Loc {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Add custom application.
-        /// </summary>
-        public static string AddCustomTool_Title {
-            get {
-                return ResourceManager.GetString("AddCustomTool_Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Do you really want to delete the application &quot;{0}&quot;?.
         /// </summary>
         public static string ConfirmDialog_DeleteToolMessage {
@@ -169,29 +169,11 @@ namespace Envz.Common.UI.Loc {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} applications.
+        ///   Looks up a localized string similar to Select an icon.
         /// </summary>
-        public static string WorkspaceItem_ToolCountMany {
+        public static string FileDialog_BrowseIconTitle {
             get {
-                return ResourceManager.GetString("WorkspaceItem_ToolCountMany", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {0} application.
-        /// </summary>
-        public static string WorkspaceItem_ToolCountOne {
-            get {
-                return ResourceManager.GetString("WorkspaceItem_ToolCountOne", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to No application.
-        /// </summary>
-        public static string WorkspaceItem_ToolCountZero {
-            get {
-                return ResourceManager.GetString("WorkspaceItem_ToolCountZero", resourceCulture);
+                return ResourceManager.GetString("FileDialog_BrowseIconTitle", resourceCulture);
             }
         }
         
@@ -205,29 +187,11 @@ namespace Envz.Common.UI.Loc {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Select an icon.
-        /// </summary>
-        public static string FileDialog_BrowseIconTitle {
-            get {
-                return ResourceManager.GetString("FileDialog_BrowseIconTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Add.
         /// </summary>
         public static string Global_Add {
             get {
                 return ResourceManager.GetString("Global_Add", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Applications.
-        /// </summary>
-        public static string Global_Tools {
-            get {
-                return ResourceManager.GetString("Global_Tools", resourceCulture);
             }
         }
         
@@ -273,15 +237,6 @@ namespace Envz.Common.UI.Loc {
         public static string Global_Edit {
             get {
                 return ResourceManager.GetString("Global_Edit", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Environments.
-        /// </summary>
-        public static string Global_Workspaces {
-            get {
-                return ResourceManager.GetString("Global_Workspaces", resourceCulture);
             }
         }
         
@@ -376,6 +331,24 @@ namespace Envz.Common.UI.Loc {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Applications.
+        /// </summary>
+        public static string Global_Tools {
+            get {
+                return ResourceManager.GetString("Global_Tools", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Environments.
+        /// </summary>
+        public static string Global_Workspaces {
+            get {
+                return ResourceManager.GetString("Global_Workspaces", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Yes.
         /// </summary>
         public static string Global_Yes {
@@ -399,24 +372,6 @@ namespace Envz.Common.UI.Loc {
         public static string HomeWorkspaces_Title {
             get {
                 return ResourceManager.GetString("HomeWorkspaces_Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The application has an invalid name..
-        /// </summary>
-        public static string KnownError_ToolInvalidName {
-            get {
-                return ResourceManager.GetString("KnownError_ToolInvalidName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The application has an invalid path..
-        /// </summary>
-        public static string KnownError_ToolInvalidPath {
-            get {
-                return ResourceManager.GetString("KnownError_ToolInvalidPath", resourceCulture);
             }
         }
         
@@ -475,20 +430,38 @@ namespace Envz.Common.UI.Loc {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The environment has an invalid name..
-        /// </summary>
-        public static string KnownError_WorkspaceInvalidName {
-            get {
-                return ResourceManager.GetString("KnownError_WorkspaceInvalidName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Impossible operation.
         /// </summary>
         public static string KnownError_Title {
             get {
                 return ResourceManager.GetString("KnownError_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The application has an invalid name..
+        /// </summary>
+        public static string KnownError_ToolInvalidName {
+            get {
+                return ResourceManager.GetString("KnownError_ToolInvalidName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The application has an invalid path..
+        /// </summary>
+        public static string KnownError_ToolInvalidPath {
+            get {
+                return ResourceManager.GetString("KnownError_ToolInvalidPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The environment has an invalid name..
+        /// </summary>
+        public static string KnownError_WorkspaceInvalidName {
+            get {
+                return ResourceManager.GetString("KnownError_WorkspaceInvalidName", resourceCulture);
             }
         }
         
@@ -516,6 +489,60 @@ namespace Envz.Common.UI.Loc {
         public static string UnknownError_Title {
             get {
                 return ResourceManager.GetString("UnknownError_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An application with this name already exists..
+        /// </summary>
+        public static string Validation_CreateToolAlreadyExists {
+            get {
+                return ResourceManager.GetString("Validation_CreateToolAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name is required..
+        /// </summary>
+        public static string Validation_ToolInvalidName {
+            get {
+                return ResourceManager.GetString("Validation_ToolInvalidName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Path is required..
+        /// </summary>
+        public static string Validation_ToolInvalidPath {
+            get {
+                return ResourceManager.GetString("Validation_ToolInvalidPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} applications.
+        /// </summary>
+        public static string WorkspaceItem_ToolCountMany {
+            get {
+                return ResourceManager.GetString("WorkspaceItem_ToolCountMany", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} application.
+        /// </summary>
+        public static string WorkspaceItem_ToolCountOne {
+            get {
+                return ResourceManager.GetString("WorkspaceItem_ToolCountOne", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No application.
+        /// </summary>
+        public static string WorkspaceItem_ToolCountZero {
+            get {
+                return ResourceManager.GetString("WorkspaceItem_ToolCountZero", resourceCulture);
             }
         }
     }

@@ -7,7 +7,8 @@
   mc:Ignorable="d" 
   d:DesignWidth="400" 
   d:DesignHeight="75" 
-  x:Name="Root">
+  x:Name="Root"
+  Validation.ErrorTemplate="{x:Null}">
 
   <Grid>
     <Grid.RowDefinitions>
@@ -17,9 +18,11 @@
 
     <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="5 0 0 3">
       <TextBlock Style="{StaticResource TextBody}" 
-                 Text="{Binding Label, ElementName=Root, FallbackValue=Label}" />
+                 Text="{Binding Label, ElementName=Root}"
+                 d:Text="Label"/>
       <TextBlock Style="{StaticResource TextBody}" 
-                 Text="{Binding ErrorMessage, ElementName=Root, FallbackValue=Error message}" 
+                 Text="{Binding (Validation.Errors)/ErrorContent, ElementName=Root}"
+                 d:Text="Error message"
                  Margin="10 0 0 0" 
                  Foreground="Red" />
     </StackPanel>

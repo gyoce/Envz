@@ -21,7 +21,7 @@ public class CreateWorkspaceUseCase(IWorkspaceRepository workspaceRepository, IT
         {
             throw new WorkspaceAlreadyExistsException(
                 $"Could not create workspace because Workspace `{request.Name}` already exists",
-                ExceptionCode.CreateWorkspaceAlreadyExists,
+                ErrorCode.CreateWorkspaceAlreadyExists,
                 request.Name
             );
         }
@@ -32,7 +32,7 @@ public class CreateWorkspaceUseCase(IWorkspaceRepository workspaceRepository, IT
             {
                 throw new ToolNotFoundException(
                     $"Could not create workspace because tool `{workspaceTool.ToolName}` was not found.",
-                    ExceptionCode.CreateWorkspaceToolNotFound,
+                    ErrorCode.CreateWorkspaceToolNotFound,
                     workspaceTool.ToolName
                 );
             }

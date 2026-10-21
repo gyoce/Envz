@@ -270,4 +270,13 @@
   <data name="AddTool_AlreadyAdded" xml:space="preserve">
     <value>Application déjà ajoutée</value>
   </data>
+  <data name="Validation_ToolInvalidName" xml:space="preserve">
+    <value>Le nom est obligatoire.</value>
+  </data>
+  <data name="Validation_ToolInvalidPath" xml:space="preserve">
+    <value>Le chemin est obligatoire.</value>
+  </data>
+  <data name="Validation_CreateToolAlreadyExists" xml:space="preserve">
+    <value>Une application porte déjà ce nom.</value>
+  </data>
 </root>

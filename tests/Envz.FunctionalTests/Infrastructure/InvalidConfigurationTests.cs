@@ -28,7 +28,7 @@ public class InvalidConfigurationTests : BaseTestFixture
 
         InvalidConfigurationException exception = Should.Throw<InvalidConfigurationException>(() => GetService<IConfigurationStore>().Configuration);
 
-        exception.Code.ShouldBe(ExceptionCode.ConfigurationInvalid);
+        exception.Code.ShouldBe(ErrorCode.ConfigurationInvalid);
         Detail(exception).ShouldContain(ConfigurationPath);
     }
 
@@ -37,7 +37,7 @@ public class InvalidConfigurationTests : BaseTestFixture
     {
         WriteConfigurationFile(NotJson);
 
-        Should.Throw<InvalidConfigurationException>(() => Send(new CreateToolRequest { Name = "App", Path = @"C:\app.exe" }));
+        Should.Throw<InvalidConfigurationException>(() => Send(new CreateToolsRequest { Tools = [new ToolToCreate("App", "path")] }));
 
         ReadConfigurationFile().ShouldBe(NotJson);
     }
@@ -49,7 +49,7 @@ public class InvalidConfigurationTests : BaseTestFixture
 
         InvalidConfigurationException exception = Should.Throw<InvalidConfigurationException>(() => Send(new GetToolsRequest()));
 
-        exception.Code.ShouldBe(ExceptionCode.ConfigurationInvalid);
+        exception.Code.ShouldBe(ErrorCode.ConfigurationInvalid);
         Detail(exception).ShouldContain("Chrome");
     }
 
@@ -60,7 +60,7 @@ public class InvalidConfigurationTests : BaseTestFixture
 
         InvalidConfigurationException exception = Should.Throw<InvalidConfigurationException>(() => Send(new GetWorkspacesRequest()));
 
-        exception.Code.ShouldBe(ExceptionCode.ConfigurationInvalid);
+        exception.Code.ShouldBe(ErrorCode.ConfigurationInvalid);
         Detail(exception).ShouldContain("Dev");
     }
 

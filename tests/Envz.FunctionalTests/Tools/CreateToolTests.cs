@@ -13,11 +13,7 @@ public class CreateToolTests : BaseTestFixture
         ConfigurationDto configuration = new ConfigurationDtoBuilder().Build();
         SetConfiguration(configuration);
 
-        Send(new CreateToolRequest
-        {
-            Name = "MainTool",
-            Path = @"C:\path\app.exe"
-        });
+        Send(GetRequest(new ToolToCreate("MainTool", @"C:\path\app.exe")));
 
         configuration.Tools.Count.ShouldBe(1);
         configuration.Tools[0].Name.ShouldBe("MainTool");
@@ -29,9 +25,42 @@ public class CreateToolTests : BaseTestFixture
     {
         SetConfiguration(new ConfigurationDtoBuilder().Build());
 
-        Send(new CreateToolRequest { Name = "App", Path = "path" });
+        Send(GetRequest(new ToolToCreate("App", "path")));
 
         GetMock<IConfigurationStore>().Verify(store => store.Save(), Times.Once);
+    }
+
+    [Fact]
+    public void ShouldWorkForMultipleCreation()
+    {
+        ConfigurationDto configuration = new ConfigurationDtoBuilder().Build();
+        SetConfiguration(configuration);
+
+        Send(GetRequest(
+            new ToolToCreate("App1", "path1"),
+            new ToolToCreate("App2", "path2")
+        ));
+
+        configuration.Tools.Count.ShouldBe(2);
+        configuration.Tools[0].Name.ShouldBe("App1");
+        configuration.Tools[0].Path.ShouldBe("path1");
+        configuration.Tools[1].Name.ShouldBe("App2");
+        configuration.Tools[1].Path.ShouldBe("path2");
+    }
+
+    [Fact]
+    public void ShouldNotCreateAnyToolsIfOneIsAlreadyPresent()
+    {
+        ConfigurationDto configuration = new ConfigurationDtoBuilder().WithTool(new ToolDtoBuilder().WithName("MyFirstApp").Build()).Build();
+        SetConfiguration(configuration);
+
+        Should.Throw<ToolAlreadyExistsException>(() => Send(GetRequest(
+            new ToolToCreate("App1", "path1"),
+            new ToolToCreate("MyFirstApp", "path2")
+        )));
+
+        configuration.Tools.Count.ShouldBe(1);
+        configuration.Tools[0].Name.ShouldBe("MyFirstApp");
     }
 
     [Fact]
@@ -39,7 +68,7 @@ public class CreateToolTests : BaseTestFixture
     {
         SetConfiguration(new ConfigurationDtoBuilder().WithTool(new ToolDtoBuilder().WithName("App1").Build()).Build());
 
-        Should.Throw<ToolAlreadyExistsException>(() => Send(new CreateToolRequest { Name = "App1", Path = "path" }));
+        Should.Throw<ToolAlreadyExistsException>(() => Send(GetRequest(new ToolToCreate("App1", "path"))));
     }
 
     [Fact]
@@ -47,6 +76,8 @@ public class CreateToolTests : BaseTestFixture
     {
         SetConfiguration(new ConfigurationDtoBuilder().WithTool(new ToolDtoBuilder().WithName("MyApp1").Build()).Build());
 
-        Should.Throw<ToolAlreadyExistsException>(() => Send(new CreateToolRequest { Name = "myapp1", Path = "path" }));
+        Should.Throw<ToolAlreadyExistsException>(() => Send(GetRequest(new ToolToCreate("myapp1", "path"))));
     }
+
+    private static CreateToolsRequest GetRequest(params ToolToCreate[] tools) => new() { Tools = tools };
 }

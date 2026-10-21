@@ -106,16 +106,7 @@ public class AddToolPageViewModel : PageViewModel
 
     private void AddSelected()
     {
-        foreach (Tool tool in _selected.OrderBy(t => t.Name))
-        {
-            _mediator.Send(new CreateToolRequest
-            {
-                Name = tool.Name,
-                Path = tool.Path,
-                Icon = tool.Icon
-            });
-        }
-
+        _mediator.Send(new CreateToolsRequest { Tools = _selected.Select(t => new ToolToCreate(t.Name, t.Path, t.Icon)).ToList() });
         _navigationService.NavigateTo<HomeToolsPageViewModel>();
     }
 

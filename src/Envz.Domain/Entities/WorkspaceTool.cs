@@ -10,7 +10,7 @@ public class WorkspaceTool
     public WorkspaceTool(string toolName, string? parameter = null)
     {
         if (string.IsNullOrWhiteSpace(toolName))
-            throw new ValidationException("Tool name must not be empty", ExceptionCode.ToolInvalidName);
+            throw new ValidationException("Tool name must not be empty", ErrorCode.ToolInvalidName);
 
         ToolName = toolName;
         Parameter = parameter;

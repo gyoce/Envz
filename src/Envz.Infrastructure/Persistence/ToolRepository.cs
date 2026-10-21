@@ -9,6 +9,7 @@ namespace Envz.Infrastructure.Persistence;
 public class ToolRepository(IConfigurationStore configurationStore, IIconStore iconStore) : IToolRepository
 {
     private List<ToolDto> Tools => configurationStore.Configuration.Tools;
+    private Dictionary<string, string> Icons => iconStore.Icons.ToolIcons;
 
     public IReadOnlyCollection<Tool> GetAll()
     {
@@ -16,22 +17,23 @@ public class ToolRepository(IConfigurationStore configurationStore, IIconStore i
         return Tools.Select(toolDto => toolDto.ToEntity(icons)).ToList();
     }
 
-    public void Save(Tool tool)
+    public void Save(IReadOnlyCollection<Tool> tools)
     {
-        Tools.Add(
-            new ToolDto
-            {
-                Name = tool.Name,
-                Path = tool.Path
-            }
-        );
+        Tools.AddRange(tools.Select(tool => new ToolDto
+        {
+            Name = tool.Name,
+            Path = tool.Path
+        }));
         configurationStore.Save();
 
-        if (tool.Icon is not null && tool.Icon.Length > 0)
+        bool hasIcon = false;
+        foreach (Tool tool in tools.Where(t => t.Icon is { Length: > 0 }))
         {
-            iconStore.Icons.ToolIcons[tool.Name] = Convert.ToBase64String(tool.Icon);
-            iconStore.Save();
+            Icons[tool.Name] = Convert.ToBase64String(tool.Icon!);
+            hasIcon = true;
         }
+        if (hasIcon)
+            iconStore.Save();
     }
 
     public bool Exists(string toolName)

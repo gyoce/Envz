@@ -20,7 +20,7 @@ public class DeleteToolUseCase(IToolRepository toolRepository, IWorkspaceReposit
         {
             throw new ToolNotFoundException(
                 $"Could not delete tool `{request.ToolName}` because it was not found.",
-                ExceptionCode.DeleteToolNotFound,
+                ErrorCode.DeleteToolNotFound,
                 request.ToolName
             );
         }
@@ -30,7 +30,7 @@ public class DeleteToolUseCase(IToolRepository toolRepository, IWorkspaceReposit
         {
             throw new ToolInUseException(
                 $"Could not delete tool `{request.ToolName}` because it is still in use.",
-                ExceptionCode.DeleteToolStillUsed,
+                ErrorCode.DeleteToolStillUsed,
                 request.ToolName
             );
         }

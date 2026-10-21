@@ -1,6 +1,6 @@
 ﻿namespace Envz.Domain.Exceptions;
 
-public enum ExceptionCode
+public enum ErrorCode
 {
     ToolInvalidName,
     ToolInvalidPath,
