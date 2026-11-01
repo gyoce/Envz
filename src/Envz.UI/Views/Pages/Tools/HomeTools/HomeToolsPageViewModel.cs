@@ -12,6 +12,7 @@ using Envz.UI.Services;
 using Envz.UI.Views.Pages.Tools.AddTool;
 using Envz.UI.Views.UserControls.ToolItem;
 using System.Windows.Input;
+using Envz.UI.Views.Pages.Tools.ToolEditor;
 
 namespace Envz.UI.Views.Pages.Tools.HomeTools;
 
@@ -23,20 +24,21 @@ public class HomeToolsPageViewModel : PageViewModel
     public ICommand AddToolCommand { get; }
     public SearchableCollection<ToolItemViewModel, Tool> SearchableTools { get; }
 
+    private readonly INavigationService _navigationService;
     private readonly IMediator _mediator;
     private readonly IDialogService _dialogService;
+    
 
     public HomeToolsPageViewModel(INavigationService navigationService, IMediator mediator, ToolItemViewModelFactory viewModelFactory, IDialogService dialogService)
     {
+        _navigationService = navigationService;
         _mediator = mediator;
         _dialogService = dialogService;
-        AddToolCommand = new RelayCommand(_ => navigationService.NavigateTo<AddToolPageViewModel>());
+        AddToolCommand = new RelayCommand(_ => _navigationService.NavigateTo<AddToolPageViewModel>());
         SearchableTools = new SearchableCollection<ToolItemViewModel, Tool>(
             tool => tool.Name,
-            tool => viewModelFactory.Create(tool, DeleteTool)
+            tool => viewModelFactory.Create(tool, new ToolItemViewModelEvents(EditTool, DeleteTool))
         );
-
-        LoadTools();
     }
 
     private void DeleteTool(Tool tool)
@@ -55,6 +57,11 @@ public class HomeToolsPageViewModel : PageViewModel
             ToolName = tool.Name
         });
         LoadTools();
+    }
+
+    private void EditTool(Tool tool)
+    {
+        _navigationService.NavigateTo<ToolEditorPageViewModel>(viewModel => viewModel.UseTool(tool));
     }
 
     public override void OnEnable()

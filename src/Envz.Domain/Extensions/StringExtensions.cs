@@ -8,5 +8,10 @@ public static class StringExtensions
         {
             return string.Equals(str, other, StringComparison.OrdinalIgnoreCase);
         }
+
+        public byte[] FromBase64()
+        {
+            return Convert.FromBase64String(str);
+        }
     }
 }

@@ -21,7 +21,7 @@ public abstract class BaseTestFixture : IDisposable
         _serviceProvider = new Lazy<ServiceProvider>(BuildServiceProvider);
         _scope = new Lazy<IServiceScope>(() => _serviceProvider.Value.CreateScope());
 
-        Services.AddTool();
+        Services.AddApplication();
         Services.AddInfrastructure();
         Services.Replace<IFileSystem, InMemoryFileSystem>();
     }

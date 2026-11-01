@@ -9,10 +9,10 @@ using Envz.Common.ViewModels;
 using Envz.Domain.Entities;
 using Envz.UI.Services;
 using Envz.UI.Services.Extensions;
-using Envz.UI.Views.Pages.Tools.AddCustomTool;
 using Envz.UI.Views.Pages.Tools.HomeTools;
 using Envz.UI.Views.UserControls.SelectableToolItem;
 using System.Windows.Input;
+using Envz.UI.Views.Pages.Tools.ToolEditor;
 
 namespace Envz.UI.Views.Pages.Tools.AddTool;
 
@@ -43,7 +43,7 @@ public class AddToolPageViewModel : PageViewModel
     private readonly IFileDialogService _fileDialogService;
     private readonly IMediator _mediator;
     private readonly HashSet<Tool> _selected = [];
-    private int _loadVersion;
+    private bool _isLoaded;
 
     public AddToolPageViewModel(INavigationService navigationService, IFileDialogService fileDialogService, IMediator mediator, SelectableToolItemViewModelFactory viewModelFactory)
     {
@@ -64,27 +64,18 @@ public class AddToolPageViewModel : PageViewModel
     // ReSharper disable once AsyncVoidMethod
     public override async void OnEnable()
     {
-        int version = ++_loadVersion;
+        if (_isLoaded)
+            return;
+        _isLoaded = true;
 
-        _selected.Clear();
-        NotifySelectionChanged();
-        SearchableTools.SearchText = string.Empty;
-        SearchableTools.UnfilteredItems = [];
         IsLoading = true;
-
         try
         {
-            IReadOnlyCollection<SuggestedTool> suggestions = await _mediator.SendAsync(new GetSuggestedToolsRequest());
-
-            if (version != _loadVersion)
-                return;
-
-            SearchableTools.UnfilteredItems = suggestions;
+            SearchableTools.UnfilteredItems = await _mediator.SendAsync(new GetSuggestedToolsRequest());
         }
         finally
         {
-            if (version == _loadVersion)
-                IsLoading = false;
+            IsLoading = false;
         }
     }
 
@@ -116,6 +107,6 @@ public class AddToolPageViewModel : PageViewModel
         if (path is null)
             return;
 
-        _navigationService.NavigateTo<AddCustomToolPageViewModel>(vm => vm.InitialPath = path);
+        _navigationService.NavigateTo<ToolEditorPageViewModel>(vm => vm.UseExecutable(path));
     }
 }

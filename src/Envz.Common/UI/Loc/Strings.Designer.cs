@@ -61,15 +61,6 @@ namespace Envz.Common.UI.Loc {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Add custom application.
-        /// </summary>
-        public static string AddCustomTool_Title {
-            get {
-                return ResourceManager.GetString("AddCustomTool_Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Add ({0}).
         /// </summary>
         public static string AddTool_AddSelected {
@@ -304,6 +295,15 @@ namespace Envz.Common.UI.Loc {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        public static string Global_Save {
+            get {
+                return ResourceManager.GetString("Global_Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Search an application....
         /// </summary>
         public static string Global_SearchTool {
@@ -430,6 +430,15 @@ namespace Envz.Common.UI.Loc {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The application &quot;{0}&quot; could not be edited because it was not found..
+        /// </summary>
+        public static string KnownError_EditToolNotFound {
+            get {
+                return ResourceManager.GetString("KnownError_EditToolNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Impossible operation.
         /// </summary>
         public static string KnownError_Title {
@@ -471,6 +480,24 @@ namespace Envz.Common.UI.Loc {
         public static string SelectTool_Title {
             get {
                 return ResourceManager.GetString("SelectTool_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add an application.
+        /// </summary>
+        public static string ToolEditorAdd_Title {
+            get {
+                return ResourceManager.GetString("ToolEditorAdd_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit an application.
+        /// </summary>
+        public static string ToolEditorEdit_Title {
+            get {
+                return ResourceManager.GetString("ToolEditorEdit_Title", resourceCulture);
             }
         }
         

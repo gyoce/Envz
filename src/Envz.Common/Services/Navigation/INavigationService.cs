@@ -10,6 +10,6 @@ public interface INavigationService
     PageViewModel? CurrentPage { get; }
 
     void NavigateTo<TViewModel>(Action<TViewModel>? configure = null) where TViewModel : PageViewModel;
-    void NavigateTo(Type viewModelType);
+    void NavigateTo(BreadcrumbItem item);
     Task<TResult?> NavigateForResultAsync<TViewModel, TResult>(Action<TViewModel>? configure = null) where TViewModel : ResultPageViewModel<TResult>;
 }

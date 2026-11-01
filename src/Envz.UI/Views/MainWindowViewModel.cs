@@ -64,12 +64,10 @@ public class MainWindowViewModel : ViewModelBase
         Localizer.Instance.PropertyChanged += OnLanguageChanged;
     }
 
-    public override void Dispose()
+    public override void OnRelease()
     {
         Localizer.Instance.PropertyChanged -= OnLanguageChanged;
         _navigationService.OnNavigationChanged -= OnNavigationChanged;
-        base.Dispose();
-        GC.SuppressFinalize(this);
     }
 
     private void OnNavigationChanged(PageViewModel viewModel)
@@ -96,7 +94,7 @@ public class MainWindowViewModel : ViewModelBase
 
             ICommand? command = isLast
                 ? null
-                : new RelayCommand(_ => _navigationService.NavigateTo(item.ViewModelType));
+                : new RelayCommand(_ => _navigationService.NavigateTo(item));
 
             items.Add(new BreadcrumbItemViewModel(item.Title, isFirst, !isLast, command));
         }

@@ -43,7 +43,7 @@ public partial class App : System.Windows.Application
         ServiceCollection services = new();
         services.AddUi();
         services.AddInfrastructure();
-        services.AddTool();
+        services.AddApplication();
         return services;
     }
 }

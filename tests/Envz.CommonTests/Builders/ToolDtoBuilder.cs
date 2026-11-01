@@ -22,4 +22,6 @@ public class ToolDtoBuilder
     {
         return _toolDto;
     }
+
+    public static implicit operator ToolDto(ToolDtoBuilder builder) => builder.Build();
 }

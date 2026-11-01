@@ -32,8 +32,6 @@ public class HomeWorkspacesPageViewModel : PageViewModel
             workspace => workspace.Name,
             workspace => viewModelFactory.Create(workspace)
         );
-
-        LoadWorkspaces();
     }
 
     public override void OnEnable()

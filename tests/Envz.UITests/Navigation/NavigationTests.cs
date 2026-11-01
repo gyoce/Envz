@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Envz.Common.ViewModels;
+using Envz.UI.Views;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Envz.UITests.Navigation;
 
@@ -111,7 +113,7 @@ public class NavigationTests : NavigationTestFixture
         });
 
         localVariable.ShouldBe(31);
-        ServiceProvider.GetRequiredService<PageViewModelHomeWithTitle>().CallbackTest.ShouldBe(5);
+        NavigationService.CurrentPage.ShouldBeOfType<PageViewModelHomeWithTitle>().CallbackTest.ShouldBe(5);
     }
 
     [Fact]
@@ -149,5 +151,93 @@ public class NavigationTests : NavigationTestFixture
 
         (await resultTask).ShouldBeNull();
         NavigationService.CurrentPage.ShouldBeOfType<PageViewModelWorkspacesWithoutTitle>();
+    }
+
+    [Fact]
+    public void ShouldCreateNewInstanceOnEachNavigation()
+    {
+        NavigationService.NavigateTo<PageViewModelHomeWithTitle>();
+        PageViewModel first = NavigationService.CurrentPage!;
+
+        NavigationService.NavigateTo<PageViewModelWorkspacesWithTitle>();
+        NavigationService.NavigateTo<PageViewModelHomeWithTitle>();
+
+        NavigationService.CurrentPage.ShouldNotBeSameAs(first);
+    }
+
+    [Fact]
+    public void ShouldReturnToSameInstanceThroughBreadcrumb()
+    {
+        NavigationService.NavigateTo<PageViewModelHomeWithTitle>();
+        PageViewModel parent = NavigationService.CurrentPage!;
+        NavigationService.NavigateTo<PageViewModelHomeWithTitleThirdLevel>();
+
+        NavigationService.NavigateTo(NavigationService.Breadcrumb[1]);
+
+        NavigationService.CurrentPage.ShouldBeSameAs(parent);
+    }
+
+    [Fact]
+    public void ShouldReleasePageOnceWhenItLeavesTheBreadcrumb()
+    {
+        NavigationService.NavigateTo<TrackedPage>();
+        TrackedPage page = (TrackedPage)NavigationService.CurrentPage!;
+
+        NavigationService.NavigateTo<PageViewModelWorkspacesWithoutTitle>();
+
+        page.ReleaseCount.ShouldBe(1);
+    }
+
+    [Fact]
+    public void ShouldNotReleasePageStillInBreadcrumb()
+    {
+        NavigationService.NavigateTo<TrackedPage>();
+        TrackedPage page = (TrackedPage)NavigationService.CurrentPage!;
+
+        NavigationService.NavigateTo<PageViewModelHomeWithTitleThirdLevel>();
+
+        page.ReleaseCount.ShouldBe(0);
+    }
+
+    [Fact]
+    public async Task ShouldKeepParentWhileWaitingForResult()
+    {
+        NavigationService.NavigateTo<TrackedPage>();
+        TrackedPage parent = (TrackedPage)NavigationService.CurrentPage!;
+        Task<string?> resultTask = NavigationService.NavigateForResultAsync<PageViewModelHomeSiblingResult, string>();
+
+        NavigationService.Breadcrumb.ShouldNotContain(item => item.Page == parent);
+        parent.ReleaseCount.ShouldBe(0);
+
+        ((PageViewModelHomeSiblingResult)NavigationService.CurrentPage!).Select("App1");
+
+        (await resultTask).ShouldBe("App1");
+        NavigationService.CurrentPage.ShouldBeSameAs(parent);
+        parent.ReleaseCount.ShouldBe(0);
+    }
+
+    [Fact]
+    public async Task ShouldReleaseParentWhenLeavingElsewhereWhileWaiting()
+    {
+        NavigationService.NavigateTo<TrackedPage>();
+        TrackedPage parent = (TrackedPage)NavigationService.CurrentPage!;
+        Task<string?> resultTask = NavigationService.NavigateForResultAsync<PageViewModelHomeSiblingResult, string>();
+
+        NavigationService.NavigateTo<PageViewModelWorkspacesWithoutTitle>();
+        parent.ReleaseCount.ShouldBe(1);
+
+        (await resultTask).ShouldBeNull();
+        parent.ReleaseCount.ShouldBe(1);
+    }
+
+    [Fact]
+    public void ViewModelsShouldNotBeDisposable()
+    {
+        IEnumerable<Type> disposableViewModels = typeof(MainWindowViewModel).Assembly.GetTypes()
+            .Concat(typeof(ViewModelBase).Assembly.GetTypes())
+            .Where(type => typeof(ViewModelBase).IsAssignableFrom(type))
+            .Where(type => typeof(IDisposable).IsAssignableFrom(type) || typeof(IAsyncDisposable).IsAssignableFrom(type));
+
+        disposableViewModels.ShouldBeEmpty();
     }
 }

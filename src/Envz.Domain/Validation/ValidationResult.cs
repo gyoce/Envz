@@ -1,5 +1,6 @@
 ﻿using Envz.Domain.Exceptions;
 using System.Diagnostics.CodeAnalysis;
+using System.Runtime.ExceptionServices;
 
 namespace Envz.Domain.Validation;
 
@@ -17,6 +18,13 @@ public class ValidationResult<T>
     {
         Value = value;
         Error = error;
+    }
+
+    public T GetValueOrThrow()
+    {
+        if (!IsValid)
+            ExceptionDispatchInfo.Throw(Error);
+        return Value;
     }
 
     public static ValidationResult<T> Success(T value) => new(value, null);

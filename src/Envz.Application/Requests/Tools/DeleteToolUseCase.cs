@@ -25,8 +25,8 @@ public class DeleteToolUseCase(IToolRepository toolRepository, IWorkspaceReposit
             );
         }
 
-        IReadOnlyCollection<Workspace> workspaces = workspaceRepository.GetAll();
-        if (workspaces.Any(env => env.Tools.Any(app => app.ToolName.EqualsIgnoringCase(request.ToolName))))
+        List<Workspace> workspaces = workspaceRepository.GetAll().Where(w => w.Uses(request.ToolName)).ToList();
+        if (workspaces.Any())
         {
             throw new ToolInUseException(
                 $"Could not delete tool `{request.ToolName}` because it is still in use.",

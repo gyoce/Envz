@@ -17,24 +17,22 @@ public class WorkspaceRepository(IConfigurationStore configurationStore) : IWork
 
     public void Save(Workspace workspace)
     {
-        Workspaces.Add(
-            new WorkspaceDto
-            {
-                Name = workspace.Name,
-                Tools = workspace.Tools.Select(workspaceTool =>
-                    new WorkspaceToolDto
-                    {
-                        ToolName = workspaceTool.ToolName,
-                        Parameter = workspaceTool.Parameter
-                    }
-                ).ToList()
-            }
-        );
+        Workspaces.Add(workspace.ToDto());
         configurationStore.Save();
     }
 
     public bool Exists(string workspaceName)
     {
         return Workspaces.Any(workspace => workspace.Name.EqualsIgnoringCase(workspaceName));
+    }
+
+    public void Update(IReadOnlyCollection<Workspace> workspaces)
+    {
+        foreach (Workspace workspace in workspaces)
+        {
+            int index = Workspaces.FindIndex(w => w.Name.EqualsIgnoringCase(workspace.Name));
+            Workspaces[index] = workspace.ToDto();
+        }
+        configurationStore.Save();
     }
 }

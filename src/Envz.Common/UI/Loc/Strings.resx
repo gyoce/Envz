@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AddCustomTool_Title" xml:space="preserve">
-    <value>Add custom application</value>
-  </data>
   <data name="CreateWorkspace_NoTools" xml:space="preserve">
     <value>No application has been added yet</value>
   </data>
@@ -278,5 +275,17 @@
   </data>
   <data name="Validation_CreateToolAlreadyExists" xml:space="preserve">
     <value>An application with this name already exists.</value>
+  </data>
+  <data name="ToolEditorEdit_Title" xml:space="preserve">
+    <value>Edit an application</value>
+  </data>
+  <data name="Global_Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="ToolEditorAdd_Title" xml:space="preserve">
+    <value>Add an application</value>
+  </data>
+  <data name="KnownError_EditToolNotFound" xml:space="preserve">
+    <value>The application "{0}" could not be edited because it was not found.</value>
   </data>
 </root>

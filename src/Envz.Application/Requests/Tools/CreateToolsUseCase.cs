@@ -1,9 +1,8 @@
-﻿using Envz.Application.Factories;
-using Envz.Application.Mediator;
+﻿using Envz.Application.Mediator;
+using Envz.Application.Validators;
 using Envz.Domain.Entities;
 using Envz.Domain.Ports;
 using Envz.Domain.Validation;
-using System.Runtime.ExceptionServices;
 
 namespace Envz.Application.Requests.Tools;
 
@@ -14,17 +13,15 @@ public record CreateToolsRequest : IRequest
     public required IReadOnlyCollection<ToolToCreate> Tools { get; init; }
 }
 
-public class CreateToolsUseCase(IToolRepository toolRepository, ToolFactory toolFactory) : IUseCase<CreateToolsRequest>
+public class CreateToolsUseCase(IToolRepository toolRepository, ToolValidator toolValidator) : IUseCase<CreateToolsRequest>
 {
     public void Execute(CreateToolsRequest request)
     {
         List<Tool> tools = [];
         foreach (ToolToCreate toolToCreate in request.Tools)
         {
-            ValidationResult<Tool> result = toolFactory.Create(toolToCreate.Name, toolToCreate.Path, toolToCreate.Icon);
-            if (!result.IsValid)
-                ExceptionDispatchInfo.Throw(result.Error);
-            tools.Add(result.Value);
+            ValidationResult<Tool> result = toolValidator.ValidateCreation(toolToCreate.Name, toolToCreate.Path, toolToCreate.Icon);
+            tools.Add(result.GetValueOrThrow());
         }
 
         toolRepository.Save(tools);

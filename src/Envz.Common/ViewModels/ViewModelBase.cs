@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 
 namespace Envz.Common.ViewModels;
 
-public abstract class ViewModelBase : INotifyPropertyChanged, IDisposable
+public abstract class ViewModelBase : INotifyPropertyChanged
 {
     public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -12,9 +12,9 @@ public abstract class ViewModelBase : INotifyPropertyChanged, IDisposable
 
     }
 
-    public virtual void Dispose()
+    public virtual void OnRelease()
     {
-        GC.SuppressFinalize(this);
+
     }
 
     protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)

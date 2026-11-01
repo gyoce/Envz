@@ -9,9 +9,9 @@ using Envz.UI.Services;
 using Envz.UI.Views;
 using Envz.UI.Views.Pages.Home;
 using Envz.UI.Views.Pages.Settings;
-using Envz.UI.Views.Pages.Tools.AddCustomTool;
 using Envz.UI.Views.Pages.Tools.AddTool;
 using Envz.UI.Views.Pages.Tools.HomeTools;
+using Envz.UI.Views.Pages.Tools.ToolEditor;
 using Envz.UI.Views.Pages.Workspaces.CreateWorkspace;
 using Envz.UI.Views.Pages.Workspaces.EditWorkspace;
 using Envz.UI.Views.Pages.Workspaces.HomeWorkspaces;
@@ -67,7 +67,7 @@ public static class DependencyInjection
             services.AddPage<SelectToolPage, SelectToolPageViewModel>();
             services.AddPage<HomeToolsPage, HomeToolsPageViewModel>();
             services.AddPage<AddToolPage, AddToolPageViewModel>();
-            services.AddPage<AddCustomToolPage, AddCustomToolPageViewModel>();
+            services.AddPage<ToolEditorPage, ToolEditorPageViewModel>();
 
             services.AddPage<SettingsPage, SettingsPageViewModel>();
 

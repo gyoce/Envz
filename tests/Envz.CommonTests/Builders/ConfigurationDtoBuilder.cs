@@ -12,9 +12,23 @@ public class ConfigurationDtoBuilder
         return this;
     }
 
+    public ConfigurationDtoBuilder WithTools(params ToolDto[] tools)
+    {
+        foreach (ToolDto tool in tools)
+            WithTool(tool);
+        return this;
+    }
+
     public ConfigurationDtoBuilder WithWorkspace(WorkspaceDto workspace)
     {
         _configuration.Workspaces.Add(workspace);
+        return this;
+    }
+
+    public ConfigurationDtoBuilder WithWorkspaces(params WorkspaceDto[] workspaces)
+    {
+        foreach (WorkspaceDto workspace in workspaces)
+            WithWorkspace(workspace);
         return this;
     }
 
@@ -22,6 +36,8 @@ public class ConfigurationDtoBuilder
     {
         return _configuration;
     }
+
+    public static implicit operator ConfigurationDto(ConfigurationDtoBuilder builder) => builder.Build();
 
     public static ConfigurationDto EmptyConfiguration()
     {

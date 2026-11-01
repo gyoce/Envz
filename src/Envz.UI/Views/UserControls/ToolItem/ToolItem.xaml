@@ -17,6 +17,7 @@
         <ColumnDefinition Width="40" />
         <ColumnDefinition Width="*" />
         <ColumnDefinition Width="40" />
+        <ColumnDefinition Width="40" />
       </Grid.ColumnDefinitions>
 
       <Image Grid.Column="0" Source="{Binding Icon}" Width="32" Height="32" />
@@ -32,12 +33,19 @@
                    TextTrimming="CharacterEllipsis" />
       </StackPanel>
 
-      <ctrls:ButtonImage Grid.Column="2" 
+      <ctrls:ButtonImage Grid.Column="2"
+                         Source="{StaticResource IconEditBlack}"
+                         ButtonStyle="{StaticResource TransparentBlackButton}"
+                         ImageHeight="32" 
+                         Command="{Binding EditCommand}"
+                         Visibility="{Binding CanEdit, Converter={StaticResource BoolToVisibilityConverter}}" />
+
+      <ctrls:ButtonImage Grid.Column="3" 
                          Source="{StaticResource IconTrashBlack}" 
                          ButtonStyle="{StaticResource TransparentBlackButton}"
                          ImageHeight="32"
                          Command="{Binding DeleteCommand}" 
-                         Visibility="{Binding CanDelete, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                         Visibility="{Binding CanDelete, Converter={StaticResource BoolToVisibilityConverter}}" />
     </Grid>
   </Border>
 

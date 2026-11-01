@@ -15,8 +15,8 @@ public static class DependencyInjection
             where TView : FrameworkElement
             where TViewModel : PageViewModel
         {
-            services.AddSingleton<TViewModel>();
-            services.AddKeyedSingleton<FrameworkElement, TView>(typeof(TViewModel));
+            services.AddTransient<TViewModel>();
+            services.AddKeyedTransient<FrameworkElement, TView>(typeof(TViewModel));
             return services;
         }
 

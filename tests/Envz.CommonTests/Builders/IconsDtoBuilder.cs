@@ -12,8 +12,17 @@ public class IconsDtoBuilder
         return this;
     }
 
+    public IconsDtoBuilder WithIcons(params (string toolName, string icon)[] icons)
+    {
+        foreach ((string toolName, string icon) in icons)
+            WithIcon(toolName, icon);
+        return this;
+    }
+
     public IconsDto Build()
     {
         return _iconsDto;
     }
+
+    public static implicit operator IconsDto(IconsDtoBuilder builder) => builder.Build();
 }

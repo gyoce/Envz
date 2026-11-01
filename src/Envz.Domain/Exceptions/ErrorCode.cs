@@ -13,4 +13,5 @@ public enum ErrorCode
     CreateWorkspaceAlreadyExists,
     DeleteToolStillUsed,
     DeleteToolNotFound,
+    EditToolNotFound
 }

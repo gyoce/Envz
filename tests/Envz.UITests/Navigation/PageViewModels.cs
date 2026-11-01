@@ -49,3 +49,20 @@ public class PageViewModelHomeResult : ResultPageViewModel<string>
     public void Select(string value) => Complete(value);
     public void Abort() => Cancel();
 }
+
+public class PageViewModelHomeSiblingResult : ResultPageViewModel<string>
+{
+    public override ENavigationCategory Category => ENavigationCategory.Home;
+    public override string Title => "Sibling result page";
+
+    public void Select(string value) => Complete(value);
+}
+
+public class TrackedPage : PageViewModel
+{
+    public override ENavigationCategory Category => ENavigationCategory.Home;
+    public override string Title => "Tracked";
+    public int ReleaseCount { get; private set; }
+
+    public override void OnRelease() => ReleaseCount++;
+}

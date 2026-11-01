@@ -22,4 +22,6 @@ public class WorkspaceDtoBuilder
     {
         return _workspaceDto;
     }
+
+    public static implicit operator WorkspaceDto(WorkspaceDtoBuilder builder) => builder.Build();
 }

@@ -39,4 +39,31 @@ public static class DtoExtensions
             throw new InvalidConfigurationException($"Workspace \"{dto.Name}\": {ex.Message}");
         }
     }
+
+    public static ToolDto ToDto(this Tool tool)
+    {
+        return new ToolDto
+        {
+            Name = tool.Name,
+            Path = tool.Path
+        };
+    }
+
+    public static WorkspaceDto ToDto(this Workspace workspace)
+    {
+        return new WorkspaceDto
+        {
+            Name = workspace.Name,
+            Tools = workspace.Tools.Select(workspaceTool => workspaceTool.ToDto()).ToList()
+        };
+    }
+
+    public static WorkspaceToolDto ToDto(this WorkspaceTool workspaceTool)
+    {
+        return new WorkspaceToolDto
+        {
+            ToolName = workspaceTool.ToolName,
+            Parameter = workspaceTool.Parameter
+        };
+    }
 }

@@ -30,9 +30,7 @@ public class CreateWorkspacePageViewModel : PageViewModel
     private readonly IMediator _mediator;
     private readonly INavigationService _navigationService;
     private readonly WorkspaceToolItemViewModelFactory _viewModelFactory;
-
-    private bool _isSelectingTool = false;
-
+    
     public CreateWorkspacePageViewModel(IMediator mediator, INavigationService navigationService, WorkspaceToolItemViewModelFactory viewModelFactory)
     {
         _mediator = mediator;
@@ -43,16 +41,6 @@ public class CreateWorkspacePageViewModel : PageViewModel
         CancelCreateWorkspaceCommand = new RelayCommand(_ => navigationService.NavigateTo<HomeWorkspacesPageViewModel>());
         AddToolCommand = new AsyncRelayCommand(async _ => await AddToolAsync());
         ToolViewModels.CollectionChanged += OnToolViewModelsChanged;
-    }
-
-    public override void OnEnable()
-    {
-        if (_isSelectingTool)
-            return;
-
-        CreateWorkspaceRequest = new CreateWorkspaceRequest();
-        OnPropertyChanged(nameof(CreateWorkspaceRequest));
-        ToolViewModels.Clear();
     }
 
     private void OnToolViewModelsChanged(object? sender, NotifyCollectionChangedEventArgs e)
@@ -73,29 +61,17 @@ public class CreateWorkspacePageViewModel : PageViewModel
 
     private async Task AddToolAsync()
     {
-        _isSelectingTool = true;
-        Tool? tool;
-        try
-        {
-            tool = await _navigationService.NavigateForResultAsync<SelectToolPageViewModel, Tool>();
-        }
-        finally
-        {
-            _isSelectingTool = false;
-        }
+        Tool? tool = await _navigationService.NavigateForResultAsync<SelectToolPageViewModel, Tool>();
+        if (tool is null)
+            return;
 
-        if (tool is not null)
-        {
-            WorkspaceTool workspaceTool = new(tool.Name);
-            CreateWorkspaceRequest.Tools.Add(workspaceTool);
-            ToolViewModels.Add(_viewModelFactory.Create(workspaceTool, tool));
-        }
+        WorkspaceTool workspaceTool = new(tool.Name);
+        CreateWorkspaceRequest.Tools.Add(workspaceTool);
+        ToolViewModels.Add(_viewModelFactory.Create(workspaceTool, tool));
     }
 
-    public override void Dispose()
+    public override void OnRelease()
     {
         ToolViewModels.CollectionChanged -= OnToolViewModelsChanged;
-        base.Dispose();
-        GC.SuppressFinalize(this);
     }
 }

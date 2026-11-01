@@ -7,7 +7,7 @@ namespace Envz.UITests.Loc;
 public class TranslationTests
 {
     [Fact]
-    public void ShouldHaveAllTranslationForExceptionCode()
+    public void ShouldHaveAllTranslationForErrorCode()
     {
         foreach (LanguageOption language in SupportedLanguages.All)
         {

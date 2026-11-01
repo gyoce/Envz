@@ -1,4 +1,3 @@
-using Envz.Application.Factories;
 using Envz.Application.Mediator;
 using Envz.Application.Requests.Tools;
 using Envz.Common.Services;
@@ -13,78 +12,82 @@ using Envz.Domain.Validation;
 using Envz.UI.Services.Extensions;
 using Envz.UI.Views.Pages.Tools.HomeTools;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Windows.Input;
 using System.Windows.Media;
+using Envz.Application.Validators;
 
-namespace Envz.UI.Views.Pages.Tools.AddCustomTool;
+namespace Envz.UI.Views.Pages.Tools.ToolEditor;
 
-public class AddCustomToolPageViewModel : ValidatablePageViewModel
+public class ToolEditorPageViewModel : ValidatablePageViewModel
 {
     public override ENavigationCategory Category => ENavigationCategory.Tools;
-    public override string Title => Strings.AddCustomTool_Title;
+    public override string Title => IsEditMode ? Strings.ToolEditorEdit_Title : Strings.ToolEditorAdd_Title;
     public override int Level => 2;
-
-    public string? InitialPath { get; set; }
-
+    
     public ICommand BrowseToolCommand { get; }
     public ICommand BrowseIconCommand { get; }
-    public ICommand AddToolCommand { get; }
-    public ICommand CancelAddToolCommand { get; }
+    public ICommand SaveToolCommand { get; }
+    public ICommand CancelSaveToolCommand { get; }
 
     public string ToolName { get; set { if (SetProperty(ref field, value)) Validate(); } } = string.Empty;
     public string ToolPath { get; set { if (SetProperty(ref field, value)) Validate(); } } = string.Empty;
     public ImageSource? ToolIcon => _iconExtractor.DecodeFromPngBytes(Icon);
     public byte[]? Icon { get; private set { if (SetProperty(ref field, value)) OnPropertyChanged(nameof(ToolIcon)); } }
+    public string AcceptActionText => IsEditMode ? Strings.Global_Save : Strings.Global_Add;
 
     private readonly INavigationService _navigationService;
     private readonly IFileDialogService _fileDialogService;
     private readonly IIconExtractor _iconExtractor;
     private readonly IMediator _mediator;
 
-    private bool _showErrors;
-    private readonly ToolFactory _toolFactory;
+    [MemberNotNullWhen(true, nameof(_originalTool))]
+    private bool IsEditMode => _originalTool is not null;
 
-    public AddCustomToolPageViewModel(INavigationService navigationService, IFileDialogService fileDialogService, IIconExtractor iconExtractor, IMediator mediator, ToolFactory toolFactory)
+    private bool _showErrors;
+    private readonly ToolValidator _toolValidator;
+    private Tool? _originalTool;    
+
+    public ToolEditorPageViewModel(INavigationService navigationService, IFileDialogService fileDialogService, IIconExtractor iconExtractor, IMediator mediator, ToolValidator toolValidator)
     {
         _navigationService = navigationService;
         _fileDialogService = fileDialogService;
         _iconExtractor = iconExtractor;
         _mediator = mediator;
-        _toolFactory = toolFactory;
+        _toolValidator = toolValidator;
 
-        AddToolCommand = new RelayCommand(_ => AddTool());
-        CancelAddToolCommand = new RelayCommand(_ => CancelAddTool());
+        SaveToolCommand = new RelayCommand(_ => SaveTool());
+        CancelSaveToolCommand = new RelayCommand(_ => CancelSaveTool());
         BrowseIconCommand = new RelayCommand(_ => BrowseIcon());
         BrowseToolCommand = new RelayCommand(_ => BrowseTool());
 
         Localizer.Instance.PropertyChanged += OnLanguageChanged;
     }
 
-    public override void Dispose()
+    public override void OnRelease()
     {
         Localizer.Instance.PropertyChanged -= OnLanguageChanged;
     }
 
-    public override void OnEnable()
+    public void UseExecutable(string path)
     {
-        _showErrors = false;
-        ToolPath = string.Empty;
-        ToolName = string.Empty;
-        Icon = null;
+        ApplyExecutable(path);
+    }
 
-        if (InitialPath is not null)
-        {
-            ApplyExecutable(InitialPath);
-            InitialPath = null;
-        }
-
-        ClearErrors();
+    public void UseTool(Tool tool)
+    {
+        _originalTool = tool;
+        ToolPath = tool.Path;
+        ToolName = tool.Name;
+        Icon = tool.Icon;
     }
 
     private bool Validate()
     {
-        ValidationResult<Tool> result = _toolFactory.Create(ToolName, ToolPath, Icon);
+        ValidationResult<Tool> result = IsEditMode 
+            ? _toolValidator.ValidateEdition(_originalTool, ToolName, ToolPath, Icon)
+            : _toolValidator.ValidateCreation(ToolName, ToolPath, Icon);
 
         ClearErrors();
         if (_showErrors && !result.IsValid)
@@ -96,14 +99,16 @@ public class AddCustomToolPageViewModel : ValidatablePageViewModel
         return result.IsValid;
     }
 
-
-    private void AddTool()
+    private void SaveTool()
     {
         _showErrors = true;
         if (!Validate())
             return;
 
-        _mediator.Send(new CreateToolsRequest { Tools = [new ToolToCreate(ToolName.Trim(), ToolPath.Trim(), Icon)] });
+        if (IsEditMode)
+            _mediator.Send(new EditToolRequest { ToolName = _originalTool.Name, NewName = ToolName, NewPath = ToolPath, NewIcon = Icon });
+        else
+            _mediator.Send(new CreateToolsRequest { Tools = [new ToolToCreate(ToolName, ToolPath, Icon)] });
 
         _navigationService.NavigateTo<HomeToolsPageViewModel>();
     }
@@ -129,7 +134,7 @@ public class AddCustomToolPageViewModel : ValidatablePageViewModel
         Icon = _iconExtractor.ExtractPngBytes(path);
     }
 
-    private void CancelAddTool()
+    private void CancelSaveTool()
     {
         _navigationService.NavigateTo<HomeToolsPageViewModel>();
     }

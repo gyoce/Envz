@@ -16,13 +16,15 @@ public class NavigationTestFixture : IDisposable
         Strings.Culture = new CultureInfo("en");
 
         IServiceCollection services = new ServiceCollection();
-        services.AddSingleton<PageViewModelHomeWithoutTitle>();
-        services.AddSingleton<PageViewModelHomeWithTitle>();
-        services.AddSingleton<PageViewModelHomeWithAnotherTitle>();
-        services.AddSingleton<PageViewModelWorkspacesWithoutTitle>();
-        services.AddSingleton<PageViewModelWorkspacesWithTitle>();
-        services.AddSingleton<PageViewModelHomeWithTitleThirdLevel>();
-        services.AddSingleton<PageViewModelHomeResult>();
+        services.AddTransient<PageViewModelHomeWithoutTitle>();
+        services.AddTransient<PageViewModelHomeWithTitle>();
+        services.AddTransient<PageViewModelHomeWithAnotherTitle>();
+        services.AddTransient<PageViewModelWorkspacesWithoutTitle>();
+        services.AddTransient<PageViewModelWorkspacesWithTitle>();
+        services.AddTransient<PageViewModelHomeWithTitleThirdLevel>();
+        services.AddTransient<PageViewModelHomeResult>();
+        services.AddTransient<PageViewModelHomeSiblingResult>();
+        services.AddTransient<TrackedPage>();
         ServiceProvider = services.BuildServiceProvider();
 
         NavigationService = new NavigationService(ServiceProvider);

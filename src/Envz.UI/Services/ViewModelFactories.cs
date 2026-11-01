@@ -10,8 +10,8 @@ namespace Envz.UI.Services;
 
 public class ToolItemViewModelFactory(IIconExtractor iconExtractor)
 {
-    public ToolItemViewModel Create(Tool tool, Action<Tool>? onDelete = null)
-        => new(tool, iconExtractor, onDelete);
+    public ToolItemViewModel Create(Tool tool, ToolItemViewModelEvents? events = null)
+        => new(tool, iconExtractor, events ?? new ToolItemViewModelEvents());
 }
 
 public class WorkspaceToolItemViewModelFactory(IIconExtractor iconExtractor)
