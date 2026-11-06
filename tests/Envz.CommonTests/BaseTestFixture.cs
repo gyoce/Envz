@@ -74,13 +74,11 @@ public abstract class BaseTestFixture : IDisposable
 
     protected virtual void ConfigureServices(IServiceCollection services) { }
 
-    public void SetConfiguration(ConfigurationDto configuration, IconsDto? icons = null)
+    public void SetConfiguration(ConfigurationDto configuration)
     {
         ReplaceByMock<IConfigurationStore>();
-        ReplaceByMock<IIconStore>();
 
         GetMock<IConfigurationStore>().Setup(store => store.Configuration).Returns(configuration);
-        GetMock<IIconStore>().Setup(store => store.Icons).Returns(icons ?? new IconsDto());
     }
 
     private void EnsureServiceProviderNotBuilt()

@@ -11,14 +11,12 @@ namespace Envz.FunctionalTests.Infrastructure;
 public class InvalidConfigurationTests : BaseTestFixture
 {
     private const string ConfigurationPath = @"C:\Envz\configuration.json";
-    private const string IconsPath = @"C:\Envz\icons.json";
     private const string NotJson = "{ this is not json";
 
     protected override void ConfigureServices(IServiceCollection services)
     {
         ReplaceByMock<IConfigurationFilesPathProvider>();
         GetMock<IConfigurationFilesPathProvider>().Setup(p => p.ConfigurationFilePath).Returns(ConfigurationPath);
-        GetMock<IConfigurationFilesPathProvider>().Setup(p => p.IconsFilePath).Returns(IconsPath);
     }
 
     [Fact]
@@ -67,11 +65,11 @@ public class InvalidConfigurationTests : BaseTestFixture
     [Fact]
     public void ShouldNameTheToolWithInvalidIcon()
     {
-        WriteConfigurationFile("""{ "applications": [ { "name": "Chrome", "path": "C:\\chrome.exe" } ] }""");
-        GetServiceAs<IFileSystem, InMemoryFileSystem>().Files[IconsPath] = """{ "applications": { "Chrome": "not base64!" } }""";
+        WriteConfigurationFile("""{ "applications": [ { "name": "Chrome", "path": "C:\\chrome.exe" } ], "icons": { "applications": { "Chrome": "not base64!" } } }""");
 
         InvalidConfigurationException exception = Should.Throw<InvalidConfigurationException>(() => Send(new GetToolsRequest()));
 
+        exception.Code.ShouldBe(ErrorCode.ConfigurationInvalid);
         Detail(exception).ShouldContain("Chrome");
     }
 

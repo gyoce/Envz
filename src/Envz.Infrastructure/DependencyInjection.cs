@@ -14,7 +14,6 @@ public static class DependencyInjection
         services.AddSingleton<IFileSystem, FileSystem>();
         services.AddSingleton<IConfigurationFilesPathProvider, ConfigurationFilesPathProvider>();
         services.AddSingleton<IConfigurationStore, ConfigurationStore>();
-        services.AddSingleton<IIconStore, IconStore>();
 
         services.AddSingleton<IWorkspaceRepository, WorkspaceRepository>();
         services.AddSingleton<IToolRepository, ToolRepository>();

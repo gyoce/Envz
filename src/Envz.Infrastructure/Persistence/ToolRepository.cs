@@ -6,24 +6,17 @@ using Envz.Infrastructure.Configuration.Stores;
 
 namespace Envz.Infrastructure.Persistence;
 
-public class ToolRepository(IConfigurationStore configurationStore, IIconStore iconStore) : IToolRepository
+public class ToolRepository(IConfigurationStore configurationStore) : IToolRepository
 {
     private List<ToolDto> Tools => configurationStore.Configuration.Tools;
-    private Dictionary<string, string> Icons => iconStore.Icons.ToolIcons;
+    private Dictionary<string, string> Icons => configurationStore.Configuration.Icons.ToolIcons;
 
     public void Save(IReadOnlyCollection<Tool> tools)
     {
         Tools.AddRange(tools.Select(tool => tool.ToDto()));
-        configurationStore.Save();
-
-        bool hasIcon = false;
         foreach (Tool tool in tools.Where(t => t.Icon is not null))
-        {
             Icons[tool.Name] = tool.Icon!.ToBase64();
-            hasIcon = true;
-        }
-        if (hasIcon)
-            iconStore.Save();
+        configurationStore.Save();
     }
 
     public IReadOnlyCollection<Tool> GetAll()
@@ -45,19 +38,17 @@ public class ToolRepository(IConfigurationStore configurationStore, IIconStore i
     {
         int index = Tools.FindIndex(tool => tool.Name.EqualsIgnoringCase(toolName));
         Tools[index] = newTool.ToDto();
-        configurationStore.Save();
 
         Icons.Remove(toolName);
         if (newTool.Icon is not null)
             Icons[newTool.Name] = newTool.Icon.ToBase64();
-        iconStore.Save();
+        configurationStore.Save();
     }
 
     public void Delete(string toolName)
     {
         Tools.RemoveAll(tool => tool.Name.EqualsIgnoringCase(toolName));
-        configurationStore.Save();
         Icons.Remove(toolName);
-        iconStore.Save();
+        configurationStore.Save();
     }
 }

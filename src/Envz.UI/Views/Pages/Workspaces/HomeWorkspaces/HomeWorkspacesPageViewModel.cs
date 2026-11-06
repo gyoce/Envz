@@ -28,10 +28,7 @@ public class HomeWorkspacesPageViewModel : PageViewModel
         _mediator = mediator;
 
         NavigateToCreateWorkspaceCommand = new RelayCommand(_ => navigationService.NavigateTo<CreateWorkspacePageViewModel>());
-        SearchableWorkspaces = new SearchableCollection<WorkspaceItemViewModel, Workspace>(
-            workspace => workspace.Name,
-            workspace => viewModelFactory.Create(workspace)
-        );
+        SearchableWorkspaces = new SearchableCollection<WorkspaceItemViewModel, Workspace>(workspace => workspace.Name, viewModelFactory.Create);
     }
 
     public override void OnEnable()

@@ -12,6 +12,10 @@ public class ConfigurationDto
 
     [JsonPropertyName("settings")]
     public SettingsDto Settings { get; set; } = new();
+
+    [JsonPropertyName("icons")]
+    [JsonPropertyOrder(1)]
+    public IconsDto Icons { get; set; } = new();
 }
 
 public class WorkspaceDto
@@ -45,4 +49,11 @@ public class SettingsDto
 {
     [JsonPropertyName("language")]
     public string Language { get; set; } = "en";
+}
+
+public class IconsDto
+{
+    [JsonPropertyName("applications")]
+    [JsonObjectCreationHandling(JsonObjectCreationHandling.Populate)]
+    public Dictionary<string, string> ToolIcons { get; set; } = new(StringComparer.OrdinalIgnoreCase);
 }

@@ -10,28 +10,26 @@ public class DeleteToolTests : BaseTestFixture
     [Fact]
     public void ShouldRemoveToolAndIcon()
     {
-        ConfigurationDto configuration = new ConfigurationDtoBuilder().WithTool(new ToolDtoBuilder().WithName("App1").Build()).Build();
-        IconsDto icons = new IconsDtoBuilder().WithIcon("App1", "AQID").Build();
-        SetConfiguration(configuration, icons);
+        ConfigurationDto configuration = new ConfigurationDtoBuilder()
+            .WithTool(new ToolDtoBuilder().WithName("App1"))
+            .WithIcons(new IconsDtoBuilder().WithIcon("App1", "AQID"));
+        SetConfiguration(configuration);
 
         Send(new DeleteToolRequest { ToolName = "App1" });
 
         configuration.Tools.ShouldBeEmpty();
-        icons.ToolIcons.ShouldNotContainKey("App1");
+        configuration.Icons.ToolIcons.ShouldNotContainKey("App1");
         GetMock<IConfigurationStore>().Verify(store => store.Save(), Times.Once);
-        GetMock<IIconStore>().Verify(store => store.Save(), Times.Once);
     }
 
     [Fact]
     public void ShouldThrowIfToolIsStillUsed()
     {
         ConfigurationDto configuration = new ConfigurationDtoBuilder()
-            .WithTool(new ToolDtoBuilder().WithName("App1").Build())
+            .WithTool(new ToolDtoBuilder().WithName("App1"))
             .WithWorkspace(new WorkspaceDtoBuilder()
                 .WithName("Env1")
-                .WithTool(new WorkspaceToolDtoBuilder().WithToolName("App1").Build())
-                .Build())
-            .Build();
+                .WithTool(new WorkspaceToolDtoBuilder().WithToolName("App1")));
         SetConfiguration(configuration);
 
         Should.Throw<ToolInUseException>(() => Send(new DeleteToolRequest { ToolName = "App1" }));
@@ -51,15 +49,15 @@ public class DeleteToolTests : BaseTestFixture
     [Fact]
     public void ShouldRemoveToolIgnoringCase()
     {
-        ConfigurationDto configuration = new ConfigurationDtoBuilder().WithTool(new ToolDtoBuilder().WithName("MyApp1").Build()).Build();
-        IconsDto icons = new IconsDtoBuilder().WithIcon("MyApp1", "AQID").Build();
-        SetConfiguration(configuration, icons);
+        ConfigurationDto configuration = new ConfigurationDtoBuilder()
+            .WithTool(new ToolDtoBuilder().WithName("MyApp1"))
+            .WithIcons(new IconsDtoBuilder().WithIcon("MyApp1", "AQID"));
+        SetConfiguration(configuration);
 
         Send(new DeleteToolRequest { ToolName = "myapp1" });
 
         configuration.Tools.ShouldBeEmpty();
-        icons.ToolIcons.ShouldNotContainKey("MyApp1");
+        configuration.Icons.ToolIcons.ShouldNotContainKey("MyApp1");
         GetMock<IConfigurationStore>().Verify(store => store.Save(), Times.Once);
-        GetMock<IIconStore>().Verify(store => store.Save(), Times.Once);
     }
 }

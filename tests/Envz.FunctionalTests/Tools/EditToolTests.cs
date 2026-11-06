@@ -23,34 +23,36 @@ public class EditToolTests : BaseTestFixture
     [Fact]
     public void ShouldEditToolWithIconCorrectly()
     {
-        ConfigurationDto configuration = new ConfigurationDtoBuilder().WithTools(new ToolDto { Name = "App1", Path = "Path1" });
-        IconsDto icons = new IconsDtoBuilder().WithIcon("App1", "AQID");
-        SetConfiguration(configuration, icons);
+        ConfigurationDto configuration = new ConfigurationDtoBuilder()
+            .WithTools(new ToolDto { Name = "App1", Path = "Path1" })
+            .WithIcons(new IconsDtoBuilder().WithIcon("App1", "AQID"));
+        SetConfiguration(configuration);
 
         Send(new EditToolRequest { ToolName = "App1", NewName = "App2", NewPath = "Path2", NewIcon = [1, 2, 3, 4] });
 
         configuration.Tools.Count.ShouldBe(1);
         configuration.Tools[0].Name.ShouldBe("App2");
         configuration.Tools[0].Path.ShouldBe("Path2");
-        icons.ToolIcons.ShouldNotContainKey("App1");
-        icons.ToolIcons.ShouldContainKey("App2");
-        icons.ToolIcons["App2"].ShouldBe("AQIDBA=="); // bytes [1, 2, 3, 4]
+        configuration.Icons.ToolIcons.ShouldNotContainKey("App1");
+        configuration.Icons.ToolIcons.ShouldContainKey("App2");
+        configuration.Icons.ToolIcons["App2"].ShouldBe("AQIDBA=="); // bytes [1, 2, 3, 4]
     }
 
     [Fact]
     public void ShouldDeleteIconIfEditToolDeleteIcon()
     {
-        ConfigurationDto configuration = new ConfigurationDtoBuilder().WithTool(new ToolDto { Name = "App1", Path = "Path1" });
-        IconsDto icons = new IconsDtoBuilder().WithIcon("App1", "AQID");
-        SetConfiguration(configuration, icons);
+        ConfigurationDto configuration = new ConfigurationDtoBuilder()
+            .WithTool(new ToolDto { Name = "App1", Path = "Path1" })
+            .WithIcons(new IconsDtoBuilder().WithIcon("App1", "AQID"));
+        SetConfiguration(configuration);
 
         Send(new EditToolRequest { ToolName = "App1", NewName = "App2", NewPath = "Path2", NewIcon = null });
 
         configuration.Tools.Count.ShouldBe(1);
         configuration.Tools[0].Name.ShouldBe("App2");
         configuration.Tools[0].Path.ShouldBe("Path2");
-        icons.ToolIcons.ShouldNotContainKey("App1");
-        icons.ToolIcons.ShouldNotContainKey("App2");
+        configuration.Icons.ToolIcons.ShouldNotContainKey("App1");
+        configuration.Icons.ToolIcons.ShouldNotContainKey("App2");
     }
 
     [Fact]

@@ -63,39 +63,16 @@ public class ConfigurationStoreTests : BaseTestFixture
     }
 
     [Fact]
-    public void ShouldSaveIconInIconStore()
+    public void ShouldWriteIconsAfterConfiguration()
     {
-        IconsDto icons = new();
-        SetConfiguration(new ConfigurationDtoBuilder().Build(), icons);
-        byte[] icon = [1, 2, 3];
+        IConfigurationStore store = GetService<IConfigurationStore>();
+        store.Configuration.Tools.Add(new ToolDto { Name = "App", Path = "C:\\app.exe" });
+        store.Configuration.Icons.ToolIcons["App"] = "AQID";
 
-        Send(GetCreateToolsRequest(new ToolToCreate("App", "path", icon)));
+        store.Save();
 
-        icons.ToolIcons["App"].ShouldBe(Convert.ToBase64String(icon));
-        GetMock<IIconStore>().Verify(store => store.Save(), Times.Once);
-    }
-
-    [Fact]
-    public void ShouldNotSaveIconStoreWhenToolHasNoIcon()
-    {
-        SetConfiguration(new ConfigurationDtoBuilder().Build());
-
-        Send(GetCreateToolsRequest(new ToolToCreate("App", "path")));
-
-        GetMock<IIconStore>().Verify(store => store.Save(), Times.Never);
-    }
-
-    [Fact]
-    public void ShouldGetIconFromIconStore()
-    {
-        SetConfiguration(
-            new ConfigurationDtoBuilder().WithTool(new ToolDtoBuilder().WithName("App1").WithPath("ABC").Build()).Build(),
-            new IconsDtoBuilder().WithIcon("App1", Convert.ToBase64String(new byte[] { 1, 2, 3 })).Build()
-        );
-
-        Tool app = Send(new GetToolsRequest()).Single();
-
-        app.Icon.ShouldBe([1, 2, 3]);
+        string json = GetServiceAs<IFileSystem, InMemoryFileSystem>().Files[Path];
+        json.IndexOf("\"icons\"").ShouldBeGreaterThan(json.IndexOf("\"settings\""));
     }
 
     private static CreateToolsRequest GetCreateToolsRequest(params ToolToCreate[] tools) => new() { Tools = tools };

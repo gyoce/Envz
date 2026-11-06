@@ -64,6 +64,19 @@ public class CreateToolTests : BaseTestFixture
     }
 
     [Fact]
+    public void ShouldSaveIcon()
+    {
+        IconsDto icons = new();
+        SetConfiguration(new ConfigurationDtoBuilder().WithIcons(icons));
+        byte[] icon = [1, 2, 3];
+
+        Send(GetRequest(new ToolToCreate("App", "path", icon)));
+
+        icons.ToolIcons["App"].ShouldBe(Convert.ToBase64String(icon));
+        GetMock<IConfigurationStore>().Verify(store => store.Save(), Times.Once);
+    }
+
+    [Fact]
     public void ShouldCheckForUnicity()
     {
         SetConfiguration(new ConfigurationDtoBuilder().WithTool(new ToolDtoBuilder().WithName("App1").Build()).Build());

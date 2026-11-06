@@ -18,6 +18,6 @@ public class Tool
 
         Name = name.Trim();
         Path = path.Trim();
-        Icon = icon;
+        Icon = icon is { Length: > 0 } ? icon : null;
     }
 }

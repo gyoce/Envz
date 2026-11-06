@@ -1,5 +1,6 @@
 ﻿using Envz.Domain.Entities;
 using Envz.Domain.Exceptions;
+using Envz.Domain.Extensions;
 
 namespace Envz.Infrastructure.Configuration.Dtos;
 
@@ -12,7 +13,7 @@ public static class DtoExtensions
             return new Tool(
                 dto.Name,
                 dto.Path,
-                icons.TryGetValue(dto.Name, out string? icon) && !string.IsNullOrWhiteSpace(icon) ? Convert.FromBase64String(icon) : null
+                icons.TryGetValue(dto.Name, out string? icon) && !string.IsNullOrWhiteSpace(icon) ? icon.FromBase64() : null
             );
         }
         catch (ValidationException ex)

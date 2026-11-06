@@ -32,6 +32,12 @@ public class ConfigurationDtoBuilder
         return this;
     }
 
+    public ConfigurationDtoBuilder WithIcons(IconsDto icons)
+    {
+        _configuration.Icons = icons;
+        return this;
+    }
+
     public ConfigurationDto Build()
     {
         return _configuration;
